@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+# skip if run in CI
+[ -n "$CI" ] && exit 0
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Format staged files
+for file in `git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(js|jsx|ts|tsx|json|md|mdx|yml|yaml|css|less|scss|graphql|md|mdx)$'`
+do
+  echo "Formatting $file"
+
+  # Format it
+  yarn prettier --write "$file"
+  git add "$file"
+done
