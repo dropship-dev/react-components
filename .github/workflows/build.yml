@@ -19,9 +19,11 @@ jobs:
           cache: "yarn"
       - run: yarn
       - run: yarn build
-      - run: |
+      - name: Copy files
+        run: |
           cp package.json dist/
           cp yarn.lock dist/
+          sed -i 's/preinstall/_preinstall/g' dist/package.json
       - name: Deploy
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
