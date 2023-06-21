@@ -6,7 +6,7 @@
     "declaration": true,
     // "declarationMap": false,
     // "incremental": true,
-    // "jsx": "preserve",
+    "jsx": "preserve",
     // "lib": ["dom", "dom.iterable", "esnext"],
     "paths": {
       "~/*": ["./src/*"]
