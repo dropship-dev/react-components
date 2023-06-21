@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "lint:fix": "prettier --write .",
-    "preinstall": "npx husky install"
+    "lint:fix": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
