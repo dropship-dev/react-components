@@ -9,8 +9,8 @@ const react_1 = __importDefault(require("react"));
  * Primary UI component for user interaction
  */
 const Button = ({ primary = false, size = "medium", backgroundColor, label, ...props }) => {
-    return (<button type="button" className="bg-slate-600 h-10" {...props}>
+    return (<div className="bg-slate-600 h-10" {...props}>
       {label}
-    </button>);
+    </div>);
 };
 exports.Button = Button;

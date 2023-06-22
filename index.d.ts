@@ -1,2 +1,2 @@
-import React from "react";
-export declare function App(): React.JSX.Element;
+import "./tailwind.css";
+export * from "./Button";
