@@ -34,8 +34,8 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   return (
-    <button type="button" className="bg-slate-600 h-10" {...props}>
+    <div className="bg-slate-600 h-10" {...props}>
       {label}
-    </button>
+    </div>
   );
 };

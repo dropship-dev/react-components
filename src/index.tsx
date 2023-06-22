@@ -1,6 +1,3 @@
-import React from "react";
-import { Button } from "./Button";
+import "./tailwind.css";
 
-export function App() {
-  return <Button label="Click me" />;
-}
+export * from "./Button";
