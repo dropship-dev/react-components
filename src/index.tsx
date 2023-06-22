@@ -1,5 +1,6 @@
 import React from "react";
+import { Button } from "./Button";
 
-export function Button() {
-  return <div>Button</div>;
+export function App() {
+  return <Button label="Click me" />;
 }
