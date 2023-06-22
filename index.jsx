@@ -3,9 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Button = void 0;
+exports.App = void 0;
 const react_1 = __importDefault(require("react"));
-function Button() {
-    return <div>Button</div>;
+const Button_1 = require("./Button");
+function App() {
+    return <Button_1.Button label="Click me"/>;
 }
-exports.Button = Button;
+exports.App = App;

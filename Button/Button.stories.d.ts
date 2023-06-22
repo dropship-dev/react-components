@@ -2,7 +2,7 @@
 import type { StoryObj } from "@storybook/react";
 declare const meta: {
     title: string;
-    component: ({ primary, size, backgroundColor, label, ...props }: import("./Button").ButtonProps) => import("react").JSX.Element;
+    component: ({ primary, size, backgroundColor, label, ...props }: import(".").ButtonProps) => import("react").JSX.Element;
     tags: string[];
     argTypes: {
         backgroundColor: {
