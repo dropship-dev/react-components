@@ -22,9 +22,7 @@ jobs:
       - name: Copy files
         run: |
           cp package.json dist/
-          cp yarn.lock dist/
           sed -i 's/preinstall/_preinstall/g' dist/package.json
-          rm -f dist/**/*.stories.*
       - name: Deploy
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
