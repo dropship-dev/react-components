@@ -2265,7 +2265,21 @@
     prettier "^2.8.0"
     recast "^0.23.1"
 
-"@storybook/components@7.0.23", "@storybook/components@^7.0.12":
+"@storybook/components@7.0.22":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.22.tgz#2d30070220116438227d0e467108b4eb043a927e"
+  integrity sha512-4cPepDONPY5b7A52atQs2JD3gZ+DYCABWKL9VmNEJtKDVoMs/IKKstnnUQ5QbOGsEIttdheawmyZoa6IWUsoQg==
+  dependencies:
+    "@storybook/client-logger" "7.0.22"
+    "@storybook/csf" "^0.1.0"
+    "@storybook/global" "^5.0.0"
+    "@storybook/theming" "7.0.22"
+    "@storybook/types" "7.0.22"
+    memoizerific "^1.11.3"
+    use-resize-observer "^9.1.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/components@^7.0.12":
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-7.0.23.tgz#0a8e17d76b4b6e67b6eea0747f567e5788b3e7c5"
   integrity sha512-nEMWjqL34uDzQsHM/MJQt6IoeVzbyONeS14UsS/WKTVpnQvxYLeZAg/kyMwZsl28U25na3d+EhZKv/0mWXw5Nw==
@@ -2287,7 +2301,34 @@
     "@storybook/client-logger" "7.0.23"
     "@storybook/preview-api" "7.0.23"
 
-"@storybook/core-common@7.0.23", "@storybook/core-common@^7.0.12":
+"@storybook/core-common@7.0.22":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@storybook/core-common/-/core-common-7.0.22.tgz#4151650f5d0ab0f0c917b9a7c517a5b331c04dc1"
+  integrity sha512-Dq1Uv0erIt87GcJZR67ugvbpVHIarcfkcyWYJe6zjNqzCdmg9zPA80ZDZqLHveB7WGXlJuOItZcthxJq08xt9Q==
+  dependencies:
+    "@storybook/node-logger" "7.0.22"
+    "@storybook/types" "7.0.22"
+    "@types/node" "^16.0.0"
+    "@types/node-fetch" "^2.6.4"
+    "@types/pretty-hrtime" "^1.0.0"
+    chalk "^4.1.0"
+    esbuild "^0.17.0"
+    esbuild-register "^3.4.0"
+    file-system-cache "^2.0.0"
+    find-up "^5.0.0"
+    fs-extra "^11.1.0"
+    glob "^8.1.0"
+    glob-promise "^6.0.2"
+    handlebars "^4.7.7"
+    lazy-universal-dotenv "^4.0.0"
+    node-fetch "^2.0.0"
+    picomatch "^2.3.0"
+    pkg-dir "^5.0.0"
+    pretty-hrtime "^1.0.3"
+    resolve-from "^5.0.0"
+    ts-dedent "^2.0.0"
+
+"@storybook/core-common@^7.0.12":
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/@storybook/core-common/-/core-common-7.0.23.tgz#dc82800a888111d65bdc4e1eff2ff1ec4896acb7"
   integrity sha512-2W87Z9I0ObEMQkGVPMvgB3I5lWkqqkQDkfIbfoc717+DO3Lqgg/CGy5WL7+v2xVlzfoUnYIeXgkeAwDPDrDyMA==
@@ -2425,6 +2466,19 @@
     doctrine "^3.0.0"
     lodash "^4.17.21"
 
+"@storybook/docs-tools@7.0.23":
+  version "7.0.23"
+  resolved "https://registry.yarnpkg.com/@storybook/docs-tools/-/docs-tools-7.0.23.tgz#7c1d4c518c5ab0b702350719fa7e157033a8122e"
+  integrity sha512-sf0eGmx7ZfFgj/lrSjvDoqOQWRdAk9Os5nuy/rtSyOYLv8Y7+Pwdjn+1cUTs6j/yhgOooC0IweJom0+D40Mkog==
+  dependencies:
+    "@babel/core" "^7.12.10"
+    "@storybook/core-common" "7.0.23"
+    "@storybook/preview-api" "7.0.23"
+    "@storybook/types" "7.0.23"
+    "@types/doctrine" "^0.0.3"
+    doctrine "^3.0.0"
+    lodash "^4.17.21"
+
 "@storybook/global@^5.0.0":
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@storybook/global/-/global-5.0.0.tgz#b793d34b94f572c1d7d9e0f44fac4e0dbc9572ed"
@@ -2509,7 +2563,28 @@
     semver "^7.3.7"
     webpack "5"
 
-"@storybook/preview-api@7.0.23", "@storybook/preview-api@^7.0.12":
+"@storybook/preview-api@7.0.22":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.0.22.tgz#a33ce72e6d1bdd1336ab441f6ff22240b2403187"
+  integrity sha512-ugkJVojMSceP9hPZB6e00ox+1gIMaYw3lqdHFeRT3EFQeifCpSK2AnwS3MLLmqeSJeAOY2FC/ESWQ/v0dHvkKQ==
+  dependencies:
+    "@storybook/channel-postmessage" "7.0.22"
+    "@storybook/channels" "7.0.22"
+    "@storybook/client-logger" "7.0.22"
+    "@storybook/core-events" "7.0.22"
+    "@storybook/csf" "^0.1.0"
+    "@storybook/global" "^5.0.0"
+    "@storybook/types" "7.0.22"
+    "@types/qs" "^6.9.5"
+    dequal "^2.0.2"
+    lodash "^4.17.21"
+    memoizerific "^1.11.3"
+    qs "^6.10.0"
+    synchronous-promise "^2.0.15"
+    ts-dedent "^2.0.0"
+    util-deprecate "^1.0.2"
+
+"@storybook/preview-api@^7.0.12":
   version "7.0.23"
   resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.0.23.tgz#6f4d98a54c7367341e086a1818866e2e1e97faea"
   integrity sha512-kXhDX6gVjQu4Lx4SnCW5Yt5W/TbQofp9SL0paB1ywsJ15xSAPU5KVILe9OWAOba2YUnk7sHux/xDX/gH5RCpVw==
@@ -2554,19 +2629,19 @@
   integrity sha512-v4jIaDb3SwYmRADuNZDwR/5r0V65zAc+hJlW+8z3FRZ5xN3gGV/3s08VL2xnItmidsneMndz9ECjlaTHvSGOng==
 
 "@storybook/react-webpack5@^7.0.22":
-  version "7.0.23"
-  resolved "https://registry.yarnpkg.com/@storybook/react-webpack5/-/react-webpack5-7.0.23.tgz#72a089e4e6358036d202466531c1f5e4573b1595"
-  integrity sha512-G5x62Ow+MJLRRB1+e6R27Pr2Wt/R7yDjODEgOi6jQMymMjXkxPmr6s3yMTQz5ku7Wn3zFbs4H+DAoD7ND6v8GQ==
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@storybook/react-webpack5/-/react-webpack5-7.0.22.tgz#b4fa52e28c043513fc03538d639524f5ae921500"
+  integrity sha512-o7TZNX0ONgYm9ZdwrHJgv2RabSJC9XXtAEF8IxYogwZ/L7X+g1Uad0pEAb6pzhfHYoFlnsPzeKGxHPk8VdZBsw==
   dependencies:
     "@storybook/builder-webpack5" "7.0.23"
     "@storybook/preset-react-webpack" "7.0.23"
     "@storybook/react" "7.0.23"
     "@types/node" "^16.0.0"
 
-"@storybook/react@7.0.23", "@storybook/react@^7.0.22":
-  version "7.0.23"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.0.23.tgz#6e279add6859ff24ee306caeba3a48ee97a38ad8"
-  integrity sha512-vQQ+OaYXwab9PelUggI/ObJ0a5Luyn5lsAWI9QF3BV1WsiHwCKM862OGsfUEfV3WXaN+uHPx/LpyHC7XTFp2yA==
+"@storybook/react@7.0.22", "@storybook/react@^7.0.22":
+  version "7.0.22"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-7.0.22.tgz#72e02cf06123364b7a4fe6bf77316669e4aa126a"
+  integrity sha512-aZQv7wSFrny7FqamnhVFNkOOeJe+rGKfhG2IUc5+LW3g0+zqfwN3QIWq6aILau4x5XCPYTObaHX3g0HA7ZSmdA==
   dependencies:
     "@storybook/client-logger" "7.0.23"
     "@storybook/core-client" "7.0.23"
