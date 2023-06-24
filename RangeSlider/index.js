@@ -24,13 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Label = void 0;
+exports.Slider = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
-const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
-const class_variance_authority_1 = require("class-variance-authority");
+const SliderPrimitive = __importStar(require("@radix-ui/react-slider"));
 const utils_1 = require("../lib/utils");
-const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-not-allowed peer-disabled:opacity-70");
-const Label = React.forwardRef(({ className, size, frontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants(), `text-${size}`, `font-${frontWeight}`, className), ...props, children: content })));
-exports.Label = Label;
-Label.displayName = LabelPrimitive.Root.displayName;
+const Slider = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(SliderPrimitive.Root, { ref: ref, className: (0, utils_1.cn)("relative flex w-full touch-none select-none items-center", className), ...props, children: [(0, jsx_runtime_1.jsx)(SliderPrimitive.Track, { className: "relative h-2 w-full grow overflow-hidden rounded-full bg-secondary", children: (0, jsx_runtime_1.jsx)(SliderPrimitive.Range, { className: "absolute h-full bg-primary" }) }), (0, jsx_runtime_1.jsx)(SliderPrimitive.Thumb, { className: "block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" })] })));
+exports.Slider = Slider;
+Slider.displayName = SliderPrimitive.Root.displayName;
