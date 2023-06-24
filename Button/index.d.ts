@@ -1,26 +1,14 @@
-export interface ButtonProps {
-    /**
-     * Is this the principal call to action on the page?
-     */
-    primary?: boolean;
-    /**
-     * What background color to use
-     */
-    backgroundColor?: string;
-    /**
-     * How large should the button be?
-     */
-    size?: "small" | "medium" | "large";
-    /**
-     * Button contents
-     */
-    label: string;
-    /**
-     * Optional click handler
-     */
-    onClick?: () => void;
+import * as React from "react";
+import { type VariantProps } from "class-variance-authority";
+declare const buttonVariants: (props?: ({
+    variant?: "primary" | "destructive" | "outline" | "secondary" | "ghost" | "link" | "gradient" | "normal" | null | undefined;
+    size?: "default" | "xs" | "xl" | "sm" | "lg" | null | undefined;
+    rounded?: "roundedFull" | "none" | null | undefined;
+    border?: "normal" | "default" | null | undefined;
+} & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+    asChild?: boolean;
+    content?: string;
 }
-/**
- * Primary UI component for user interaction
- */
-export declare const Button: ({ primary, size, backgroundColor, label, ...props }: ButtonProps) => import("react/jsx-runtime").JSX.Element;
+declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
+export { Button, buttonVariants };
