@@ -42,7 +42,7 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
             normal: "bg-white text-white-foreground hover:bg-white-foreground focus:bg-white-focus text-black",
         },
         size: {
-            default: "py-[14px] px-[18px] h-[48px] h-[48px]",
+            normal: "py-[14px] px-[18px] h-[48px] h-[48px]",
             xs: "h-[36px] rounded-md py-[8px] px-[10px]",
             xl: "h-[42px] rounded-md py-[11px] px-[12px]",
             sm: "h-[54px] rounded-md py-[17px] px-[20px]",
@@ -58,7 +58,7 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
     },
     defaultVariants: {
         variant: "primary",
-        size: "default",
+        size: "normal",
         border: "normal",
     },
 });
