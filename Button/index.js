@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IconButton = exports.buttonVariants = exports.Button = void 0;
+exports.buttonVariants = exports.Button = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const react_slot_1 = require("@radix-ui/react-slot");
@@ -42,36 +42,31 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
             normal: "bg-white text-white-foreground hover:bg-white-foreground focus:bg-white-focus text-black",
         },
         size: {
-            normal: "py-[14px] px-[18px] h-[48px] h-[48px]",
+            default: "py-[14px] px-[18px] h-[48px]",
             xs: "h-[36px] rounded-md py-[8px] px-[10px]",
             xl: "h-[42px] rounded-md py-[11px] px-[12px]",
-            sm: "h-[54px] rounded-md py-[17px] px-[20px]",
-            lg: "h-[62px] rounded-md py-[19px] px-[24px]",
+            sm: "h-[42px] rounded-md py-[17px] px-[20px]",
+            lg: "h-[42px] rounded-md py-[19px] px-[24px]",
+        },
+        rounded: {
+            roundedFull: "rounded-full",
+            none: "rounded-none",
         },
         border: {
             normal: "border border-solid",
-            default: "border-0",
-        },
-        rounded: {
-            full: "rounded-full",
+            default: "border-0 ",
         },
     },
     defaultVariants: {
         variant: "primary",
-        size: "normal",
+        size: "default",
         border: "normal",
     },
 });
 exports.buttonVariants = buttonVariants;
-const Button = React.forwardRef(({ className, variant, size, content, rounded, border, asChild = false, ...props }, ref) => {
+const Button = React.forwardRef(({ className, variant, size, content, border, rounded, asChild = false, ...props }, ref) => {
     const Comp = asChild ? react_slot_1.Slot : "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className, rounded })), ref: ref, ...props, children: content }));
+    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, rounded, border, className })), ref: ref, ...props, children: content }));
 });
 exports.Button = Button;
-const IconButton = React.forwardRef(({ className, variant, size, child, rounded, border, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? react_slot_1.Slot : "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className, rounded })), ref: ref, ...props, children: child }));
-});
-exports.IconButton = IconButton;
 Button.displayName = "Button";
-IconButton.displayName = "IconButton";
