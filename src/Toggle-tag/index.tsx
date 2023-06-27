@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
 const labelVariants = cva(
-  "peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+  "peer-disabled:cursor-not-allowed peer-disabled:opacity-70 h-[48px] px-[12px] py-[14px]"
 );
 
 export interface ILabelProps

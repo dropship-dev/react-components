@@ -20,7 +20,7 @@ export const Normal: Story = {
   args: {
     small: false,
     label: "Label",
-    subLabel: "Sulabel",
+    subLabel: "Sublabel",
     placeholder: "Text",
     iconPre: <p>1</p>,
     iconAfter: <p>2</p>,
@@ -30,7 +30,7 @@ export const Small: Story = {
   args: {
     small: true,
     label: "Label",
-    subLabel: "Sulabel",
+    subLabel: "Sublabel",
     placeholder: "Text",
   },
 };

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Switch } from "./components/switch";
 
-export function SwitchBase(props: {
+export function ToggerSwitch(props: {
   initialValue?: boolean;
   onCheckedChange?: any;
 }) {

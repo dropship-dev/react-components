@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SwitchBase } from "../src/Switch";
+import { ToggerSwitch } from "../src/Switch";
 
 const meta = {
   title: "Example/Switch",
-  component: SwitchBase,
+  component: ToggerSwitch,
   tags: ["autodocs"],
-} satisfies Meta<typeof SwitchBase>;
+} satisfies Meta<typeof ToggerSwitch>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

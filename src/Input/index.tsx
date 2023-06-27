@@ -29,13 +29,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <div>
-        <p
-          className={`text-[14px]  ${
-            small ? "w-[107px] h-[20px]" : "w-[262px] h-[24px]"
-          }  h-[24px] font-medium	leading-[20px] text-slate-500	`}
-        >
-          {label}
-        </p>
+        {label && (
+          <p
+            className={`text-[14px]  ${
+              small ? "w-[107px] h-[20px]" : "w-[262px] h-[24px]"
+            }  h-[24px] font-medium	leading-[20px] text-slate-500	`}
+          >
+            {label}
+          </p>
+        )}
         <div
           className={cn(
             `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid  rounded-[8px] `
@@ -53,9 +55,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
           {iconAfter}
         </div>
-        <p className="text=[12px] font-normal	leading-[28px] text-slate-400	">
-          {subLabel}
-        </p>
+        {subLabel && (
+          <p className="text=[12px] font-normal leading-[28px] text-slate-400	">
+            {subLabel}
+          </p>
+        )}
       </div>
     );
   }
