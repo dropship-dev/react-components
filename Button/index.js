@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buttonVariants = exports.Button = void 0;
+exports.IconButton = exports.buttonVariants = exports.Button = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const react_slot_1 = require("@radix-ui/react-slot");
@@ -52,6 +52,9 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
             normal: "border border-solid",
             default: "border-0",
         },
+        rounded: {
+            full: "rounded-full",
+        },
     },
     defaultVariants: {
         variant: "primary",
@@ -60,9 +63,15 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
     },
 });
 exports.buttonVariants = buttonVariants;
-const Button = React.forwardRef(({ className, variant, size, content, border, asChild = false, ...props }, ref) => {
+const Button = React.forwardRef(({ className, variant, size, content, rounded, border, asChild = false, ...props }, ref) => {
     const Comp = asChild ? react_slot_1.Slot : "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className })), ref: ref, ...props, children: content }));
+    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className, rounded })), ref: ref, ...props, children: content }));
 });
 exports.Button = Button;
+const IconButton = React.forwardRef(({ className, variant, size, child, rounded, border, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? react_slot_1.Slot : "button";
+    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className, rounded })), ref: ref, ...props, children: child }));
+});
+exports.IconButton = IconButton;
 Button.displayName = "Button";
+IconButton.displayName = "IconButton";
