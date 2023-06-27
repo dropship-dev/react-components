@@ -48,13 +48,9 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
             sm: "h-[42px] rounded-md py-[17px] px-[20px]",
             lg: "h-[42px] rounded-md py-[19px] px-[24px]",
         },
-        rounded: {
-            roundedFull: "rounded-full",
-            none: "rounded-none",
-        },
         border: {
             normal: "border border-solid",
-            default: "border-0 ",
+            default: "border-0",
         },
     },
     defaultVariants: {
@@ -64,9 +60,9 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
     },
 });
 exports.buttonVariants = buttonVariants;
-const Button = React.forwardRef(({ className, variant, size, content, border, rounded, asChild = false, ...props }, ref) => {
+const Button = React.forwardRef(({ className, variant, size, content, border, asChild = false, ...props }, ref) => {
     const Comp = asChild ? react_slot_1.Slot : "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, rounded, border, className })), ref: ref, ...props, children: content }));
+    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className })), ref: ref, ...props, children: content }));
 });
 exports.Button = Button;
 Button.displayName = "Button";
