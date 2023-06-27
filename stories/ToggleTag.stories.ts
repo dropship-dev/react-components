@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, ButtonProps } from "../src/Button";
+import { ToggleTag } from "../src/Toggle-tag";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/Button",
-  component: Button,
+  title: "Example/ToggleTag",
+  component: ToggleTag,
   tags: ["autodocs"],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof ToggleTag>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -16,8 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: "default",
-    variant: "destructive",
-    content: "Button",
+    content: "Unavaliable",
+    variant: "success",
   },
 };

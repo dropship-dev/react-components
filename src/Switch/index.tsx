@@ -1,16 +1,15 @@
 import { useState } from "react";
-import { Switch } from "./components/switch";
+import { Switch as SwitchComponets } from "./components/switch";
 
-export function ToggerSwitch(props: {
+export function Switch(props: {
   initialValue?: boolean;
   onCheckedChange?: any;
 }) {
   const { initialValue, onCheckedChange } = props;
   return (
     <div className="flex items-center space-x-2">
-      <Switch
+      <SwitchComponets
         defaultChecked={initialValue}
-        id="airplane-mode"
         onCheckedChange={onCheckedChange}
       />
     </div>

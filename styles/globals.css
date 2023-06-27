@@ -22,6 +22,9 @@
     --primary: 253, 70%, 49%;
     --primary-foreground: 236 88% 62%;
     --primary-focus: 236 88% 62%;
+    --primary-100: 237 100% 93%;
+    --primary-400: 236 100% 73%;
+    --primary-500p: 236 88% 62%;
 
     --white: 0, 0%, 100%;
     --white-foreground: 216, 24%, 94%;
@@ -35,8 +38,26 @@
 
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
+    --destructive-50: 5 86% 97%;
+    --destructive-100: 4 67% 94%;
+    --destructive-400: 3 88% 68%;
+    --destructive-500: 1 81% 58%;
+    --destructive-700: 1 72% 40%;
+    --destructive-950: 6 71% 19%;
 
-    --success: 148 59% 44%;
+    --success-50: 142 80% 95%;
+    --success-100: 140 75% 92%;
+    --success-400: 148 59% 44%;
+    --success-600: 148 64% 35%;
+    --success-700: 151 66% 28%;
+    --destructive-950: 154 70% 12%;
+
+    --warning-100: 53 93% 88%;
+    --warning-400: 45 93% 57%;
+    --warning-700: 31 79% 35%;
+
+    --neutral-300: 217 16% 84%;
+    --neutral-900: 228 40% 16%;
 
     --ring: 215 20.2% 65.1%;
 
@@ -77,12 +98,23 @@
   }
 }
 
-/* @layer base {
-  * {
-    @apply border-border;
-  }
+/* @font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/GoogleFonts/Roboto-Bold.ttf');
+} */
+
+@layer base {
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: "Inter", sans-serif;
   }
-} */
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: "Inter", sans-serif;
+  }
+}

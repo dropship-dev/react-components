@@ -20,7 +20,6 @@ export interface ILabelProps
     | "normal"
     | "medium"
     | "semibold"
-    | "semibold"
     | "bold"
     | "extrabold"
     | "black";

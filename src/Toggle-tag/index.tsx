@@ -7,43 +7,36 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
 const labelVariants = cva(
-  "peer-disabled:cursor-not-allowed peer-disabled:opacity-70 h-[48px] px-[12px] py-[14px]"
+  "peer-disabled:cursor-not-allowed peer-disabled:opacity-70 h-[48px] px-[12px] py-[14px] text-[14px] font-medium rounded-[6px]",
+  {
+    variants: {
+      variant: {
+        success: "bg-success-50 text-success-600",
+        danger: "bg-destructive-50 text-destructive-500",
+        gradientSuccess: "bg-success text-success-950",
+        gradientdanger: "bg-destructive-400 text-destructive-950",
+      },
+    },
+  }
 );
 
 export interface ILabelProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
-  size?: "sm" | "base" | "xl" | "2xl" | "3xl" | "5xl";
-  frontWeight?:
-    | "thin"
-    | "extralight"
-    | "light"
-    | "normal"
-    | "medium"
-    | "semibold"
-    | "semibold"
-    | "bold"
-    | "extrabold"
-    | "black";
   content: string;
 }
 
-const Label = React.forwardRef<
+const ToggleTag = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   ILabelProps & VariantProps<typeof labelVariants>
->(({ className, size, frontWeight, content, ...props }, ref) => (
+>(({ className, content, variant, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
-    className={cn(
-      labelVariants(),
-      `text-${size}`,
-      `font-${frontWeight}`,
-      className
-    )}
+    className={cn(labelVariants({ variant, className }))}
     {...props}
   >
     {content}
   </LabelPrimitive.Root>
 ));
-Label.displayName = LabelPrimitive.Root.displayName;
+ToggleTag.displayName = LabelPrimitive.Root.displayName;
 
-export { Label };
+export { ToggleTag };

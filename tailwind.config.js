@@ -7,6 +7,15 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: [
+        {
+          fontFeatureSettings: "Inter",
+          fontVariationSettings: "Inter",
+        },
+      ],
+    },
+
     container: {
       center: true,
       padding: "2rem",
@@ -24,6 +33,19 @@ module.exports = {
         "4xl": "2.441rem",
         "5xl": "3.052rem",
       },
+
+      plugins: [
+        require("tailwindcss-font-inter")({
+          // it's plugin's default settings
+          a: -0.0223,
+          b: 0.185,
+          c: -0.1745,
+          baseFontSize: 16,
+          baseLineHeight: 1.5,
+          importFontFace: false,
+          disableUnusedFeatures: false,
+        }),
+      ],
 
       fontWeight: {
         thin: "100",
@@ -48,6 +70,9 @@ module.exports = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           focus: "hsl(var(--primary-focus))",
+          100: "hsl(var(--primary-100))",
+          400: "hsl(var(--primary-400))",
+          "500p": "hsl(var(--primary-500p))",
         },
         white: {
           DEFAULT: "hsl(var(--white))",
@@ -61,6 +86,13 @@ module.exports = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+          600: "hsl(var(--destructive-600))",
+          50: "hsl(var(--destructive-50))",
+          100: "hsl(var(--destructive-100))",
+          400: "hsl(var(--destructive-400))",
+          700: "hsl(var(--destructive-700))",
+          950: "hsl(var(--destructive-950))",
+          500: "hsl(var(--destructive-500))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -79,7 +111,23 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
         success: {
-          DEFAULT: "hsl(var(--success))",
+          DEFAULT: "hsl(var(--success-400))",
+          100: "hsl(var(--success-100))",
+          50: "hsl(var(--success-50))",
+          400: "hsl(var(--success-400))",
+          600: "hsl(var(--success-600))",
+          700: "hsl(var(--success-700))",
+          950: "hsl(var(--success-950))",
+        },
+        warning: {
+          100: "hsl(var(--warning-100))",
+          400: "hsl(var(--warning-400))",
+          700: "hsl(var(--warning-700))",
+        },
+        gray: {
+          300: "hsl(var(--neutral-300))",
+          400: "hsl(var(--neutral-400))",
+          900: "hsl(var(--neutral-900))",
         },
       },
       borderRadius: {
