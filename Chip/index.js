@@ -24,22 +24,31 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ToggleTag = void 0;
+exports.Chip = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
 const class_variance_authority_1 = require("class-variance-authority");
 const utils_1 = require("../lib/utils");
-const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-not-allowed peer-disabled:opacity-70 h-[48px] px-[12px] py-[14px] text-[14px] font-medium rounded-[6px]", {
+const ChipVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-[14px] font-medium ", {
     variants: {
         variant: {
-            success: "bg-success-50 text-success-600",
-            danger: "bg-destructive-50 text-destructive-500",
-            gradientSuccess: "bg-success text-success-950",
-            gradientdanger: "bg-destructive-400 text-destructive-950",
+            success: "bg-success-100 text-success-700 border-success-400",
+            danger: "bg-destructive-100 text-destructive-700 border-destructive-400",
+            warning: "bg-warning-100 text-warning-700 border-warning-400",
+            gray: "bg-gray-300 text-gray-900 border-gray-400",
+            primary: "bg-primary-100 text-primary-500p border-primary-400",
+        },
+        status: {
+            active: "opacity-100",
+            deactivate: "opacity-50",
+        },
+        size: {
+            sm: "h-[24px] px-[8px] py-[3px] rounded-[12px]",
+            md: "h-[40px] px-[12px] py-[6px] rounded-[15px] border-solid border-[1px]",
         },
     },
 });
-const ToggleTag = React.forwardRef(({ className, content, variant, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants({ variant, className })), ...props, children: content })));
-exports.ToggleTag = ToggleTag;
-ToggleTag.displayName = LabelPrimitive.Root.displayName;
+const Chip = React.forwardRef(({ className, content, variant, status, size, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(ChipVariants({ variant, status, size, className })), ...props, children: content })));
+exports.Chip = Chip;
+Chip.displayName = LabelPrimitive.Root.displayName;

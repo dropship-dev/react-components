@@ -23,37 +23,38 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.buttonVariants = exports.Button = void 0;
+exports.IconButton = exports.buttonVariants = exports.Button = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
-const react_slot_1 = require("@radix-ui/react-slot");
 const class_variance_authority_1 = require("class-variance-authority");
 const utils_1 = require("../lib/utils");
 const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: {
         variant: {
             primary: "bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary-focus text-white",
-            destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+            destructive: "bg-destructive-500 text-white hover:bg-destructive-600 active:bg-destructive-700",
             outline: "border border-input hover:bg-accent hover:text-accent-foreground",
             secondary: "bg-[#4856F3] text-secondary-foreground hover:bg-secondary/80 text-white",
             ghost: "hover:bg-accent hover:text-accent-foreground",
-            link: "underline-offset-4 hover:underline text-primary ",
-            gradient: "bg-indigo-500 text-white",
+            link: "text-primary",
             normal: "bg-white text-white-foreground hover:bg-white-foreground focus:bg-white-focus text-black",
         },
+        line: {
+            underline: "underline-offset-4 hover:underline",
+        },
         size: {
-            default: "py-[14px] px-[18px] h-[48px]",
-            xs: "h-[36px] rounded-md py-[8px] px-[10px]",
-            xl: "h-[42px] rounded-md py-[11px] px-[12px]",
-            sm: "h-[42px] rounded-md py-[17px] px-[20px]",
-            lg: "h-[42px] rounded-md py-[19px] px-[24px]",
+            default: "py-[14px] px-[18px] h-[36px] rounded-[7px] text-[16px] leading-[24px]",
+            xs: "h-[24px] rounded-[6px] py-[8px] px-[10px] text-[14px] leading-[20px]",
+            xl: "h-[30px] rounded-[6px] py-[11px] px-[12px] text-[16px] leading-[24px]",
+            sm: "h-[44px] rounded-[8px] py-[17px] px-[20px] text-[18px] leading-[28px]",
+            lg: "h-[50px] rounded-[10px] py-[19px] px-[24px] text-[20px] leading-[30px]",
         },
         rounded: {
-            roundedFull: "rounded-full",
+            full: "rounded-full",
             none: "rounded-none",
         },
         border: {
-            normal: "border border-solid",
+            normal: "border border-solid ",
             default: "border-0 ",
         },
     },
@@ -64,9 +65,47 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
     },
 });
 exports.buttonVariants = buttonVariants;
-const Button = React.forwardRef(({ className, variant, size, content, border, rounded, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? react_slot_1.Slot : "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, rounded, border, className })), ref: ref, ...props, children: content }));
+const iconButtonVariants = (0, class_variance_authority_1.cva)("inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
+    variants: {
+        variant: {
+            primary: "bg-primary text-primary-foreground hover:bg-primary/90 focus:bg-primary-focus text-white",
+            destructive: "bg-destructive-500 text-white hover:bg-destructive-600 active:bg-destructive-700",
+            outline: "border border-input hover:bg-accent hover:text-accent-foreground",
+            secondary: "bg-[#4856F3] text-secondary-foreground hover:bg-secondary/80 text-white",
+            ghost: "hover:bg-accent hover:text-accent-foreground",
+            link: "text-primary",
+            normal: "bg-white text-white-foreground hover:bg-white-foreground focus:bg-white-focus text-black",
+        },
+        line: {
+            underline: "underline-offset-4 hover:underline",
+        },
+        size: {
+            default: "py-[14px] px-[18px] h-[36px] rounded-[7px] text-[16px] leading-[24px]",
+            xs: "h-[24px] rounded-[6px] py-[8px] px-[10px] text-[14px] leading-[20px]",
+            xl: "h-[30px] rounded-[6px] py-[11px] px-[12px] text-[16px] leading-[24px]",
+            sm: "h-[44px] rounded-[8px] py-[17px] px-[20px] text-[18px] leading-[28px]",
+            lg: "h-[50px] rounded-[10px] py-[19px] px-[24px] text-[20px] leading-[30px]",
+        },
+        border: {
+            normal: "border border-solid ",
+            default: "border-0 ",
+        },
+    },
+    defaultVariants: {
+        variant: "primary",
+        size: "default",
+        border: "normal",
+    },
+});
+const Button = React.forwardRef(({ className, variant, size, content, border, rounded, ...props }, ref) => {
+    const Comp = "button";
+    return ((0, jsx_runtime_1.jsx)(Comp, { style: { borderRadius: rounded ? "50%" : "0" }, className: (0, utils_1.cn)(buttonVariants({ variant, size, border, rounded, className })), ref: ref, ...props, children: content }));
 });
 exports.Button = Button;
+const IconButton = React.forwardRef(({ className, variant, size, child, border, ...props }, ref) => {
+    const Comp = "button";
+    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({ variant, size, border, className })), ref: ref, ...props, children: child }));
+});
+exports.IconButton = IconButton;
 Button.displayName = "Button";
+IconButton.displayName = "IconButton";
