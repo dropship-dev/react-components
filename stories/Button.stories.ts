@@ -16,8 +16,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: "default",
-    variant: "destructive",
+    size: "md",
+    bgColor: "destructive",
+    border: "normal",
     content: "Button",
+    bgType: true,
   },
 };

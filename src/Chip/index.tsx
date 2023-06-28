@@ -16,7 +16,7 @@ const ChipVariants = cva(
           "bg-destructive-100 text-destructive-700 border-destructive-400",
         warning: "bg-warning-100 text-warning-700 border-warning-400",
         gray: "bg-gray-300 text-gray-900 border-gray-400",
-        primary: "bg-primary-100 text-primary-500p border-primary-400",
+        primary: "bg-primary-100 text-primary-500 border-primary-400",
       },
       status: {
         active: "opacity-100",

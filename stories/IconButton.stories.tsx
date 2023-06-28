@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React from "react";
 
 import { IconButton } from "../src/Button";
 
@@ -17,9 +16,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: "default",
-    variant: "destructive",
-    child: <p>+</p>,
-    rounded: true,
+    size: "md",
+    bgColor: "destructive",
+    border: "normal",
+    child: "+",
+    roundedFull: true,
   },
 };

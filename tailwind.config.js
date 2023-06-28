@@ -34,6 +34,13 @@ module.exports = {
         "5xl": "3.052rem",
       },
 
+      boxShadow: {
+        primary: "0 0 0 4px #DBDDFF",
+        gray: "0 0 0 4px #EAECF0",
+        secondary: "0 0 0 4px #DBDDFF",
+        danger: "0 0 0 4px #FDE4F2",
+      },
+
       fontWeight: {
         thin: "100",
         hairline: "100",
@@ -57,9 +64,12 @@ module.exports = {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           focus: "hsl(var(--primary-focus))",
+          25: "hsl(var(--primary-25))",
+          50: "hsl(var(--primary-50))",
           100: "hsl(var(--primary-100))",
           400: "hsl(var(--primary-400))",
-          "500p": "hsl(var(--primary-500p))",
+          500: "hsl(var(--primary-500))",
+          700: "hsl(var(--primary-700))",
         },
         white: {
           DEFAULT: "hsl(var(--white))",
@@ -73,13 +83,18 @@ module.exports = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
-          600: "hsl(var(--destructive-600))",
           50: "hsl(var(--destructive-50))",
           100: "hsl(var(--destructive-100))",
           400: "hsl(var(--destructive-400))",
+          500: "hsl(var(--destructive-500))",
+          600: "hsl(var(--destructive-600))",
           700: "hsl(var(--destructive-700))",
           950: "hsl(var(--destructive-950))",
           500: "hsl(var(--destructive-500))",
+        },
+
+        normal: {
+          DEFAULT: "hsl(var(--destructive-400))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -112,6 +127,8 @@ module.exports = {
           700: "hsl(var(--warning-700))",
         },
         gray: {
+          100: "hsl(var(--neutral-100))",
+          200: "hsl(var(--neutral-200))",
           300: "hsl(var(--neutral-300))",
           400: "hsl(var(--neutral-400))",
           900: "hsl(var(--neutral-900))",
