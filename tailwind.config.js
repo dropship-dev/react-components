@@ -34,19 +34,6 @@ module.exports = {
         "5xl": "3.052rem",
       },
 
-      plugins: [
-        require("tailwindcss-font-inter")({
-          // it's plugin's default settings
-          a: -0.0223,
-          b: 0.185,
-          c: -0.1745,
-          baseFontSize: 16,
-          baseLineHeight: 1.5,
-          importFontFace: false,
-          disableUnusedFeatures: false,
-        }),
-      ],
-
       fontWeight: {
         thin: "100",
         hairline: "100",
