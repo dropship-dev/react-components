@@ -85,6 +85,7 @@ module.exports = {
           foreground: "hsl(var(--destructive-foreground))",
           50: "hsl(var(--destructive-50))",
           100: "hsl(var(--destructive-100))",
+          200: "hsl(var(--destructive-200))",
           400: "hsl(var(--destructive-400))",
           500: "hsl(var(--destructive-500))",
           600: "hsl(var(--destructive-600))",
