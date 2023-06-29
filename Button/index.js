@@ -31,7 +31,7 @@ const utils_1 = require("../lib/utils");
 const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: {
         bgColor: {
-            primary: "bg-primary-500 hover:bg-primary-400 active:bg-primary-500 border-primary-500 focus:shadow-[#EAECF0] text-white",
+            primary: "bg-primary-500 hover:bg-primary-400 active:bg-primary-500 border-primary-500 focus:shadow-[#DBDDFF] text-white",
             destructive: "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-700 border-destructive-400 focus:shadow-[#FDE4F2] text-white",
             // danger:
             //   "bg-inherit hover:bg-destructive-100 active:bg-destructive-400 border-destructive-400 focus:shadow-[#FDE4F2] focus:shadow-[0_0_0_4px] text-destructive-500",
@@ -64,7 +64,7 @@ exports.buttonVariants = buttonVariants;
 const buttonVariantsType = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: {
         bgColor: {
-            primary: "bg-inherit hover:bg-primary-50 active:bg-primary-100 border-primary-500 focus:shadow-[##DBDDFF] text-primary",
+            primary: "bg-inherit hover:bg-primary-50 active:bg-primary-100 border-primary-500 focus:shadow-[#DBDDFF] text-primary",
             destructive: "bg-inherit hover:bg-destructive-100 active:bg-destructive-200 border-destructive-400 focus:shadow-[#FDE4F2] text-destructive-500",
             secondary: "bg-inherit hover:bg-primary-50 active:bg-primary-100 focus:shadow-[#DBDDFF] border-primary-500 text-primary-500",
             normal: "bg-inherit hover:bg-gray-100 active:bg-gray-300 border-gray-400 focus:shadow-[#EAECF0] text-black",
