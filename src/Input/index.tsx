@@ -32,7 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <p
             className={`text-[14px]  ${
-              small ? "w-[107px] h-[20px]" : "w-[262px] h-[24px]"
+              small ? "h-[20px]" : "h-[24px]"
             }  h-[24px] font-medium	leading-[20px] text-slate-500	`}
           >
             {label}

@@ -21,12 +21,15 @@
 
     --primary: 253, 70%, 49%;
     --primary-foreground: 236 88% 62%;
-    --primary-focus: 236 88% 62%;
+    --primary-focus: 253 70% 49%;
+    --primary-hover: 236 88% 62%;
+    --primary-active: 236 88% 62%;
     --primary-25: 240 100% 98%;
     --primary-50: 240 100% 96%;
     --primary-100: 237 100% 93%;
     --primary-400: 236 100% 73%;
     --primary-500: 236 88% 62%;
+    --primary-600: 236 63% 52%;
     --primary-700: 236 65% 42%;
 
     --white: 0, 0%, 100%;
