@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       bgColor: {
         primary:
-          "bg-primary-500 hover:bg-primary-400 active:bg-primary-500 border-primary-500 focus:shadow-[#EAECF0] text-white",
+          "bg-primary-500 hover:bg-primary-400 active:bg-primary-500 border-primary-500 focus:shadow-[#DBDDFF] text-white",
         destructive:
           "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-700 border-destructive-400 focus:shadow-[#FDE4F2] text-white",
         // danger:
@@ -51,7 +51,7 @@ const buttonVariantsType = cva(
     variants: {
       bgColor: {
         primary:
-          "bg-inherit hover:bg-primary-50 active:bg-primary-100 border-primary-500 focus:shadow-[##DBDDFF] text-primary",
+          "bg-inherit hover:bg-primary-50 active:bg-primary-100 border-primary-500 focus:shadow-[#DBDDFF] text-primary",
         destructive:
           "bg-inherit hover:bg-destructive-100 active:bg-destructive-200 border-destructive-400 focus:shadow-[#FDE4F2] text-destructive-500",
         secondary:
