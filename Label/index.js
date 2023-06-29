@@ -30,7 +30,21 @@ const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
 const class_variance_authority_1 = require("class-variance-authority");
 const utils_1 = require("../lib/utils");
-const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-not-allowed peer-disabled:opacity-70");
-const Label = React.forwardRef(({ className, size, frontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants(), `text-${size}`, `font-${frontWeight}`, className), ...props, children: content })));
+const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-not-allowed peer-disabled:opacity-70", {
+    variants: {
+        frontWeight: {
+            thin: "font-[100]",
+            extralight: "font-[200]",
+            light: "font-[300]",
+            normal: "font-[400]",
+            medium: "font-[500]",
+            semibold: "font-[600]",
+            bold: "font-[700]",
+            extrabold: "font-[800]",
+            black: "font-[900]",
+        },
+    },
+});
+const Label = React.forwardRef(({ className, size, frontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { style: { fontSize: `${size ?? 14}px` }, ref: ref, className: (0, utils_1.cn)(labelVariants({ frontWeight }), className), ...props, children: content })));
 exports.Label = Label;
 Label.displayName = LabelPrimitive.Root.displayName;

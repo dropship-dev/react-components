@@ -96,11 +96,11 @@ const iconButtonVariants = (0, class_variance_authority_1.cva)("inline-flex item
             normal: "bg-white hover:bg-white-foreground shadow-none focus:bg-white-focus border-gray-400 focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
         },
         size: {
-            xs: "h-[24px] w-[24px] rounded-[6px] ",
-            sm: "h-[30px] w-[30px] rounded-[6px] ",
-            md: "h-[36px] w-[36px] rounded-[7px] ",
-            lg: "h-[44px] w-[44px] rounded-[8px] ",
-            xl: "h-[50px] w-[50px] rounded-[10px] ",
+            xs: "h-[24px] w-[24px] rounded-[6px]",
+            sm: "h-[30px] w-[30px] rounded-[6px]",
+            md: "h-[36px] w-[36px] rounded-[7px]",
+            lg: "h-[44px] w-[44px] rounded-[8px]",
+            xl: "h-[50px] w-[50px] rounded-[10px]",
         },
         border: {
             normal: "border border-solid",
@@ -113,10 +113,9 @@ const iconButtonVariants = (0, class_variance_authority_1.cva)("inline-flex item
         border: "none",
     },
 });
-const Button = React.forwardRef(({ className, bgColor, size, border, content, bgType, ...props }, ref) => {
+const Button = React.forwardRef(({ className, bgColor, size, border, content, bgType, disabled, ...props }, ref) => {
     const Comp = "button";
-    console.log();
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(bgType
+    return ((0, jsx_runtime_1.jsx)(Comp, { disabled: disabled, className: (0, utils_1.cn)(bgType
             ? buttonVariants({
                 bgColor,
                 size,
@@ -131,10 +130,9 @@ const Button = React.forwardRef(({ className, bgColor, size, border, content, bg
             })), ref: ref, ...props, children: content }));
 });
 exports.Button = Button;
-const IconButton = React.forwardRef(({ className, bgColor, size, child, border, roundedFull, ...props }, ref) => {
+const IconButton = React.forwardRef(({ className, bgColor, size, child, border, roundedFull, disabled, ...props }, ref) => {
     const Comp = "button";
-    console.log();
-    return ((0, jsx_runtime_1.jsx)(Comp, { style: {
+    return ((0, jsx_runtime_1.jsx)(Comp, { disabled: disabled, style: {
             borderRadius: roundedFull ? "50%" : "",
             backgroundColor: bgColor ? "white" : "",
         }, className: (0, utils_1.cn)(iconButtonVariants({ bgColor, size, border, className })), ref: ref, ...props, children: child }));

@@ -24,31 +24,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Chip = void 0;
+exports.Tag = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
 const class_variance_authority_1 = require("class-variance-authority");
+const react_icons_1 = require("@radix-ui/react-icons");
 const utils_1 = require("../lib/utils");
-const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[18px] font-[400]", {
+const TagVariants = (0, class_variance_authority_1.cva)("leading-[20px] font-[400] border-[1px] border-solid hover:bg-primary-25 hover:border-primary-500 active:bg-primary-100 flex flex-row gap-[8px] items-center w-fit py-[6px] px-[10px] focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]", {
     variants: {
-        variant: {
-            success: "bg-success-100 text-success-700 border-success-400",
-            danger: "bg-destructive-100 text-destructive-700 border-destructive-400",
-            warning: "bg-warning-100 text-warning-700 border-warning-400",
-            gray: "bg-gray-300 text-gray-900 border-gray-400",
-            primary: "bg-primary-100 text-primary-500 border-primary-400",
-        },
-        status: {
-            active: "opacity-100",
-            deactivate: "opacity-50",
-        },
         size: {
-            sm: "h-[24px] px-[8px] py-[3px] rounded-[12px]",
-            md: "h-[40px] px-[12px] py-[6px] rounded-[15px] border-solid border-[1px]",
+            sm: "h-[34px] text-[12px] rounded-[16px]",
+            md: "h-[44px] text-[16px] rounded-[21px]",
         },
     },
 });
-const Chip = React.forwardRef(({ className, content, variant, status, size, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(ChipVariants({ variant, status, size, className })), ...props, children: content })));
-exports.Chip = Chip;
-Chip.displayName = LabelPrimitive.Root.displayName;
+const Tag = React.forwardRef(({ className, content, size, onCancle, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(TagVariants({ size, className })), ...props, children: [content, (0, jsx_runtime_1.jsx)(react_icons_1.Cross1Icon, { onClick: onCancle })] })));
+exports.Tag = Tag;
+Tag.displayName = LabelPrimitive.Root.displayName;

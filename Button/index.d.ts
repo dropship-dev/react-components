@@ -13,9 +13,11 @@ declare const iconButtonVariants: (props?: ({
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
     content?: string;
     bgType: boolean;
+    disabled?: boolean;
 }
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof iconButtonVariants> {
     child?: React.ReactNode | string;
+    disabled?: boolean;
     roundedFull?: boolean;
 }
 declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
