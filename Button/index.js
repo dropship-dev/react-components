@@ -33,11 +33,14 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
         bgColor: {
             primary: "bg-primary-500 hover:bg-primary-400 active:bg-primary-500 border-primary-500 focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px] text-white",
             destructive: "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-400 border-destructive-400 focus:shadow-[#FDE4F2] focus:shadow-[0_0_0_4px] text-white",
-            danger: "bg-inherit hover:bg-destructive-100 active:bg-destructive-400 border-destructive-400 focus:shadow-[#FDE4F2] focus:shadow-[0_0_0_4px] text-destructive-500",
+            // danger:
+            //   "bg-inherit hover:bg-destructive-100 active:bg-destructive-400 border-destructive-400 focus:shadow-[#FDE4F2] focus:shadow-[0_0_0_4px] text-destructive-500",
             secondary: "bg-primary-25 hover:bg-primary-50 active:bg-primary-100 focus:shadow-[#DBDDFF] border-primary-500 focus:shadow-[0_0_0_4px] text-primary-500",
             normal: "bg-white hover:bg-gray-100 focus:bg-gray-200 active:bg-gray-300 border-gray-400 focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px] text-black",
-            normalPrimary: "text-primary-500 focus:text-primary-600 active:text-primary-700 border-primary-500",
-            normalDestructive: "text-destructive-500 focus:text-destructive-600 active:text-destructive-700 border-destructive-400",
+            // normalPrimary:
+            //   "text-primary-500 focus:text-primary-600 active:text-primary-700 border-primary-500",
+            // normalDestructive:
+            //   "text-destructive-500 focus:text-destructive-600 active:text-destructive-700 border-destructive-400",
         },
         size: {
             xs: "h-[24px] rounded-[6px] py-[8px] px-[10px] text-[14px] leading-[20px]",
@@ -58,6 +61,32 @@ const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-ce
     },
 });
 exports.buttonVariants = buttonVariants;
+const buttonVariantsType = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
+    variants: {
+        bgColor: {
+            primary: "bg-inherit hover:bg-primary-50 active:bg-primary-100 border-primary-500 focus:shadow-[##DBDDFF] text-primary",
+            destructive: "bg-inherit hover:bg-destructive-100 active:bg-destructive-200 border-destructive-400 focus:shadow-[#FDE4F2] text-destructive-500",
+            secondary: "bg-inherit hover:bg-primary-50 active:bg-primary-100 focus:shadow-[#DBDDFF] border-primary-500 text-primary-500",
+            normal: "bg-inherit hover:bg-gray-100 focus:bg-gray-200 active:bg-gray-300 border-gray-400 focus:shadow-[#EAECF0] text-black",
+        },
+        size: {
+            xs: "h-[24px] rounded-[6px] py-[8px] px-[10px] text-[14px] leading-[20px]",
+            sm: "h-[30px] rounded-[6px] py-[11px] px-[12px] text-[16px] leading-[24px]",
+            md: "h-[36px] rounded-[7px] py-[14px] px-[18px] text-[16px] leading-[24px]",
+            lg: "h-[44px] rounded-[8px] py-[17px] px-[20px] text-[18px] leading-[28px]",
+            xl: "h-[50px] rounded-[10px] py-[19px] px-[24px] text-[20px] leading-[30px]",
+        },
+        border: {
+            normal: "border border-solid focus:shadow-[0_0_0_4px]",
+            none: "border-0",
+        },
+    },
+    defaultVariants: {
+        bgColor: "primary",
+        size: "md",
+        border: "none",
+    },
+});
 const iconButtonVariants = (0, class_variance_authority_1.cva)("inline-flex items-center justify-center", {
     variants: {
         bgColor: {
@@ -84,19 +113,31 @@ const iconButtonVariants = (0, class_variance_authority_1.cva)("inline-flex item
         border: "none",
     },
 });
-const Button = React.forwardRef(({ className, bgColor, size, border, content, ...props }, ref) => {
+const Button = React.forwardRef(({ className, bgColor, size, border, content, bgType, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(buttonVariants({
-            bgColor,
-            size,
-            border,
-            className,
-        })), ref: ref, ...props, children: content }));
+    console.log();
+    return ((0, jsx_runtime_1.jsx)(Comp, { className: (0, utils_1.cn)(bgType
+            ? buttonVariants({
+                bgColor,
+                size,
+                border,
+                className,
+            })
+            : buttonVariantsType({
+                bgColor,
+                size,
+                border,
+                className,
+            })), ref: ref, ...props, children: content }));
 });
 exports.Button = Button;
 const IconButton = React.forwardRef(({ className, bgColor, size, child, border, roundedFull, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { style: { borderRadius: roundedFull ? "50%" : "" }, className: (0, utils_1.cn)(iconButtonVariants({ bgColor, size, border, className })), ref: ref, ...props, children: child }));
+    console.log();
+    return ((0, jsx_runtime_1.jsx)(Comp, { style: {
+            borderRadius: roundedFull ? "50%" : "",
+            backgroundColor: bgColor ? "white" : "",
+        }, className: (0, utils_1.cn)(iconButtonVariants({ bgColor, size, border, className })), ref: ref, ...props, children: child }));
 });
 exports.IconButton = IconButton;
 Button.displayName = "Button";

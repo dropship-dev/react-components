@@ -5,6 +5,6 @@ export interface ILabelProps extends React.ComponentPropsWithoutRef<typeof Label
     content: string;
 }
 declare const ToggleTag: React.ForwardRefExoticComponent<ILabelProps & VariantProps<(props?: ({
-    variant?: "danger" | "success" | "gradientSuccess" | "gradientdanger" | null | undefined;
+    variant?: "success" | "danger" | "gradientSuccess" | "gradientdanger" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
 export { ToggleTag };
