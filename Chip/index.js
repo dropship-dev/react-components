@@ -30,7 +30,7 @@ const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
 const class_variance_authority_1 = require("class-variance-authority");
 const utils_1 = require("../lib/utils");
-const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[18px] font-[400]", {
+const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[18px] font-[400] flex items-center w-fit rounded-r-full rounded-l-full", {
     variants: {
         variant: {
             success: "bg-success-100 text-success-700 border-success-400",
@@ -44,8 +44,8 @@ const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[1
             deactivate: "opacity-50",
         },
         size: {
-            sm: "h-[24px] px-[8px] py-[3px] rounded-[12px]",
-            md: "h-[40px] px-[12px] py-[6px] rounded-[15px] border-solid border-[1px]",
+            sm: "h-[24px] px-[8px] py-[3px]",
+            md: "h-[40px] px-[12px] py-[6px] border-solid border-[1px]",
         },
     },
 });

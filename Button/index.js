@@ -87,7 +87,7 @@ const buttonVariantsType = (0, class_variance_authority_1.cva)("inline-flex item
         border: "none",
     },
 });
-const iconButtonVariants = (0, class_variance_authority_1.cva)("inline-flex items-center justify-center", {
+const iconButtonVariants = (0, class_variance_authority_1.cva)("flex items-center justify-center", {
     variants: {
         bgColor: {
             primary: "bg-primary-100 hover:bg-primary-400 active:bg-primary-500 border-primary-500p focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
