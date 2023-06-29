@@ -57,6 +57,7 @@ module.exports = {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
+        switch: "hsl(var(--switch))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -69,6 +70,7 @@ module.exports = {
           25: "hsl(var(--primary-25))",
           50: "hsl(var(--primary-50))",
           100: "hsl(var(--primary-100))",
+          300: "hsl(var(--primary-300))",
           400: "hsl(var(--primary-400))",
           500: "hsl(var(--primary-500))",
           600: "hsl(var(--primary-600))",

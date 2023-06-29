@@ -95,11 +95,11 @@ const iconButtonVariants = cva("inline-flex items-center justify-center", {
     },
 
     size: {
-      xs: "h-[24px] w-[24px] rounded-[6px] ",
-      sm: "h-[30px] w-[30px] rounded-[6px] ",
-      md: "h-[36px] w-[36px] rounded-[7px] ",
-      lg: "h-[44px] w-[44px] rounded-[8px] ",
-      xl: "h-[50px] w-[50px] rounded-[10px] ",
+      xs: "h-[24px] w-[24px] rounded-[6px]",
+      sm: "h-[30px] w-[30px] rounded-[6px]",
+      md: "h-[36px] w-[36px] rounded-[7px]",
+      lg: "h-[44px] w-[44px] rounded-[8px]",
+      xl: "h-[50px] w-[50px] rounded-[10px]",
     },
 
     border: {
@@ -119,22 +119,27 @@ export interface ButtonProps
     VariantProps<typeof buttonVariants> {
   content?: string;
   bgType: boolean;
+  disabled?: boolean;
 }
 
 export interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof iconButtonVariants> {
   child?: React.ReactNode | string;
+  disabled?: boolean;
   roundedFull?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, bgColor, size, border, content, bgType, ...props }, ref) => {
+  (
+    { className, bgColor, size, border, content, bgType, disabled, ...props },
+    ref
+  ) => {
     const Comp = "button";
-    console.log();
 
     return (
       <Comp
+        disabled={disabled}
         className={cn(
           bgType
             ? buttonVariants({
@@ -160,12 +165,24 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
-  ({ className, bgColor, size, child, border, roundedFull, ...props }, ref) => {
+  (
+    {
+      className,
+      bgColor,
+      size,
+      child,
+      border,
+      roundedFull,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = "button";
-    console.log();
 
     return (
       <Comp
+        disabled={disabled}
         style={{
           borderRadius: roundedFull ? "50%" : "",
           backgroundColor: bgColor ? "white" : "",

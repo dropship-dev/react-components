@@ -2,6 +2,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Input } from "../src/Input";
 import React from "react";
+import {
+  CalendarIcon,
+  EnvelopeClosedIcon,
+  FaceIcon,
+  GearIcon,
+  PersonIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
@@ -20,7 +28,23 @@ export const Normal: Story = {
     label: "Label",
     subLabel: "Sublabel",
     placeholder: "Text",
-    iconPre: <p>1</p>,
-    iconAfter: <p>2</p>,
+    iconPre: <GearIcon />,
+    iconAfter: <EnvelopeClosedIcon />,
+  },
+};
+export const NoIcon1: Story = {
+  args: {
+    label: "Label",
+    subLabel: "Sublabel",
+    placeholder: "Text",
+    iconAfter: <PersonIcon />,
+  },
+};
+export const NoIcon2: Story = {
+  args: {
+    label: "Label",
+    subLabel: "Sublabel",
+    placeholder: "Text",
+    iconPre: <RocketIcon />,
   },
 };
