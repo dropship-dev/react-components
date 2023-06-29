@@ -31,7 +31,7 @@ const utils_1 = require("../lib/utils");
 const buttonVariants = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: {
         bgColor: {
-            primary: "bg-primary-500 hover:bg-primary-400 active:bg-primary-500 border-primary-500 focus:shadow-[#DBDDFF] text-white",
+            primary: "bg-primary-500 hover:bg-primary-600 active:bg-primary-700 border-primary-500 focus:shadow-[#DBDDFF] text-white",
             destructive: "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-700 border-destructive-400 focus:shadow-[#FDE4F2] text-white",
             // danger:
             //   "bg-inherit hover:bg-destructive-100 active:bg-destructive-400 border-destructive-400 focus:shadow-[#FDE4F2] focus:shadow-[0_0_0_4px] text-destructive-500",
