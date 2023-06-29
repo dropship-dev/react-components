@@ -81,7 +81,7 @@ const buttonVariantsType = cva(
   }
 );
 
-const iconButtonVariants = cva("inline-flex items-center justify-center", {
+const iconButtonVariants = cva("flex items-center justify-center", {
   variants: {
     bgColor: {
       primary:
