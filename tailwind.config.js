@@ -137,6 +137,7 @@ module.exports = {
           200: "hsl(var(--neutral-200))",
           300: "hsl(var(--neutral-300))",
           400: "hsl(var(--neutral-400))",
+          700: "hsl(var(--neutral-700))",
           900: "hsl(var(--neutral-900))",
         },
       },
