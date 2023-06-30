@@ -39,16 +39,16 @@ const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[1
             gray: "bg-gray-300 text-gray-900 border-gray-400",
             primary: "bg-primary-100 text-primary-500 border-primary-400",
         },
-        status: {
-            active: "opacity-100",
-            deactivate: "opacity-50",
-        },
+        // status: {
+        //   active: "opacity-100",
+        //   deactivate: "opacity-50",
+        // },
         size: {
             sm: "h-[24px] px-[8px] py-[3px]",
             md: "h-[40px] px-[12px] py-[6px] border-solid border-[1px]",
         },
     },
 });
-const Chip = React.forwardRef(({ className, content, variant, status, size, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(ChipVariants({ variant, status, size, className })), ...props, children: content })));
+const Chip = React.forwardRef(({ className, content, variant, disabled, size, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(`${disabled && "opacity-50"}`, ChipVariants({ variant, size, className })), ...props, children: content })));
 exports.Chip = Chip;
 Chip.displayName = LabelPrimitive.Root.displayName;

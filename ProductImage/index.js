@@ -43,11 +43,6 @@ const ProductVariants = (0, class_variance_authority_1.cva)("flex items-center j
             "3xl": "w-[72px] h-[72px] rounded-[6px]",
             "4xl": "w-[120px] h-[120px] rounded-[8px]",
         },
-        status: {
-            offline: "",
-            online: "",
-            instance: "",
-        },
     },
 });
 const AvatarVariants = (0, class_variance_authority_1.cva)("flex items-center justify-center rounded-full", {
@@ -67,15 +62,15 @@ const AvatarVariants = (0, class_variance_authority_1.cva)("flex items-center ju
         },
     },
 });
-const statusVariant = (0, class_variance_authority_1.cva)("rounded-full z-20 absolute bottom-0 right-0 border-[2px] border-white", {
+const statusVariant = (0, class_variance_authority_1.cva)("z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white", {
     variants: {
         size: {
-            xs: "w-[6px] h-[6px]",
-            sm: "w-[8px] h-[8px]",
-            md: "w-[10px] h-[10px]",
-            lg: "w-[12px] h-[12px]",
-            xl: "w-[14px] h-[14px]",
-            "2xl": "w-[16px] h-[16px]",
+            xs: "w-[10px] h-[10px]",
+            sm: "w-[12px] h-[12px]",
+            md: "w-[14px] h-[14px]",
+            lg: "w-[16px] h-[16px]",
+            xl: "w-[18px] h-[18px]",
+            "2xl": "w-[20px] h-[20px]",
         },
         status: {
             offline: "bg-gray-400",
