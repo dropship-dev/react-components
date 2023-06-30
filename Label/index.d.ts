@@ -6,6 +6,6 @@ export interface ILabelProps extends React.ComponentPropsWithoutRef<typeof Label
     content: string;
 }
 declare const Label: React.ForwardRefExoticComponent<ILabelProps & VariantProps<(props?: ({
-    frontWeight?: "bold" | "black" | "normal" | "medium" | "thin" | "light" | "extralight" | "semibold" | "extrabold" | null | undefined;
+    frontWeight?: "bold" | "thin" | "extralight" | "light" | "normal" | "medium" | "semibold" | "extrabold" | "black" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
 export { Label };

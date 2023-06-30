@@ -29,10 +29,8 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const AvatarPrimitive = __importStar(require("@radix-ui/react-avatar"));
 const utils_1 = require("../../lib/utils");
-const Avatar = React.forwardRef(({ className, rounded, size, ...props }, ref) => {
-    if (size === undefined)
-        size = 36;
-    return ((0, jsx_runtime_1.jsx)(AvatarPrimitive.Root, { ref: ref, style: { height: `${size}px`, width: `${size}px` }, className: (0, utils_1.cn)(`relative flex shrink-0 overflow-hidden ${rounded ? "rounded-full" : "rounded-[6px]"} `, className), ...props }));
+const Avatar = React.forwardRef(({ className, ...props }, ref) => {
+    return ((0, jsx_runtime_1.jsx)(AvatarPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(`relative flex shrink-0 overflow-hidden`, className), ...props }));
 });
 exports.Avatar = Avatar;
 Avatar.displayName = AvatarPrimitive.Root.displayName;
