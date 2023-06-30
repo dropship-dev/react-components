@@ -1,19 +1,20 @@
 import * as React from "react";
 import { type VariantProps } from "class-variance-authority";
-declare const buttonVariants: (props?: ({
-    bgColor?: "normal" | "primary" | "destructive" | "secondary" | null | undefined;
+declare const buttonVariantsPrimary: (props?: ({
+    color?: "blue" | "gray" | "destructive" | null | undefined;
+    hierachy?: "link" | "primary" | "secondary" | "tertiary" | null | undefined;
     size?: "xs" | "sm" | "md" | "lg" | "xl" | null | undefined;
-    border?: "normal" | "none" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
 declare const iconButtonVariants: (props?: ({
-    bgColor?: "normal" | "primary" | "destructive" | "secondary" | null | undefined;
+    bgColor?: "normal" | "destructive" | "primary" | "secondary" | null | undefined;
+    hierachy?: "link" | "primary" | "secondary" | "tertiary" | null | undefined;
     size?: "xs" | "sm" | "md" | "lg" | "xl" | null | undefined;
     border?: "normal" | "none" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+export interface ButtonProps extends VariantProps<typeof buttonVariantsPrimary> {
     content?: string;
-    bgType: boolean;
     disabled?: boolean;
+    onClick?: any;
 }
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof iconButtonVariants> {
     child?: React.ReactNode | string;
@@ -22,4 +23,4 @@ export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
 }
 declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 declare const IconButton: React.ForwardRefExoticComponent<IconButtonProps & React.RefAttributes<HTMLButtonElement>>;
-export { Button, buttonVariants, IconButton };
+export { Button, IconButton };
