@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../../lib/utils";
 
@@ -14,18 +15,11 @@ export interface IAvatarProps
 const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   IAvatarProps
->(({ className, rounded, size, ...props }, ref) => {
-  if (size === undefined) size = 36;
+>(({ className, ...props }, ref) => {
   return (
     <AvatarPrimitive.Root
       ref={ref}
-      style={{ height: `${size}px`, width: `${size}px` }}
-      className={cn(
-        `relative flex shrink-0 overflow-hidden ${
-          rounded ? "rounded-full" : "rounded-[6px]"
-        } `,
-        className
-      )}
+      className={cn(`relative flex shrink-0 overflow-hidden`, className)}
       {...props}
     />
   );

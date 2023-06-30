@@ -18,11 +18,12 @@ const variantsPrimary = {
     link: "",
   },
   size: {
-    xs: "h-[24px] rounded-[6px] py-[8px] px-[10px] text-[14px] leading-[20px]",
-    sm: "h-[30px] rounded-[6px] py-[11px] px-[12px] text-[16px] leading-[24px]",
-    md: "h-[36px] rounded-[7px] py-[14px] px-[18px] text-[16px] leading-[24px]",
-    lg: "h-[44px] rounded-[8px] py-[17px] px-[20px] text-[18px] leading-[28px]",
-    xl: "h-[50px] rounded-[10px] py-[19px] px-[24px] text-[20px] leading-[30px]",
+    xs: "h-[24px] w-[24px] rounded-[6px]",
+    sm: "h-[36px] w-[36px] rounded-[6px]",
+    md: "h-[42px] w-[42px] rounded-[7px]",
+    lg: "h-[48px] w-[48px] rounded-[8px]",
+    xl: "h-[54px] w-[54px] rounded-[10px]",
+    "2xl": "h-[62px] w-[62px] rounded-[10px]",
   },
 };
 
@@ -57,43 +58,58 @@ const variantsLink = {
 };
 
 const buttonVariantsPrimary = cva(
-  "inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
+  "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsPrimary,
   }
 );
 const buttonVariantsSeCondary = cva(
-  "inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
+  "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsSecondary,
   }
 );
 const buttonVariantsTetryary = cva(
-  "inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
+  "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsTertiary,
   }
 );
 const buttonVariantsLink = cva(
-  "inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
+  "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsLink,
   }
 );
 
-export interface ButtonProps
+export interface IconButtonProps
   extends VariantProps<typeof buttonVariantsPrimary> {
-  content?: string;
+  content: string | React.ReactNode;
   disabled?: boolean;
   onClick?: any;
+  roundedFull?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ color, size, hierachy, content, disabled, onClick, ...props }, ref) => {
+const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+  (
+    {
+      color,
+      size,
+      hierachy,
+      content,
+      disabled,
+      onClick,
+      roundedFull,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = "button";
-
     return (
       <Comp
+        style={{
+          borderRadius: roundedFull ? "50%" : "",
+        }}
         disabled={disabled}
         onClick={onClick}
         className={cn(
@@ -113,6 +129,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             ? buttonVariantsTetryary({
                 color,
                 size,
+                hierachy,
               })
             : buttonVariantsLink({
                 color,
@@ -129,6 +146,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 );
 
-Button.displayName = "Button";
+IconButton.displayName = "IconButton";
 
-export { Button };
+export { IconButton };

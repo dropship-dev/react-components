@@ -4,10 +4,13 @@ import React from "react";
 
 import { PlusIcon } from "@radix-ui/react-icons";
 
-import { IconButton } from "../src/Button";
+import { IconButton } from "../src/IconButton";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
+  argTypes: {
+    onClick: { table: { disable: true } },
+  },
   title: "Example/IconButton",
   component: IconButton,
   tags: ["autodocs"],
@@ -21,9 +24,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     size: "md",
-    bgColor: "destructive",
-    border: "normal",
-    child: <PlusIcon />,
+    color: "blue",
+    content: <PlusIcon />,
     roundedFull: true,
   },
 };

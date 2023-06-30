@@ -123,6 +123,7 @@ module.exports = {
           100: "hsl(var(--success-100))",
           50: "hsl(var(--success-50))",
           400: "hsl(var(--success-400))",
+          500: "hsl(var(--success-500))",
           600: "hsl(var(--success-600))",
           700: "hsl(var(--success-700))",
           950: "hsl(var(--success-950))",
