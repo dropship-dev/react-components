@@ -18,10 +18,10 @@ const ChipVariants = cva(
         gray: "bg-gray-300 text-gray-900 border-gray-400",
         primary: "bg-primary-100 text-primary-500 border-primary-400",
       },
-      status: {
-        active: "opacity-100",
-        deactivate: "opacity-50",
-      },
+      // status: {
+      //   active: "opacity-100",
+      //   deactivate: "opacity-50",
+      // },
       size: {
         sm: "h-[24px] px-[8px] py-[3px]",
         md: "h-[40px] px-[12px] py-[6px] border-solid border-[1px]",
@@ -33,15 +33,19 @@ const ChipVariants = cva(
 export interface ILabelProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
   content: string;
+  disabled?: boolean;
 }
 
 const Chip = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   ILabelProps & VariantProps<typeof ChipVariants>
->(({ className, content, variant, status, size, ...props }, ref) => (
+>(({ className, content, variant, disabled, size, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
-    className={cn(ChipVariants({ variant, status, size, className }))}
+    className={cn(
+      `${disabled && "opacity-50"}`,
+      ChipVariants({ variant, size, className })
+    )}
     {...props}
   >
     {content}
