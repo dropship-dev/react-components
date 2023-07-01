@@ -1,34 +1,13 @@
 "use strict";
-"use client";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Slider = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
-const React = __importStar(require("react"));
-const SliderPrimitive = __importStar(require("@radix-ui/react-slider"));
-const utils_1 = require("../lib/utils");
-const Slider = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(SliderPrimitive.Root, { ref: ref, defaultValue: [70], step: 1, className: (0, utils_1.cn)("relative flex w-full touch-none select-none items-center", className), ...props, children: [(0, jsx_runtime_1.jsx)(SliderPrimitive.Track, { className: "relative h-2 w-full grow overflow-hidden rounded-full bg-primary-300", children: (0, jsx_runtime_1.jsx)(SliderPrimitive.Range, { className: "absolute h-full bg-gray-300" }) }), (0, jsx_runtime_1.jsx)(SliderPrimitive.Thumb, { className: "block h-5 w-5 rounded-full bg-input ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" }), (0, jsx_runtime_1.jsx)(SliderPrimitive.Thumb, { className: "block h-5 w-5 rounded-full bg-primary-500 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" })] })));
+const rangeslider_1 = __importDefault(require("./components/rangeslider"));
+function Slider(props) {
+    const { min, max, className, onChange } = props;
+    return ((0, jsx_runtime_1.jsx)(rangeslider_1.default, { className: "w-full h-[16px]", defaultValue: [min, max], onChange: onChange }));
+}
 exports.Slider = Slider;
-Slider.displayName = SliderPrimitive.Root.displayName;

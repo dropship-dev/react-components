@@ -39,10 +39,6 @@ const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[1
             gray: "bg-gray-300 text-gray-900 border-gray-400",
             primary: "bg-primary-100 text-primary-500 border-primary-400",
         },
-        // status: {
-        //   active: "opacity-100",
-        //   deactivate: "opacity-50",
-        // },
         size: {
             sm: "h-[24px] px-[8px] py-[3px]",
             md: "h-[40px] px-[12px] py-[6px] border-solid border-[1px]",

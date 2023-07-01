@@ -62,7 +62,7 @@ const AvatarVariants = (0, class_variance_authority_1.cva)("flex items-center ju
         },
     },
 });
-const statusVariant = (0, class_variance_authority_1.cva)("z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white", {
+const statusVariant = (0, class_variance_authority_1.cva)("z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white rounded-full", {
     variants: {
         size: {
             xs: "w-[10px] h-[10px]",
