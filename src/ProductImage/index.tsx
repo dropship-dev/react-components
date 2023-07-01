@@ -45,7 +45,7 @@ const AvatarVariants = cva("flex items-center justify-center rounded-full", {
 });
 
 const statusVariant = cva(
-  "z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white",
+  "z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white rounded-full",
   {
     variants: {
       size: {
