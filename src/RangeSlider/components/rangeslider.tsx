@@ -11,11 +11,14 @@ const RangeSlider = <T extends number | readonly number[]>(
       renderThumb={(props, state) => (
         <div
           {...props}
-          className={cn({
-            "h-[16px]": !isVertical,
-            "w-[16px]": isVertical,
-            "aspect-square rounded-full bg-primary-500 cursor-grab": true,
-          })}
+          className="h-[16px] w-[16px] rounded-full bg-primary-500"
+
+          // cn({
+          // "h-[16px]": !isVertical,
+          // "w-[16px]": isVertical,
+          // // "aspect-square rounded-full bg-primary-500 cursor-grab focus-visible:ring"
+          // "": true,
+          // })}
         >
           {/* {state.valueNow} */}
         </div>
@@ -28,13 +31,20 @@ const RangeSlider = <T extends number | readonly number[]>(
         return (
           <div
             {...props}
-            className={cn({
-              "h-1/4 top-1/2 -translate-y-1/2": !isVertical,
-              "w-1/4 left-1/2 -translate-x-1/2": isVertical,
-              "rounded-full": true,
-              "bg-gray-200": isMulti ? isFirst || isLast : isLast,
-              "bg-indigo-500": isMulti ? !isFirst || !isLast : isFirst,
-            })}
+            className={cn(
+              (isMulti ? isFirst || isLast : isLast)
+                ? "bg-gray-300"
+                : "bg-primary-500",
+              {
+                "h-1/4 top-1/2 -translate-y-1/2": !isVertical,
+                "w-1/4 left-1/2 -translate-x-1/2": isVertical,
+                "rounded-full": true,
+                // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
+                // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
+                // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
+                // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
+              }
+            )}
           ></div>
         );
       }}
@@ -46,7 +56,7 @@ const RangeSlider = <T extends number | readonly number[]>(
               "top-1/2 -translate-y-1/2": !isVertical,
               "left-1/2 -translate-x-1/2": isVertical,
               "h-1 w-1": true,
-              "rounded-full bg-indigo-500": true,
+              "rounded-full bg-red-500": true,
             })}
           ></div>
         );
