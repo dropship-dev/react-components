@@ -23,6 +23,8 @@ jobs:
         run: |
           cp package.json dist/
           sed -i 's/preinstall/_preinstall/g' dist/package.json
+          cp tailwind.config.js dist/
+          cp -r styles dist/
       - name: Deploy
         uses: s0/git-publish-subdir-action@v2.6.0
         env:
