@@ -1,16 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, ButtonProps } from "../src/Button";
+import { Tag } from "../src/Tag";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  argTypes: {
-    onClick: { table: { disable: true } },
-  },
-  title: "Example/Button",
-  component: Button,
+  title: "Example/Tag",
+  component: Tag,
   tags: ["autodocs"],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Tag>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -19,9 +16,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: "md",
-    color: "destructive",
-    content: "Button",
-    hierachy: "primary",
+    content: "Tag",
+    size: "sm",
+    onCancle: () => console.log("Onclick 123"),
   },
 };

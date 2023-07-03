@@ -1,27 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Button, ButtonProps } from "../src/Button";
+import { Skeleton } from "../src/SkeletonLoading";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  argTypes: {
-    onClick: { table: { disable: true } },
-  },
-  title: "Example/Button",
-  component: Button,
+  title: "Example/Skeleton",
+  component: Skeleton,
   tags: ["autodocs"],
-} satisfies Meta<typeof Button>;
+} satisfies Meta<typeof Skeleton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
-export const Default: Story = {
+export const Avatar: Story = {
   args: {
-    size: "md",
-    color: "destructive",
-    content: "Button",
-    hierachy: "primary",
+    className: "w-[36px] h-[36px] rouder-[8px]",
   },
 };
