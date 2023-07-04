@@ -9,7 +9,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "../lib/utils";
 
-import { Skeleton } from "../SkeletonLoading";
+import { Skeleton } from "..";
 
 const ProductVariants = cva("flex items-center justify-center", {
   variants: {

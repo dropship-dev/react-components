@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Select } from "../src/Select";
+import { Select } from "../src";
 
 import React from "react";
 
