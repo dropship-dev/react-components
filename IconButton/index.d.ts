@@ -12,4 +12,4 @@ export interface IconButtonProps extends VariantProps<typeof buttonVariantsPrima
     roundedFull?: boolean;
 }
 declare const IconButton: React.ForwardRefExoticComponent<IconButtonProps & React.RefAttributes<HTMLButtonElement>>;
-export { IconButton };
+export default IconButton;

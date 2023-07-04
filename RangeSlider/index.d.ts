@@ -6,4 +6,4 @@ export interface IRangeSlider {
     defaultValue?: number[];
     value?: number[];
 }
-export declare function Slider(props: IRangeSlider): import("react/jsx-runtime").JSX.Element;
+export default function Slider(props: IRangeSlider): import("react/jsx-runtime").JSX.Element;

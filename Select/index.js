@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Select = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const select_1 = require("./components/select");
-const Label_1 = require("../Label");
+const __1 = require("..");
 function Select(props) {
     const { data, placeholder, width, icon, label } = props;
-    return ((0, jsx_runtime_1.jsxs)(select_1.Select, { children: [label && (0, jsx_runtime_1.jsx)(Label_1.Label, { content: label, size: 14, frontWeight: "medium" }), (0, jsx_runtime_1.jsxs)(select_1.SelectTrigger, { className: `${width ?? "w-1/2"} border-black border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start`, children: [icon, (0, jsx_runtime_1.jsx)("div", { className: "w-full flex flex-row justify-between text-[14px]", children: (0, jsx_runtime_1.jsx)(select_1.SelectValue, { placeholder: placeholder ?? "" }) })] }), (0, jsx_runtime_1.jsx)(select_1.SelectContent, { children: (0, jsx_runtime_1.jsx)(select_1.SelectGroup, { children: data.map((item) => ((0, jsx_runtime_1.jsx)(select_1.SelectItem, { value: item.value, children: item.value }, item.id))) }) })] }));
+    return ((0, jsx_runtime_1.jsxs)(select_1.Select, { children: [label && (0, jsx_runtime_1.jsx)(__1.Label, { content: label, size: 14, frontWeight: "medium" }), (0, jsx_runtime_1.jsxs)(select_1.SelectTrigger, { className: `${width ?? "w-1/2"} border-black border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start`, children: [icon, (0, jsx_runtime_1.jsx)("div", { className: "w-full flex flex-row justify-between text-[14px]", children: (0, jsx_runtime_1.jsx)(select_1.SelectValue, { placeholder: placeholder ?? "" }) })] }), (0, jsx_runtime_1.jsx)(select_1.SelectContent, { children: (0, jsx_runtime_1.jsx)(select_1.SelectGroup, { children: data.map((item) => ((0, jsx_runtime_1.jsx)(select_1.SelectItem, { value: item.value, children: item.value }, item.id))) }) })] }));
 }
-exports.Select = Select;
+exports.default = Select;

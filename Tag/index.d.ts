@@ -8,4 +8,4 @@ export interface ITagProps extends React.ComponentPropsWithoutRef<typeof LabelPr
 declare const Tag: React.ForwardRefExoticComponent<ITagProps & VariantProps<(props?: ({
     size?: "sm" | "md" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
-export { Tag };
+export default Tag;

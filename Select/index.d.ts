@@ -1,5 +1,5 @@
 import * as React from "react";
-export declare function Select(props: {
+export default function Select(props: {
     data: {
         id: string;
         value: string;

@@ -1,4 +1,4 @@
-export declare function Switch(props: {
+export default function Switch(props: {
     initialValue?: boolean;
     onCheckedChange?: any;
     danger?: boolean;

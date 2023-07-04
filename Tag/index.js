@@ -24,7 +24,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tag = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
@@ -40,5 +39,5 @@ const TagVariants = (0, class_variance_authority_1.cva)("leading-[20px] font-[40
     },
 });
 const Tag = React.forwardRef(({ className, content, size, onCancle, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(TagVariants({ size, className })), ...props, children: [content, (0, jsx_runtime_1.jsx)(react_icons_1.Cross1Icon, { onClick: onCancle })] })));
-exports.Tag = Tag;
 Tag.displayName = LabelPrimitive.Root.displayName;
+exports.default = Tag;

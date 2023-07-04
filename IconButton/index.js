@@ -23,7 +23,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.IconButton = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const class_variance_authority_1 = require("class-variance-authority");
@@ -113,5 +112,5 @@ const IconButton = React.forwardRef(({ color, size, hierachy, content, disabled,
                         hierachy,
                     })), ref: ref, ...props, children: content }));
 });
-exports.IconButton = IconButton;
 IconButton.displayName = "IconButton";
+exports.default = IconButton;

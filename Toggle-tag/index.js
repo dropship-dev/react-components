@@ -24,7 +24,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ToggleTag = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
@@ -41,5 +40,5 @@ const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-
     },
 });
 const ToggleTag = React.forwardRef(({ className, content, variant, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants({ variant, className })), ...props, children: content })));
-exports.ToggleTag = ToggleTag;
 ToggleTag.displayName = LabelPrimitive.Root.displayName;
+exports.default = ToggleTag;

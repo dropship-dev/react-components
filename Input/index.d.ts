@@ -8,4 +8,4 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
     placeholder?: string;
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
-export { Input };
+export default Input;
