@@ -6,9 +6,9 @@ declare const buttonVariantsPrimary: (props?: ({
     size?: "xs" | "sm" | "md" | "lg" | "xl" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string;
 export interface ButtonProps extends VariantProps<typeof buttonVariantsPrimary> {
-    content?: string;
+    content?: string | React.ReactNode;
     disabled?: boolean;
     onClick?: any;
 }
 declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
-export { Button };
+export default Button;

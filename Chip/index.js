@@ -24,7 +24,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Chip = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
@@ -46,5 +45,5 @@ const ChipVariants = (0, class_variance_authority_1.cva)("text-[12px] leading-[1
     },
 });
 const Chip = React.forwardRef(({ className, content, variant, disabled, size, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(`${disabled && "opacity-50"}`, ChipVariants({ variant, size, className })), ...props, children: content })));
-exports.Chip = Chip;
 Chip.displayName = LabelPrimitive.Root.displayName;
+exports.default = Chip;

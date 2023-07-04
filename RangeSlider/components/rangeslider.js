@@ -19,10 +19,6 @@ const RangeSlider = (_props) => {
                     "h-1/4 top-1/2 -translate-y-1/2": !isVertical,
                     "w-1/4 left-1/2 -translate-x-1/2": isVertical,
                     "rounded-full": true,
-                    // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
-                    // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
-                    // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
-                    // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
                 }) }));
         }, renderMark: (props) => {
             return ((0, jsx_runtime_1.jsx)("div", { ...props, className: (0, utils_1.cn)({

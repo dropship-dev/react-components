@@ -23,7 +23,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Button = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const class_variance_authority_1 = require("class-variance-authority");
@@ -109,5 +108,5 @@ const Button = React.forwardRef(({ color, size, hierachy, content, disabled, onC
                         hierachy,
                     })), ref: ref, ...props, children: content }));
 });
-exports.Button = Button;
 Button.displayName = "Button";
+exports.default = Button;

@@ -9,4 +9,4 @@ declare const Chip: React.ForwardRefExoticComponent<ILabelProps & VariantProps<(
     variant?: "gray" | "primary" | "success" | "danger" | "warning" | null | undefined;
     size?: "sm" | "md" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
-export { Chip };
+export default Chip;
