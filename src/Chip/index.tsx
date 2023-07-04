@@ -49,4 +49,4 @@ const Chip = React.forwardRef<
 ));
 Chip.displayName = LabelPrimitive.Root.displayName;
 
-export { Chip };
+export default Chip;

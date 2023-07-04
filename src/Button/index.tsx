@@ -83,7 +83,7 @@ const buttonVariantsLink = cva(
 
 export interface ButtonProps
   extends VariantProps<typeof buttonVariantsPrimary> {
-  content?: string;
+  content?: string | React.ReactNode;
   disabled?: boolean;
   onClick?: any;
 }
@@ -131,4 +131,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = "Button";
 
-export { Button };
+export default Button;
