@@ -5,8 +5,6 @@ import * as SwitchPrimitives from "@radix-ui/react-switch";
 
 import { cn } from "../../lib/utils";
 
-import "../../../styles/globals.css";
-
 export interface ISwichProps
   extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> {
   danger?: boolean;
