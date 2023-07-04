@@ -4,8 +4,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import Chip from "../../Chip";
 import { ProductImage } from "../../ProductImage";
 import moment from "moment";
-import { Label } from "../../Label";
 import { ArrowUpDown } from "lucide-react";
+import { Label } from "../../";
 
 export type Product = {
   id: string;

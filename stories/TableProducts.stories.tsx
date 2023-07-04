@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { columns } from "../src/Table/components/columns";
 
-import { TableProduct } from "../src/Table";
+import { TableProduct } from "../src";
 
 const meta = {
   title: "Example/TableProducts",

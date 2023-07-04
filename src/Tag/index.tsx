@@ -40,4 +40,4 @@ const Tag = React.forwardRef<
 ));
 Tag.displayName = LabelPrimitive.Root.displayName;
 
-export { Tag };
+export default Tag;

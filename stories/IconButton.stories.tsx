@@ -4,7 +4,7 @@ import React from "react";
 
 import { PlusIcon } from "@radix-ui/react-icons";
 
-import { IconButton } from "../src/IconButton";
+import { IconButton } from "../src";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {

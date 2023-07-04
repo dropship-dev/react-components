@@ -8,9 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./components/select";
-import { Label } from "../Label";
+import { Label } from "..";
 
-export function Select(props: {
+export default function Select(props: {
   data: { id: string; value: string }[];
   placeholder?: string;
   width?: string;

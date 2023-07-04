@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Switch as SwitchComponets } from "./components/switch";
 
-export function Switch(props: {
+export default function Switch(props: {
   initialValue?: boolean;
   onCheckedChange?: any;
   danger?: boolean;

@@ -39,4 +39,4 @@ const ToggleTag = React.forwardRef<
 ));
 ToggleTag.displayName = LabelPrimitive.Root.displayName;
 
-export { ToggleTag };
+export default ToggleTag;

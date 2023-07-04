@@ -4,7 +4,7 @@ export interface ISkeleton {
   className: string;
 }
 
-export function Skeleton(props: ISkeleton) {
+export default function Skeleton(props: ISkeleton) {
   const { className } = props;
   return <SkeletonLoading className={className} />;
 }
