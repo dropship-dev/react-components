@@ -42,8 +42,21 @@ const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-
             extrabold: "font-[800]",
             black: "font-[900]",
         },
+        size: {
+            textxs: "text-textxs",
+            textsm: "text-textsm",
+            textmd: "text-textmd",
+            textlg: "text-textlg",
+            textxl: "text-textxl",
+            displayxs: "text-displayxs",
+            displaysm: "text-displaysm",
+            displaymd: "text-displaymd",
+            displaylg: "text-displaylg",
+            displayxl: "text-displayxl",
+            display2xl: "text-display2xl",
+        },
     },
 });
-const Label = React.forwardRef(({ className, size, frontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { style: { fontSize: `${size ?? 14}px` }, ref: ref, className: (0, utils_1.cn)(labelVariants({ frontWeight }), className), ...props, children: content })));
+const Label = React.forwardRef(({ className, size, frontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants({ frontWeight, size }), className), ...props, children: content })));
 Label.displayName = LabelPrimitive.Root.displayName;
 exports.default = Label;
