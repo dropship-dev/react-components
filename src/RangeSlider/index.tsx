@@ -5,11 +5,10 @@ export interface IRangeSlider {
   min: number;
   max: number;
   defaultValue?: number[];
-  value?: number[];
 }
 
-export default function Slider(props: IRangeSlider) {
-  const { min, max, className, onChange, defaultValue, value } = props;
+export function Slider(props: IRangeSlider) {
+  const { min, max, className, onChange, defaultValue } = props;
   return (
     <RangeSlider
       className="w-full h-[16px]"
@@ -17,7 +16,6 @@ export default function Slider(props: IRangeSlider) {
       max={max}
       defaultValue={defaultValue}
       onChange={onChange}
-      value={value}
     />
   );
 }
