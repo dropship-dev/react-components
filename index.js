@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TableProduct = exports.ToggleTag = exports.Tag = exports.Switch = exports.Skeleton = exports.Select = exports.Slider = exports.Avatar = exports.ProductImage = exports.Input = exports.Label = exports.IconButton = exports.Chip = exports.Button = void 0;
+exports.TableProduct = exports.Checkbox = exports.ToggleTag = exports.Tag = exports.Switch = exports.Skeleton = exports.Select = exports.Avatar = exports.ProductImage = exports.Input = exports.Label = exports.IconButton = exports.Chip = exports.Button = void 0;
 var Button_1 = require("./Button");
 Object.defineProperty(exports, "Button", { enumerable: true, get: function () { return __importDefault(Button_1).default; } });
 var Chip_1 = require("./Chip");
@@ -17,8 +17,7 @@ Object.defineProperty(exports, "Input", { enumerable: true, get: function () { r
 var ProductImage_1 = require("./ProductImage");
 Object.defineProperty(exports, "ProductImage", { enumerable: true, get: function () { return ProductImage_1.ProductImage; } });
 Object.defineProperty(exports, "Avatar", { enumerable: true, get: function () { return ProductImage_1.Avatar; } });
-var RangeSlider_1 = require("./RangeSlider");
-Object.defineProperty(exports, "Slider", { enumerable: true, get: function () { return __importDefault(RangeSlider_1).default; } });
+// export { default as Slider } from "./RangeSlider";
 var Select_1 = require("./Select");
 Object.defineProperty(exports, "Select", { enumerable: true, get: function () { return __importDefault(Select_1).default; } });
 var SkeletonLoading_1 = require("./SkeletonLoading");
@@ -29,5 +28,7 @@ var Tag_1 = require("./Tag");
 Object.defineProperty(exports, "Tag", { enumerable: true, get: function () { return __importDefault(Tag_1).default; } });
 var Toggle_tag_1 = require("./Toggle-tag");
 Object.defineProperty(exports, "ToggleTag", { enumerable: true, get: function () { return __importDefault(Toggle_tag_1).default; } });
+var Checkbox_1 = require("./Checkbox");
+Object.defineProperty(exports, "Checkbox", { enumerable: true, get: function () { return __importDefault(Checkbox_1).default; } });
 var Table_1 = require("./Table");
 Object.defineProperty(exports, "TableProduct", { enumerable: true, get: function () { return __importDefault(Table_1).default; } });

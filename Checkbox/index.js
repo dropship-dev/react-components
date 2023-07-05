@@ -24,13 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Switch = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
-const SwitchPrimitives = __importStar(require("@radix-ui/react-switch"));
-const utils_1 = require("../../lib/utils");
-const Switch = React.forwardRef(({ className, danger, ...props }, ref) => ((0, jsx_runtime_1.jsx)(SwitchPrimitives.Root, { className: (0, utils_1.cn)(`peer inline-flex h-[20px] w-[32px] shrink-0 cursor-pointer items-center rounded-full border-[3px] border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-success ${danger
-        ? " data-[state=unchecked]:bg-red-500"
-        : " data-[state=unchecked]:bg-switch"}`, className), ...props, ref: ref, children: (0, jsx_runtime_1.jsx)(SwitchPrimitives.Thumb, { className: (0, utils_1.cn)("pointer-events-none block h-[14px] w-[14px] rounded-full bg-input shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-0") }) })));
-exports.Switch = Switch;
-Switch.displayName = SwitchPrimitives.Root.displayName;
+const CheckboxPrimitive = __importStar(require("@radix-ui/react-checkbox"));
+const lucide_react_1 = require("lucide-react");
+const utils_1 = require("../lib/utils");
+const Checkbox = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)(CheckboxPrimitive.Root, { ref: ref, className: (0, utils_1.cn)("peer h-5 w-5 shrink-0 rounded-sm border border-neutral-200 border-gray-400 data-[state=checked]:border-primary-500 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=checked]:text-neutral-50 dark:border-neutral-800 dark:border-neutral-50 dark:ring-offset-primary-500 dark:focus-visible:ring-primary-500 dark:data-[state=checked]:bg-neutral-50 dark:data-[state=checked]:text-white", className), ...props, children: (0, jsx_runtime_1.jsx)(CheckboxPrimitive.Indicator, { className: (0, utils_1.cn)("flex items-center justify-center text-current"), children: (0, jsx_runtime_1.jsx)(lucide_react_1.Check, { className: "h-4 w-4" }) }) })));
+Checkbox.displayName = CheckboxPrimitive.Root.displayName;
+exports.default = Checkbox;
