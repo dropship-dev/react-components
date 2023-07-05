@@ -16,6 +16,8 @@ import {
   TableRow,
 } from "./ui";
 
+import {} from "../../";
+
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
