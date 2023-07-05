@@ -20,7 +20,7 @@ export default function Select(props: {
   const { data, placeholder, width, icon, label } = props;
   return (
     <SelectData>
-      {label && <Label content={label} size={14} frontWeight={"medium"} />}
+      {label && <Label content={label} size="textxl" frontWeight={"medium"} />}
       <SelectTrigger
         className={`${
           width ?? "w-1/2"

@@ -62,7 +62,7 @@ export const columns: ColumnDef<Product>[] = [
         <div className="flex flex-row gap-[12px]">
           <Label
             content={row.getValue("name")}
-            size={14}
+            size="textxl"
             frontWeight="light"
             className="flex-1"
           />
@@ -93,6 +93,7 @@ export const columns: ColumnDef<Product>[] = [
             content="Shipping fee"
             frontWeight="light"
             className="whitespace-nowrap"
+            size="textxl"
           />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </div>
@@ -100,7 +101,7 @@ export const columns: ColumnDef<Product>[] = [
     },
     cell: ({ row }) => (
       <Label
-        size={14}
+        size="textxl"
         frontWeight="light"
         content={parseFloat(row.getValue("shippingFee")).toLocaleString(
           "en-US",
