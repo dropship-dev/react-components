@@ -6,10 +6,10 @@ export interface ILabelProps extends React.ComponentPropsWithoutRef<typeof Label
     alt: string;
 }
 declare const ProductImage: React.ForwardRefExoticComponent<ILabelProps & VariantProps<(props?: ({
-    size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | null | undefined;
+    size?: "sm" | "md" | "lg" | "xl" | "2xl" | "xs" | "3xl" | "4xl" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
 declare const Avatar: React.ForwardRefExoticComponent<ILabelProps & VariantProps<(props?: ({
-    size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | null | undefined;
+    size?: "sm" | "md" | "lg" | "xl" | "2xl" | "xs" | null | undefined;
     status?: "offline" | "online" | "instance" | null | undefined;
 } & import("class-variance-authority/dist/types").ClassProp) | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
 export { ProductImage, Avatar };
