@@ -21,13 +21,26 @@ const labelVariants = cva(
         extrabold: "font-[800]",
         black: "font-[900]",
       },
+      size: {
+        textxs: "text-textxs",
+        textsm: "text-textsm",
+        textmd: "text-textmd",
+        textlg: "text-textlg",
+        textxl: "text-textxl",
+        displayxs: "text-displayxs",
+        displaysm: "text-displaysm",
+        displaymd: "text-displaymd",
+        displaylg: "text-displaylg",
+        displayxl: "text-displayxl",
+        display2xl: "text-display2xl",
+      },
     },
   }
 );
 
 export interface ILabelProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
-  size?: number;
+  // size?: number;
   content: string;
 }
 
@@ -36,9 +49,8 @@ const Label = React.forwardRef<
   ILabelProps & VariantProps<typeof labelVariants>
 >(({ className, size, frontWeight, content, ...props }, ref) => (
   <LabelPrimitive.Root
-    style={{ fontSize: `${size ?? 14}px` }}
     ref={ref}
-    className={cn(labelVariants({ frontWeight }), className)}
+    className={cn(labelVariants({ frontWeight, size }), className)}
     {...props}
   >
     {content}

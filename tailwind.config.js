@@ -15,6 +15,19 @@ module.exports = {
         },
       ],
     },
+    fontSize: {
+      textxs: ["12px", "18px"],
+      textsm: ["14px", "20px"],
+      textmd: ["16px", "24px"],
+      textlg: ["18px", "28px"],
+      textxl: ["20px", "30px"],
+      displayxs: ["24px", "32px"],
+      displaysm: ["30px", "38px"],
+      displaymd: ["36px", "44px"],
+      displaylg: ["48px", "60px"],
+      displayxl: ["60px", "72px"],
+      display2xl: ["72px", "90px"],
+    },
 
     container: {
       center: true,
