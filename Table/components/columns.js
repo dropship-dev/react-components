@@ -10,7 +10,15 @@ const Chip_1 = __importDefault(require("../../Chip"));
 const ProductImage_1 = require("../../ProductImage");
 const lucide_react_1 = require("lucide-react");
 const __1 = require("../../");
+const __2 = require("../../");
 exports.columns = [
+    {
+        id: "select",
+        header: ({ table }) => ((0, jsx_runtime_1.jsx)(__2.Checkbox, { checked: table.getIsAllPageRowsSelected(), onCheckedChange: (value) => table.toggleAllPageRowsSelected(!!value), "aria-label": "Select all" })),
+        cell: ({ row }) => ((0, jsx_runtime_1.jsx)(__2.Checkbox, { checked: row.getIsSelected(), onCheckedChange: (value) => row.toggleSelected(!!value), "aria-label": "Select row" })),
+        enableSorting: false,
+        enableHiding: false,
+    },
     {
         accessorKey: "photos",
         header: "Image",

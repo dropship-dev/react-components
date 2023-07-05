@@ -11,3 +11,4 @@ export { default as Tag } from "./Tag";
 export { default as ToggleTag } from "./Toggle-tag";
 export { default as Checkbox } from "./Checkbox";
 export { default as TableProduct } from "./Table";
+export { default as Slider } from "./RangeSlider";
