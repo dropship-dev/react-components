@@ -7,7 +7,7 @@ export interface IRangeSlider {
   defaultValue?: number[];
 }
 
-export function Slider(props: IRangeSlider) {
+export default function Slider(props: IRangeSlider) {
   const { min, max, className, onChange, defaultValue } = props;
   return (
     <RangeSlider

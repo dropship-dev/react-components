@@ -6,6 +6,7 @@ import { ProductImage } from "../../ProductImage";
 import moment from "moment";
 import { ArrowUpDown } from "lucide-react";
 import { Label } from "../../";
+import { Checkbox } from "../../";
 
 export type Product = {
   id: string;
@@ -19,6 +20,25 @@ export type Product = {
 };
 
 export const columns: ColumnDef<Product>[] = [
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={table.getIsAllPageRowsSelected()}
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     accessorKey: "photos",
     header: "Image",
