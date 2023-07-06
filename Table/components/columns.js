@@ -14,8 +14,12 @@ const __2 = require("../../");
 exports.columns = [
     {
         id: "select",
-        header: ({ table }) => ((0, jsx_runtime_1.jsx)(__2.Checkbox, { checked: table.getIsAllPageRowsSelected(), onCheckedChange: (value) => table.toggleAllPageRowsSelected(!!value), "aria-label": "Select all" })),
-        cell: ({ row }) => ((0, jsx_runtime_1.jsx)(__2.Checkbox, { checked: row.getIsSelected(), onCheckedChange: (value) => row.toggleSelected(!!value), "aria-label": "Select row" })),
+        header: ({ table }) => ((0, jsx_runtime_1.jsx)(__2.Checkbox, { checked: table.getIsAllPageRowsSelected(), onCheckedChange: (value) => {
+                table.toggleAllPageRowsSelected(!!value);
+            }, "aria-label": "Select all" })),
+        cell: ({ row }) => ((0, jsx_runtime_1.jsx)(__2.Checkbox, { checked: row.getIsSelected(), onCheckedChange: (value) => {
+                row.toggleSelected(!!value);
+            }, "aria-label": "Select row" })),
         enableSorting: false,
         enableHiding: false,
     },

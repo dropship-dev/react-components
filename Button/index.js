@@ -83,9 +83,9 @@ const buttonVariantsTetryary = (0, class_variance_authority_1.cva)("inline-flex 
 const buttonVariantsLink = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: variantsLink,
 });
-const Button = React.forwardRef(({ color, size, hierachy, content, disabled, onClick, ...props }, ref) => {
+const Button = React.forwardRef(({ color, role, size, hierachy, content, disabled, onClick, className, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(hierachy === "primary"
+    return ((0, jsx_runtime_1.jsx)(Comp, { role: role, disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(`${className}`, hierachy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
