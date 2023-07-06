@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Label } from "../src";
+import { Textarea } from "../src";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/Label",
-  component: Label,
+  title: "Example/Textarea",
+  component: Textarea,
   tags: ["autodocs"],
-} satisfies Meta<typeof Label>;
+} satisfies Meta<typeof Textarea>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -15,9 +15,5 @@ type Story = StoryObj<typeof meta>;
 // More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
-  args: {
-    size: "textmd",
-    content: "Label",
-    frontWeight: "medium",
-  },
+  args: {},
 };
