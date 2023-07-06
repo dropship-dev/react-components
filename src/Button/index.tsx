@@ -86,17 +86,34 @@ export interface ButtonProps
   content?: string | React.ReactNode;
   disabled?: boolean;
   onClick?: any;
+  className?: string;
+  role?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ color, size, hierachy, content, disabled, onClick, ...props }, ref) => {
+  (
+    {
+      color,
+      role,
+      size,
+      hierachy,
+      content,
+      disabled,
+      onClick,
+      className,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = "button";
 
     return (
       <Comp
+        role={role}
         disabled={disabled}
         onClick={onClick}
         className={cn(
+          `${className}`,
           hierachy === "primary"
             ? buttonVariantsPrimary({
                 color,

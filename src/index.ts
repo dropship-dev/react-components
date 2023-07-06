@@ -12,3 +12,5 @@ export { default as ToggleTag } from "./Toggle-tag";
 export { default as Checkbox } from "./Checkbox";
 export { default as TableProduct } from "./Table";
 export { default as Slider } from "./RangeSlider";
+export { default as ComboBox } from "./ComboBox";
+export { default as Textarea } from "./Textarea";
