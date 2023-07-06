@@ -18,6 +18,6 @@ export const Default: Story = {
   args: {
     content: "Tag",
     size: "sm",
-    onCancle: () => console.log("Onclick 123"),
+    onCancel: () => console.log("Onclick 123"),
   },
 };

@@ -22,20 +22,20 @@ const TagVariants = cva(
 export interface ITagProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
   content: string;
-  onCancle?: any;
+  onCancel?: any;
 }
 
 const Tag = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   ITagProps & VariantProps<typeof TagVariants>
->(({ className, content, size, onCancle, ...props }, ref) => (
+>(({ className, content, size, onCancel, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
     className={cn(TagVariants({ size, className }))}
     {...props}
   >
     {content}
-    <Cross1Icon onClick={onCancle} />
+    <Cross1Icon onClick={onCancel} />
   </LabelPrimitive.Root>
 ));
 Tag.displayName = LabelPrimitive.Root.displayName;
