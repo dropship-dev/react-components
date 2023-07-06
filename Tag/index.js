@@ -38,6 +38,6 @@ const TagVariants = (0, class_variance_authority_1.cva)("leading-[20px] font-[40
         },
     },
 });
-const Tag = React.forwardRef(({ className, content, size, onCancle, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(TagVariants({ size, className })), ...props, children: [content, (0, jsx_runtime_1.jsx)(react_icons_1.Cross1Icon, { onClick: onCancle })] })));
+const Tag = React.forwardRef(({ className, content, size, onCancel, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(TagVariants({ size, className })), ...props, children: [content, (0, jsx_runtime_1.jsx)(react_icons_1.Cross1Icon, { onClick: onCancel })] })));
 Tag.displayName = LabelPrimitive.Root.displayName;
 exports.default = Tag;

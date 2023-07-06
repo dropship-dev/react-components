@@ -3,7 +3,7 @@ import * as LabelPrimitive from "@radix-ui/react-label";
 import { type VariantProps } from "class-variance-authority";
 export interface ITagProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
     content: string;
-    onCancle?: any;
+    onCancel?: any;
 }
 declare const Tag: React.ForwardRefExoticComponent<ITagProps & VariantProps<(props?: ({
     size?: "sm" | "md" | null | undefined;
