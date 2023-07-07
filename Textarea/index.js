@@ -27,7 +27,7 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
 const utils_1 = require("../lib/utils");
 const Textarea = React.forwardRef(({ className, ...props }, ref) => {
-    return ((0, jsx_runtime_1.jsx)("textarea", { className: (0, utils_1.cn)("flex min-h-[80px] w-full rounded-md border border-neutral-200 border-neutral-200 bg-transparent px-3 py-2 text-sm ring-offset-white placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-neutral-800 dark:border-neutral-800 dark:ring-offset-neutral-950 dark:placeholder:text-neutral-400 dark:focus-visible:ring-neutral-800", className), ref: ref, ...props }));
+    return ((0, jsx_runtime_1.jsx)("textarea", { className: (0, utils_1.cn)("flex min-h-[80px] w-full rounded-md border border-neutral-200 border-neutral-200 bg-transparent px-3 py-2 text-sm  placeholder:text-neutral-500 focus-visible:outline-none ", className), ref: ref, ...props }));
 });
 Textarea.displayName = "Textarea";
 exports.default = Textarea;
