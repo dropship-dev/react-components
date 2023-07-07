@@ -14,3 +14,4 @@ export { default as TableProduct } from "./Table";
 export { default as Slider } from "./RangeSlider";
 export { default as ComboBox } from "./ComboBox";
 export { default as Textarea } from "./Textarea";
+export { default as DropDownMenu } from "./DropDown-Menu";
