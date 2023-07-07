@@ -4,15 +4,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DataTable = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_table_1 = require("@tanstack/react-table");
-const react_1 = require("react");
 const ui_1 = require("./ui");
 function DataTable({ columns, data, }) {
-    const [rowSelection, setRowSelection] = (0, react_1.useState)({});
     const table = (0, react_table_1.useReactTable)({
         data,
         columns,
         getCoreRowModel: (0, react_table_1.getCoreRowModel)(),
-        onRowSelectionChange: setRowSelection,
     });
     return ((0, jsx_runtime_1.jsx)("div", { className: "rounded-md border", children: (0, jsx_runtime_1.jsxs)(ui_1.Table, { children: [(0, jsx_runtime_1.jsx)(ui_1.TableHeader, { children: table.getHeaderGroups().map((headerGroup) => ((0, jsx_runtime_1.jsx)(ui_1.TableRow, { children: headerGroup.headers.map((header) => {
                             return ((0, jsx_runtime_1.jsx)(ui_1.TableHead, { children: header.isPlaceholder
