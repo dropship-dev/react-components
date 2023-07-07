@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Textarea = exports.ComboBox = exports.Slider = exports.TableProduct = exports.Checkbox = exports.ToggleTag = exports.Tag = exports.Switch = exports.Skeleton = exports.Select = exports.Avatar = exports.ProductImage = exports.Input = exports.Label = exports.IconButton = exports.Chip = exports.Button = void 0;
+exports.DropDownMenu = exports.Textarea = exports.ComboBox = exports.Slider = exports.TableProduct = exports.Checkbox = exports.ToggleTag = exports.Tag = exports.Switch = exports.Skeleton = exports.Select = exports.Avatar = exports.ProductImage = exports.Input = exports.Label = exports.IconButton = exports.Chip = exports.Button = void 0;
 var Button_1 = require("./Button");
 Object.defineProperty(exports, "Button", { enumerable: true, get: function () { return __importDefault(Button_1).default; } });
 var Chip_1 = require("./Chip");
@@ -37,3 +37,5 @@ var ComboBox_1 = require("./ComboBox");
 Object.defineProperty(exports, "ComboBox", { enumerable: true, get: function () { return __importDefault(ComboBox_1).default; } });
 var Textarea_1 = require("./Textarea");
 Object.defineProperty(exports, "Textarea", { enumerable: true, get: function () { return __importDefault(Textarea_1).default; } });
+var DropDown_Menu_1 = require("./DropDown-Menu");
+Object.defineProperty(exports, "DropDownMenu", { enumerable: true, get: function () { return __importDefault(DropDown_Menu_1).default; } });

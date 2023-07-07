@@ -39,7 +39,7 @@ TableBody.displayName = "TableBody";
 const TableFooter = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)("tfoot", { ref: ref, className: (0, utils_1.cn)("bg-primary font-medium text-primary-foreground", className), ...props })));
 exports.TableFooter = TableFooter;
 TableFooter.displayName = "TableFooter";
-const TableRow = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)("tr", { ref: ref, className: (0, utils_1.cn)("border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted", className), ...props })));
+const TableRow = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)("tr", { ref: ref, className: (0, utils_1.cn)("border-b transition-colors hover:bg-gray-50 data-[state=selected]:bg-primary-25", className), ...props })));
 exports.TableRow = TableRow;
 TableRow.displayName = "TableRow";
 const TableHead = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)("th", { ref: ref, className: (0, utils_1.cn)("h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0", className), ...props })));
