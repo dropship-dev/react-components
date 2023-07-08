@@ -8,4 +8,6 @@ export default function Select(props: {
     width?: string;
     icon?: React.ReactNode;
     label?: string;
+    onSelected?: (value: string) => void;
+    defaultValue?: string;
 }): import("react/jsx-runtime").JSX.Element;
