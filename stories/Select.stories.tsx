@@ -39,5 +39,9 @@ export const Default: Story = {
     placeholder: "Select number",
     width: "w-full",
     icon: <p className="text-[14px]">$</p>,
+    onSelected: (e: any) => {
+      console.log(e);
+    },
+    defaultValue: "1",
   },
 };
