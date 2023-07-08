@@ -16,10 +16,13 @@ export default function Select(props: {
   width?: string;
   icon?: React.ReactNode;
   label?: string;
+  onSelected?: (value: string) => void;
+  defaultValue?: string;
 }) {
-  const { data, placeholder, width, icon, label } = props;
+  const { data, placeholder, width, icon, label, onSelected, defaultValue } =
+    props;
   return (
-    <SelectData>
+    <SelectData onValueChange={onSelected} defaultValue={defaultValue}>
       {label && <Label content={label} size="textxl" frontWeight={"medium"} />}
       <SelectTrigger
         className={`${
