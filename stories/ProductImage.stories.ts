@@ -19,5 +19,8 @@ export const Default: Story = {
     src: "https://github.com/shadcn.png",
     alt: "@shadcn",
     size: "md",
+    onCancel: () => {
+      console.log("cancel");
+    },
   },
 };
