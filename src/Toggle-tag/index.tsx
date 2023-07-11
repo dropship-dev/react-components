@@ -7,14 +7,14 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../lib/utils";
 
 const labelVariants = cva(
-  "peer-disabled:cursor-not-allowed peer-disabled:opacity-70 h-[48px] px-[12px] py-[14px] text-[14px] font-medium rounded-[6px]",
+  "peer-disabled:cursor-not-allowed peer-disabled:opacity-70 h-[48px] px-[12px] py-[14px] text-[14px] font-medium rounded-[6px] cursor-pointer",
   {
     variants: {
       variant: {
         success: "bg-success-50 text-success-600",
         danger: "bg-destructive-50 text-destructive-500",
         gradientSuccess: "bg-success text-success-950",
-        gradientdanger: "bg-destructive-400 text-destructive-950",
+        gradientDanger: "bg-destructive-400 text-destructive-950",
       },
     },
   }
@@ -23,14 +23,16 @@ const labelVariants = cva(
 export interface ILabelProps
   extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
   content: string;
+  onClick?: () => void;
 }
 
 const ToggleTag = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   ILabelProps & VariantProps<typeof labelVariants>
->(({ className, content, variant, ...props }, ref) => (
+>(({ className, content, variant, onClick, ...props }, ref) => (
   <LabelPrimitive.Root
     ref={ref}
+    onClick={onClick}
     className={cn(labelVariants({ variant, className }))}
     {...props}
   >
