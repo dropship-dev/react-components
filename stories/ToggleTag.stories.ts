@@ -18,5 +18,6 @@ export const Default: Story = {
   args: {
     content: "Unavaliable",
     variant: "success",
+    onClick: () => console.log("click toggle tag"),
   },
 };
