@@ -88,6 +88,7 @@ export interface IconButtonProps
   disabled?: boolean;
   onClick?: any;
   roundedFull?: boolean;
+  className?: string;
 }
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -97,6 +98,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       size,
       hierachy,
       content,
+      className,
       disabled,
       onClick,
       roundedFull,
@@ -113,6 +115,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         disabled={disabled}
         onClick={onClick}
         className={cn(
+          className,
           hierachy === "primary"
             ? buttonVariantsPrimary({
                 color,
