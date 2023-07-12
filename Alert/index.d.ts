@@ -6,10 +6,8 @@ declare const alertVariants: (props?: ({
 export interface AlertProps extends VariantProps<typeof alertVariants> {
     content: string;
     header: string;
-    disabled?: boolean;
-    onCancel?: any;
-    className?: string;
     open: boolean;
+    timeOut?: number;
 }
 declare const Alert: React.ForwardRefExoticComponent<AlertProps & React.RefAttributes<HTMLButtonElement>>;
 export default Alert;
