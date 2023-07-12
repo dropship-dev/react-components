@@ -1,4 +1,5 @@
 export { default as Button } from "./Button";
+export { default as Dialog } from "./Dialog";
 export { default as Chip } from "./Chip";
 export { default as IconButton } from "./IconButton";
 export { default as Label } from "./Label";
@@ -14,4 +15,5 @@ export { default as TableProduct } from "./Table";
 export { default as Slider } from "./RangeSlider";
 export { default as ComboBox } from "./ComboBox";
 export { default as Textarea } from "./Textarea";
+export { default as Alert } from "./Alert";
 export { default as DropDownMenu } from "./DropDown-Menu";
