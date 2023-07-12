@@ -99,7 +99,10 @@ const ProductImage = React.forwardRef<
         size="xs"
         hierachy="primary"
         className="absolute top-[-8px] right-[-8px] z-30"
-        onClick={onCancel}
+        onClick={(e: any) => {
+          onCancel();
+          e.stopPropagation();
+        }}
         roundedFull
       />
     )}
