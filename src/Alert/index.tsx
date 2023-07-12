@@ -27,7 +27,7 @@ const variantsContent = {
 };
 
 const alertVariants = cva(
-  "w-[372px] px-6 pt-4 pb-6 rounded-[12px] fixed top-0 right-6",
+  "w-[372px] px-6 pt-4 pb-6 rounded-[12px] fixed top-0 right-6 z-[1000]",
   {
     variants: variants,
   }
@@ -42,29 +42,18 @@ const alertContent = cva("text-[14px] leading-[20px] fontWeight-400", {
 export interface AlertProps extends VariantProps<typeof alertVariants> {
   content: string;
   header: string;
-  disabled?: boolean;
-  onCancel?: any;
-  className?: string;
   open: boolean;
+  timeOut?: number;
 }
 
 const Alert = React.forwardRef<HTMLButtonElement, AlertProps>(
-  ({
-    status,
-    content,
-    disabled,
-    onCancel,
-    className,
-    header,
-    open,
-    ...props
-  }) => {
+  ({ status, content, header, open, timeOut = 3000, ...props }) => {
     const [openAlert, setOpenAlert] = React.useState(open);
     React.useEffect(() => {
       if (openAlert)
         setTimeout(() => {
           setOpenAlert(false);
-        }, 3000);
+        }, timeOut);
     }, [openAlert]);
 
     return (
@@ -197,7 +186,6 @@ const Alert = React.forwardRef<HTMLButtonElement, AlertProps>(
           <IconButton
             onClick={() => {
               setOpenAlert(!openAlert);
-              onCancel();
             }}
             content={
               <svg

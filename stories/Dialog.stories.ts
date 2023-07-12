@@ -20,5 +20,6 @@ export const Default: Story = {
     header: "Warning",
     content: "This is a success alert — check it out!",
     open: true,
+    timeOut: 100000,
   },
 };
