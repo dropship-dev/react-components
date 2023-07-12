@@ -101,6 +101,7 @@ module.exports = {
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
+          25: "hsl(var(--destructive-25))",
           50: "hsl(var(--destructive-50))",
           100: "hsl(var(--destructive-100))",
           200: "hsl(var(--destructive-200))",
@@ -133,8 +134,9 @@ module.exports = {
         },
         success: {
           DEFAULT: "hsl(var(--success-400))",
-          100: "hsl(var(--success-100))",
+          25: "hsl(var(--success-25))",
           50: "hsl(var(--success-50))",
+          100: "hsl(var(--success-100))",
           400: "hsl(var(--success-400))",
           500: "hsl(var(--success-500))",
           600: "hsl(var(--success-600))",
@@ -142,9 +144,12 @@ module.exports = {
           950: "hsl(var(--success-950))",
         },
         warning: {
+          25: "hsl(var(--warning-25))",
+          50: "hsl(var(--warning-50))",
           100: "hsl(var(--warning-100))",
           400: "hsl(var(--warning-400))",
           700: "hsl(var(--warning-700))",
+          950: "hsl(var(--warning-950))",
         },
         gray: {
           100: "hsl(var(--neutral-100))",
