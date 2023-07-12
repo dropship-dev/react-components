@@ -11,7 +11,7 @@ function DataTable({ columns, data, }) {
         columns,
         getCoreRowModel: (0, react_table_1.getCoreRowModel)(),
     });
-    return ((0, jsx_runtime_1.jsx)("div", { className: "rounded-md border", children: (0, jsx_runtime_1.jsxs)(ui_1.Table, { children: [(0, jsx_runtime_1.jsx)(ui_1.TableHeader, { children: table.getHeaderGroups().map((headerGroup) => ((0, jsx_runtime_1.jsx)(ui_1.TableRow, { children: headerGroup.headers.map((header) => {
+    return ((0, jsx_runtime_1.jsx)("div", { className: "border", children: (0, jsx_runtime_1.jsxs)(ui_1.Table, { children: [(0, jsx_runtime_1.jsx)(ui_1.TableHeader, { children: table.getHeaderGroups().map((headerGroup) => ((0, jsx_runtime_1.jsx)(ui_1.TableRow, { children: headerGroup.headers.map((header) => {
                             return ((0, jsx_runtime_1.jsx)(ui_1.TableHead, { children: header.isPlaceholder
                                     ? null
                                     : (0, react_table_1.flexRender)(header.column.columnDef.header, header.getContext()) }, header.id));
