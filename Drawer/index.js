@@ -7,6 +7,6 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 function Drawer(props) {
     const { content, classDrawer, ref } = props;
-    return ((0, jsx_runtime_1.jsxs)("div", { className: "drawer drawer-end", children: [(0, jsx_runtime_1.jsx)("input", { id: "my-drawer-4", type: "checkbox", className: "drawer-toggle", ref: ref }), (0, jsx_runtime_1.jsx)("div", { className: "drawer-content" }), (0, jsx_runtime_1.jsxs)("div", { className: "drawer-side", children: [(0, jsx_runtime_1.jsx)("label", { htmlFor: "my-drawer-4", className: "drawer-overlay" }), (0, jsx_runtime_1.jsx)("div", { className: `${classDrawer} menu p-4 w-80 h-full bg-base-200`, children: content })] })] }));
+    return ((0, jsx_runtime_1.jsxs)("div", { className: "drawer drawer-end", children: [(0, jsx_runtime_1.jsx)("input", { onClick: () => console.log("click 111"), id: "my-drawer-4", type: "checkbox", className: "drawer-toggle", ref: ref }), (0, jsx_runtime_1.jsx)("div", { className: "drawer-content" }), (0, jsx_runtime_1.jsxs)("div", { className: "drawer-side", children: [(0, jsx_runtime_1.jsx)("label", { htmlFor: "my-drawer-4", className: "drawer-overlay" }), (0, jsx_runtime_1.jsx)("div", { className: `${classDrawer} menu p-4 w-80 h-full bg-base-200`, children: content })] })] }));
 }
 exports.default = react_1.default.forwardRef(Drawer);
