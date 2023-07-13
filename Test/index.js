@@ -7,7 +7,33 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const __1 = require("..");
 function Test() {
-    const drawerRef = react_1.default.useRef(null);
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("button", { onClick: () => drawerRef.current?.click(), children: "open" }), (0, jsx_runtime_1.jsx)(__1.Drawer, { content: (0, jsx_runtime_1.jsx)("div", { children: "content" }), ref: drawerRef })] }));
+    const [open, setOpen] = react_1.default.useState(false);
+    const [value, setValue] = react_1.default.useState("");
+    return ((0, jsx_runtime_1.jsx)(__1.ComboBox, { content: "123", data: [
+            {
+                value: "next.js",
+                label: "Next.js",
+            },
+            {
+                value: "sveltekit",
+                label: "SvelteKit",
+            },
+            {
+                value: "nuxt.js",
+                label: "Nuxt.js",
+            },
+        ], onChangeValue: (e) => {
+            console.log(e.target.value);
+            setValue(e.target.value);
+            if (e.target.value === "") {
+                setOpen(false);
+            }
+            else
+                setOpen(true);
+        }, onSelect: (e) => {
+            console.log(e);
+            setOpen(false);
+            setValue("");
+        }, open: open, setOpen: setOpen, value: value, setValue: setValue }));
 }
 exports.default = Test;
