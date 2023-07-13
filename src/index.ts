@@ -17,4 +17,5 @@ export { default as ComboBox } from "./ComboBox";
 export { default as Textarea } from "./Textarea";
 export { default as Alert } from "./Alert";
 export { default as DropDownMenu } from "./DropDown-Menu";
+export { default as Test } from "./Test";
 export { default as Drawer } from "./Drawer";
