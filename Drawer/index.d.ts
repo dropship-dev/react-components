@@ -1,7 +1,8 @@
 import React from "react";
 export interface DrawerProps {
-    openElemet: React.ReactNode;
     content: React.ReactNode;
     classDrawer?: string;
+    ref?: any;
 }
-export default function Drawer(props: DrawerProps): import("react/jsx-runtime").JSX.Element;
+declare const _default: React.ForwardRefExoticComponent<Omit<DrawerProps, "ref"> & React.RefAttributes<unknown>>;
+export default _default;
