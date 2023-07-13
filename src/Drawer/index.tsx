@@ -10,6 +10,7 @@ function Drawer(props: DrawerProps) {
   return (
     <div className="drawer drawer-end">
       <input
+        onClick={() => console.log("click 111")}
         id="my-drawer-4"
         type="checkbox"
         className="drawer-toggle"
