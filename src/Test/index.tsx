@@ -1,13 +1,42 @@
 import React from "react";
-import { Drawer } from "..";
+import { ComboBox, Drawer } from "..";
 
 export default function Test() {
-  const drawerRef = React.useRef<HTMLInputElement>(null);
-
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [value, setValue] = React.useState<string>("");
   return (
-    <>
-      <button onClick={() => drawerRef.current?.click()}>open</button>
-      <Drawer content={<div>content</div>} ref={drawerRef} />
-    </>
+    <ComboBox
+      content="123"
+      data={[
+        {
+          value: "next.js",
+          label: "Next.js",
+        },
+        {
+          value: "sveltekit",
+          label: "SvelteKit",
+        },
+        {
+          value: "nuxt.js",
+          label: "Nuxt.js",
+        },
+      ]}
+      onChangeValue={(e: any) => {
+        console.log(e.target.value);
+        setValue(e.target.value);
+        if (e.target.value === "") {
+          setOpen(false);
+        } else setOpen(true);
+      }}
+      onSelect={(e: string) => {
+        console.log(e);
+        setOpen(false);
+        setValue("");
+      }}
+      open={open}
+      setOpen={setOpen}
+      value={value}
+      setValue={setValue}
+    />
   );
 }
