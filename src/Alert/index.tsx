@@ -27,10 +27,10 @@ const variantsContent = {
 };
 
 const alertVariants = cva(
-  "w-[372px] px-6 pt-4 pb-6 rounded-[12px] fixed top-0 right-6 z-[1000]",
+  "w-[372px] px-6 pt-4 pb-6 rounded-[12px] fixed top-5 right-6 z-[1000]",
   {
     variants: variants,
-  }
+  },
 );
 const alertHeader = cva("text-[18px] leading-[28px] fontWeight-500", {
   variants: variantsHeader,
@@ -47,14 +47,14 @@ export interface AlertProps extends VariantProps<typeof alertVariants> {
 }
 
 const Alert = React.forwardRef<HTMLButtonElement, AlertProps>(
-  ({ status, content, header, open, timeOut = 3000, ...props }) => {
+  ({ status, content, header, open, timeOut, ...props }) => {
     const [openAlert, setOpenAlert] = React.useState(open);
     React.useEffect(() => {
       if (openAlert)
         setTimeout(() => {
           setOpenAlert(false);
-        }, timeOut);
-    }, [openAlert]);
+        }, timeOut ?? 3000);
+    }, [openAlert, open]);
 
     return (
       <div
@@ -66,12 +66,12 @@ const Alert = React.forwardRef<HTMLButtonElement, AlertProps>(
           }`,
           alertVariants({
             status,
-          })
+          }),
         )}
         {...props}
       >
         <div className="flex justify-between flex-row">
-          <div className="translate-[-11px]">
+          <div className="translate-x-[-9px]">
             {status === "success" ? (
               <svg
                 width="42"
@@ -211,7 +211,7 @@ const Alert = React.forwardRef<HTMLButtonElement, AlertProps>(
             className={cn(
               alertHeader({
                 status,
-              })
+              }),
             )}
           />
           <Label
@@ -219,13 +219,13 @@ const Alert = React.forwardRef<HTMLButtonElement, AlertProps>(
             className={cn(
               alertContent({
                 status,
-              })
+              }),
             )}
           />
         </div>
       </div>
     );
-  }
+  },
 );
 
 Alert.displayName = "Alert";
