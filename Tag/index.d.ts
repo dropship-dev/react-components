@@ -4,6 +4,7 @@ import { type VariantProps } from "class-variance-authority";
 export interface ITagProps extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {
     content: string;
     onCancel?: any;
+    onSelectTag?: any;
 }
 declare const Tag: React.ForwardRefExoticComponent<ITagProps & VariantProps<(props?: ({
     size?: "sm" | "md" | null | undefined;
