@@ -1,3 +1,6 @@
-export interface DialogProps {
+import React from "react";
+interface DrawerProps {
+    content: React.ReactNode;
 }
-export default function Dialog(): import("react/jsx-runtime").JSX.Element;
+declare const _default: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLInputElement>>;
+export default _default;

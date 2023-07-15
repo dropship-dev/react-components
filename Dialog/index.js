@@ -1,9 +1,15 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const __1 = require("../");
-const diaglog_1 = require("./components/diaglog");
-function Dialog() {
-    return ((0, jsx_runtime_1.jsxs)(diaglog_1.AlertDialog, { children: [(0, jsx_runtime_1.jsx)(diaglog_1.AlertDialogTrigger, { asChild: true, children: (0, jsx_runtime_1.jsx)(__1.Button, { content: "open" }) }), (0, jsx_runtime_1.jsxs)(diaglog_1.AlertDialogContent, { children: [(0, jsx_runtime_1.jsxs)(diaglog_1.AlertDialogHeader, { children: [(0, jsx_runtime_1.jsx)(diaglog_1.AlertDialogTitle, { children: "Are you absolutely sure?" }), (0, jsx_runtime_1.jsx)(diaglog_1.AlertDialogDescription, { children: "This action cannot be undone. This will permanently delete your account and remove your data from our servers." })] }), (0, jsx_runtime_1.jsxs)(diaglog_1.AlertDialogFooter, { children: [(0, jsx_runtime_1.jsx)(diaglog_1.AlertDialogCancel, { children: "Cancel" }), (0, jsx_runtime_1.jsx)(diaglog_1.AlertDialogAction, { children: "Continue" })] })] })] }));
+const react_1 = __importDefault(require("react"));
+function Dialog(props, ref) {
+    const { content } = props;
+    const [checked, setChecked] = react_1.default.useState(false);
+    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("input", { ref: ref, className: "hidden", type: "checkbox", checked: checked, onChange: (e) => {
+                    setChecked(e.target.checked);
+                } }), (0, jsx_runtime_1.jsxs)("dialog", { id: "my_modal_2", className: "modal", open: checked, children: [(0, jsx_runtime_1.jsx)("form", { method: "dialog", className: "modal-box", children: content }), (0, jsx_runtime_1.jsx)("form", { method: "dialog", className: "modal-backdrop bg-transparent" })] })] }));
 }
-exports.default = Dialog;
+exports.default = react_1.default.forwardRef(Dialog);
