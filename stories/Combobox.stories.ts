@@ -39,5 +39,9 @@ export const Default: Story = {
       },
     ],
     content: "tag",
+    onSelect: (e: string) => {
+      console.log(e);
+    },
+    onChangeValue: () => console.log("12121"),
   },
 };
