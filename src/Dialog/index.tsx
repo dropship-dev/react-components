@@ -1,6 +1,5 @@
 import React from "react";
-
-export interface DrawerProps {
+interface DrawerProps {
   content: React.ReactNode;
 }
 function Dialog(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
@@ -16,11 +15,9 @@ function Dialog(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
         checked={checked}
         onChange={(e) => {
           setChecked(e.target.checked);
-          if (e.target.checked) window.my_modal_2.showModal();
-          else window.my_modal_2.close();
         }}
       />
-      <dialog id="my_modal_2" className="modal">
+      <dialog id="my_modal_2" className="modal" open={checked}>
         <form method="dialog" className="modal-box">
           {content}
         </form>
