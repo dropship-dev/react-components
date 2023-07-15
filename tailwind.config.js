@@ -47,6 +47,11 @@ module.exports = {
         "5xl": "3.052rem",
       },
 
+      dropShadow: {
+        default:
+          "0px -12px 16px -4px rgba(5, 10, 73, 0.08), 0px -4px 6px -2px rgba(5, 10, 73, 0.03)",
+      },
+
       boxShadow: {
         primary: "0 0 0 4px #DBDDFF",
         gray: "0 0 0 4px #EAECF0",
