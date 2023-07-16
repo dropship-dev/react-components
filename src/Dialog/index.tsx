@@ -1,8 +1,8 @@
 import React from "react";
-interface DrawerProps {
+interface DialogProps {
   content: React.ReactNode;
 }
-function Dialog(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
+function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
   const { content } = props;
   const [checked, setChecked] = React.useState(false);
 
