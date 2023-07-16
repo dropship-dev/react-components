@@ -1,6 +1,6 @@
 import React from "react";
-interface DrawerProps {
+interface DialogProps {
     content: React.ReactNode;
 }
-declare const _default: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<HTMLInputElement>>;
+declare const _default: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<HTMLInputElement>>;
 export default _default;
