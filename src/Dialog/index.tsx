@@ -21,7 +21,11 @@ function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
         <form method="dialog" className="modal-box">
           {content}
         </form>
-        <form method="dialog" className="modal-backdrop bg-transparent"></form>
+        <form
+          method="dialog"
+          className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
+          onClick={() => setChecked(false)}
+        ></form>
       </dialog>
     </div>
   );
