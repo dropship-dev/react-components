@@ -16,18 +16,17 @@ import { Popover, PopoverContent, PopoverTrigger } from "./components/popover";
 
 export interface ICombobox {
   data: { value: string; label: string }[];
-  content: string;
-  onSelect: (e: string) => void;
-  onChangeValue: (e: any) => void;
-  value: string;
-  setValue: any;
-  open: boolean;
-  setOpen: any;
+  content?: string;
+  onSelect?: (e: string) => void;
+  onChangeValue?: (e: any) => void;
+  value?: string;
+  setValue?: any;
+  open?: boolean;
+  setOpen?: any;
   icon?: React.ReactNode;
 }
 export default function Combobox(props: ICombobox) {
   const { data, content, onSelect, onChangeValue, icon, open, value } = props;
-  console.log(open);
 
   return (
     <Command>
