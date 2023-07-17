@@ -1,17 +1,13 @@
-import React, { useEffect } from "react";
-interface DrawerProps {
+import React from "react";
+interface DialogProps {
   content: React.ReactNode;
 }
-function Dialog(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
+function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
   const { content } = props;
   const [checked, setChecked] = React.useState(false);
 
-  useEffect(() => {
-    if (checked) setChecked(false);
-  }, [checked]);
-
   return (
-    <div>
+    <dialog id="my_modal_2" className="modal" open={checked}>
       <input
         ref={ref}
         className="hidden"
@@ -21,13 +17,15 @@ function Dialog(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
           setChecked(e.target.checked);
         }}
       />
-      <dialog id="my_modal_2" className="modal" open={checked}>
-        <form method="dialog" className="modal-box">
-          {content}
-        </form>
-        <form method="dialog" className="modal-backdrop bg-transparent"></form>
-      </dialog>
-    </div>
+      <form method="dialog" className="modal-box">
+        {content}
+      </form>
+      <form
+        method="dialog"
+        className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
+        onClick={() => setChecked(false)}
+      ></form>
+    </dialog>
   );
 }
 
