@@ -1,8 +1,8 @@
 import * as React from "react";
 export default function Select(props: {
     data: {
-        id: string;
         value: string;
+        label: string;
     }[];
     placeholder?: string;
     width?: string;
