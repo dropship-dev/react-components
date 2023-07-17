@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 interface DrawerProps {
   content: React.ReactNode;
 }
 function Dialog(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
   const { content } = props;
   const [checked, setChecked] = React.useState(false);
+
+  useEffect(() => {
+    if (checked) setChecked(false);
+  }, [checked]);
 
   return (
     <div>
