@@ -11,7 +11,7 @@ import {
 import { Label } from "..";
 
 export default function Select(props: {
-  data: { id: string; value: string }[];
+  data: { value: string; label: string }[];
   placeholder?: string;
   width?: string;
   icon?: React.ReactNode;
@@ -36,8 +36,8 @@ export default function Select(props: {
       <SelectContent>
         <SelectGroup>
           {data.map((item) => (
-            <SelectItem value={item.value} key={item.id}>
-              {item.value}
+            <SelectItem value={item.value} key={item.value}>
+              {item.label}
             </SelectItem>
           ))}
         </SelectGroup>
