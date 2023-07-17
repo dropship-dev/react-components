@@ -153,6 +153,7 @@ module.exports = {
           50: "hsl(var(--warning-50))",
           100: "hsl(var(--warning-100))",
           400: "hsl(var(--warning-400))",
+          500: "hsl(var(--warning-500))",
           700: "hsl(var(--warning-700))",
           950: "hsl(var(--warning-950))",
         },
