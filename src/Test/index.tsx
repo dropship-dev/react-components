@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog } from "..";
+import { Dialog, Drawer } from "..";
 
 export default function Test() {
   const Ref = React.useRef<HTMLInputElement>(null);
@@ -7,7 +7,7 @@ export default function Test() {
   return (
     <>
       <button onClick={() => Ref.current?.click()}>Open</button>
-      <Dialog
+      <Drawer
         content={
           <div>
             Dialog
