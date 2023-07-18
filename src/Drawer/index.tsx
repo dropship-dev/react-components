@@ -17,7 +17,7 @@ function Drawer(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
       <div className="drawer-content"></div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-        <div className={`${classDrawer} menu p-4 w-80 h-full bg-base-200`}>
+        <div className={`${classDrawer} menu w-80 h-full bg-base-200`}>
           {content}
         </div>
       </div>

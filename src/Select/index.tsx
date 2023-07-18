@@ -25,7 +25,7 @@ export default function Select(props: {
     <SelectData onValueChange={onSelected} defaultValue={defaultValue}>
       {label && <Label content={label} size="textxl" frontWeight={"medium"} />}
       <SelectTrigger
-        className={`${width} border-gray-300 h-9 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start`}
+        className={`${width} border-gray-300 h-10 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start`}
       >
         {icon}
         <div className="w-full flex flex-row justify-between text-[14px]">
