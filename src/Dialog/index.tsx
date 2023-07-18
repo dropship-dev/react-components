@@ -7,7 +7,7 @@ function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
   const [checked, setChecked] = React.useState(false);
 
   return (
-    <div>
+    <dialog id="my_modal_2" className="modal" open={checked}>
       <input
         ref={ref}
         className="hidden"
@@ -17,17 +17,15 @@ function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
           setChecked(e.target.checked);
         }}
       />
-      <dialog id="my_modal_2" className="modal" open={checked}>
-        <form method="dialog" className="modal-box">
-          {content}
-        </form>
-        <form
-          method="dialog"
-          className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
-          onClick={() => setChecked(false)}
-        ></form>
-      </dialog>
-    </div>
+      <form method="dialog" className="modal-box">
+        {content}
+      </form>
+      <form
+        method="dialog"
+        className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
+        onClick={() => setChecked(false)}
+      ></form>
+    </dialog>
   );
 }
 

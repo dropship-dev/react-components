@@ -20,20 +20,20 @@ export const Default: Story = {
   args: {
     data: [
       {
-        id: "1",
-        value: "1",
+        label: "1",
+        value: "qwqwqw",
       },
       {
-        id: "2",
-        value: "2",
+        label: "2",
+        value: "wqwqw",
       },
       {
-        id: "3",
-        value: "3",
+        label: "3",
+        value: "121",
       },
       {
-        id: "4",
-        value: "5",
+        label: "4",
+        value: "ada",
       },
     ],
     placeholder: "Select number",

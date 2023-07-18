@@ -11,7 +11,7 @@ import {
 import { Label } from "..";
 
 export default function Select(props: {
-  data: { id: string; value: string }[];
+  data: { value: string; label: string }[];
   placeholder?: string;
   width?: string;
   icon?: React.ReactNode;
@@ -25,9 +25,7 @@ export default function Select(props: {
     <SelectData onValueChange={onSelected} defaultValue={defaultValue}>
       {label && <Label content={label} size="textxl" frontWeight={"medium"} />}
       <SelectTrigger
-        className={`${
-          width ?? "w-1/2"
-        } border-black border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start`}
+        className={`${width} border-gray-300 h-10 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start`}
       >
         {icon}
         <div className="w-full flex flex-row justify-between text-[14px]">
@@ -38,8 +36,8 @@ export default function Select(props: {
       <SelectContent>
         <SelectGroup>
           {data.map((item) => (
-            <SelectItem value={item.value} key={item.id}>
-              {item.value}
+            <SelectItem value={item.value} key={item.value}>
+              {item.label}
             </SelectItem>
           ))}
         </SelectGroup>
