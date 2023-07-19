@@ -38,6 +38,6 @@ const AvatarImage = React.forwardRef(({ className, ...props }, ref) => {
 });
 exports.AvatarImage = AvatarImage;
 AvatarImage.displayName = AvatarPrimitive.Image.displayName;
-const AvatarFallback = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)(AvatarPrimitive.Fallback, { ref: ref, className: (0, utils_1.cn)("flex h-full w-full items-center justify-center rounded-full bg-muted", className), ...props })));
+const AvatarFallback = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)(AvatarPrimitive.Fallback, { ref: ref, className: (0, utils_1.cn)("flex h-full w-full items-center justify-center rounded-full bg-[#7685B3]", className), ...props })));
 exports.AvatarFallback = AvatarFallback;
 AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;
