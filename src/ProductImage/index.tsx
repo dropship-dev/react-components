@@ -141,10 +141,13 @@ const ProductImage = ({
   </div>
 );
 
-const Avatar = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  ILabelProps & VariantProps<typeof AvatarVariants>
->(({ className, size, src, alt, status }) => (
+const Avatar = ({
+  className,
+  size,
+  src,
+  alt,
+  status,
+}: ILabelProps & VariantProps<typeof AvatarVariants>) => (
   <div className={cn("relative", AvatarVariants({ size }))}>
     {status && <div className={cn(statusVariant({ size, status }))}></div>}
     <AvatarUI className={cn(AvatarVariants({ size, className }))}>
@@ -174,7 +177,7 @@ const Avatar = React.forwardRef<
       </>
     </AvatarUI>
   </div>
-));
+);
 
 ProductImage.displayName = LabelPrimitive.Root.displayName;
 Avatar.displayName = LabelPrimitive.Root.displayName;
