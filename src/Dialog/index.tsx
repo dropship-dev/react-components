@@ -26,7 +26,7 @@ function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
         className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
         onClick={() => {
           setChecked(false);
-          handleClickOverLay;
+          handleClickOverLay();
         }}
       ></form>
     </dialog>
