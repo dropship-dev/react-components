@@ -33,7 +33,7 @@ const variantsPrimary = {
         destructive: "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-700 border-destructive-400 focus:shadow-[#FDE4F2] text-white focus:shadow-[0_0_0_4px]",
         gray: "text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 border-gray-500 focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
     },
-    hierachy: {
+    hierarchy: {
         primary: "",
         secondary: "",
         tertiary: "",
@@ -84,32 +84,32 @@ const buttonVariantsTetryary = (0, class_variance_authority_1.cva)("flex items-c
 const buttonVariantsLink = (0, class_variance_authority_1.cva)("flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: variantsLink,
 });
-const IconButton = React.forwardRef(({ color, size, hierachy, content, className, disabled, onClick, roundedFull, ...props }, ref) => {
+const IconButton = React.forwardRef(({ color, size, hierarchy: hierarchy, content, className, disabled, onClick, roundedFull, ...props }, ref) => {
     const Comp = "button";
     return ((0, jsx_runtime_1.jsx)(Comp, { style: {
             borderRadius: roundedFull ? "50%" : "",
-        }, disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(className, hierachy === "primary"
+        }, disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(className, hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
-                hierachy,
+                hierarchy: hierarchy,
             })
-            : hierachy === "secondary"
+            : hierarchy === "secondary"
                 ? buttonVariantsSeCondary({
                     color,
                     size,
-                    hierachy,
+                    hierarchy: hierarchy,
                 })
-                : hierachy === "tertiary"
+                : hierarchy === "tertiary"
                     ? buttonVariantsTetryary({
                         color,
                         size,
-                        hierachy,
+                        hierarchy: hierarchy,
                     })
                     : buttonVariantsLink({
                         color,
                         size,
-                        hierachy,
+                        hierarchy: hierarchy,
                     })), ref: ref, ...props, children: content }));
 });
 IconButton.displayName = "IconButton";

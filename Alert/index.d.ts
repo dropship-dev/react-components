@@ -1,4 +1,3 @@
-import * as React from "react";
 import { type VariantProps } from "class-variance-authority";
 declare const alertVariants: (props?: ({
     status?: "success" | "warning" | "error" | null | undefined;
@@ -9,5 +8,8 @@ export interface AlertProps extends VariantProps<typeof alertVariants> {
     open: boolean;
     timeOut?: number;
 }
-declare const Alert: React.ForwardRefExoticComponent<AlertProps & React.RefAttributes<HTMLButtonElement>>;
+declare const Alert: {
+    ({ status, content, header, open, timeOut, ...props }: AlertProps): import("react/jsx-runtime").JSX.Element;
+    displayName: string;
+};
 export default Alert;

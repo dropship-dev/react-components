@@ -58,7 +58,7 @@ const alertHeader = (0, class_variance_authority_1.cva)("text-[18px] leading-[28
 const alertContent = (0, class_variance_authority_1.cva)("text-[14px] leading-[20px] fontWeight-400", {
     variants: variantsContent,
 });
-const Alert = React.forwardRef(({ status, content, header, open, timeOut, ...props }) => {
+const Alert = ({ status, content, header, open, timeOut, ...props }) => {
     const [openAlert, setOpenAlert] = React.useState(open);
     React.useEffect(() => {
         if (openAlert)
@@ -77,6 +77,6 @@ const Alert = React.forwardRef(({ status, content, header, open, timeOut, ...pro
                         })) }), (0, jsx_runtime_1.jsx)(__1.Label, { content: content, className: (0, utils_1.cn)(alertContent({
                             status,
                         })) })] })] }));
-});
+};
 Alert.displayName = "Alert";
 exports.default = Alert;

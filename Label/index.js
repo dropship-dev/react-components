@@ -31,9 +31,9 @@ const class_variance_authority_1 = require("class-variance-authority");
 const utils_1 = require("../lib/utils");
 const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-not-allowed peer-disabled:opacity-70", {
     variants: {
-        frontWeight: {
+        fontWeight: {
             thin: "font-[100]",
-            extralight: "font-[200]",
+            extraLight: "font-[200]",
             light: "font-[300]",
             normal: "font-[400]",
             medium: "font-[500]",
@@ -43,20 +43,20 @@ const labelVariants = (0, class_variance_authority_1.cva)("peer-disabled:cursor-
             black: "font-[900]",
         },
         size: {
-            textxs: "text-textxs",
-            textsm: "text-textsm",
-            textmd: "text-textmd",
-            textlg: "text-textlg",
-            textxl: "text-textxl",
-            displayxs: "text-displayxs",
-            displaysm: "text-displaysm",
-            displaymd: "text-displaymd",
-            displaylg: "text-displaylg",
-            displayxl: "text-displayxl",
-            display2xl: "text-display2xl",
+            textXS: "text-textXS",
+            textSM: "text-textSM",
+            textMD: "text-textMD",
+            textLG: "text-textLG",
+            textXL: "text-textXL",
+            displayXS: "text-displayXS",
+            displaySM: "text-displaySM",
+            displayMD: "text-displayMD",
+            displayLG: "text-displayLG",
+            displayXL: "text-displayXL",
+            displayXXL: "text-displayXXL",
         },
     },
 });
-const Label = React.forwardRef(({ className, size, frontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants({ frontWeight, size }), className), ...props, children: content })));
+const Label = React.forwardRef(({ className, size, fontWeight, content, ...props }, ref) => ((0, jsx_runtime_1.jsx)(LabelPrimitive.Root, { ref: ref, className: (0, utils_1.cn)(labelVariants({ fontWeight, size }), className), ...props, children: content })));
 Label.displayName = LabelPrimitive.Root.displayName;
 exports.default = Label;

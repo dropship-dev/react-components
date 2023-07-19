@@ -31,6 +31,6 @@ const SwitchPrimitives = __importStar(require("@radix-ui/react-switch"));
 const utils_1 = require("../../lib/utils");
 const Switch = React.forwardRef(({ className, danger, ...props }, ref) => ((0, jsx_runtime_1.jsx)(SwitchPrimitives.Root, { className: (0, utils_1.cn)(`peer inline-flex h-[20px] w-[32px] shrink-0 cursor-pointer items-center rounded-full border-[3px] border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-success ${danger
         ? " data-[state=unchecked]:bg-red-500"
-        : " data-[state=unchecked]:bg-switch"}`, className), ...props, ref: ref, children: (0, jsx_runtime_1.jsx)(SwitchPrimitives.Thumb, { className: (0, utils_1.cn)("pointer-events-none block h-[14px] w-[14px] rounded-full bg-input shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-0") }) })));
+        : " data-[state=unchecked]:bg-switch"}`, className), ...props, ref: ref, children: (0, jsx_runtime_1.jsx)(SwitchPrimitives.Thumb, { className: (0, utils_1.cn)("pointer-events-none block h-[14px] w-[14px] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-0") }) })));
 exports.Switch = Switch;
 Switch.displayName = SwitchPrimitives.Root.displayName;

@@ -4,5 +4,5 @@ interface DialogProps {
     open: boolean;
     onClose: () => void;
 }
-declare const _default: React.ForwardRefExoticComponent<DialogProps & React.RefAttributes<unknown>>;
-export default _default;
+declare function Dialog(props: DialogProps): import("react/jsx-runtime").JSX.Element;
+export default Dialog;

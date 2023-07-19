@@ -5,5 +5,5 @@ export interface DrawerProps {
     open: boolean;
     onClose: () => void;
 }
-declare const _default: React.ForwardRefExoticComponent<DrawerProps & React.RefAttributes<unknown>>;
-export default _default;
+declare function Drawer(props: DrawerProps): import("react/jsx-runtime").JSX.Element;
+export default Drawer;

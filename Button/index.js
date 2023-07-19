@@ -33,7 +33,7 @@ const variantsPrimary = {
         destructive: "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-700 border-destructive-400 focus:shadow-[#FDE4F2] text-white focus:shadow-[0_0_0_4px]",
         gray: "text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 border-gray-500 focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
     },
-    hierachy: {
+    hierarchy: {
         primary: "",
         secondary: "",
         tertiary: "",
@@ -77,35 +77,35 @@ const buttonVariantsPrimary = (0, class_variance_authority_1.cva)("inline-flex i
 const buttonVariantsSeCondary = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: variantsSecondary,
 });
-const buttonVariantsTetryary = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
+const buttonVariantsTertiary = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: variantsTertiary,
 });
 const buttonVariantsLink = (0, class_variance_authority_1.cva)("inline-flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: variantsLink,
 });
-const Button = React.forwardRef(({ color, role, size, hierachy, content, disabled, onClick, className, ...props }, ref) => {
+const Button = React.forwardRef(({ color, role, size, hierarchy, content, disabled, onClick, className, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { role: role, disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(`${className}`, hierachy === "primary"
+    return ((0, jsx_runtime_1.jsx)(Comp, { role: role, disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(`${className}`, hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
-                hierachy,
+                hierarchy,
             })
-            : hierachy === "secondary"
+            : hierarchy === "secondary"
                 ? buttonVariantsSeCondary({
                     color,
                     size,
-                    hierachy,
+                    hierarchy,
                 })
-                : hierachy === "tertiary"
-                    ? buttonVariantsTetryary({
+                : hierarchy === "tertiary"
+                    ? buttonVariantsTertiary({
                         color,
                         size,
                     })
                     : buttonVariantsLink({
                         color,
                         size,
-                        hierachy,
+                        hierarchy,
                     })), ref: ref, ...props, children: content }));
 });
 Button.displayName = "Button";
