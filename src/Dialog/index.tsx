@@ -17,7 +17,7 @@ function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
           setChecked(e.target.checked);
         }}
       />
-      <form method="dialog" className="modal-box">
+      <form method="dialog" className="modal-box dark:bg-white">
         {content}
       </form>
       <form

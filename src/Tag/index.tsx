@@ -12,7 +12,7 @@ const TagVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-[34px] text-[12px] rounded-[16px]",
+        sm: "h-[34px] text-[14px] rounded-[16px]",
         md: "h-[44px] text-[16px] rounded-[21px]",
       },
     },
