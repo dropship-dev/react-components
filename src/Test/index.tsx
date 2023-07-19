@@ -2,20 +2,59 @@ import React from "react";
 import { Dialog, Drawer } from "..";
 
 export default function Test() {
-  const Ref = React.useRef<HTMLInputElement>(null);
-
+  const [open, setOpen] = React.useState(false);
+  const [openDrawer, setOpenDrawer] = React.useState(false);
   return (
     <>
-      <button onClick={() => Ref.current?.click()}>Open</button>
+      <button
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
+        Open Dialog
+      </button>
+      <button
+        onClick={() => {
+          setOpenDrawer(true);
+        }}
+      >
+        Open Drawer
+      </button>
       <Dialog
-        handleClickOverLay={() => {}}
+        onClose={() => {
+          setOpen(false);
+        }}
         content={
-          <div>
+          <div className="flex flex-col">
             Dialog
-            <button onClick={() => Ref.current?.click()}>close</button>
+            <button
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Close
+            </button>
           </div>
         }
-        ref={Ref}
+        open={open}
+      />
+      <Drawer
+        content={
+          <div className="flex flex-col">
+            Dialog
+            <button
+              onClick={() => {
+                setOpenDrawer(false);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        }
+        open={openDrawer}
+        onClose={() => {
+          setOpenDrawer(false);
+        }}
       />
     </>
   );
