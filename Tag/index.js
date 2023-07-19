@@ -33,7 +33,7 @@ const utils_1 = require("../lib/utils");
 const TagVariants = (0, class_variance_authority_1.cva)("leading-[20px] font-[400] border-[1px] border-solid hover:bg-primary-25 hover:border-primary-500 active:bg-primary-100 flex flex-row gap-[8px] items-center w-fit py-[6px] px-[10px] focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]", {
     variants: {
         size: {
-            sm: "h-[34px] text-[12px] rounded-[16px]",
+            sm: "h-[34px] text-[14px] rounded-[16px]",
             md: "h-[44px] text-[16px] rounded-[21px]",
         },
     },
