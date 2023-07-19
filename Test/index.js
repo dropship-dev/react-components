@@ -8,6 +8,6 @@ const react_1 = __importDefault(require("react"));
 const __1 = require("..");
 function Test() {
     const Ref = react_1.default.useRef(null);
-    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("button", { onClick: () => Ref.current?.click(), children: "Open" }), (0, jsx_runtime_1.jsx)(__1.Drawer, { content: (0, jsx_runtime_1.jsxs)("div", { children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => Ref.current?.click(), children: "close" })] }), ref: Ref })] }));
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("button", { onClick: () => Ref.current?.click(), children: "Open" }), (0, jsx_runtime_1.jsx)(__1.Dialog, { handleClickOverLay: () => { }, content: (0, jsx_runtime_1.jsxs)("div", { children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => Ref.current?.click(), children: "close" })] }), ref: Ref })] }));
 }
 exports.default = Test;
