@@ -8,7 +8,7 @@ const react_slider_1 = __importDefault(require("react-slider"));
 const utils_1 = require("../../lib/utils");
 const RangeSlider = (_props) => {
     const isVertical = _props.orientation === "vertical";
-    return ((0, jsx_runtime_1.jsx)(react_slider_1.default, { ..._props, renderThumb: (props, state) => ((0, jsx_runtime_1.jsx)("div", { ...props, className: "h-[16px] w-[16px] rounded-full bg-primary-500" })), renderTrack: (props, state) => {
+    return ((0, jsx_runtime_1.jsx)(react_slider_1.default, { ..._props, renderThumb: (props, state) => ((0, jsx_runtime_1.jsx)("div", { ...props, className: "h-[16px] w-[16px] rounded-full bg-primary-500" }, props.key)), renderTrack: (props, state) => {
             const points = Array.isArray(state.value) ? state.value.length : null;
             const isMulti = points && points > 0;
             const isLast = isMulti ? state.index === points : state.index != 0;
@@ -23,14 +23,14 @@ const RangeSlider = (_props) => {
                     // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
                     // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
                     // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
-                }) }));
+                }) }, props.key));
         }, renderMark: (props) => {
             return ((0, jsx_runtime_1.jsx)("div", { ...props, className: (0, utils_1.cn)({
                     "top-1/2 -translate-y-1/2": !isVertical,
                     "left-1/2 -translate-x-1/2": isVertical,
                     "h-1 w-1": true,
                     "rounded-full bg-red-500": true,
-                }) }));
+                }) }, props.key));
         } }));
 };
 exports.default = RangeSlider;
