@@ -11,7 +11,7 @@ const variantsPrimary = {
 
     gray: "text-white bg-gray-500 hover:bg-gray-600 active:bg-gray-700 border-gray-500 focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
   },
-  hierachy: {
+  hierarchy: {
     primary: "",
     secondary: "",
     tertiary: "",
@@ -61,25 +61,25 @@ const buttonVariantsPrimary = cva(
   "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsPrimary,
-  }
+  },
 );
 const buttonVariantsSeCondary = cva(
   "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsSecondary,
-  }
+  },
 );
 const buttonVariantsTetryary = cva(
   "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsTertiary,
-  }
+  },
 );
 const buttonVariantsLink = cva(
   "flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
   {
     variants: variantsLink,
-  }
+  },
 );
 
 export interface IconButtonProps
@@ -96,7 +96,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
     {
       color,
       size,
-      hierachy,
+      hierarchy: hierarchy,
       content,
       className,
       disabled,
@@ -104,7 +104,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       roundedFull,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = "button";
     return (
@@ -116,29 +116,29 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         onClick={onClick}
         className={cn(
           className,
-          hierachy === "primary"
+          hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
-                hierachy,
+                hierarchy: hierarchy,
               })
-            : hierachy === "secondary"
+            : hierarchy === "secondary"
             ? buttonVariantsSeCondary({
                 color,
                 size,
-                hierachy,
+                hierarchy: hierarchy,
               })
-            : hierachy === "tertiary"
+            : hierarchy === "tertiary"
             ? buttonVariantsTetryary({
                 color,
                 size,
-                hierachy,
+                hierarchy: hierarchy,
               })
             : buttonVariantsLink({
                 color,
                 size,
-                hierachy,
-              })
+                hierarchy: hierarchy,
+              }),
         )}
         ref={ref}
         {...props}
@@ -146,7 +146,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         {content}
       </Comp>
     );
-  }
+  },
 );
 
 IconButton.displayName = "IconButton";

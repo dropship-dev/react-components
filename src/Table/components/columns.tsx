@@ -66,8 +66,8 @@ export const columns: ColumnDef<Product>[] = [
         <div className="flex flex-row gap-[12px]">
           <Label
             content={row.getValue("name")}
-            size="textxl"
-            frontWeight="light"
+            size="textXL"
+            fontWeight="light"
             className="flex-1"
           />
           {isActive ? (
@@ -95,9 +95,9 @@ export const columns: ColumnDef<Product>[] = [
         >
           <Label
             content="Shipping fee"
-            frontWeight="light"
+            fontWeight="light"
             className="whitespace-nowrap"
-            size="textxl"
+            size="textXL"
           />
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </div>
@@ -105,14 +105,14 @@ export const columns: ColumnDef<Product>[] = [
     },
     cell: ({ row }) => (
       <Label
-        size="textxl"
-        frontWeight="light"
+        size="textXL"
+        fontWeight="light"
         content={parseFloat(row.getValue("shippingFee")).toLocaleString(
           "en-US",
           {
             style: "currency",
             currency: "USD",
-          }
+          },
         )}
       />
     ),

@@ -15,6 +15,7 @@ function Drawer(props: DrawerProps) {
         type="checkbox"
         className="drawer-toggle"
         checked={open}
+        onChange={() => {}}
       />
       <div className="drawer-content"></div>
       <div className="drawer-side">
@@ -35,4 +36,4 @@ function Drawer(props: DrawerProps) {
   );
 }
 
-export default React.forwardRef(Drawer);
+export default Drawer;

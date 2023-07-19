@@ -5,14 +5,14 @@ import * as SwitchPrimitives from "@radix-ui/react-switch";
 
 import { cn } from "../../lib/utils";
 
-export interface ISwichProps
+export interface ISwitchProps
   extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> {
   danger?: boolean;
 }
 
 const Switch = React.forwardRef<
   React.ElementRef<typeof SwitchPrimitives.Root>,
-  ISwichProps
+  ISwitchProps
 >(({ className, danger, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
@@ -21,14 +21,14 @@ const Switch = React.forwardRef<
           ? " data-[state=unchecked]:bg-red-500"
           : " data-[state=unchecked]:bg-switch"
       }`,
-      className
+      className,
     )}
     {...props}
     ref={ref}
   >
     <SwitchPrimitives.Thumb
       className={cn(
-        "pointer-events-none block h-[14px] w-[14px] rounded-full bg-input shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-0"
+        "pointer-events-none block h-[14px] w-[14px] rounded-full bg-white shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-[12px] data-[state=unchecked]:translate-x-0",
       )}
     />
   </SwitchPrimitives.Root>

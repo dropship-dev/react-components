@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Switch as SwitchComponets } from "./components/switch";
+import { Switch as SwitchComponent } from "./components/switch";
 
 export default function Switch(props: {
   initialValue?: boolean;
@@ -11,7 +11,7 @@ export default function Switch(props: {
   const { initialValue, onCheckedChange, danger, checked, disabled } = props;
   return (
     <div className="flex items-center space-x-2">
-      <SwitchComponets
+      <SwitchComponent
         defaultChecked={initialValue}
         onCheckedChange={onCheckedChange}
         danger={danger ?? false}
