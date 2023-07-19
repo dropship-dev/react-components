@@ -1,9 +1,10 @@
 import React from "react";
 interface DialogProps {
   content: React.ReactNode;
+  handleClickOverLay: () => void;
 }
 function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
-  const { content } = props;
+  const { content, handleClickOverLay } = props;
   const [checked, setChecked] = React.useState(false);
 
   return (
@@ -23,7 +24,10 @@ function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
       <form
         method="dialog"
         className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
-        onClick={() => setChecked(false)}
+        onClick={() => {
+          setChecked(false);
+          handleClickOverLay;
+        }}
       ></form>
     </dialog>
   );

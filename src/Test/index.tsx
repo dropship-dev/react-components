@@ -7,7 +7,8 @@ export default function Test() {
   return (
     <>
       <button onClick={() => Ref.current?.click()}>Open</button>
-      <Drawer
+      <Dialog
+        handleClickOverLay={() => {}}
         content={
           <div>
             Dialog
