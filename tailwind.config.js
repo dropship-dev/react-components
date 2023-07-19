@@ -114,7 +114,6 @@ module.exports = {
           600: "hsl(var(--destructive-600))",
           700: "hsl(var(--destructive-700))",
           950: "hsl(var(--destructive-950))",
-          500: "hsl(var(--destructive-500))",
         },
 
         normal: {
@@ -187,4 +186,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("daisyui")],
+  daisyui: {
+    themes: [],
+  },
 };
