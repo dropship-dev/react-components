@@ -12,7 +12,7 @@ function Dialog(props, ref) {
                     setChecked(e.target.checked);
                 } }), (0, jsx_runtime_1.jsx)("form", { method: "dialog", className: "modal-box dark:bg-white", children: content }), (0, jsx_runtime_1.jsx)("form", { method: "dialog", className: "modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm", onClick: () => {
                     setChecked(false);
-                    handleClickOverLay;
+                    handleClickOverLay();
                 } })] }));
 }
 exports.default = react_1.default.forwardRef(Dialog);
