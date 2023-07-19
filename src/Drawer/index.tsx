@@ -2,23 +2,31 @@ import React from "react";
 
 export interface DrawerProps {
   content: React.ReactNode;
-  classDrawer?: string;
+  className?: string;
+  open: boolean;
+  onClose: () => void;
 }
-function Drawer(props: DrawerProps, ref: React.ForwardedRef<HTMLInputElement>) {
-  const { content, classDrawer } = props;
+function Drawer(props: DrawerProps) {
+  const { content, className, open, onClose } = props;
   return (
     <div className="drawer drawer-end z-[100] relative">
       <input
         id="my-drawer-4"
         type="checkbox"
         className="drawer-toggle"
-        ref={ref}
+        checked={open}
       />
       <div className="drawer-content"></div>
       <div className="drawer-side">
-        <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
+        <label
+          htmlFor="my-drawer-4"
+          className="drawer-overlay"
+          onClick={() => {
+            onClose();
+          }}
+        ></label>
         <div
-          className={`${classDrawer} flex flex-col flex-wrap w-80 h-full bg-base-200 p-0`}
+          className={`${className} flex flex-col flex-wrap w-80 h-full bg-base-200 p-0`}
         >
           {content}
         </div>

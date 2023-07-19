@@ -1,34 +1,27 @@
 import React from "react";
 interface DialogProps {
   content: React.ReactNode;
-  handleClickOverLay: () => void;
+  open: boolean;
+  onClose: () => void;
 }
-function Dialog(props: DialogProps, ref: React.ForwardedRef<HTMLInputElement>) {
-  const { content, handleClickOverLay } = props;
-  const [checked, setChecked] = React.useState(false);
+function Dialog(props: DialogProps) {
+  const { content, onClose, open } = props;
 
   return (
-    <dialog id="my_modal_2" className="modal" open={checked}>
-      <input
-        ref={ref}
-        className="hidden"
-        type="checkbox"
-        checked={checked}
-        onChange={(e) => {
-          setChecked(e.target.checked);
-        }}
-      />
+    <dialog id="my_modal_2" className="modal" open={open}>
       <form method="dialog" className="modal-box dark:bg-white">
         {content}
       </form>
       <form
         method="dialog"
         className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
-        onClick={() => {
-          setChecked(false);
-          handleClickOverLay();
-        }}
-      ></form>
+      >
+        <button
+          onClick={() => {
+            onClose();
+          }}
+        />
+      </form>
     </dialog>
   );
 }
