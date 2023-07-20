@@ -11,6 +11,7 @@ export interface ButtonProps extends VariantProps<typeof buttonVariantsPrimary> 
     onClick?: any;
     className?: string;
     role?: string;
+    loading?: boolean;
 }
 declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAttributes<HTMLButtonElement>>;
 export default Button;
