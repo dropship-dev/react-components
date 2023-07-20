@@ -15,7 +15,8 @@ function Dialog(props: DialogProps) {
       <form
         method="dialog"
         className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm z-10"
-        onClick={() => {
+        onClick={(e) => {
+          e.stopPropagation();
           onClose();
         }}
       />
