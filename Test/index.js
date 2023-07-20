@@ -17,7 +17,7 @@ function Test() {
                     setOpen(false);
                 }, content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                                 setOpen(false);
-                            }, children: "Close" })] }), open: open }), (0, jsx_runtime_1.jsx)(__1.Drawer, { content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => {
+                            }, children: "Close" }), (0, jsx_runtime_1.jsx)("button", { children: "AAA" })] }), open: open }), (0, jsx_runtime_1.jsx)(__1.Drawer, { content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                                 setOpenDrawer(false);
                             }, children: "Close" })] }), open: openDrawer, onClose: () => {
                     setOpenDrawer(false);
