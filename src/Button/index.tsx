@@ -88,6 +88,7 @@ export interface ButtonProps
   onClick?: any;
   className?: string;
   role?: string;
+  loading?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -101,6 +102,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       onClick,
       className,
+      loading,
       ...props
     },
     ref,
@@ -110,10 +112,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         role={role}
-        disabled={disabled}
+        disabled={disabled || loading}
         onClick={onClick}
         className={cn(
-          `${className}`,
+          `${className} , relative`,
           hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
@@ -140,7 +142,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {content}
+        <>
+          <div className={loading ? "opacity-0" : ""}>{content}</div>
+          <span
+            className={`loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${
+              !loading ? "opacity-0" : ""
+            }`}
+          ></span>
+        </>
       </Comp>
     );
   },
