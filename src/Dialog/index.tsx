@@ -9,7 +9,7 @@ function Dialog(props: DialogProps) {
 
   return (
     <dialog id="my_modal_2" className="modal" open={open}>
-      <form method="dialog" className="modal-box dark:bg-white">
+      <form method="dialog" className="modal-box dark:bg-white bg-white">
         {content}
       </form>
       <form
