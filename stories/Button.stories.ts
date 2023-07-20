@@ -22,6 +22,6 @@ export const Default: Story = {
     size: "md",
     color: "destructive",
     content: "Button",
-    hierachy: "primary",
+    hierarchy: "primary",
   },
 };

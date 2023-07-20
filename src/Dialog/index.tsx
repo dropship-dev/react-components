@@ -26,4 +26,4 @@ function Dialog(props: DialogProps) {
   );
 }
 
-export default React.forwardRef(Dialog);
+export default Dialog;

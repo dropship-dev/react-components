@@ -1,4 +1,4 @@
-import { Skeleton as SkeletonLoading } from "./components/seketon";
+import { Skeleton as SkeletonLoading } from "./components/skeleton";
 
 export interface ISkeleton {
   className: string;

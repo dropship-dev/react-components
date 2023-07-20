@@ -16,8 +16,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    size: "textmd",
+    size: "textMD",
     content: "Label",
-    frontWeight: "medium",
+    fontWeight: "medium",
   },
 };

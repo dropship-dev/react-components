@@ -15,17 +15,17 @@ module.exports = {
       ],
     },
     fontSize: {
-      textxs: ["12px", "18px"],
-      textsm: ["14px", "20px"],
-      textmd: ["16px", "24px"],
-      textlg: ["18px", "28px"],
-      textxl: ["20px", "30px"],
-      displayxs: ["24px", "32px"],
-      displaysm: ["30px", "38px"],
-      displaymd: ["36px", "44px"],
-      displaylg: ["48px", "60px"],
-      displayxl: ["60px", "72px"],
-      display2xl: ["72px", "90px"],
+      textXS: ["12px", "18px"],
+      textSM: ["14px", "20px"],
+      textMD: ["16px", "24px"],
+      textLG: ["18px", "28px"],
+      textXL: ["20px", "30px"],
+      displayXS: ["24px", "32px"],
+      displaySM: ["30px", "38px"],
+      displayMD: ["36px", "44px"],
+      displayLG: ["48px", "60px"],
+      displayXL: ["60px", "72px"],
+      displayXXL: ["72px", "90px"],
     },
 
     container: {
@@ -61,7 +61,7 @@ module.exports = {
       fontWeight: {
         thin: "100",
         hairline: "100",
-        extralight: "200",
+        extraLight: "200",
         light: "300",
         normal: "400",
         medium: "500",
@@ -114,7 +114,6 @@ module.exports = {
           600: "hsl(var(--destructive-600))",
           700: "hsl(var(--destructive-700))",
           950: "hsl(var(--destructive-950))",
-          500: "hsl(var(--destructive-500))",
         },
 
         normal: {
@@ -187,4 +186,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("daisyui")],
+  daisyui: {
+    themes: [],
+  },
 };

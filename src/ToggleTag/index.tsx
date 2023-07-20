@@ -17,7 +17,7 @@ const labelVariants = cva(
         gradientDanger: "bg-destructive-400 text-destructive-950",
       },
     },
-  }
+  },
 );
 
 export interface ILabelProps

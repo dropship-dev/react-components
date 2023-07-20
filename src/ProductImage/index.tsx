@@ -62,7 +62,7 @@ const statusVariant = cva(
         instance: "bg-destructive-500",
       },
     },
-  }
+  },
 );
 
 export interface ILabelProps
@@ -72,10 +72,15 @@ export interface ILabelProps
   onCancel?: () => void;
 }
 
-const ProductImage = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  ILabelProps & VariantProps<typeof ProductVariants>
->(({ className, content, size, src, alt, onCancel, ...props }, ref) => (
+const ProductImage = ({
+  className,
+  content,
+  size,
+  src,
+  alt,
+  onCancel,
+  ...props
+}: ILabelProps & VariantProps<typeof ProductVariants>) => (
   <div className="relative w-fit">
     {onCancel && (
       <IconButton
@@ -97,7 +102,7 @@ const ProductImage = React.forwardRef<
         }
         color="destructive"
         size="xs"
-        hierachy="primary"
+        hierarchy="primary"
         className="absolute top-[-8px] right-[-8px] z-30"
         onClick={(e: any) => {
           onCancel();
@@ -134,12 +139,15 @@ const ProductImage = React.forwardRef<
       )}
     </AvatarUI>
   </div>
-));
+);
 
-const Avatar = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  ILabelProps & VariantProps<typeof AvatarVariants>
->(({ className, size, src, alt, status }) => (
+const Avatar = ({
+  className,
+  size,
+  src,
+  alt,
+  status,
+}: ILabelProps & VariantProps<typeof AvatarVariants>) => (
   <div className={cn("relative", AvatarVariants({ size }))}>
     {status && <div className={cn(statusVariant({ size, status }))}></div>}
     <AvatarUI className={cn(AvatarVariants({ size, className }))}>
@@ -169,7 +177,7 @@ const Avatar = React.forwardRef<
       </>
     </AvatarUI>
   </div>
-));
+);
 
 ProductImage.displayName = LabelPrimitive.Root.displayName;
 Avatar.displayName = LabelPrimitive.Root.displayName;
