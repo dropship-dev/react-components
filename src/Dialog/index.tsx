@@ -12,8 +12,7 @@ function Dialog(props: DialogProps) {
       <form method="dialog" className="modal-box dark:bg-white bg-white z-20">
         {content}
       </form>
-      <form
-        method="dialog"
+      <div
         className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm z-10"
         onClick={(e) => {
           e.stopPropagation();
