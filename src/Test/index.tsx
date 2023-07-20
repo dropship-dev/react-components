@@ -34,6 +34,7 @@ export default function Test() {
             >
               Close
             </button>
+            <button>AAA</button>
           </div>
         }
         open={open}
