@@ -19,3 +19,4 @@ export { default as Alert } from "./Alert";
 export { default as DropDownMenu } from "./DropDownMenu";
 export { default as Test } from "./Test";
 export { default as Drawer } from "./Drawer";
+export { default as RangeDatePicker } from "./RangeDatePicker";
