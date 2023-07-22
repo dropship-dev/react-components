@@ -54,11 +54,13 @@
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
     "daisyui": "^3.2.1",
+    "date-fns": "^2.30.0",
     "lucide-react": "^0.258.0",
     "moment": "^2.29.4",
     "postcss-loader": "^7.3.3",
     "prettier-plugin-tailwindcss": "^0.4.0",
     "react": "^18.2.0",
+    "react-day-picker": "^8.8.0",
     "react-slider": "^2.0.6",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6"
