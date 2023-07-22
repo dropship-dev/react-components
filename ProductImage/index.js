@@ -30,7 +30,7 @@ const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
 const class_variance_authority_1 = require("class-variance-authority");
 const utils_1 = require("../lib/utils");
 const __1 = require("..");
-const ProductVariants = (0, class_variance_authority_1.cva)("flex items-center justify-center", {
+const ProductVariants = (0, class_variance_authority_1.cva)("flex items-center justify-center z-0", {
     variants: {
         size: {
             xs: "w-[24px] h-[24px] rounded-[3px]",
@@ -61,7 +61,7 @@ const AvatarVariants = (0, class_variance_authority_1.cva)("flex items-center ju
         },
     },
 });
-const statusVariant = (0, class_variance_authority_1.cva)("z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white rounded-full", {
+const statusVariant = (0, class_variance_authority_1.cva)("absolute bottom-[-2px] right-[-2px] border-[2px] border-white rounded-full z-10", {
     variants: {
         size: {
             xs: "w-[10px] h-[10px]",
