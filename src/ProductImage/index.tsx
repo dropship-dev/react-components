@@ -11,7 +11,7 @@ import { cn } from "../lib/utils";
 
 import { IconButton, Skeleton } from "..";
 
-const ProductVariants = cva("flex items-center justify-center", {
+const ProductVariants = cva("flex items-center justify-center z-0", {
   variants: {
     size: {
       xs: "w-[24px] h-[24px] rounded-[3px]",
@@ -45,7 +45,7 @@ const AvatarVariants = cva("flex items-center justify-center rounded-full", {
 });
 
 const statusVariant = cva(
-  "z-20 absolute bottom-[-2px] right-[-2px] border-[2px] border-white rounded-full",
+  "absolute bottom-[-2px] right-[-2px] border-[2px] border-white rounded-full z-10",
   {
     variants: {
       size: {
