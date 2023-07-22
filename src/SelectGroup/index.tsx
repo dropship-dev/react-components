@@ -15,7 +15,7 @@ export default function SelectGroup(props: {
     <select
       className={`${width} ${
         size === "xs" ? "h-10" : size === "md" ? "h-12" : "h-11"
-      } border-gray-300 select w-full max-w-xs py-2 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start focus:outline-none`}
+      } border-gray-300 text-[14px] select w-full max-w-xs py-2 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start focus:outline-none`}
       //   className="select w-full max-w-xs focus:outline-none"
       placeholder={placeholder}
       onChange={onSelected}
