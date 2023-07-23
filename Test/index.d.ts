@@ -1,1 +1,3 @@
-export default function Test(): import("react/jsx-runtime").JSX.Element;
+export default function Test(props: {
+    sizePopup?: boolean;
+}): import("react/jsx-runtime").JSX.Element;
