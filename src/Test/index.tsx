@@ -21,6 +21,7 @@ export default function Test() {
         Open Drawer
       </button>
       <Dialog
+        width={900}
         onClose={() => {
           setOpen(false);
         }}
