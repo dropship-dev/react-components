@@ -2,19 +2,15 @@ import React from "react";
 interface DialogProps {
   content: React.ReactNode;
   open: boolean;
-  width?: number;
+  className?: string;
   onClose: () => void;
 }
 function Dialog(props: DialogProps) {
-  const { content, onClose, open, width } = props;
+  const { content, onClose, open, className } = props;
 
   return (
     <dialog id="my_modal_2" className="modal" open={open}>
-      <div
-        className={`modal-box dark:bg-white bg-white ${
-          width && `w-11/12 max-w-[${width}px]`
-        }`}
-      >
+      <div className={`modal-box dark:bg-white bg-white ${className}`}>
         {content}
       </div>
       <form

@@ -21,7 +21,7 @@ export default function Test() {
         Open Drawer
       </button>
       <Dialog
-        width={900}
+        className={"w-11/12 max-w-[900px]"}
         onClose={() => {
           setOpen(false);
         }}
