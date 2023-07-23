@@ -13,7 +13,7 @@ function Test() {
                     setOpen(true);
                 }, children: "Open Dialog" }), (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                     setOpenDrawer(true);
-                }, children: "Open Drawer" }), (0, jsx_runtime_1.jsx)(__1.Dialog, { onClose: () => {
+                }, children: "Open Drawer" }), (0, jsx_runtime_1.jsx)(__1.Dialog, { width: 900, onClose: () => {
                     setOpen(false);
                 }, content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                                 setOpen(false);
