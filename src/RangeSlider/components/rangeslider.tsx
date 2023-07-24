@@ -10,19 +10,10 @@ const RangeSlider = <T extends number | readonly number[]>(
       {..._props}
       renderThumb={(props, state) => (
         <div
-          key={props.key}
+          key={state.index}
           {...props}
           className="h-[16px] w-[16px] rounded-full bg-primary-500"
-
-          // cn({
-          // "h-[16px]": !isVertical,
-          // "w-[16px]": isVertical,
-          // // "aspect-square rounded-full bg-primary-500 cursor-grab focus-visible:ring"
-          // "": true,
-          // })}
-        >
-          {/* {state.valueNow} */}
-        </div>
+        />
       )}
       renderTrack={(props, state) => {
         const points = Array.isArray(state.value) ? state.value.length : null;
@@ -31,7 +22,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         const isFirst = state.index === 0;
         return (
           <div
-            key={props.key}
+            key={state.index}
             {...props}
             className={cn(
               (isMulti ? isFirst || isLast : isLast)
@@ -41,10 +32,6 @@ const RangeSlider = <T extends number | readonly number[]>(
                 "h-1/4 top-1/2 -translate-y-1/2": !isVertical,
                 "w-1/4 left-1/2 -translate-x-1/2": isVertical,
                 "rounded-full": true,
-                // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
-                // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
-                // "bg-gray-300": isMulti ? isFirst || isLast : isLast,
-                // "bg-primary-500": isMulti ? !isFirst || !isLast : isFirst,
               },
             )}
           ></div>
