@@ -20,15 +20,26 @@ export default function SelectGroup(props: {
       placeholder={placeholder}
       onChange={onSelected}
     >
-      {optionTop && <option selected>{optionTop}</option>}
+      {optionTop && (
+        <option
+          className="py-2 px3 text-textSM text-gray-900 border-b-[1px] border-b-gray-100"
+          selected
+        >
+          {optionTop}
+        </option>
+      )}
       {data.map((i) => {
         return (
-          <>
-            <option disabled>{i.name}</option>
+          <div className="border-b-[1px] border-b-gray-100">
+            <option disabled className="py-2 px3 text-textSM text-gray-400">
+              {i.name}
+            </option>
             {i.value.map((i) => (
-              <option>{i}</option>
+              <option className="py-2 px3 text-textSM text-gray-900">
+                {i}
+              </option>
             ))}
-          </>
+          </div>
         );
       })}
     </select>
