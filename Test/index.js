@@ -9,6 +9,7 @@ const __1 = require("..");
 function Test(props) {
     const [open, setOpen] = react_1.default.useState(false);
     const [openDrawer, setOpenDrawer] = react_1.default.useState(false);
+    const [date, setDate] = react_1.default.useState();
     return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("button", { onClick: () => {
                     setOpen(true);
                 }, children: "Open Dialog" }), (0, jsx_runtime_1.jsx)("button", { onClick: () => {
@@ -21,6 +22,6 @@ function Test(props) {
                                 setOpenDrawer(false);
                             }, children: "Close" })] }), open: openDrawer, onClose: () => {
                     setOpenDrawer(false);
-                } })] }));
+                } }), (0, jsx_runtime_1.jsx)(__1.RangeDatePicker, { date: date, setDate: setDate })] }));
 }
 exports.default = Test;

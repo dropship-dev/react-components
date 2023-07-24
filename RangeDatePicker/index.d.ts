@@ -1,2 +1,8 @@
 import * as React from "react";
-export default function RangeDatePicker({ className, }: React.HTMLAttributes<HTMLDivElement>): import("react/jsx-runtime").JSX.Element;
+import { DateRange } from "react-day-picker";
+interface IRangeDatePicker {
+    date: DateRange | undefined;
+    setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+}
+export default function RangeDatePicker(props: IRangeDatePicker): import("react/jsx-runtime").JSX.Element;
+export {};
