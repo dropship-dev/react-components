@@ -16,10 +16,13 @@ import {
 import { Button } from "..";
 import moment from "moment";
 
-export default function RangeDatePicker({
-  className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>();
+interface IRangeDatePicker {
+  date: DateRange | undefined;
+  setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
+}
+export default function RangeDatePicker(props: IRangeDatePicker) {
+  const { date, setDate } = props;
+  // const [date, setDate] = React.useState<DateRange | undefined>();
 
   const [open, setOpen] = React.useState<boolean>(false);
 
@@ -31,13 +34,13 @@ export default function RangeDatePicker({
   var endOfYear = moment().endOf("year").toDate();
 
   return (
-    <div className={cn("grid gap-2", className)}>
+    <div className={cn("grid gap-2")}>
       <Popover open={open} onOpenChange={(open) => setOpen(open)}>
         <PopoverTrigger>
           <div
             id="date"
             className={cn(
-              "w-[262px] justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center",
+              "w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center",
               !date && "text-muted-foreground",
             )}
           >
