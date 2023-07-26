@@ -25,18 +25,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <div className="gap-[6px] flex flex-col">
         {label && (
-          <p className={`text-[14px] font-medium	leading-[20px] text-gray-500`}>
+          <p className={`text-[14px] font-medium leading-[20px] text-gray-500`}>
             {label}
           </p>
         )}
         <div
           className={cn(
-            `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid  rounded-[8px] `
+            `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid  rounded-[8px] `,
           )}
         >
           {iconPre}
@@ -46,7 +46,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               `flex h-[24px] w-full text-[16px] font-medium text-black leading-[24px] focus:outline-none ${
                 iconPre ? "pl-[8px]" : ""
-              } pr-3 py-2 ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 `
+              } pr-3 py-2 ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 `,
             )}
             ref={ref}
             {...props}
@@ -60,7 +60,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 Input.displayName = "Input";
 
