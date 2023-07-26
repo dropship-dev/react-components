@@ -36,7 +36,14 @@ export default function Select(props: {
 
   return (
     <SelectData onValueChange={onSelected} defaultValue={defaultValue}>
-      {label && <Label content={label} size="textXL" fontWeight={"medium"} />}
+      {label && (
+        <Label
+          content={label}
+          size="textSM"
+          fontWeight={"medium"}
+          className="text-gray-500"
+        />
+      )}
       <SelectTrigger
         className={`${width} ${
           size === "xs" ? "h-10" : size === "md" ? "h-12" : "h-11"
