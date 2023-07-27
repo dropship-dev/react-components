@@ -70,6 +70,7 @@ export interface ILabelProps
   src: string;
   alt: string;
   onCancel?: () => void;
+  type?: "scale" | "zoomIn" | "normal";
 }
 
 const ProductImage = ({
@@ -78,6 +79,7 @@ const ProductImage = ({
   size,
   src,
   alt,
+  type,
   onCancel,
   ...props
 }: ILabelProps & VariantProps<typeof ProductVariants>) => (
@@ -114,8 +116,35 @@ const ProductImage = ({
     <AvatarUI className={cn(ProductVariants({ size, className }))}>
       {src ? (
         <>
-          <AvatarImage src={src} alt={`@${alt}`} />
-          <Skeleton className="w-full h-full rounded-none" />
+          {type === "zoomIn" ? (
+            <AvatarImage
+              src={src}
+              alt={`@${alt}`}
+              className="flex justify-center w-fit h-fit"
+            />
+          ) : type === "scale" ? (
+            <div className={cn(ProductVariants({ size }))}>
+              <AvatarImage
+                src={src}
+                alt={`@${alt}`}
+                className="flex justify-center"
+              />
+            </div>
+          ) : (
+            <div
+              className={cn(
+                ProductVariants({ size }),
+                "relative flex justify-center bg-gray-200",
+              )}
+            >
+              <AvatarImage
+                src={src}
+                alt={`@${alt}`}
+                className="block m-auto w-fit"
+              />
+              <div />
+            </div>
+          )}
         </>
       ) : (
         <button
