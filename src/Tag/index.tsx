@@ -30,17 +30,15 @@ const Tag = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   ITagProps & VariantProps<typeof TagVariants>
 >(({ className, content, size, onCancel, onSelectTag, ...props }, ref) => (
-  <div className="w-[200px]">
-    <LabelPrimitive.Root
-      onClick={onSelectTag ?? undefined}
-      ref={ref}
-      className={cn(TagVariants({ size, className }))}
-      {...props}
-    >
-      {content}
-      {onCancel && <Cross1Icon onClick={onCancel} />}
-    </LabelPrimitive.Root>
-  </div>
+  <LabelPrimitive.Root
+    onClick={onSelectTag ?? undefined}
+    ref={ref}
+    className={cn(TagVariants({ size, className }))}
+    {...props}
+  >
+    {content}
+    {onCancel && <Cross1Icon onClick={onCancel} />}
+  </LabelPrimitive.Root>
 ));
 Tag.displayName = LabelPrimitive.Root.displayName;
 
