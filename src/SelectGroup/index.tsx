@@ -1,3 +1,4 @@
+import React from "react";
 export default function SelectGroup(props: {
   data: { name: string; value: string[] }[];
   placeholder?: string;
@@ -8,8 +9,10 @@ export default function SelectGroup(props: {
   defaultValue?: string;
   size?: "xs" | "sm" | "md";
   optionTop?: string;
+  value?: string;
 }) {
-  const { data, placeholder, optionTop, onSelected, width, size } = props;
+  const { data, placeholder, optionTop, onSelected, width, size, value } =
+    props;
 
   return (
     <select
@@ -18,6 +21,7 @@ export default function SelectGroup(props: {
       } border-gray-300 text-[14px] select w-full max-w-xs py-2 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start focus:outline-none`}
       //   className="select w-full max-w-xs focus:outline-none"
       placeholder={placeholder}
+      value={value}
       onChange={onSelected}
     >
       {optionTop && (
