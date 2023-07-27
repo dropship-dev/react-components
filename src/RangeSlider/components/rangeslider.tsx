@@ -7,6 +7,7 @@ const RangeSlider = <T extends number | readonly number[]>(
   const isVertical = _props.orientation === "vertical";
   return (
     <ReactSlider
+      key={_props.value?.toString()}
       {..._props}
       renderThumb={(props, state) => (
         <div
@@ -38,7 +39,6 @@ const RangeSlider = <T extends number | readonly number[]>(
       renderMark={(props) => {
         return (
           <div
-            key={props.key}
             {...props}
             className={cn({
               "top-1/2 -translate-y-1/2": !isVertical,

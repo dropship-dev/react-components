@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, Drawer, RangeDatePicker } from "..";
+import { Dialog, Drawer, RangeDatePicker, Slider } from "..";
 import { DateRange } from "react-day-picker";
 
 export default function Test(props: { sizePopup?: boolean }) {
@@ -63,6 +63,7 @@ export default function Test(props: { sizePopup?: boolean }) {
         }}
       />
       <RangeDatePicker date={date} setDate={setDate} />
+      <Slider min={0} max={100} defaultValue={[0, 100]} />
     </>
   );
 }
