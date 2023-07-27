@@ -26,7 +26,7 @@ const RangeSlider = (_props) => {
                     "left-1/2 -translate-x-1/2": isVertical,
                     "h-1 w-1": true,
                     "rounded-full bg-red-500": true,
-                }) }, props.key));
-        } }));
+                }) }));
+        } }, _props.value?.toString()));
 };
 exports.default = RangeSlider;

@@ -30,7 +30,7 @@ const LabelPrimitive = __importStar(require("@radix-ui/react-label"));
 const class_variance_authority_1 = require("class-variance-authority");
 const react_icons_1 = require("@radix-ui/react-icons");
 const utils_1 = require("../lib/utils");
-const TagVariants = (0, class_variance_authority_1.cva)("leading-[20px] font-[400] h-fit flex flex-wrap item-center border-[1px] border-solid hover:bg-primary-25 hover:border-primary-500 active:bg-primary-100 flex flex-row gap-[8px] items-center w-fit py-[6px] px-[10px] focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]", {
+const TagVariants = (0, class_variance_authority_1.cva)("leading-[20px] font-[400] h-fit flex-wrap item-center border-[1px] border-solid hover:bg-primary-25 hover:border-primary-500 active:bg-primary-100 flex flex-row gap-[8px] items-center w-fit py-[6px] px-[10px] focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]", {
     variants: {
         size: {
             sm: "text-[14px] rounded-[16px]",
