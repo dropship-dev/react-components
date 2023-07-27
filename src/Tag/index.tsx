@@ -8,12 +8,12 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 import { cn } from "../lib/utils";
 
 const TagVariants = cva(
-  "leading-[20px] font-[400] border-[1px] border-solid hover:bg-primary-25 hover:border-primary-500 active:bg-primary-100 flex flex-row gap-[8px] items-center w-fit py-[6px] px-[10px] focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
+  "leading-[20px] font-[400] h-fit flex flex-wrap item-center border-[1px] border-solid hover:bg-primary-25 hover:border-primary-500 active:bg-primary-100 flex flex-row gap-[8px] items-center w-fit py-[6px] px-[10px] focus:shadow-[#EAECF0] focus:shadow-[0_0_0_4px]",
   {
     variants: {
       size: {
-        sm: "h-[34px] text-[14px] rounded-[16px]",
-        md: "h-[44px] text-[16px] rounded-[21px]",
+        sm: "text-[14px] rounded-[16px]",
+        md: "text-[16px] rounded-[21px]",
       },
     },
   },
@@ -30,15 +30,17 @@ const Tag = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   ITagProps & VariantProps<typeof TagVariants>
 >(({ className, content, size, onCancel, onSelectTag, ...props }, ref) => (
-  <LabelPrimitive.Root
-    onClick={onSelectTag ?? undefined}
-    ref={ref}
-    className={cn(TagVariants({ size, className }))}
-    {...props}
-  >
-    {content}
-    {onCancel && <Cross1Icon onClick={onCancel} />}
-  </LabelPrimitive.Root>
+  <div className="w-[200px]">
+    <LabelPrimitive.Root
+      onClick={onSelectTag ?? undefined}
+      ref={ref}
+      className={cn(TagVariants({ size, className }))}
+      {...props}
+    >
+      {content}
+      {onCancel && <Cross1Icon onClick={onCancel} />}
+    </LabelPrimitive.Root>
+  </div>
 ));
 Tag.displayName = LabelPrimitive.Root.displayName;
 
