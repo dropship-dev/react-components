@@ -28,6 +28,6 @@ const RangeSlider = (_props) => {
                     "h-1 w-1": true,
                     "rounded-full bg-red-500": true,
                 }) }, props.key));
-        } }));
+        } }, _props.value?.toString()));
 };
 exports.default = RangeSlider;
