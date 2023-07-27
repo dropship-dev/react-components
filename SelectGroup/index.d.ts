@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from "react";
 export default function SelectGroup(props: {
     data: {
         name: string;
@@ -12,4 +12,5 @@ export default function SelectGroup(props: {
     defaultValue?: string;
     size?: "xs" | "sm" | "md";
     optionTop?: string;
+    value?: string;
 }): import("react/jsx-runtime").JSX.Element;

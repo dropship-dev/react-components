@@ -21,12 +21,12 @@ const RangeSlider = (_props) => {
                     "rounded-full": true,
                 }) }));
         }, renderMark: (props) => {
-            return ((0, jsx_runtime_1.jsx)("div", { ...props, className: (0, utils_1.cn)({
+            return ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)({
                     "top-1/2 -translate-y-1/2": !isVertical,
                     "left-1/2 -translate-x-1/2": isVertical,
                     "h-1 w-1": true,
                     "rounded-full bg-red-500": true,
-                }) }));
+                }) }, props.key));
         } }, _props.value?.toString()));
 };
 exports.default = RangeSlider;
