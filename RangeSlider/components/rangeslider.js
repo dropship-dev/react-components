@@ -13,13 +13,13 @@ const RangeSlider = (_props) => {
             const isMulti = points && points > 0;
             const isLast = isMulti ? state.index === points : state.index != 0;
             const isFirst = state.index === 0;
-            return ((0, jsx_runtime_1.jsx)("div", { ...props, className: (0, utils_1.cn)((isMulti ? isFirst || isLast : isLast)
+            return ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)((isMulti ? isFirst || isLast : isLast)
                     ? "bg-gray-300"
                     : "bg-primary-500", {
                     "h-1/4 top-1/2 -translate-y-1/2": !isVertical,
                     "w-1/4 left-1/2 -translate-x-1/2": isVertical,
                     "rounded-full": true,
-                }) }));
+                }) }, props.key));
         }, renderMark: (props) => {
             return ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)({
                     "top-1/2 -translate-y-1/2": !isVertical,
