@@ -9,21 +9,24 @@ const RangeSlider = <T extends number | readonly number[]>(
     <ReactSlider
       key={_props.value?.toString()}
       {..._props}
-      renderThumb={(props, state) => (
-        <div
-          key={state.index}
-          {...props}
-          className="h-[16px] w-[16px] rounded-full bg-primary-500"
-        />
-      )}
+      renderThumb={(props, state) => {
+        const prop = { ...props, key: undefined };
+        return (
+          <div
+            {...prop}
+            className="h-[16px] w-[16px] rounded-full bg-primary-500"
+          />
+        );
+      }}
       renderTrack={(props, state) => {
+        const prop = { ...props, key: undefined };
         const points = Array.isArray(state.value) ? state.value.length : null;
         const isMulti = points && points > 0;
         const isLast = isMulti ? state.index === points : state.index != 0;
         const isFirst = state.index === 0;
         return (
           <div
-            {...props}
+            {...prop}
             key={state.index}
             className={cn(
               (isMulti ? isFirst || isLast : isLast)
@@ -39,10 +42,10 @@ const RangeSlider = <T extends number | readonly number[]>(
         );
       }}
       renderMark={(props) => {
+        const prop = { ...props, key: undefined };
         return (
           <div
-            key={props.key}
-            {...props}
+            {...prop}
             className={cn({
               "top-1/2 -translate-y-1/2": !isVertical,
               "left-1/2 -translate-x-1/2": isVertical,
