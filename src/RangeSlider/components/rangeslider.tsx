@@ -7,6 +7,7 @@ const RangeSlider = <T extends number | readonly number[]>(
   const isVertical = _props.orientation === "vertical";
   return (
     <ReactSlider
+      key={_props.value?.toString()}
       {..._props}
       renderThumb={(props, state) => (
         <div
