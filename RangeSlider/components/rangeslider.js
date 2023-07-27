@@ -10,8 +10,8 @@ const utils_1 = require("../../lib/utils");
 const RangeSlider = (_props) => {
     const isVertical = _props.orientation === "vertical";
     return ((0, jsx_runtime_1.jsx)(react_slider_1.default, { ..._props, renderThumb: (props, state) => {
-            const prop = { ...props, key: undefined };
-            return ((0, jsx_runtime_1.jsx)("div", { ...prop, className: "h-[16px] w-[16px] rounded-full bg-primary-500" }));
+            const { key, ...remainProps } = props;
+            return ((0, jsx_runtime_1.jsx)("div", { ...remainProps, className: "h-[16px] w-[16px] rounded-full bg-primary-500", onClick: () => console.log(props) }, key));
         }, renderTrack: (props, state) => {
             const prop = { ...props, key: undefined };
             const points = Array.isArray(state.value) ? state.value.length : null;
