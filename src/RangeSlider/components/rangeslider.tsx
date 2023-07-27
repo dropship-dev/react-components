@@ -7,10 +7,10 @@ const RangeSlider = <T extends number | readonly number[]>(
   const isVertical = _props.orientation === "vertical";
   return (
     <ReactSlider
-      key={_props.value?.toString()}
       {..._props}
       renderThumb={(props, state) => (
         <div
+          key={props.key}
           {...props}
           className="h-[16px] w-[16px] rounded-full bg-primary-500"
         />
@@ -22,6 +22,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         const isFirst = state.index === 0;
         return (
           <div
+            {...props}
             key={props.key}
             className={cn(
               (isMulti ? isFirst || isLast : isLast)
@@ -40,13 +41,14 @@ const RangeSlider = <T extends number | readonly number[]>(
         return (
           <div
             key={props.key}
+            {...props}
             className={cn({
               "top-1/2 -translate-y-1/2": !isVertical,
               "left-1/2 -translate-x-1/2": isVertical,
               "h-1 w-1": true,
               "rounded-full bg-red-500": true,
             })}
-          />
+          ></div>
         );
       }}
     />
