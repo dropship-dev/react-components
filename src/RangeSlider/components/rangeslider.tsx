@@ -11,7 +11,7 @@ const RangeSlider = <T extends number | readonly number[]>(
       {..._props}
       renderThumb={(props, state) => (
         <div
-          key={props.key}
+          key={state.index}
           {...props}
           className="h-[16px] w-[16px] rounded-full bg-primary-500"
         />
@@ -24,7 +24,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         return (
           <div
             {...props}
-            key={props.key}
+            key={state.index}
             className={cn(
               (isMulti ? isFirst || isLast : isLast)
                 ? "bg-gray-300"
