@@ -22,7 +22,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         const isFirst = state.index === 0;
         return (
           <div
-            {...props}
+            key={props.key}
             className={cn(
               (isMulti ? isFirst || isLast : isLast)
                 ? "bg-gray-300"
