@@ -39,14 +39,14 @@ const RangeSlider = <T extends number | readonly number[]>(
       renderMark={(props) => {
         return (
           <div
-            {...props}
+            key={props.key}
             className={cn({
               "top-1/2 -translate-y-1/2": !isVertical,
               "left-1/2 -translate-x-1/2": isVertical,
               "h-1 w-1": true,
               "rounded-full bg-red-500": true,
             })}
-          ></div>
+          />
         );
       }}
     />
