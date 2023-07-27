@@ -28,13 +28,19 @@ export default function SelectGroup(props: {
           {optionTop}
         </option>
       )}
-      {data.map((i) => (
+      {data.map((i, index) => (
         <>
-          <option disabled className="py-2 px3 text-textSM text-gray-400">
+          <option
+            key={index}
+            disabled
+            className="py-2 px3 text-textSM text-gray-400"
+          >
             {i.name}
           </option>
-          {i.value.map((i) => (
-            <option className="py-2 px3 text-textSM text-gray-900">{i}</option>
+          {i.value.map((i, id) => (
+            <option key={id} className="py-2 px3 text-textSM text-gray-900">
+              {i}
+            </option>
           ))}
         </>
       ))}
