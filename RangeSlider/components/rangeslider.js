@@ -13,12 +13,12 @@ const RangeSlider = (_props) => {
             const { key, ...remainProps } = props;
             return ((0, jsx_runtime_1.jsx)("div", { ...remainProps, className: "h-[16px] w-[16px] rounded-full bg-primary-500", onClick: () => console.log(props) }, key));
         }, renderTrack: (props, state) => {
-            const prop = { ...props, key: undefined };
             const points = Array.isArray(state.value) ? state.value.length : null;
             const isMulti = points && points > 0;
             const isLast = isMulti ? state.index === points : state.index != 0;
             const isFirst = state.index === 0;
-            return ((0, react_1.createElement)("div", { ...prop, key: state.index, className: (0, utils_1.cn)((isMulti ? isFirst || isLast : isLast)
+            const { key, ...otherProps } = props;
+            return ((0, react_1.createElement)("div", { ...otherProps, key: key, className: (0, utils_1.cn)((isMulti ? isFirst || isLast : isLast)
                     ? "bg-gray-300"
                     : "bg-primary-500", {
                     "h-1/4 top-1/2 -translate-y-1/2": !isVertical,
@@ -26,13 +26,13 @@ const RangeSlider = (_props) => {
                     "rounded-full": true,
                 }) }));
         }, renderMark: (props) => {
-            const prop = { ...props, key: undefined };
-            return ((0, jsx_runtime_1.jsx)("div", { ...prop, className: (0, utils_1.cn)({
+            const { key, ...remainProps } = props;
+            return ((0, jsx_runtime_1.jsx)("div", { ...remainProps, className: (0, utils_1.cn)({
                     "top-1/2 -translate-y-1/2": !isVertical,
                     "left-1/2 -translate-x-1/2": isVertical,
                     "h-1 w-1": true,
                     "rounded-full bg-red-500": true,
-                }) }));
+                }) }, key));
         } }, _props.value?.toString()));
 };
 exports.default = RangeSlider;
