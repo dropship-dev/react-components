@@ -14,7 +14,6 @@ export default function Rating(props: RatingProps) {
         size === "xs" ? "rating-xs" : "rating-md"
       } rating-half`}
     >
-      <input type="radio" name="rating-10" className="rating-hidden" />
       <input
         type="checkbox"
         name="rating-10"
