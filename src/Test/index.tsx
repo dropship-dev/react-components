@@ -1,5 +1,5 @@
 import React from "react";
-import { Dialog, Drawer, RangeDatePicker, Slider } from "..";
+import { ComboBox, Dialog, Drawer, RangeDatePicker, Rating, Slider } from "..";
 import { DateRange } from "react-day-picker";
 
 export default function Test(props: { sizePopup?: boolean }) {
@@ -7,6 +7,8 @@ export default function Test(props: { sizePopup?: boolean }) {
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const [date, setDate] = React.useState<DateRange | undefined>();
+  const [openCombobox, setOpenCombobox] = React.useState<boolean>(false);
+  const [valueRating, setValueRating] = React.useState<number>(3);
 
   return (
     <>
@@ -44,6 +46,35 @@ export default function Test(props: { sizePopup?: boolean }) {
         }
         open={open}
       />
+      <ComboBox
+        content="tag"
+        data={[
+          {
+            value: "next.js",
+            label: "Next.js",
+          },
+          {
+            value: "sveltekit",
+            label: "SvelteKit",
+          },
+          {
+            value: "nuxt.js",
+            label: "Nuxt.js",
+          },
+        ]}
+        onChangeValue={(e: any) => {
+          console.log(e.target.value);
+
+          if (e.target.value === "") {
+            setOpen(false);
+          } else setOpen(true);
+        }}
+        onSelect={(e: string) => {
+          setOpen(false);
+        }}
+        open={true}
+        setOpen={setOpen}
+      />
       <Drawer
         content={
           <div className="flex flex-col">
@@ -64,6 +95,7 @@ export default function Test(props: { sizePopup?: boolean }) {
       />
       <RangeDatePicker date={date} setDate={setDate} />
       <Slider min={0} max={100} defaultValue={[0, 100]} />
+      <Rating rating={valueRating} setRating={setValueRating} />
     </>
   );
 }
