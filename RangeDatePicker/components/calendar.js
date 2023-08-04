@@ -30,8 +30,8 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
             day_hidden: "invisible",
             ...classNames,
         }, components: {
-            IconLeft: ({ ...props }) => (0, jsx_runtime_1.jsx)(lucide_react_1.ChevronLeft, { size: 20, color: "black" }),
-            IconRight: ({ ...props }) => (0, jsx_runtime_1.jsx)(lucide_react_1.ChevronRight, { size: 20, color: "black" }),
+            IconLeft: ({ ...props }) => ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(lucide_react_1.ChevronLeft, { size: 20, color: "black" }) })),
+            IconRight: ({ ...props }) => ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(lucide_react_1.ChevronRight, { size: 20, color: "black" }) })),
         }, ...props }));
 }
 exports.Calendar = Calendar;
