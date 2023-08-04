@@ -20,21 +20,21 @@ function Calendar({
       className={cn("px-6 py-5", className)}
       classNames={{
         months:
-          "flex flex-col sm:flex-row space-y-2 sm:space-x-6 sm:space-y-0 ",
-        month: "space-y-2",
+          "flex flex-col sm:flex-row space-y-0 sm:space-x-6 sm:space-y-0 ",
+        month: "space-y-0",
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-textSM font-medium text-black pb-2",
         nav: "space-x-3 flex items-center",
-        nav_button: "h-8 w-8 bg-transparent p-0 opacity-50 hover:opacity-100",
+        nav_button: "h-6 w-6 bg-transparent p-0 opacity-50 hover:opacity-100",
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
+        table: "w-full border-collapse space-y-0",
         head_row: "flex",
         head_cell:
-          "text-gray-900 w-10 flex justify-center font-normal text-[12px]",
+          "text-gray-900 w-8 flex justify-center font-normal text-[12px]",
         row: "flex w-full mt-2",
         cell: "text-center text-[12px] p-0 relative [&:has([aria-selected])]:bg-neutral-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
-        day: "h-10 w-10 p-0 font-normal rounded-full aria-selected:opacity-100",
+        day: "h-8 w-8 p-0 font-normal rounded-full aria-selected:opacity-100",
         day_selected:
           "bg-primary-500 text-neutral-50 hover:bg-primary-500 hover:text-neutral-50 focus:bg-primary-500 focus:text-neutral-50",
         day_today: "bg-neutral-100 text-neutral-900",
