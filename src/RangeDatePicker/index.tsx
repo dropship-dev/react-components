@@ -48,11 +48,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, "LLL dd, y")} -{" "}
-                  {format(date.to, "LLL dd, y")}
+                  {format(date.from, "dd/MM/yyyy")} -{" "}
+                  {format(date.to, "dd/MM/yyyy")}
                 </>
               ) : (
-                format(date.from, "LLL dd, y")
+                format(date.from, "dd/MM/yyyy")
               )
             ) : (
               <span>All time</span>
