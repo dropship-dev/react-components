@@ -69,7 +69,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     to: new Date(),
                   })
                 }
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px]"
+                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 Today
               </div>
@@ -80,7 +80,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     to: endOfWeek,
                   })
                 }
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px]"
+                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 This week
               </div>
@@ -91,7 +91,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     to: endOfMonth,
                   })
                 }
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px]"
+                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 This month
               </div>
@@ -102,13 +102,13 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     to: endOfYear,
                   })
                 }
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px]"
+                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 This year
               </div>
               <div
                 onClick={() => setDate(undefined)}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px]"
+                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 All time
               </div>
