@@ -129,6 +129,10 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   color="gray"
                   hierarchy="secondary"
                   size="md"
+                  onClick={() => {
+                    setOpen(false);
+                    setDate(undefined);
+                  }}
                 />
                 <Button
                   content="Apply"
