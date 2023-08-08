@@ -7,10 +7,9 @@ const RangeSlider = <T extends number | readonly number[]>(
   const isVertical = _props.orientation === "vertical";
   return (
     <ReactSlider
-      key={_props.value?.toString()}
       {..._props}
       renderThumb={(props, state) => {
-        const { key, ...remainProps } = props;
+        // const { key, ...remainProps } = props;
         return (
           <div
             {...props}
@@ -23,7 +22,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         const isMulti = points && points > 0;
         const isLast = isMulti ? state.index === points : state.index != 0;
         const isFirst = state.index === 0;
-        const { key, ...otherProps } = props;
+        // const { key, ...otherProps } = props;
         return (
           <div
             {...props}
@@ -41,7 +40,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         );
       }}
       renderMark={(props) => {
-        const { key, ...remainProps } = props;
+        // const { key, ...remainProps } = props;
         return (
           <div
             {...props}
