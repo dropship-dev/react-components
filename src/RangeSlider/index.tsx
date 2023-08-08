@@ -9,7 +9,7 @@ export interface IRangeSlider {
 }
 
 export default function Slider(props: IRangeSlider) {
-  const { min, max, className, onChange, defaultValue, value } = props;
+  const { min, max, onChange, defaultValue, value } = props;
   return (
     <RangeSlider
       className="w-full h-[16px]"

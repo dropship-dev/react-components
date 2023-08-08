@@ -13,10 +13,8 @@ const RangeSlider = <T extends number | readonly number[]>(
         const { key, ...remainProps } = props;
         return (
           <div
-            key={key}
-            {...remainProps}
+            {...props}
             className="h-[16px] w-[16px] rounded-full bg-primary-500"
-            onClick={() => console.log(props)}
           />
         );
       }}
@@ -28,8 +26,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         const { key, ...otherProps } = props;
         return (
           <div
-            {...otherProps}
-            key={key}
+            {...props}
             className={cn(
               (isMulti ? isFirst || isLast : isLast)
                 ? "bg-gray-300"
@@ -47,8 +44,7 @@ const RangeSlider = <T extends number | readonly number[]>(
         const { key, ...remainProps } = props;
         return (
           <div
-            key={key}
-            {...remainProps}
+            {...props}
             className={cn({
               "top-1/2 -translate-y-1/2": !isVertical,
               "left-1/2 -translate-x-1/2": isVertical,
