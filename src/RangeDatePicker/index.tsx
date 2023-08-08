@@ -40,7 +40,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
           <div
             id="date"
             className={cn(
-              "w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center",
+              "w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11",
               !date && "text-muted-foreground",
             )}
           >
