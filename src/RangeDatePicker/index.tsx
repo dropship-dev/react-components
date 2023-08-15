@@ -22,7 +22,8 @@ interface IRangeDatePicker {
 }
 export default function RangeDatePicker(props: IRangeDatePicker) {
   const { date, setDate } = props;
-  // const [date, setDate] = React.useState<DateRange | undefined>();
+
+  const [datePicker, setDatePicker] = React.useState<DateRange | undefined>();
 
   const [open, setOpen] = React.useState<boolean>(false);
 
@@ -41,18 +42,18 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
             id="date"
             className={cn(
               "w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11",
-              !date && "text-muted-foreground",
+              !datePicker && "text-muted-foreground",
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {date?.from ? (
-              date.to ? (
+            {datePicker?.from ? (
+              datePicker.to ? (
                 <>
-                  {format(date.from, "dd/MM/yyyy")} -{" "}
-                  {format(date.to, "dd/MM/yyyy")}
+                  {format(datePicker.from, "dd/MM/yyyy")} -{" "}
+                  {format(datePicker.to, "dd/MM/yyyy")}
                 </>
               ) : (
-                format(date.from, "dd/MM/yyyy")
+                format(datePicker.from, "dd/MM/yyyy")
               )
             ) : (
               <span>All time</span>
@@ -117,9 +118,9 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <Calendar
                 initialFocus
                 mode="range"
-                defaultMonth={date?.from}
-                selected={date}
-                onSelect={setDate}
+                defaultMonth={datePicker?.from}
+                selected={datePicker}
+                onSelect={setDatePicker}
                 numberOfMonths={2}
                 className="border-b-[1px] border-gray-300"
               />
@@ -131,7 +132,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   size="md"
                   onClick={() => {
                     setOpen(false);
-                    setDate(undefined);
+                    setDatePicker(date);
                   }}
                 />
                 <Button
@@ -139,7 +140,10 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   color="blue"
                   hierarchy="primary"
                   size="md"
-                  onClick={() => setOpen(false)}
+                  onClick={() => {
+                    setOpen(false);
+                    setDate(datePicker);
+                  }}
                 />
               </div>
             </div>
