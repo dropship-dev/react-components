@@ -65,7 +65,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
             <div className="flex flex-col px-4 py-3 border-r-[1px] border-gray-100">
               <div
                 onClick={() =>
-                  setDate({
+                  setDatePicker({
                     from: new Date(),
                     to: new Date(),
                   })
@@ -76,7 +76,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               </div>
               <div
                 onClick={() =>
-                  setDate({
+                  setDatePicker({
                     from: startOfWeek,
                     to: endOfWeek,
                   })
@@ -87,7 +87,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               </div>
               <div
                 onClick={() =>
-                  setDate({
+                  setDatePicker({
                     from: startOfMonth,
                     to: endOfMonth,
                   })
@@ -98,7 +98,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               </div>
               <div
                 onClick={() =>
-                  setDate({
+                  setDatePicker({
                     from: startOfYear,
                     to: endOfYear,
                   })
@@ -108,7 +108,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 This year
               </div>
               <div
-                onClick={() => setDate(undefined)}
+                onClick={() => setDatePicker(undefined)}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 All time

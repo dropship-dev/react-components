@@ -9,10 +9,11 @@ const RangeSlider = <T extends number | readonly number[]>(
     <ReactSlider
       {..._props}
       renderThumb={(props, state) => {
-        // const { key, ...remainProps } = props;
+        const { key, ...remainProps } = props;
         return (
           <div
-            {...props}
+            key={key}
+            {...remainProps}
             className="h-[16px] w-[16px] rounded-full bg-primary-500"
           />
         );
