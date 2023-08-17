@@ -63,7 +63,14 @@ function RangeDatePicker(props) {
                                                     setDatePicker(date);
                                                 } }), (0, jsx_runtime_1.jsx)(__1.Button, { content: "Apply", color: "blue", hierarchy: "primary", size: "md", onClick: () => {
                                                     setOpen(false);
-                                                    setDate(datePicker);
+                                                    setDate({
+                                                        from: new Date((0, moment_1.default)(datePicker?.from)
+                                                            .startOf("day")
+                                                            .toString()),
+                                                        to: new Date((0, moment_1.default)(datePicker?.to)
+                                                            .endOf("day")
+                                                            .toString()),
+                                                    });
                                                 } })] })] })] }) })] }) }));
 }
 exports.default = RangeDatePicker;
