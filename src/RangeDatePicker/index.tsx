@@ -142,7 +142,19 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   size="md"
                   onClick={() => {
                     setOpen(false);
-                    setDate(datePicker);
+
+                    setDate({
+                      from: new Date(
+                        moment(datePicker?.from)
+                          .startOf("day")
+                          .toString(),
+                      ),
+                      to: new Date(
+                        moment(datePicker?.to)
+                          .endOf("day")
+                          .toString(),
+                      ),
+                    });
                   }}
                 />
               </div>
