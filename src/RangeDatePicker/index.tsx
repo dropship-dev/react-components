@@ -108,7 +108,9 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 This year
               </div>
               <div
-                onClick={() => setDatePicker(undefined)}
+                onClick={() =>
+                  setDatePicker({ from: undefined, to: undefined })
+                }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 All time
@@ -126,7 +128,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               />
               <div className="flex justify-end items-center flex-row gap-4 px-4 py-3">
                 <Button
-                  content="Cancle"
+                  content="Cancel"
                   color="gray"
                   hierarchy="secondary"
                   size="md"
