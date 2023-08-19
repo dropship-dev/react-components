@@ -6,7 +6,6 @@ interface RatingProps {
 
 export default function Rating(props: RatingProps) {
   const { rating, setRating, size } = props;
-  console.log(rating);
 
   return (
     <div
