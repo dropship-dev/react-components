@@ -33,6 +33,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   var endOfMonth = moment().endOf("month").toDate();
   var startOfYear = moment().startOf("year").toDate();
   var endOfYear = moment().endOf("year").toDate();
+  console.log(date);
 
   return (
     <div className={cn("grid gap-2")}>
@@ -146,16 +147,20 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     setOpen(false);
 
                     setDate({
-                      from: new Date(
-                        moment(datePicker?.from)
-                          .startOf("day")
-                          .toString(),
-                      ),
-                      to: new Date(
-                        moment(datePicker?.to)
-                          .endOf("day")
-                          .toString(),
-                      ),
+                      from: datePicker?.from
+                        ? new Date(
+                            moment(datePicker?.from)
+                              .startOf("day")
+                              .toString(),
+                          )
+                        : undefined,
+                      to: datePicker?.to
+                        ? new Date(
+                            moment(datePicker?.to)
+                              .endOf("day")
+                              .toString(),
+                          )
+                        : undefined,
                     });
                   }}
                 />
