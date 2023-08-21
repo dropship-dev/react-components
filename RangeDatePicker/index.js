@@ -64,18 +64,35 @@ function RangeDatePicker(props) {
                                                     setDatePicker(date);
                                                 } }), (0, jsx_runtime_1.jsx)(__1.Button, { content: "Apply", color: "blue", hierarchy: "primary", size: "md", onClick: () => {
                                                     setOpen(false);
-                                                    setDate({
-                                                        from: datePicker?.from
-                                                            ? new Date((0, moment_1.default)(datePicker?.from)
+                                                    if (datePicker?.from && !datePicker?.to) {
+                                                        setDate({
+                                                            from: new Date((0, moment_1.default)(datePicker?.from)
                                                                 .startOf("day")
-                                                                .toString())
-                                                            : undefined,
-                                                        to: datePicker?.to
-                                                            ? new Date((0, moment_1.default)(datePicker?.to)
+                                                                .toString()),
+                                                            to: new Date((0, moment_1.default)(datePicker?.from)
                                                                 .endOf("day")
-                                                                .toString())
-                                                            : undefined,
-                                                    });
+                                                                .toString()),
+                                                        });
+                                                        setDatePicker({
+                                                            ...datePicker,
+                                                            to: new Date((0, moment_1.default)(datePicker?.from)
+                                                                .endOf("day")
+                                                                .toString()),
+                                                        });
+                                                    }
+                                                    else
+                                                        setDate({
+                                                            from: datePicker?.from
+                                                                ? new Date((0, moment_1.default)(datePicker?.from)
+                                                                    .startOf("day")
+                                                                    .toString())
+                                                                : undefined,
+                                                            to: datePicker?.to
+                                                                ? new Date((0, moment_1.default)(datePicker?.to)
+                                                                    .endOf("day")
+                                                                    .toString())
+                                                                : undefined,
+                                                        });
                                                 } })] })] })] }) })] }) }));
 }
 exports.default = RangeDatePicker;
