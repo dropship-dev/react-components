@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { format } from "date-fns";
+import { format, set } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
@@ -145,23 +145,44 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   size="md"
                   onClick={() => {
                     setOpen(false);
-
-                    setDate({
-                      from: datePicker?.from
-                        ? new Date(
-                            moment(datePicker?.from)
-                              .startOf("day")
-                              .toString(),
-                          )
-                        : undefined,
-                      to: datePicker?.to
-                        ? new Date(
-                            moment(datePicker?.to)
-                              .endOf("day")
-                              .toString(),
-                          )
-                        : undefined,
-                    });
+                    if (datePicker?.from && !datePicker?.to) {
+                      setDate({
+                        from: new Date(
+                          moment(datePicker?.from)
+                            .startOf("day")
+                            .toString(),
+                        ),
+                        to: new Date(
+                          moment(datePicker?.from)
+                            .endOf("day")
+                            .toString(),
+                        ),
+                      });
+                      setDatePicker({
+                        ...datePicker,
+                        to: new Date(
+                          moment(datePicker?.from)
+                            .endOf("day")
+                            .toString(),
+                        ),
+                      });
+                    } else
+                      setDate({
+                        from: datePicker?.from
+                          ? new Date(
+                              moment(datePicker?.from)
+                                .startOf("day")
+                                .toString(),
+                            )
+                          : undefined,
+                        to: datePicker?.to
+                          ? new Date(
+                              moment(datePicker?.to)
+                                .endOf("day")
+                                .toString(),
+                            )
+                          : undefined,
+                      });
                   }}
                 />
               </div>
