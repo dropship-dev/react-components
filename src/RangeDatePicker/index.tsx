@@ -33,7 +33,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   var endOfMonth = moment().endOf("month").toDate();
   var startOfYear = moment().startOf("year").toDate();
   var endOfYear = moment().endOf("year").toDate();
-  console.log(date);
 
   return (
     <div className={cn("grid gap-2")}>
