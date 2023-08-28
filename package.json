@@ -57,6 +57,7 @@
     "date-fns": "^2.30.0",
     "lucide-react": "^0.258.0",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
     "postcss-loader": "^7.3.3",
     "prettier-plugin-tailwindcss": "^0.4.0",
     "react": "^18.2.0",

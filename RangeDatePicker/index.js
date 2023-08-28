@@ -23,9 +23,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
@@ -35,29 +32,27 @@ const utils_1 = require("../lib/utils");
 const calendar_1 = require("./components/calendar");
 const popover_1 = require("../ComboBox/components/popover");
 const __1 = require("..");
-const moment_1 = __importDefault(require("moment"));
+require("moment-timezone");
 function RangeDatePicker(props) {
-    const { date, setDate } = props;
+    const { date, setDate, timezone } = props;
     const [datePicker, setDatePicker] = React.useState();
     const [open, setOpen] = React.useState(false);
-    var startOfWeek = (0, moment_1.default)().startOf("week").toDate();
-    var endOfWeek = (0, moment_1.default)().endOf("week").toDate();
-    var startOfMonth = (0, moment_1.default)().startOf("month").toDate();
-    var endOfMonth = (0, moment_1.default)().endOf("month").toDate();
-    var startOfYear = (0, moment_1.default)().startOf("year").toDate();
-    var endOfYear = (0, moment_1.default)().endOf("year").toDate();
+    var moment = require("moment-timezone");
+    React.useEffect(() => {
+        moment.tz.setDefault(timezone ?? "America/Los_Angeles");
+    }, [timezone]);
     return ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)("grid gap-2"), children: (0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: (open) => setOpen(open), children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { children: (0, jsx_runtime_1.jsxs)("div", { id: "date", className: (0, utils_1.cn)("w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11", !datePicker && "text-muted-foreground"), children: [(0, jsx_runtime_1.jsx)(lucide_react_1.Calendar, { className: "mr-2 h-4 w-4" }), datePicker?.from ? (datePicker.to ? ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, date_fns_1.format)(datePicker.from, "dd/MM/yyyy"), " -", " ", (0, date_fns_1.format)(datePicker.to, "dd/MM/yyyy")] })) : ((0, date_fns_1.format)(datePicker.from, "dd/MM/yyyy"))) : ((0, jsx_runtime_1.jsx)("span", { children: "All time" }))] }) }), (0, jsx_runtime_1.jsx)(popover_1.PopoverContent, { className: "w-auto p-0", align: "start", children: (0, jsx_runtime_1.jsxs)("div", { className: "flex rounded-[10px]", children: [(0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col px-4 py-3 border-r-[1px] border-gray-100", children: [(0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
-                                            from: new Date(),
-                                            to: new Date(),
+                                            from: new Date(moment(new Date()).startOf("day").toString()),
+                                            to: new Date(moment(new Date()).endOf("day").toString()),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "Today" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
-                                            from: startOfWeek,
-                                            to: endOfWeek,
+                                            from: new Date(moment(new Date()).startOf("week").toString()),
+                                            to: new Date(moment(new Date()).endOf("week").toString()),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "This week" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
-                                            from: startOfMonth,
-                                            to: endOfMonth,
+                                            from: new Date(moment(new Date()).startOf("month").toString()),
+                                            to: new Date(moment(new Date()).endOf("month").toString()),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "This month" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
-                                            from: startOfYear,
-                                            to: endOfYear,
+                                            from: new Date(moment(new Date()).startOf("year").toString()),
+                                            to: new Date(moment(new Date()).endOf("year").toString()),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "This year" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({ from: undefined, to: undefined }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "All time" })] }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(calendar_1.Calendar, { initialFocus: true, mode: "range", defaultMonth: datePicker?.from, selected: datePicker, onSelect: setDatePicker, numberOfMonths: 2, className: "border-b-[1px] border-gray-300" }), (0, jsx_runtime_1.jsxs)("div", { className: "flex justify-end items-center flex-row gap-4 px-4 py-3", children: [(0, jsx_runtime_1.jsx)(__1.Button, { content: "Cancel", color: "gray", hierarchy: "secondary", size: "md", onClick: () => {
                                                     setOpen(false);
                                                     setDatePicker(date);
@@ -65,31 +60,25 @@ function RangeDatePicker(props) {
                                                     setOpen(false);
                                                     if (datePicker?.from && !datePicker?.to) {
                                                         setDate({
-                                                            from: new Date((0, moment_1.default)(datePicker?.from)
-                                                                .startOf("day")
-                                                                .toString()),
-                                                            to: new Date((0, moment_1.default)(datePicker?.from)
-                                                                .endOf("day")
-                                                                .toString()),
+                                                            from: datePicker?.from,
+                                                            to: datePicker?.from,
                                                         });
                                                         setDatePicker({
                                                             ...datePicker,
-                                                            to: new Date((0, moment_1.default)(datePicker?.from)
-                                                                .endOf("day")
-                                                                .toString()),
+                                                            to: datePicker?.from,
                                                         });
                                                     }
                                                     else
                                                         setDate({
                                                             from: datePicker?.from
-                                                                ? new Date((0, moment_1.default)(datePicker?.from)
+                                                                ? moment(datePicker?.from)
                                                                     .startOf("day")
-                                                                    .toString())
+                                                                    .toString()
                                                                 : undefined,
                                                             to: datePicker?.to
-                                                                ? new Date((0, moment_1.default)(datePicker?.to)
+                                                                ? moment(datePicker?.to)
                                                                     .endOf("day")
-                                                                    .toString())
+                                                                    .toString()
                                                                 : undefined,
                                                         });
                                                 } })] })] })] }) })] }) }));
