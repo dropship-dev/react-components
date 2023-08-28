@@ -31,7 +31,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
 
   moment.tz.setDefault(timezone ?? "America/Los_Angeles");
   // React.useEffect(() => {}, [timezone]);
-  console.log(datePicker, date);
 
   return (
     <div className={cn("grid gap-2")}>
