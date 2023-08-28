@@ -29,9 +29,9 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   const [open, setOpen] = React.useState<boolean>(false);
   var moment = require("moment-timezone");
 
-  React.useEffect(() => {
-    moment.tz.setDefault(timezone ?? "America/Los_Angeles");
-  }, [timezone]);
+  moment.tz.setDefault(timezone ?? "America/Los_Angeles");
+  // React.useEffect(() => {}, [timezone]);
+  console.log(datePicker, date);
 
   return (
     <div className={cn("grid gap-2")}>
@@ -48,11 +48,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
             {datePicker?.from ? (
               datePicker.to ? (
                 <>
-                  {format(datePicker.from, "dd/MM/yyyy")} -{" "}
-                  {format(datePicker.to, "dd/MM/yyyy")}
+                  {moment(datePicker.from).format("DD/MM/YYYY")} -{" "}
+                  {moment(datePicker.to).format("DD/MM/YYYY")}
                 </>
               ) : (
-                format(datePicker.from, "dd/MM/yyyy")
+                moment(datePicker.from).format("DD/MM/YYYY")
               )
             ) : (
               <span>All time</span>
@@ -65,10 +65,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: new Date(
-                      moment(new Date()).startOf("day").toString(),
-                    ),
-                    to: new Date(moment(new Date()).endOf("day").toString()),
+                    from: moment().toDate(),
+                    to: moment().toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -78,10 +76,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: new Date(
-                      moment(new Date()).startOf("week").toString(),
-                    ),
-                    to: new Date(moment(new Date()).endOf("week").toString()),
+                    from: moment().startOf("week").toDate(),
+                    to: moment().endOf("week").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -91,10 +87,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: new Date(
-                      moment(new Date()).startOf("month").toString(),
-                    ),
-                    to: new Date(moment(new Date()).endOf("month").toString()),
+                    from: moment().startOf("month").toDate(),
+                    to: moment().endOf("month").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -104,10 +98,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: new Date(
-                      moment(new Date()).startOf("year").toString(),
-                    ),
-                    to: new Date(moment(new Date()).endOf("year").toString()),
+                    from: moment().startOf("year").toDate(),
+                    to: moment().endOf("year").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
