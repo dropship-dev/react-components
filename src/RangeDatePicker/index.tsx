@@ -167,12 +167,13 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 mode="range"
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
-                onSelect={(date) => {
-                  setDatePicker({
-                    from: date?.from ? moment(date?.from).toDate() : undefined,
-                    to: date?.to ? moment(date?.to).toDate() : undefined,
-                  });
-                }}
+                // onSelect={(date) => {
+                //   setDatePicker({
+                //     from: date?.from ? moment(date?.from).toDate() : undefined,
+                //     to: date?.to ? moment(date?.to).toDate() : undefined,
+                //   });
+                // }}
+                onSelect={setDatePicker}
                 numberOfMonths={2}
                 className="border-b-[1px] border-gray-300"
               />
