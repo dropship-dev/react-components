@@ -31,7 +31,6 @@ enum DefaultValues {
 }
 export default function RangeDatePicker(props: IRangeDatePicker) {
   const { date, setDate, timezone, defaultValues } = props;
-  console.log("date", date);
 
   const timezoneDate = timezone ?? "America/Los_Angeles";
   var moment = require("moment-timezone");
