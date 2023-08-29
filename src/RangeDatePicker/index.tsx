@@ -20,17 +20,49 @@ interface IRangeDatePicker {
   date: DateRange | undefined;
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
   timezone?: string;
+  defaultValues?: string;
+}
+
+enum DefaultValues {
+  TODAY = "Today",
+  THIS_WEEK = "This week",
+  THIS_MONTH = "This month",
+  THIS_YEAR = "This year",
 }
 export default function RangeDatePicker(props: IRangeDatePicker) {
-  const { date, setDate, timezone } = props;
+  const { date, setDate, timezone, defaultValues } = props;
+
+  const timezoneDate = timezone ?? "America/Los_Angeles";
+  var moment = require("moment-timezone");
+  moment.tz.setDefault(timezoneDate);
 
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>();
 
   const [open, setOpen] = React.useState<boolean>(false);
-  var moment = require("moment-timezone");
 
-  moment.tz.setDefault(timezone ?? "America/Los_Angeles");
-  // React.useEffect(() => {}, [timezone]);
+  React.useEffect(() => {
+    if (defaultValues === DefaultValues.TODAY) {
+      setDatePicker({
+        from: moment().toDate(),
+        to: moment().toDate(),
+      });
+    } else if (defaultValues === DefaultValues.THIS_WEEK) {
+      setDatePicker({
+        from: moment().startOf("week").toDate(),
+        to: moment().endOf("week").toDate(),
+      });
+    } else if (defaultValues === DefaultValues.THIS_MONTH) {
+      setDatePicker({
+        from: moment().startOf("month").toDate(),
+        to: moment().endOf("month").toDate(),
+      });
+    } else if (defaultValues === DefaultValues.THIS_YEAR) {
+      setDatePicker({
+        from: moment().startOf("year").toDate(),
+        to: moment().endOf("year").toDate(),
+      });
+    }
+  }, [defaultValues]);
 
   return (
     <div className={cn("grid gap-2")}>
@@ -64,8 +96,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().toDate(),
-                    to: moment().toDate(),
+                    from: moment().tz(timezone).toDate(),
+                    to: moment().tz(timezone).toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -75,8 +107,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().startOf("week").toDate(),
-                    to: moment().endOf("week").toDate(),
+                    from: moment().tz(timezone).startOf("week").toDate(),
+                    to: moment().tz(timezone).endOf("week").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
