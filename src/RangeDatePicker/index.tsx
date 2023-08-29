@@ -38,7 +38,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   // moment.tz.setDefault(timezoneDate);
 
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>();
-  console.log(date);
 
   const [open, setOpen] = React.useState<boolean>(false);
 
