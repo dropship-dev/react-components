@@ -39,8 +39,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
 
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>();
 
-  console.log("date", datePicker);
-
   const [open, setOpen] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -171,8 +169,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 selected={datePicker}
                 onSelect={(date) => {
                   setDatePicker({
-                    from: moment(date?.from).toDate(),
-                    to: moment(date?.to).toDate(),
+                    from: date?.from ? moment(date?.from).toDate() : undefined,
+                    to: date?.to ? moment(date?.to).toDate() : undefined,
                   });
                 }}
                 numberOfMonths={2}
