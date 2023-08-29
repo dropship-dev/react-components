@@ -143,12 +143,14 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 Today
               </div>
               <div
-                onClick={() =>
+                onClick={() => {
+                  console.log(moment().endOf("week").toDate());
+
                   setDatePicker({
                     from: moment().startOf("week").toDate(),
-                    to: moment(new Date()).endOf("week").toDate(),
-                  })
-                }
+                    to: moment().endOf("week").toDate(),
+                  });
+                }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 This week
