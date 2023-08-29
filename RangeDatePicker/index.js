@@ -32,19 +32,52 @@ const calendar_1 = require("./components/calendar");
 const popover_1 = require("../ComboBox/components/popover");
 const __1 = require("..");
 require("moment-timezone");
+var DefaultValues;
+(function (DefaultValues) {
+    DefaultValues["TODAY"] = "Today";
+    DefaultValues["THIS_WEEK"] = "This week";
+    DefaultValues["THIS_MONTH"] = "This month";
+    DefaultValues["THIS_YEAR"] = "This year";
+})(DefaultValues || (DefaultValues = {}));
 function RangeDatePicker(props) {
-    const { date, setDate, timezone } = props;
+    const { date, setDate, timezone, defaultValues } = props;
+    const timezoneDate = timezone ?? "America/Los_Angeles";
+    var moment = require("moment-timezone");
+    moment.tz.setDefault(timezoneDate);
     const [datePicker, setDatePicker] = React.useState();
     const [open, setOpen] = React.useState(false);
-    var moment = require("moment-timezone");
-    moment.tz.setDefault(timezone ?? "America/Los_Angeles");
-    // React.useEffect(() => {}, [timezone]);
+    React.useEffect(() => {
+        if (defaultValues === DefaultValues.TODAY) {
+            setDatePicker({
+                from: moment().toDate(),
+                to: moment().toDate(),
+            });
+        }
+        else if (defaultValues === DefaultValues.THIS_WEEK) {
+            setDatePicker({
+                from: moment().startOf("week").toDate(),
+                to: moment().endOf("week").toDate(),
+            });
+        }
+        else if (defaultValues === DefaultValues.THIS_MONTH) {
+            setDatePicker({
+                from: moment().startOf("month").toDate(),
+                to: moment().endOf("month").toDate(),
+            });
+        }
+        else if (defaultValues === DefaultValues.THIS_YEAR) {
+            setDatePicker({
+                from: moment().startOf("year").toDate(),
+                to: moment().endOf("year").toDate(),
+            });
+        }
+    }, [defaultValues]);
     return ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)("grid gap-2"), children: (0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: (open) => setOpen(open), children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { children: (0, jsx_runtime_1.jsxs)("div", { id: "date", className: (0, utils_1.cn)("w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11", !datePicker && "text-muted-foreground"), children: [(0, jsx_runtime_1.jsx)(lucide_react_1.Calendar, { className: "mr-2 h-4 w-4" }), datePicker?.from ? (datePicker.to ? ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [moment(datePicker.from).format("DD/MM/YYYY"), " -", " ", moment(datePicker.to).format("DD/MM/YYYY")] })) : (moment(datePicker.from).format("DD/MM/YYYY"))) : ((0, jsx_runtime_1.jsx)("span", { children: "All time" }))] }) }), (0, jsx_runtime_1.jsx)(popover_1.PopoverContent, { className: "w-auto p-0", align: "start", children: (0, jsx_runtime_1.jsxs)("div", { className: "flex rounded-[10px]", children: [(0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col px-4 py-3 border-r-[1px] border-gray-100", children: [(0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
-                                            from: moment().toDate(),
-                                            to: moment().toDate(),
+                                            from: moment().tz(timezone).toDate(),
+                                            to: moment().tz(timezone).toDate(),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "Today" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
-                                            from: moment().startOf("week").toDate(),
-                                            to: moment().endOf("week").toDate(),
+                                            from: moment().tz(timezone).startOf("week").toDate(),
+                                            to: moment().tz(timezone).endOf("week").toDate(),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "This week" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
                                             from: moment().startOf("month").toDate(),
                                             to: moment().endOf("month").toDate(),
