@@ -41,7 +41,6 @@ var DefaultValues;
 })(DefaultValues || (DefaultValues = {}));
 function RangeDatePicker(props) {
     const { date, setDate, timezone, defaultValues } = props;
-    console.log("date", date);
     const timezoneDate = timezone ?? "America/Los_Angeles";
     var moment = require("moment-timezone");
     moment.tz.setDefault(timezoneDate);
