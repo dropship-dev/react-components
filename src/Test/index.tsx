@@ -93,12 +93,7 @@ export default function Test(props: { sizePopup?: boolean }) {
           setOpenDrawer(false);
         }}
       />
-      <RangeDatePicker
-        date={date}
-        setDate={setDate}
-        timezone="America/New_York"
-        defaultValues="Today"
-      />
+      <RangeDatePicker date={date} setDate={setDate} defaultValues="Today" />
       <Slider min={0} max={100} defaultValue={[0, 100]} />
       <Rating rating={valueRating} setRating={setValueRating} />
     </>

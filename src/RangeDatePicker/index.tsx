@@ -31,12 +31,15 @@ enum DefaultValues {
 }
 export default function RangeDatePicker(props: IRangeDatePicker) {
   const { date, setDate, timezone, defaultValues } = props;
+  console.log("date", date);
 
   const timezoneDate = timezone ?? "America/Los_Angeles";
   var moment = require("moment-timezone");
   moment.tz.setDefault(timezoneDate);
 
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>();
+
+  console.log("date", datePicker);
 
   const [open, setOpen] = React.useState<boolean>(false);
 
@@ -93,11 +96,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
             {datePicker?.from ? (
               datePicker.to ? (
                 <>
-                  {moment(datePicker.from).format("DD/MM/YYYY")} -{" "}
-                  {moment(datePicker.to).format("DD/MM/YYYY")}
+                  {datePicker.from.toLocaleDateString()} -{" "}
+                  {datePicker.to.toLocaleDateString()}
                 </>
               ) : (
-                moment(datePicker.from).format("DD/MM/YYYY")
+                <>{datePicker.from.toLocaleDateString()}</>
               )
             ) : (
               <span>All time</span>
@@ -110,8 +113,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().tz(timezone).toDate(),
-                    to: moment().tz(timezone).toDate(),
+                    from: moment().toDate(),
+                    to: moment().toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -121,8 +124,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().tz(timezone).startOf("week").toDate(),
-                    to: moment().tz(timezone).endOf("week").toDate(),
+                    from: moment().startOf("week").toDate(),
+                    to: moment().endOf("week").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -166,7 +169,12 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 mode="range"
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
-                onSelect={setDatePicker}
+                onSelect={(date) => {
+                  setDatePicker({
+                    from: moment(date?.from).toDate(),
+                    to: moment(date?.to).toDate(),
+                  });
+                }}
                 numberOfMonths={2}
                 className="border-b-[1px] border-gray-300"
               />
@@ -190,8 +198,12 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     setOpen(false);
                     if (datePicker?.from && !datePicker?.to) {
                       setDate({
-                        from: datePicker?.from,
-                        to: datePicker?.from,
+                        from: moment(datePicker?.from)
+                          .startOf("day")
+                          .toDate(),
+                        to: moment(datePicker?.from)
+                          .endOf("day")
+                          .toDate(),
                       });
                       setDatePicker({
                         ...datePicker,
@@ -202,12 +214,12 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                         from: datePicker?.from
                           ? moment(datePicker?.from)
                               .startOf("day")
-                              .toString()
+                              .toDate()
                           : undefined,
                         to: datePicker?.to
                           ? moment(datePicker?.to)
                               .endOf("day")
-                              .toString()
+                              .toDate()
                           : undefined,
                       });
                   }}
