@@ -49,7 +49,6 @@ function RangeDatePicker(props) {
     // var moment = require("moment-timezone");
     // moment.tz.setDefault(timezoneDate);
     const [datePicker, setDatePicker] = React.useState();
-    console.log(date);
     const [open, setOpen] = React.useState(false);
     const convertTimezone = (timezone) => {
         const date = new Intl.DateTimeFormat("en-GB", {
