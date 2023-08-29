@@ -62,6 +62,20 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
         to: moment().endOf("year").toDate(),
       });
     }
+    if (!!defaultValues) {
+      setDate({
+        from: datePicker?.from
+          ? moment(datePicker?.from)
+              .startOf("day")
+              .toString()
+          : undefined,
+        to: datePicker?.to
+          ? moment(datePicker?.to)
+              .endOf("day")
+              .toString()
+          : undefined,
+      });
+    }
   }, [defaultValues]);
 
   return (
