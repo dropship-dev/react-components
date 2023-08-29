@@ -44,6 +44,7 @@ function RangeDatePicker(props) {
     const timezoneDate = timezone ?? "America/Los_Angeles";
     var moment = require("moment-timezone");
     moment.tz.setDefault(timezoneDate);
+    console.log(date);
     const [datePicker, setDatePicker] = React.useState();
     const [open, setOpen] = React.useState(false);
     React.useEffect(() => {
