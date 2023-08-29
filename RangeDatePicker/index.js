@@ -46,7 +46,6 @@ function RangeDatePicker(props) {
     var moment = require("moment-timezone");
     moment.tz.setDefault(timezoneDate);
     const [datePicker, setDatePicker] = React.useState();
-    console.log("date", datePicker);
     const [open, setOpen] = React.useState(false);
     React.useEffect(() => {
         if (defaultValues === DefaultValues.TODAY) {
@@ -102,8 +101,8 @@ function RangeDatePicker(props) {
                                             to: moment().endOf("year").toDate(),
                                         }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "This year" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({ from: undefined, to: undefined }), className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "All time" })] }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(calendar_1.Calendar, { initialFocus: true, mode: "range", defaultMonth: datePicker?.from, selected: datePicker, onSelect: (date) => {
                                             setDatePicker({
-                                                from: moment(date?.from).toDate(),
-                                                to: moment(date?.to).toDate(),
+                                                from: date?.from ? moment(date?.from).toDate() : undefined,
+                                                to: date?.to ? moment(date?.to).toDate() : undefined,
                                             });
                                         }, numberOfMonths: 2, className: "border-b-[1px] border-gray-300" }), (0, jsx_runtime_1.jsxs)("div", { className: "flex justify-end items-center flex-row gap-4 px-4 py-3", children: [(0, jsx_runtime_1.jsx)(__1.Button, { content: "Cancel", color: "gray", hierarchy: "secondary", size: "md", onClick: () => {
                                                     setOpen(false);
