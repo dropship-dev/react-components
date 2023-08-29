@@ -71,6 +71,20 @@ function RangeDatePicker(props) {
                 to: moment().endOf("year").toDate(),
             });
         }
+        if (!!defaultValues) {
+            setDate({
+                from: datePicker?.from
+                    ? moment(datePicker?.from)
+                        .startOf("day")
+                        .toString()
+                    : undefined,
+                to: datePicker?.to
+                    ? moment(datePicker?.to)
+                        .endOf("day")
+                        .toString()
+                    : undefined,
+            });
+        }
     }, [defaultValues]);
     return ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)("grid gap-2"), children: (0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: (open) => setOpen(open), children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { children: (0, jsx_runtime_1.jsxs)("div", { id: "date", className: (0, utils_1.cn)("w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11", !datePicker && "text-muted-foreground"), children: [(0, jsx_runtime_1.jsx)(lucide_react_1.Calendar, { className: "mr-2 h-4 w-4" }), datePicker?.from ? (datePicker.to ? ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [moment(datePicker.from).format("DD/MM/YYYY"), " -", " ", moment(datePicker.to).format("DD/MM/YYYY")] })) : (moment(datePicker.from).format("DD/MM/YYYY"))) : ((0, jsx_runtime_1.jsx)("span", { children: "All time" }))] }) }), (0, jsx_runtime_1.jsx)(popover_1.PopoverContent, { className: "w-auto p-0", align: "start", children: (0, jsx_runtime_1.jsxs)("div", { className: "flex rounded-[10px]", children: [(0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col px-4 py-3 border-r-[1px] border-gray-100", children: [(0, jsx_runtime_1.jsx)("div", { onClick: () => setDatePicker({
                                             from: moment().tz(timezone).toDate(),
