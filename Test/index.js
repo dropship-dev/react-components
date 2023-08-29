@@ -46,6 +46,6 @@ function Test(props) {
                                 setOpenDrawer(false);
                             }, children: "Close" })] }), open: openDrawer, onClose: () => {
                     setOpenDrawer(false);
-                } }), (0, jsx_runtime_1.jsx)(__1.RangeDatePicker, { date: date, setDate: setDate, timezone: "America/New_York", defaultValues: "Today" }), (0, jsx_runtime_1.jsx)(__1.Slider, { min: 0, max: 100, defaultValue: [0, 100] }), (0, jsx_runtime_1.jsx)(__1.Rating, { rating: valueRating, setRating: setValueRating })] }));
+                } }), (0, jsx_runtime_1.jsx)(__1.RangeDatePicker, { date: date, setDate: setDate, defaultValues: "Today" }), (0, jsx_runtime_1.jsx)(__1.Slider, { min: 0, max: 100, defaultValue: [0, 100] }), (0, jsx_runtime_1.jsx)(__1.Rating, { rating: valueRating, setRating: setValueRating })] }));
 }
 exports.default = Test;
