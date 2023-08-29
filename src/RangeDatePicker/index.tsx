@@ -15,6 +15,7 @@ import {
 } from "../ComboBox/components/popover";
 import { Button } from "..";
 import "moment-timezone";
+import moment from "moment";
 
 interface IRangeDatePicker {
   date: DateRange | undefined;
@@ -33,34 +34,49 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   const { date, setDate, timezone, defaultValues } = props;
 
   const timezoneDate = timezone ?? "America/Los_Angeles";
-  var moment = require("moment-timezone");
-  moment.tz.setDefault(timezoneDate);
-  console.log(date);
+  // var moment = require("moment-timezone");
+  // moment.tz.setDefault(timezoneDate);
 
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>();
+  console.log(date);
 
   const [open, setOpen] = React.useState<boolean>(false);
+
+  const convertTimezone = (timezone: string) => {
+    const date = new Intl.DateTimeFormat("en-GB", {
+      dateStyle: "full",
+      timeStyle: "long",
+      timeZone: timezone,
+    })
+      .format(new Date(moment().tz(timezone).format()))
+      .split(" ");
+    return date[date.length - 1];
+  };
 
   React.useEffect(() => {
     if (defaultValues === DefaultValues.TODAY) {
       setDatePicker({
-        from: moment().toDate(),
-        to: moment().toDate(),
+        from: new Date(
+          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
+        ),
+        to: new Date(
+          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
+        ),
       });
     } else if (defaultValues === DefaultValues.THIS_WEEK) {
       setDatePicker({
-        from: moment().startOf("week").toDate(),
-        to: moment().endOf("week").toDate(),
+        from: moment(new Date()).startOf("week").toDate(),
+        to: moment(new Date()).endOf("week").toDate(),
       });
     } else if (defaultValues === DefaultValues.THIS_MONTH) {
       setDatePicker({
-        from: moment().startOf("month").toDate(),
-        to: moment().endOf("month").toDate(),
+        from: moment(new Date()).startOf("month").toDate(),
+        to: moment(new Date()).endOf("month").toDate(),
       });
     } else if (defaultValues === DefaultValues.THIS_YEAR) {
       setDatePicker({
-        from: moment().startOf("year").toDate(),
-        to: moment().endOf("year").toDate(),
+        from: moment(new Date()).startOf("year").toDate(),
+        to: moment(new Date()).endOf("year").toDate(),
       });
     }
     if (!!defaultValues) {
@@ -68,16 +84,24 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
         from: datePicker?.from
           ? moment(datePicker?.from)
               .startOf("day")
-              .toString()
+              .toDate()
           : undefined,
         to: datePicker?.to
           ? moment(datePicker?.to)
               .endOf("day")
-              .toString()
+              .toDate()
           : undefined,
       });
     }
   }, [defaultValues]);
+
+  function convertDate(date: Date, type: "start" | "end") {
+    return new Date(
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
+        type === "start" ? "00:00:00" : "23:59:59"
+      } ${convertTimezone(timezoneDate)}`,
+    );
+  }
 
   return (
     <div className={cn("grid gap-2")}>
@@ -94,8 +118,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
             {datePicker?.from ? (
               datePicker.to ? (
                 <>
-                  {datePicker.from.toLocaleDateString()} -{" "}
-                  {datePicker.to.toLocaleDateString()}
+                  {datePicker.from.toLocaleDateString().replaceAll("-", "/")} -{" "}
+                  {datePicker.to.toLocaleDateString().replaceAll("-", "/")}
                 </>
               ) : (
                 <>{datePicker.from.toLocaleDateString()}</>
@@ -123,7 +147,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 onClick={() =>
                   setDatePicker({
                     from: moment().startOf("week").toDate(),
-                    to: moment().endOf("week").toDate(),
+                    to: moment(new Date()).endOf("week").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -133,8 +157,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().startOf("month").toDate(),
-                    to: moment().endOf("month").toDate(),
+                    from: moment(new Date()).startOf("month").toDate(),
+                    to: moment(new Date()).endOf("month").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -144,8 +168,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().startOf("year").toDate(),
-                    to: moment().endOf("year").toDate(),
+                    from: moment(new Date()).startOf("year").toDate(),
+                    to: moment(new Date()).endOf("year").toDate(),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -191,29 +215,17 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     setOpen(false);
                     if (datePicker?.from && !datePicker?.to) {
                       setDate({
-                        from: moment(datePicker?.from)
-                          .startOf("day")
-                          .toString(),
-                        to: moment(datePicker?.from)
-                          .endOf("day")
-                          .toString(),
+                        from: new Date(convertDate(datePicker?.from, "start")),
+                        to: new Date(convertDate(datePicker?.from, "end")),
                       });
                       setDatePicker({
                         ...datePicker,
                         to: datePicker?.from,
                       });
-                    } else
+                    } else if (datePicker?.from && datePicker?.to)
                       setDate({
-                        from: datePicker?.from
-                          ? moment(datePicker?.from)
-                              .startOf("day")
-                              .toString()
-                          : undefined,
-                        to: datePicker?.to
-                          ? moment(datePicker?.to)
-                              .endOf("day")
-                              .toString()
-                          : undefined,
+                        from: new Date(convertDate(datePicker.from, "start")),
+                        to: new Date(convertDate(datePicker?.to, "end")),
                       });
                   }}
                 />
