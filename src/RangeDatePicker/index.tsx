@@ -80,7 +80,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   }, [defaultValues]);
 
   React.useEffect(() => {
-    if (firtLoad && !!defaultValues) {
+    if (firtLoad && !!defaultValues && !!datePicker?.from) {
       setDate({
         from: datePicker?.from
           ? moment(datePicker?.from)
@@ -95,7 +95,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
       });
       setFirstLoad(false);
     }
-  }, [datePicker]);
+  }, [datePicker, firtLoad]);
 
   function convertDate(date: Date, type: "start" | "end") {
     return new Date(
