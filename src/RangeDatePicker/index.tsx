@@ -1,21 +1,20 @@
 "use client";
 
-import * as React from "react";
-import { format, set } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
+import * as React from "react";
 import { DateRange } from "react-day-picker";
 
 import { cn } from "../lib/utils";
 
-import { Calendar } from "./components/calendar";
+import moment from "moment";
+import "moment-timezone";
+import { Button } from "..";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "../ComboBox/components/popover";
-import { Button } from "..";
-import "moment-timezone";
-import moment from "moment";
+import { Calendar } from "./components/calendar";
 
 interface IRangeDatePicker {
   date: DateRange | undefined;
@@ -32,7 +31,7 @@ enum DefaultValues {
 }
 export default function RangeDatePicker(props: IRangeDatePicker) {
   const { date, setDate, timezone, defaultValues } = props;
-
+  const [firtLoad, setFirstLoad] = React.useState<boolean>(true);
   const timezoneDate = timezone ?? "America/Los_Angeles";
   // var moment = require("moment-timezone");
   // moment.tz.setDefault(timezoneDate);
@@ -81,18 +80,21 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   }, [defaultValues]);
 
   React.useEffect(() => {
-    setDate({
-      from: datePicker?.from
-        ? moment(datePicker?.from)
-            .startOf("day")
-            .toDate()
-        : undefined,
-      to: datePicker?.to
-        ? moment(datePicker?.to)
-            .endOf("day")
-            .toDate()
-        : undefined,
-    });
+    if (firtLoad && !!defaultValues) {
+      setDate({
+        from: datePicker?.from
+          ? moment(datePicker?.from)
+              .startOf("day")
+              .toDate()
+          : undefined,
+        to: datePicker?.to
+          ? moment(datePicker?.to)
+              .endOf("day")
+              .toDate()
+          : undefined,
+      });
+      setFirstLoad(false);
+    }
   }, [datePicker]);
 
   function convertDate(date: Date, type: "start" | "end") {
