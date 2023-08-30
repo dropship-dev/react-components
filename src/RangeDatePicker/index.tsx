@@ -134,8 +134,16 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() =>
                   setDatePicker({
-                    from: moment().toDate(),
-                    to: moment().toDate(),
+                    from: new Date(
+                      moment()
+                        .toDate()
+                        .toLocaleString("en-US", { timeZone: timezoneDate }),
+                    ),
+                    to: new Date(
+                      moment()
+                        .toDate()
+                        .toLocaleString("en-US", { timeZone: timezoneDate }),
+                    ),
                   })
                 }
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
