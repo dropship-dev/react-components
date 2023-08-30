@@ -85,21 +85,21 @@ function RangeDatePicker(props) {
                 to: (0, moment_1.default)(new Date()).endOf("year").toDate(),
             });
         }
-        if (!!defaultValues) {
-            setDate({
-                from: datePicker?.from
-                    ? (0, moment_1.default)(datePicker?.from)
-                        .startOf("day")
-                        .toDate()
-                    : undefined,
-                to: datePicker?.to
-                    ? (0, moment_1.default)(datePicker?.to)
-                        .endOf("day")
-                        .toDate()
-                    : undefined,
-            });
-        }
     }, [defaultValues]);
+    React.useEffect(() => {
+        setDate({
+            from: datePicker?.from
+                ? (0, moment_1.default)(datePicker?.from)
+                    .startOf("day")
+                    .toDate()
+                : undefined,
+            to: datePicker?.to
+                ? (0, moment_1.default)(datePicker?.to)
+                    .endOf("day")
+                    .toDate()
+                : undefined,
+        });
+    }, [datePicker]);
     function convertDate(date, type) {
         return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${type === "start" ? "00:00:00" : "23:59:59"} ${convertTimezone(timezoneDate)}`);
     }
