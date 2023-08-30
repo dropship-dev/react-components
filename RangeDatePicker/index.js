@@ -51,6 +51,7 @@ function RangeDatePicker(props) {
     // moment.tz.setDefault(timezoneDate);
     const [datePicker, setDatePicker] = React.useState();
     const [open, setOpen] = React.useState(false);
+    console.log(date);
     const convertTimezone = (timezone) => {
         const date = new Intl.DateTimeFormat("en-GB", {
             dateStyle: "full",
@@ -89,19 +90,21 @@ function RangeDatePicker(props) {
     }, [defaultValues]);
     React.useEffect(() => {
         if (firtLoad && !!defaultValues && !!datePicker?.from) {
-            setDate({
-                from: datePicker?.from
-                    ? (0, moment_1.default)(datePicker?.from)
-                        .startOf("day")
-                        .toDate()
-                    : undefined,
-                to: datePicker?.to
-                    ? (0, moment_1.default)(datePicker?.to)
-                        .endOf("day")
-                        .toDate()
-                    : undefined,
-            });
-            setFirstLoad(false);
+            if (datePicker?.from && !datePicker?.to) {
+                setDate({
+                    from: new Date(convertDate(datePicker?.from, "start")),
+                    to: new Date(convertDate(datePicker?.from, "end")),
+                });
+                setDatePicker({
+                    ...datePicker,
+                    to: datePicker?.from,
+                });
+            }
+            else if (datePicker?.from && datePicker?.to)
+                setDate({
+                    from: new Date(convertDate(datePicker.from, "start")),
+                    to: new Date(convertDate(datePicker?.to, "end")),
+                });
         }
     }, [datePicker, firtLoad]);
     function convertDate(date, type) {

@@ -6,6 +6,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
     iconPre?: React.ReactNode;
     iconAfter?: React.ReactNode;
     placeholder?: string;
+    error?: boolean;
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 export default Input;
