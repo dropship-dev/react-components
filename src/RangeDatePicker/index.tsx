@@ -40,8 +40,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
 
   const [open, setOpen] = React.useState<boolean>(false);
 
-  console.log(date);
-
   const convertTimezone = (timezone: string) => {
     const date = new Intl.DateTimeFormat("en-GB", {
       dateStyle: "full",
@@ -238,11 +236,14 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                         ...datePicker,
                         to: datePicker?.from,
                       });
-                    } else if (datePicker?.from && datePicker?.to)
+                    } else if (datePicker?.from && datePicker?.to) {
                       setDate({
                         from: new Date(convertDate(datePicker.from, "start")),
                         to: new Date(convertDate(datePicker?.to, "end")),
                       });
+                    } else {
+                      setDate(undefined);
+                    }
                   }}
                 />
               </div>
