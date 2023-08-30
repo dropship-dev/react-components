@@ -10,6 +10,7 @@ export interface InputProps
   iconPre?: React.ReactNode;
   iconAfter?: React.ReactNode;
   placeholder?: string;
+  error?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -23,6 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       iconPre,
       iconAfter,
       placeholder,
+      error,
       ...props
     },
     ref,
@@ -36,7 +38,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         <div
           className={cn(
-            `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid  rounded-[8px] `,
+            `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid ${
+              error ? "border-red-500" : "border-black"
+            } rounded-[8px] `,
           )}
         >
           {iconPre}
