@@ -105,6 +105,7 @@ function RangeDatePicker(props) {
                     from: new Date(convertDate(datePicker.from, "start")),
                     to: new Date(convertDate(datePicker?.to, "end")),
                 });
+            setFirstLoad(false);
         }
     }, [datePicker, firtLoad]);
     function convertDate(date, type) {
