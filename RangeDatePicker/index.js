@@ -28,14 +28,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const React = __importStar(require("react"));
 const lucide_react_1 = require("lucide-react");
+const React = __importStar(require("react"));
 const utils_1 = require("../lib/utils");
-const calendar_1 = require("./components/calendar");
-const popover_1 = require("../ComboBox/components/popover");
-const __1 = require("..");
-require("moment-timezone");
 const moment_1 = __importDefault(require("moment"));
+require("moment-timezone");
+const __1 = require("..");
+const popover_1 = require("../ComboBox/components/popover");
+const calendar_1 = require("./components/calendar");
 var DefaultValues;
 (function (DefaultValues) {
     DefaultValues["TODAY"] = "Today";
@@ -45,6 +45,7 @@ var DefaultValues;
 })(DefaultValues || (DefaultValues = {}));
 function RangeDatePicker(props) {
     const { date, setDate, timezone, defaultValues } = props;
+    const [firtLoad, setFirstLoad] = React.useState(true);
     const timezoneDate = timezone ?? "America/Los_Angeles";
     // var moment = require("moment-timezone");
     // moment.tz.setDefault(timezoneDate);
@@ -87,18 +88,21 @@ function RangeDatePicker(props) {
         }
     }, [defaultValues]);
     React.useEffect(() => {
-        setDate({
-            from: datePicker?.from
-                ? (0, moment_1.default)(datePicker?.from)
-                    .startOf("day")
-                    .toDate()
-                : undefined,
-            to: datePicker?.to
-                ? (0, moment_1.default)(datePicker?.to)
-                    .endOf("day")
-                    .toDate()
-                : undefined,
-        });
+        if (firtLoad && !!defaultValues) {
+            setDate({
+                from: datePicker?.from
+                    ? (0, moment_1.default)(datePicker?.from)
+                        .startOf("day")
+                        .toDate()
+                    : undefined,
+                to: datePicker?.to
+                    ? (0, moment_1.default)(datePicker?.to)
+                        .endOf("day")
+                        .toDate()
+                    : undefined,
+            });
+            setFirstLoad(false);
+        }
     }, [datePicker]);
     function convertDate(date, type) {
         return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${type === "start" ? "00:00:00" : "23:59:59"} ${convertTimezone(timezoneDate)}`);
