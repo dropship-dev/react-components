@@ -78,21 +78,22 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
         to: moment(new Date()).endOf("year").toDate(),
       });
     }
-    if (!!defaultValues) {
-      setDate({
-        from: datePicker?.from
-          ? moment(datePicker?.from)
-              .startOf("day")
-              .toDate()
-          : undefined,
-        to: datePicker?.to
-          ? moment(datePicker?.to)
-              .endOf("day")
-              .toDate()
-          : undefined,
-      });
-    }
   }, [defaultValues]);
+
+  React.useEffect(() => {
+    setDate({
+      from: datePicker?.from
+        ? moment(datePicker?.from)
+            .startOf("day")
+            .toDate()
+        : undefined,
+      to: datePicker?.to
+        ? moment(datePicker?.to)
+            .endOf("day")
+            .toDate()
+        : undefined,
+    });
+  }, [datePicker]);
 
   function convertDate(date: Date, type: "start" | "end") {
     return new Date(
