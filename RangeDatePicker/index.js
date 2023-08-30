@@ -88,7 +88,7 @@ function RangeDatePicker(props) {
         }
     }, [defaultValues]);
     React.useEffect(() => {
-        if (firtLoad && !!defaultValues) {
+        if (firtLoad && !!defaultValues && !!datePicker?.from) {
             setDate({
                 from: datePicker?.from
                     ? (0, moment_1.default)(datePicker?.from)
@@ -103,7 +103,7 @@ function RangeDatePicker(props) {
             });
             setFirstLoad(false);
         }
-    }, [datePicker]);
+    }, [datePicker, firtLoad]);
     function convertDate(date, type) {
         return new Date(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${type === "start" ? "00:00:00" : "23:59:59"} ${convertTimezone(timezoneDate)}`);
     }
