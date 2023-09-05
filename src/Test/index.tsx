@@ -1,5 +1,13 @@
 import React from "react";
-import { ComboBox, Dialog, Drawer, RangeDatePicker, Rating, Slider } from "..";
+import {
+  ComboBox,
+  DatePicker,
+  Dialog,
+  Drawer,
+  RangeDatePicker,
+  Rating,
+  Slider,
+} from "..";
 import { DateRange } from "react-day-picker";
 
 export default function Test(props: { sizePopup?: boolean }) {
@@ -9,7 +17,9 @@ export default function Test(props: { sizePopup?: boolean }) {
   const [date, setDate] = React.useState<DateRange | undefined>();
   const [openCombobox, setOpenCombobox] = React.useState<boolean>(false);
   const [valueRating, setValueRating] = React.useState<number>(3);
-
+  const [datePicker, setDatePicker] = React.useState<Date | undefined>(
+    new Date(),
+  );
   return (
     <>
       <button
@@ -93,6 +103,7 @@ export default function Test(props: { sizePopup?: boolean }) {
           setOpenDrawer(false);
         }}
       />
+      <DatePicker date={datePicker} setDate={setDatePicker} />
       <RangeDatePicker date={date} setDate={setDate} defaultValues="Today" />
       <Slider min={0} max={100} defaultValue={[0, 100]} />
       <Rating rating={valueRating} setRating={setValueRating} />

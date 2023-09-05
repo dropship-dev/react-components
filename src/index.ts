@@ -22,3 +22,4 @@ export { default as Drawer } from "./Drawer";
 export { default as RangeDatePicker } from "./RangeDatePicker";
 export { default as SelectGroup } from "./SelectGroup";
 export { default as Rating } from "./Rating";
+export { default as DatePicker } from "./DatePicker";
