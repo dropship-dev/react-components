@@ -8,7 +8,7 @@ export default function SelectGroup(props: {
   onSelected?: (value: any) => void;
   defaultValue?: string;
   size?: "xs" | "sm" | "md";
-  optionTop?: string;
+  optionTop: string[];
   value?: string;
 }) {
   const { data, placeholder, optionTop, onSelected, width, size, value } =
@@ -24,14 +24,17 @@ export default function SelectGroup(props: {
       value={value}
       onChange={onSelected}
     >
-      {optionTop && (
-        <option
-          className="py-2 px3 text-textSM text-gray-900 border-b-[1px] border-b-gray-100"
-          selected
-        >
-          {optionTop}
-        </option>
-      )}
+      {optionTop?.length > 0 &&
+        optionTop.map((item) => {
+          return (
+            <option
+              className="py-2 px3 text-textSM text-gray-900 border-b-[1px] border-b-gray-100"
+              selected
+            >
+              {item}
+            </option>
+          );
+        })}
       {data.map((i, index) => (
         <>
           <option
@@ -42,7 +45,10 @@ export default function SelectGroup(props: {
             {i.name}
           </option>
           {i.value.map((i, id) => (
-            <option key={id} className="py-2 px3 text-textSM text-gray-900">
+            <option
+              key={id}
+              className="py-2 px3 text-textSM text-gray-900 pl-4"
+            >
               {i}
             </option>
           ))}

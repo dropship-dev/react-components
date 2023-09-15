@@ -10,8 +10,14 @@ function Dialog(props: DialogProps) {
   if (!sizePopup) {
     return (
       <dialog id="my_modal_2" className="modal" open={open}>
-        <div className="modal-box dark:bg-white bg-white">{content}</div>
+        <div
+          className="modal-box dark:bg-white bg-white"
+          style={{ zIndex: 1000 }}
+        >
+          {content}
+        </div>
         <form
+          style={{ zIndex: 900 }}
           method="dialog"
           className="modal-backdrop bg-[rgba(30,35,52,0.24)] backdrop-blur-sm"
           onClick={() => {
