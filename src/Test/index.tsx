@@ -15,9 +15,11 @@ export default function Test(props: { sizePopup?: boolean }) {
   const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const [date, setDate] = React.useState<DateRange | undefined>();
-  const [openCombobox, setOpenCombobox] = React.useState<boolean>(false);
   const [valueRating, setValueRating] = React.useState<number>(3);
   const [datePicker, setDatePicker] = React.useState<Date | undefined>(
+    new Date(),
+  );
+  const [datesinger, setDatesinger] = React.useState<Date | undefined>(
     new Date(),
   );
   return (
@@ -44,6 +46,7 @@ export default function Test(props: { sizePopup?: boolean }) {
         content={
           <div className="flex flex-col">
             Dialog
+            <DatePicker date={datesinger} setDate={setDatesinger} />
             <button
               onClick={() => {
                 setOpen(false);
