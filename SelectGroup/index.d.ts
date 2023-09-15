@@ -11,6 +11,6 @@ export default function SelectGroup(props: {
     onSelected?: (value: any) => void;
     defaultValue?: string;
     size?: "xs" | "sm" | "md";
-    optionTop?: string;
+    optionTop: string[];
     value?: string;
 }): import("react/jsx-runtime").JSX.Element;

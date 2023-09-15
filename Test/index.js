@@ -10,16 +10,16 @@ function Test(props) {
     const [open, setOpen] = react_1.default.useState(false);
     const [openDrawer, setOpenDrawer] = react_1.default.useState(false);
     const [date, setDate] = react_1.default.useState();
-    const [openCombobox, setOpenCombobox] = react_1.default.useState(false);
     const [valueRating, setValueRating] = react_1.default.useState(3);
     const [datePicker, setDatePicker] = react_1.default.useState(new Date());
+    const [datesinger, setDatesinger] = react_1.default.useState(new Date());
     return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("button", { onClick: () => {
                     setOpen(true);
                 }, children: "Open Dialog" }), (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                     setOpenDrawer(true);
                 }, children: "Open Drawer" }), (0, jsx_runtime_1.jsx)(__1.Dialog, { sizePopup: props.sizePopup, onClose: () => {
                     setOpen(false);
-                }, content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)("button", { onClick: () => {
+                }, content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)(__1.DatePicker, { date: datesinger, setDate: setDatesinger }), (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                                 setOpen(false);
                             }, children: "Close" }), (0, jsx_runtime_1.jsx)("button", { children: "AAA" })] }), open: open }), (0, jsx_runtime_1.jsx)(__1.ComboBox, { content: "tag", data: [
                     {

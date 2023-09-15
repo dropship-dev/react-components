@@ -7,7 +7,7 @@ const lucide_react_1 = require("lucide-react");
 const react_day_picker_1 = require("react-day-picker");
 const utils_1 = require("../../lib/utils");
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
-    return ((0, jsx_runtime_1.jsx)(react_day_picker_1.DayPicker, { showOutsideDays: showOutsideDays, className: (0, utils_1.cn)("px-6 py-5", className), classNames: {
+    return ((0, jsx_runtime_1.jsx)(react_day_picker_1.DayPicker, { showOutsideDays: showOutsideDays, className: (0, utils_1.cn)("px-6 py-5 z-50", className), classNames: {
             months: "flex flex-col sm:flex-row space-y-0 sm:space-x-6 sm:space-y-0 ",
             month: "space-y-0",
             caption: "flex justify-center pt-1 relative items-center",
