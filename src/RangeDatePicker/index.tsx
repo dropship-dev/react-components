@@ -16,7 +16,7 @@ import {
 } from "../ComboBox/components/popover";
 import { Calendar } from "./components/calendar";
 
-export enum DefaultValues {
+export enum RangeDatePickerDefaultValues {
   TODAY = "Today",
   THIS_WEEK = "This week",
   THIS_MONTH = "This month",
@@ -26,15 +26,15 @@ interface IRangeDatePicker {
   date: DateRange | undefined;
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
   timezone?: string;
-  defaultValues?: DefaultValues;
+  defaultValues?: RangeDatePickerDefaultValues;
 }
 
 const generateDateRangeFromDefaultValue = (
   timezoneDate: string,
-  defaultValue?: DefaultValues,
+  defaultValue?: RangeDatePickerDefaultValues,
 ): DateRange => {
   switch (defaultValue) {
-    case DefaultValues.TODAY:
+    case RangeDatePickerDefaultValues.TODAY:
       return {
         from: new Date(
           moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
@@ -43,17 +43,17 @@ const generateDateRangeFromDefaultValue = (
           moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
         ),
       };
-    case DefaultValues.THIS_WEEK:
+    case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
         from: moment().startOf("week").toDate(),
         to: moment().endOf("week").toDate(),
       };
-    case DefaultValues.THIS_MONTH:
+    case RangeDatePickerDefaultValues.THIS_MONTH:
       return {
         from: moment(new Date()).startOf("month").toDate(),
         to: moment(new Date()).endOf("month").toDate(),
       };
-    case DefaultValues.THIS_YEAR:
+    case RangeDatePickerDefaultValues.THIS_YEAR:
       return {
         from: moment(new Date()).startOf("year").toDate(),
         to: moment(new Date()).endOf("year").toDate(),
