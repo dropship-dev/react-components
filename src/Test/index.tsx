@@ -9,6 +9,7 @@ import {
   Slider,
 } from "..";
 import { DateRange } from "react-day-picker";
+import { DefaultValues } from "~/RangeDatePicker";
 
 export default function Test(props: { sizePopup?: boolean }) {
   const [open, setOpen] = React.useState(false);
@@ -107,7 +108,11 @@ export default function Test(props: { sizePopup?: boolean }) {
         }}
       />
       <DatePicker date={datePicker} setDate={setDatePicker} />
-      <RangeDatePicker date={date} setDate={setDate} defaultValues="Today" />
+      <RangeDatePicker
+        date={date}
+        setDate={setDate}
+        defaultValues={DefaultValues.TODAY}
+      />
       <Slider min={0} max={100} defaultValue={[0, 100]} />
       <Rating rating={valueRating} setRating={setValueRating} />
     </>
