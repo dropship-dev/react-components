@@ -5,11 +5,11 @@ import {
   Dialog,
   Drawer,
   RangeDatePicker,
+  RangeDatePickerDefaultValues,
   Rating,
   Slider,
 } from "..";
 import { DateRange } from "react-day-picker";
-import { RangeDatePickerDefaultValues } from "~/RangeDatePicker";
 
 export default function Test(props: { sizePopup?: boolean }) {
   const [open, setOpen] = React.useState(false);
