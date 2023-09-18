@@ -50,7 +50,7 @@ Object.defineProperty(exports, "Drawer", { enumerable: true, get: function () { 
 var RangeDatePicker_1 = require("./RangeDatePicker");
 Object.defineProperty(exports, "RangeDatePicker", { enumerable: true, get: function () { return __importDefault(RangeDatePicker_1).default; } });
 var RangeDatePicker_2 = require("./RangeDatePicker");
-Object.defineProperty(exports, "RangeDatePickerDefaultValues", { enumerable: true, get: function () { return RangeDatePicker_2.DefaultValues; } });
+Object.defineProperty(exports, "RangeDatePickerDefaultValues", { enumerable: true, get: function () { return RangeDatePicker_2.RangeDatePickerDefaultValues; } });
 var SelectGroup_1 = require("./SelectGroup");
 Object.defineProperty(exports, "SelectGroup", { enumerable: true, get: function () { return __importDefault(SelectGroup_1).default; } });
 var Rating_1 = require("./Rating");
