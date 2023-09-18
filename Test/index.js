@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = __importDefault(require("react"));
 const __1 = require("..");
+const RangeDatePicker_1 = require("~/RangeDatePicker");
 function Test(props) {
     const [open, setOpen] = react_1.default.useState(false);
     const [openDrawer, setOpenDrawer] = react_1.default.useState(false);
@@ -47,6 +48,6 @@ function Test(props) {
                                 setOpenDrawer(false);
                             }, children: "Close" })] }), open: openDrawer, onClose: () => {
                     setOpenDrawer(false);
-                } }), (0, jsx_runtime_1.jsx)(__1.DatePicker, { date: datePicker, setDate: setDatePicker }), (0, jsx_runtime_1.jsx)(__1.RangeDatePicker, { date: date, setDate: setDate, defaultValues: "Today" }), (0, jsx_runtime_1.jsx)(__1.Slider, { min: 0, max: 100, defaultValue: [0, 100] }), (0, jsx_runtime_1.jsx)(__1.Rating, { rating: valueRating, setRating: setValueRating })] }));
+                } }), (0, jsx_runtime_1.jsx)(__1.DatePicker, { date: datePicker, setDate: setDatePicker }), (0, jsx_runtime_1.jsx)(__1.RangeDatePicker, { date: date, setDate: setDate, defaultValues: RangeDatePicker_1.DefaultValues.TODAY }), (0, jsx_runtime_1.jsx)(__1.Slider, { min: 0, max: 100, defaultValue: [0, 100] }), (0, jsx_runtime_1.jsx)(__1.Rating, { rating: valueRating, setRating: setValueRating })] }));
 }
 exports.default = Test;
