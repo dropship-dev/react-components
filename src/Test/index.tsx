@@ -5,6 +5,7 @@ import {
   Dialog,
   Drawer,
   RangeDatePicker,
+  RangeDatePickerDefaultValues,
   Rating,
   Slider,
 } from "..";
@@ -107,7 +108,11 @@ export default function Test(props: { sizePopup?: boolean }) {
         }}
       />
       <DatePicker date={datePicker} setDate={setDatePicker} />
-      <RangeDatePicker date={date} setDate={setDate} defaultValues="Today" />
+      <RangeDatePicker
+        date={date}
+        setDate={setDate}
+        defaultValues={RangeDatePickerDefaultValues.TODAY}
+      />
       <Slider min={0} max={100} defaultValue={[0, 100]} />
       <Rating rating={valueRating} setRating={setValueRating} />
     </>
