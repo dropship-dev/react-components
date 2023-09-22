@@ -1,6 +1,7 @@
 export { default as Button } from "./Button";
 export { default as Dialog } from "./Dialog";
 export { default as Chip } from "./Chip";
+export { default as RadioButton } from "./RadioButton";
 export { default as IconButton } from "./IconButton";
 export { default as Label } from "./Label";
 export { default as Input } from "./Input";
@@ -24,3 +25,4 @@ export { RangeDatePickerDefaultValues } from "./RangeDatePicker";
 export { default as SelectGroup } from "./SelectGroup";
 export { default as Rating } from "./Rating";
 export { default as DatePicker } from "./DatePicker";
+export { default as ComboboxSearch } from "./ComboboxSearch";
