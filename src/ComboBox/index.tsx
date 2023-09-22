@@ -32,7 +32,7 @@ export default function Combobox(props: ICombobox) {
         placeholder={`Search ${content} ...`}
         onChange={onChangeValue}
       />
-      {open && (
+      {value !== "" && (
         <>
           <CommandEmpty>No {content} found.</CommandEmpty>
           <CommandGroup>
