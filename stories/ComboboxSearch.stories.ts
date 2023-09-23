@@ -42,6 +42,7 @@ export const Default: Story = {
     onSelect: (e: string) => {
       console.log(e);
     },
-    onChangeValue: () => console.log("12121"),
+    placeholder: "Search",
+    DeleteContent: "Clear data",
   },
 };
