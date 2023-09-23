@@ -1,7 +1,7 @@
 "use client";
 
+import { CheckIcon } from "@radix-ui/react-icons";
 import * as React from "react";
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons";
 
 import { cn } from "../lib/utils";
 
@@ -19,30 +19,17 @@ import {
   PopoverTrigger,
 } from "../ComboBox/components/popover";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+interface IComboboxProps {
+  data: { value: string; label: string | React.ReactNode }[];
+  placeholder?: string;
+  onSelect?: (e: string) => void;
+  DeleteContent?: string;
+  content?: string;
+  onDelete?: () => void;
+}
 
-export default function ComboboxDemo() {
+export default function ComboboxDemo(props: IComboboxProps) {
+  const { data, placeholder, onSelect, DeleteContent, onDelete } = props;
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -51,44 +38,93 @@ export default function ComboboxDemo() {
       <PopoverTrigger asChild>
         <Button
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className={`w-[200px] text-textMD text-gray-900 font-normal h-11 border-[1px] border-gray-300 ${
+            open
+              ? "border-primary-500 shadow-[0_0_0_4px] shadow-[#DBDDFF]"
+              : "border-gray-300"
+          }`}
           content={
-            value
-              ? frameworks.find((framework) => framework.value === value)?.label
-              : "Select framework..."
+            <div
+              className={`text-textMD ${
+                data.find((item) => item.value === value)?.label
+                  ? "text-gray-900"
+                  : "text-gray-500"
+              } w-full flex items-center justify-center`}
+            >
+              {value
+                ? data.find((item) => item.value === value)?.label
+                : placeholder}
+              {open ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M9.41205 6.91205C9.73748 6.58661 10.2651 6.58661 10.5906 6.91205L15.5906 11.912C15.916 12.2375 15.916 12.7651 15.5906 13.0906C15.2651 13.416 14.7375 13.416 14.412 13.0906L10.0013 8.67981L5.59056 13.0906C5.26512 13.416 4.73748 13.416 4.41205 13.0906C4.08661 12.7651 4.08661 12.2375 4.41205 11.912L9.41205 6.91205Z"
+                    fill="#354053"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M4.41205 6.91205C4.73748 6.58661 5.26512 6.58661 5.59056 6.91205L10.0013 11.3228L14.412 6.91205C14.7375 6.58661 15.2651 6.58661 15.5906 6.91205C15.916 7.23748 15.916 7.76512 15.5906 8.09056L10.5906 13.0906C10.2651 13.416 9.73748 13.416 9.41205 13.0906L4.41205 8.09056C4.08661 7.76512 4.08661 7.23748 4.41205 6.91205Z"
+                    fill="#354053"
+                  />
+                </svg>
+              )}
+            </div>
           }
         />
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." className="h-9" />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder={placeholder} />
+          <CommandEmpty>Not found.</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            <div className="h-[227px] min-h-[227px] overflow-y-auto">
+              {data.map((i) => (
+                <CommandItem
+                  key={i.value}
+                  onSelect={(currentValue) => {
+                    setValue(currentValue === value ? "" : currentValue);
+                    setOpen(false);
+                    onSelect && onSelect(currentValue);
+                  }}
+                >
+                  {i.label}
+                  <CheckIcon
+                    className={cn(
+                      "ml-auto h-4 w-4",
+                      value === i.value ? "opacity-100" : "opacity-0",
+                    )}
+                  />
+                </CommandItem>
+              ))}
+            </div>
+            {value !== "" && DeleteContent && (
               <CommandItem
-                key={framework.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue);
+                onSelect={() => {
+                  setValue("");
                   setOpen(false);
+                  onDelete && onDelete();
                 }}
               >
-                {framework.label}
-                <CheckIcon
-                  className={cn(
-                    "ml-auto h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0",
-                  )}
-                />
+                {DeleteContent}
               </CommandItem>
-            ))}
-            <CommandItem
-              onSelect={() => {
-                setValue("");
-                setOpen(false);
-              }}
-            >
-              Delete
-            </CommandItem>
+            )}
           </CommandGroup>
         </Command>
       </PopoverContent>
