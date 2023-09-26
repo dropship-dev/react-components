@@ -55,7 +55,7 @@ export default function Test(props: { sizePopup?: boolean }) {
             >
               Close
             </button>
-            <button>AAA</button>
+            <button>BBB</button>
           </div>
         }
         open={open}
