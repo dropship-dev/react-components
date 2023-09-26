@@ -1,7 +1,7 @@
 import * as React from "react";
 interface IComboboxProps {
     data: {
-        value: string;
+        value: string | number;
         label: string | React.ReactNode;
     }[];
     placeholder?: string;
