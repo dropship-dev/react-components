@@ -19,7 +19,7 @@ import {
 } from "../ComboBox/components/popover";
 
 interface IComboboxProps {
-  data: { value: string; label: string | React.ReactNode }[];
+  data: { value: string | number; label: string | React.ReactNode }[];
   placeholder?: string;
   onSelect?: (e: string | number) => void;
   DeleteContent?: string;
