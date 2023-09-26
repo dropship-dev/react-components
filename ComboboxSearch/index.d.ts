@@ -9,6 +9,8 @@ interface IComboboxProps {
     DeleteContent?: string;
     content?: string;
     onDelete?: () => void;
+    value: string;
+    setValue: (e: string) => void;
 }
 export default function ComboboxDemo(props: IComboboxProps): import("react/jsx-runtime").JSX.Element;
 export {};
