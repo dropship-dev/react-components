@@ -43,7 +43,7 @@ function ComboboxDemo(props) {
                                             setOpen(false);
                                             onSelect && onSelect(i.value);
                                             setIdsSelected(i.value.toString());
-                                        }, className: "flex items-center justify-between", children: [(0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label }), (0, jsx_runtime_1.jsx)(react_icons_1.CheckIcon, { className: (0, utils_1.cn)("ml-auto h-4 w-4 text-primary-500", idsSelected === i.value.toString()
+                                        }, className: "flex items-center justify-between", children: [(0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label }), (0, jsx_runtime_1.jsx)(react_icons_1.CheckIcon, { className: (0, utils_1.cn)("ml-auto h-5 w-5 text-primary-500", idsSelected === i.value.toString()
                                                     ? "opacity-100"
                                                     : "opacity-0") })] }, i.value))) }), (0, jsx_runtime_1.jsx)("div", { children: value !== "" && DeleteContent ? ((0, jsx_runtime_1.jsx)(command_1.CommandItem, { onSelect: () => {
                                             setValue("");
