@@ -107,10 +107,10 @@ export default function ComboboxDemo(props: IComboboxProps) {
                     onSelect && onSelect(i.value);
                   }}
                 >
-                  {i.label}
+                  <div className="text-ellipsis line-clamp-1">{i.label}</div>
                   <CheckIcon
                     className={cn(
-                      "ml-auto h-4 w-4",
+                      "ml-auto h-4 w-4 pr-2 text-primary-500",
                       value === i.value ? "opacity-100" : "opacity-0",
                     )}
                   />
