@@ -92,7 +92,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
           )}
         </div>
       </PopoverTrigger>
-      <PopoverContent className={`w-[${width}] p-0`}>
+      <PopoverContent className={`w-[${width}px] p-0`}>
         <Command>
           <CommandInput placeholder={placeholder} />
           <CommandEmpty>Not found.</CommandEmpty>
