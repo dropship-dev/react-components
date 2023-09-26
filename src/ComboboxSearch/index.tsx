@@ -42,6 +42,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
     width,
   } = props;
   const [open, setOpen] = React.useState(false);
+  const [idsSelected, setIdsSelected] = React.useState<string>("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -105,13 +106,17 @@ export default function ComboboxDemo(props: IComboboxProps) {
                     setValue(currentValue);
                     setOpen(false);
                     onSelect && onSelect(i.value);
+                    setIdsSelected(i.value.toString());
                   }}
+                  className="flex items-center justify-between"
                 >
                   <div className="text-ellipsis line-clamp-1">{i.label}</div>
                   <CheckIcon
                     className={cn(
-                      "ml-auto h-4 w-4 pr-2 text-primary-500",
-                      value === i.value ? "opacity-100" : "opacity-0",
+                      "ml-auto h-4 w-4 text-primary-500",
+                      idsSelected === i.value.toString()
+                        ? "opacity-100"
+                        : "opacity-0",
                     )}
                   />
                 </CommandItem>
@@ -126,16 +131,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
                     onDelete && onDelete();
                   }}
                 >
-                  {DeleteContent}
-                </CommandItem>
-              ) : value !== "" ? (
-                <CommandItem
-                  onSelect={() => {
-                    setValue("");
-                    setOpen(false);
-                  }}
-                >
-                  Clear selection
+                  {DeleteContent ?? "Clear selection"}
                 </CommandItem>
               ) : null}
             </div>
