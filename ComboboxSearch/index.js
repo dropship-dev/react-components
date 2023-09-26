@@ -33,6 +33,7 @@ const popover_1 = require("../ComboBox/components/popover");
 function ComboboxDemo(props) {
     const { data, placeholder, onSelect, DeleteContent, onDelete, value, setValue, width, } = props;
     const [open, setOpen] = React.useState(false);
+    const [idsSelected, setIdsSelected] = React.useState("");
     return ((0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: setOpen, children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { asChild: true, children: (0, jsx_runtime_1.jsxs)("div", { style: { borderRadius: "6px" }, className: `text-textMD flex items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${data.find((item) => item.value === value)?.label
                         ? "text-gray-900"
                         : "text-gray-500"} ${open
@@ -41,13 +42,13 @@ function ComboboxDemo(props) {
                                             setValue(currentValue);
                                             setOpen(false);
                                             onSelect && onSelect(i.value);
-                                        }, children: [(0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label }), (0, jsx_runtime_1.jsx)(react_icons_1.CheckIcon, { className: (0, utils_1.cn)("ml-auto h-4 w-4 pr-2 text-primary-500", value === i.value ? "opacity-100" : "opacity-0") })] }, i.value))) }), (0, jsx_runtime_1.jsx)("div", { children: value !== "" && DeleteContent ? ((0, jsx_runtime_1.jsx)(command_1.CommandItem, { onSelect: () => {
+                                            setIdsSelected(i.value.toString());
+                                        }, className: "flex items-center justify-between", children: [(0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label }), (0, jsx_runtime_1.jsx)(react_icons_1.CheckIcon, { className: (0, utils_1.cn)("ml-auto h-4 w-4 text-primary-500", idsSelected === i.value.toString()
+                                                    ? "opacity-100"
+                                                    : "opacity-0") })] }, i.value))) }), (0, jsx_runtime_1.jsx)("div", { children: value !== "" && DeleteContent ? ((0, jsx_runtime_1.jsx)(command_1.CommandItem, { onSelect: () => {
                                             setValue("");
                                             setOpen(false);
                                             onDelete && onDelete();
-                                        }, children: DeleteContent })) : value !== "" ? ((0, jsx_runtime_1.jsx)(command_1.CommandItem, { onSelect: () => {
-                                            setValue("");
-                                            setOpen(false);
-                                        }, children: "Clear selection" })) : null })] })] }) })] }));
+                                        }, children: DeleteContent ?? "Clear selection" })) : null })] })] }) })] }));
 }
 exports.default = ComboboxDemo;

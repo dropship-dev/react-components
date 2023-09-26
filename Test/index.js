@@ -21,7 +21,7 @@ function Test(props) {
                     setOpen(false);
                 }, content: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col", children: ["Dialog", (0, jsx_runtime_1.jsx)(__1.DatePicker, { date: datesinger, setDate: setDatesinger }), (0, jsx_runtime_1.jsx)("button", { onClick: () => {
                                 setOpen(false);
-                            }, children: "Close" }), (0, jsx_runtime_1.jsx)("button", { children: "AAA" })] }), open: open }), (0, jsx_runtime_1.jsx)(__1.ComboBox, { content: "tag", data: [
+                            }, children: "Close" }), (0, jsx_runtime_1.jsx)("button", { children: "BBB" })] }), open: open }), (0, jsx_runtime_1.jsx)(__1.ComboBox, { content: "tag", data: [
                     {
                         value: "next.js",
                         label: "Next.js",
