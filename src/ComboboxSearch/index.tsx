@@ -21,12 +21,13 @@ import {
 interface IComboboxProps {
   data: { value: string; label: string | React.ReactNode }[];
   placeholder?: string;
-  onSelect?: (e: string) => void;
+  onSelect?: (e: string | number) => void;
   DeleteContent?: string;
   content?: string;
   onDelete?: () => void;
-  value: string;
-  setValue: (e: string) => void;
+  value: string | number;
+  setValue: (e: string | number) => void;
+  width?: number;
 }
 
 export default function ComboboxDemo(props: IComboboxProps) {
@@ -38,6 +39,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
     onDelete,
     value,
     setValue,
+    width,
   } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -90,7 +92,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
           )}
         </div>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className={`w-[${width}] p-0`}>
         <Command>
           <CommandInput placeholder={placeholder} />
           <CommandEmpty>Not found.</CommandEmpty>
@@ -100,9 +102,9 @@ export default function ComboboxDemo(props: IComboboxProps) {
                 <CommandItem
                   key={i.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue);
+                    setValue(i.value);
                     setOpen(false);
-                    onSelect && onSelect(currentValue);
+                    onSelect && onSelect(i.value);
                   }}
                 >
                   {i.label}
