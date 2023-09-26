@@ -41,7 +41,7 @@ function ComboboxDemo(props) {
                                             setValue(currentValue);
                                             setOpen(false);
                                             onSelect && onSelect(i.value);
-                                        }, children: [i.label, (0, jsx_runtime_1.jsx)(react_icons_1.CheckIcon, { className: (0, utils_1.cn)("ml-auto h-4 w-4", value === i.value ? "opacity-100" : "opacity-0") })] }, i.value))) }), (0, jsx_runtime_1.jsx)("div", { children: value !== "" && DeleteContent ? ((0, jsx_runtime_1.jsx)(command_1.CommandItem, { onSelect: () => {
+                                        }, children: [(0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label }), (0, jsx_runtime_1.jsx)(react_icons_1.CheckIcon, { className: (0, utils_1.cn)("ml-auto h-4 w-4 pr-2 text-primary-500", value === i.value ? "opacity-100" : "opacity-0") })] }, i.value))) }), (0, jsx_runtime_1.jsx)("div", { children: value !== "" && DeleteContent ? ((0, jsx_runtime_1.jsx)(command_1.CommandItem, { onSelect: () => {
                                             setValue("");
                                             setOpen(false);
                                             onDelete && onDelete();
