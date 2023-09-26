@@ -5,7 +5,6 @@ import * as React from "react";
 
 import { cn } from "../lib/utils";
 
-import { Button } from "..";
 import {
   Command,
   CommandEmpty,
@@ -57,9 +56,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
               : "border-gray-300"
           }`}
         >
-          {value
-            ? data.find((item) => item.value === value)?.label
-            : placeholder}
+          {value !== "" ? value : placeholder}
           {open ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
