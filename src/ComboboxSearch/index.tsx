@@ -102,7 +102,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
                 <CommandItem
                   key={i.value}
                   onSelect={(currentValue) => {
-                    setValue(i.value);
+                    setValue(currentValue);
                     setOpen(false);
                     onSelect && onSelect(i.value);
                   }}
@@ -117,26 +117,28 @@ export default function ComboboxDemo(props: IComboboxProps) {
                 </CommandItem>
               ))}
             </div>
-            {value !== "" && DeleteContent ? (
-              <CommandItem
-                onSelect={() => {
-                  setValue("");
-                  setOpen(false);
-                  onDelete && onDelete();
-                }}
-              >
-                {DeleteContent}
-              </CommandItem>
-            ) : value !== "" ? (
-              <CommandItem
-                onSelect={() => {
-                  setValue("");
-                  setOpen(false);
-                }}
-              >
-                Clear selection
-              </CommandItem>
-            ) : null}
+            <div>
+              {value !== "" && DeleteContent ? (
+                <CommandItem
+                  onSelect={() => {
+                    setValue("");
+                    setOpen(false);
+                    onDelete && onDelete();
+                  }}
+                >
+                  {DeleteContent}
+                </CommandItem>
+              ) : value !== "" ? (
+                <CommandItem
+                  onSelect={() => {
+                    setValue("");
+                    setOpen(false);
+                  }}
+                >
+                  Clear selection
+                </CommandItem>
+              ) : null}
+            </div>
           </CommandGroup>
         </Command>
       </PopoverContent>
