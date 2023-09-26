@@ -26,68 +26,72 @@ interface IComboboxProps {
   DeleteContent?: string;
   content?: string;
   onDelete?: () => void;
+  value: string;
+  setValue: (e: string) => void;
 }
 
 export default function ComboboxDemo(props: IComboboxProps) {
-  const { data, placeholder, onSelect, DeleteContent, onDelete } = props;
+  const {
+    data,
+    placeholder,
+    onSelect,
+    DeleteContent,
+    onDelete,
+    value,
+    setValue,
+  } = props;
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <Button
-          aria-expanded={open}
-          className={`w-[200px] text-textMD text-gray-900 font-normal h-11 border-[1px] border-gray-300 ${
+        <div
+          style={{ borderRadius: "6px" }}
+          className={`text-textMD flex items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${
+            data.find((item) => item.value === value)?.label
+              ? "text-gray-900"
+              : "text-gray-500"
+          } ${
             open
               ? "border-primary-500 shadow-[0_0_0_4px] shadow-[#DBDDFF]"
               : "border-gray-300"
           }`}
-          content={
-            <div
-              className={`text-textMD ${
-                data.find((item) => item.value === value)?.label
-                  ? "text-gray-900"
-                  : "text-gray-500"
-              } w-full flex items-center justify-center`}
+        >
+          {value
+            ? data.find((item) => item.value === value)?.label
+            : placeholder}
+          {open ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
             >
-              {value
-                ? data.find((item) => item.value === value)?.label
-                : placeholder}
-              {open ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M9.41205 6.91205C9.73748 6.58661 10.2651 6.58661 10.5906 6.91205L15.5906 11.912C15.916 12.2375 15.916 12.7651 15.5906 13.0906C15.2651 13.416 14.7375 13.416 14.412 13.0906L10.0013 8.67981L5.59056 13.0906C5.26512 13.416 4.73748 13.416 4.41205 13.0906C4.08661 12.7651 4.08661 12.2375 4.41205 11.912L9.41205 6.91205Z"
-                    fill="#354053"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M4.41205 6.91205C4.73748 6.58661 5.26512 6.58661 5.59056 6.91205L10.0013 11.3228L14.412 6.91205C14.7375 6.58661 15.2651 6.58661 15.5906 6.91205C15.916 7.23748 15.916 7.76512 15.5906 8.09056L10.5906 13.0906C10.2651 13.416 9.73748 13.416 9.41205 13.0906L4.41205 8.09056C4.08661 7.76512 4.08661 7.23748 4.41205 6.91205Z"
-                    fill="#354053"
-                  />
-                </svg>
-              )}
-            </div>
-          }
-        />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9.41205 6.91205C9.73748 6.58661 10.2651 6.58661 10.5906 6.91205L15.5906 11.912C15.916 12.2375 15.916 12.7651 15.5906 13.0906C15.2651 13.416 14.7375 13.416 14.412 13.0906L10.0013 8.67981L5.59056 13.0906C5.26512 13.416 4.73748 13.416 4.41205 13.0906C4.08661 12.7651 4.08661 12.2375 4.41205 11.912L9.41205 6.91205Z"
+                fill="#354053"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4.41205 6.91205C4.73748 6.58661 5.26512 6.58661 5.59056 6.91205L10.0013 11.3228L14.412 6.91205C14.7375 6.58661 15.2651 6.58661 15.5906 6.91205C15.916 7.23748 15.916 7.76512 15.5906 8.09056L10.5906 13.0906C10.2651 13.416 9.73748 13.416 9.41205 13.0906L4.41205 8.09056C4.08661 7.76512 4.08661 7.23748 4.41205 6.91205Z"
+                fill="#354053"
+              />
+            </svg>
+          )}
+        </div>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
@@ -99,7 +103,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
                 <CommandItem
                   key={i.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    setValue(currentValue);
                     setOpen(false);
                     onSelect && onSelect(currentValue);
                   }}
