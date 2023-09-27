@@ -44,6 +44,8 @@ export default function ComboboxDemo(props: IComboboxProps) {
   const [open, setOpen] = React.useState(false);
   const [idsSelected, setIdsSelected] = React.useState<string>("");
 
+  console.log(data.find((item) => item.value === value)?.label ?? placeholder);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -60,6 +62,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
           }`}
         >
           {value !== "" ? value : placeholder}
+          {/* <>{data.find((item) => item.value === value)?.label ?? placeholder}</> */}
           {open ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +101,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
           <CommandInput placeholder={placeholder} />
           <CommandEmpty>Not found.</CommandEmpty>
           <CommandGroup>
-            <div className="h-[227px] min-h-[227px] overflow-y-auto">
+            <div className="h-fit max-h-[227px] overflow-y-auto">
               {data.map((i) => (
                 <CommandItem
                   key={i.value}
@@ -122,8 +125,8 @@ export default function ComboboxDemo(props: IComboboxProps) {
                 </CommandItem>
               ))}
             </div>
-            <div>
-              {value !== "" && DeleteContent ? (
+            {value !== "" ? (
+              <div className="pt-1 border-t-[1px] border-gray-300">
                 <CommandItem
                   onSelect={() => {
                     setValue("");
@@ -133,8 +136,8 @@ export default function ComboboxDemo(props: IComboboxProps) {
                 >
                   {DeleteContent ?? "Clear selection"}
                 </CommandItem>
-              ) : null}
-            </div>
+              </div>
+            ) : null}
           </CommandGroup>
         </Command>
       </PopoverContent>

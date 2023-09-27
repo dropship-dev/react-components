@@ -37,12 +37,42 @@ export const Default: Story = {
         value: "astro",
         label: "Astro",
       },
+      {
+        value: "astro2",
+        label: "Astro1",
+      },
+      {
+        value: "astro3",
+        label: "Astro2",
+      },
+      {
+        value: "astro4",
+        label: "Astro3",
+      },
+      {
+        value: "astro66",
+        label: "Astro5",
+      },
+      {
+        value: "sveltekit1",
+        label: "SvelteKit2",
+      },
+      {
+        value: "sveltekit3",
+        label: "SvelteKit4",
+      },
+      {
+        value: "sveltekit5",
+        label: "SvelteKit6",
+      },
     ],
     content: "tag",
-    onSelect: (e: string) => {
+    onSelect: (e: string | number) => {
       console.log(e);
     },
     placeholder: "Search",
     DeleteContent: "Clear data",
+    value: "astro",
+    onDelete: () => {},
   },
 };

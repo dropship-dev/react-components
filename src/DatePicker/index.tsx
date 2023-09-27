@@ -9,14 +9,33 @@ import {
 } from "../ComboBox/components/popover";
 import { Calendar } from "../RangeDatePicker/components/calendar";
 import { Button } from "..";
+import "moment-timezone";
 
 interface IDatePicker {
   date: Date | undefined;
   setDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  timezone?: string;
 }
 
 const DatePicker = (props: IDatePicker) => {
-  const { date, setDate } = props;
+  const { date, setDate, timezone } = props;
+  const moment = require("moment-timezone");
+  const [value, setValue] = React.useState<Date | undefined>(
+    moment()
+      .tz(timezone ?? "America/Los_Angeles")
+      .startOf("day")
+      .toDate(),
+  );
+
+  React.useEffect(() => {
+    setDate(
+      moment(value)
+        .tz(timezone ?? "America/Los_Angeles")
+        .startOf("day")
+        .toDate(),
+    );
+  }, [value]);
+
   return (
     <Popover>
       <PopoverTrigger
@@ -42,8 +61,8 @@ const DatePicker = (props: IDatePicker) => {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={setDate}
+          selected={value}
+          onSelect={setValue}
           initialFocus
           className="z-50"
         />
