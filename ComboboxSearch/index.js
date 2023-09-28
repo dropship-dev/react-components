@@ -34,7 +34,7 @@ function ComboboxDemo(props) {
     const { data, placeholder, onSelect, DeleteContent, onDelete, value, setValue, width, } = props;
     const [open, setOpen] = React.useState(false);
     const [idsSelected, setIdsSelected] = React.useState("");
-    console.log(data.find((item) => item.value === value)?.label ?? placeholder);
+    // console.log(data.find((item) => item.value === value)?.label ?? placeholder);
     return ((0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: setOpen, children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { asChild: true, children: (0, jsx_runtime_1.jsxs)("div", { style: { borderRadius: "6px" }, className: `text-textMD flex items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${data.find((item) => item.value === value)?.label
                         ? "text-gray-900"
                         : "text-gray-500"} ${open
