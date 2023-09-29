@@ -37,11 +37,7 @@ export default function MultiplechoiceSelect(props: {
     } else if (allSelected.length === 1) {
       setValue(allSelected[0]);
     } else {
-      setValue(
-        `${allSelected[0] + " + " + (allSelected.length - 1)} ${
-          allSelected.length - 1 > 1 ? "variants" : "variant"
-        }`,
-      );
+      setValue(`${allSelected[0] + " (" + (allSelected.length - 1)}+)`);
     }
     callbackListSelected && callbackListSelected(allSelected);
   }, [allSelected]);
@@ -51,7 +47,7 @@ export default function MultiplechoiceSelect(props: {
         <PopoverTrigger
           asChild
           onClick={() => setOpen(true)}
-          className="flex justify-center items-center"
+          className="flex justify-center items-center p-0 m-0"
         >
           <Input value={value} readOnly className={width} small />
         </PopoverTrigger>
@@ -62,6 +58,7 @@ export default function MultiplechoiceSelect(props: {
                 <div className="px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50">
                   {onCheckedChange && (
                     <Checkbox
+                      checked={!!allSelected?.find((select) => select === item)}
                       onCheckedChange={(e) => {
                         onCheckedChange(e as boolean);
                         if (e) {
@@ -78,33 +75,35 @@ export default function MultiplechoiceSelect(props: {
                 </div>
               );
             })}
-          {data.map((i, index) => (
-            <div className="max-h-96 overflow-y-auto">
-              <div key={index} className="text-textSM text-gray-400 px-3">
-                {i.name}
-              </div>
-              {i.value.map((i, id) => (
-                <div className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50">
-                  {onCheckedChange && (
-                    <Checkbox
-                      onCheckedChange={(e) => {
-                        onCheckedChange(e as boolean);
-                        if (e) {
-                          setAllSelected([...allSelected, i]);
-                        } else {
-                          setAllSelected(
-                            allSelected.filter((select) => select !== i),
-                          );
-                        }
-                      }}
-                      checked={!!allSelected?.find((select) => select === i)}
-                    />
-                  )}
-                  {i}
+          <div className="max-h-96 overflow-y-auto">
+            {data.map((i, index) => (
+              <>
+                <div key={index} className="text-textSM text-gray-400 px-3">
+                  {i.name}
                 </div>
-              ))}
-            </div>
-          ))}
+                {i.value.map((i, id) => (
+                  <div className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50">
+                    {onCheckedChange && (
+                      <Checkbox
+                        onCheckedChange={(e) => {
+                          onCheckedChange(e as boolean);
+                          if (e) {
+                            setAllSelected([...allSelected, i]);
+                          } else {
+                            setAllSelected(
+                              allSelected.filter((select) => select !== i),
+                            );
+                          }
+                        }}
+                        checked={!!allSelected?.find((select) => select === i)}
+                      />
+                    )}
+                    {i}
+                  </div>
+                ))}
+              </>
+            ))}
+          </div>
           <div
             className="w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer "
             onClick={() => {
