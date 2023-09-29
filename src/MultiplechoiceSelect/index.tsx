@@ -48,10 +48,14 @@ export default function MultiplechoiceSelect(props: {
   return (
     <div className={width}>
       <Popover open={open} onOpenChange={(e) => setOpen(e)}>
-        <PopoverTrigger asChild onClick={() => setOpen(true)}>
-          <Input value={value} readOnly className={width} />
+        <PopoverTrigger
+          asChild
+          onClick={() => setOpen(true)}
+          className="flex justify-center items-center"
+        >
+          <Input value={value} readOnly className={width} small />
         </PopoverTrigger>
-        <PopoverContent className={`p-0 ${width}`}>
+        <PopoverContent className={`p-0 ${width} bg-white`}>
           {optionTop?.length > 0 &&
             optionTop.map((item) => {
               return (
@@ -75,7 +79,7 @@ export default function MultiplechoiceSelect(props: {
               );
             })}
           {data.map((i, index) => (
-            <>
+            <div className="max-h-96 overflow-y-auto">
               <div key={index} className="text-textSM text-gray-400 px-3">
                 {i.name}
               </div>
@@ -99,7 +103,7 @@ export default function MultiplechoiceSelect(props: {
                   {i}
                 </div>
               ))}
-            </>
+            </div>
           ))}
           <div
             className="w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer "
