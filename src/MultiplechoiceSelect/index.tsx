@@ -49,7 +49,9 @@ export default function MultiplechoiceSelect(props: {
           onClick={() => setOpen(true)}
           className="flex justify-center items-center p-0 m-0"
         >
-          <Input value={value} readOnly className={width} small />
+          <div className="w-fit h-fit">
+            <Input value={value} readOnly className={width} small />
+          </div>
         </PopoverTrigger>
         <PopoverContent className={`p-0 ${width} bg-white`}>
           {optionTop?.length > 0 &&
