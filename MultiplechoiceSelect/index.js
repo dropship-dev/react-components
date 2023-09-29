@@ -40,13 +40,13 @@ function MultiplechoiceSelect(props) {
             setValue(allSelected[0]);
         }
         else {
-            setValue(`${allSelected[0] + " + " + (allSelected.length - 1)} ${allSelected.length - 1 > 1 ? "variants" : "variant"}`);
+            setValue(`${allSelected[0] + " (" + (allSelected.length - 1)}+)`);
         }
         callbackListSelected && callbackListSelected(allSelected);
     }, [allSelected]);
-    return ((0, jsx_runtime_1.jsx)("div", { className: width, children: (0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: (e) => setOpen(e), children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { asChild: true, onClick: () => setOpen(true), className: "flex justify-center items-center", children: (0, jsx_runtime_1.jsx)(__1.Input, { value: value, readOnly: true, className: width, small: true }) }), (0, jsx_runtime_1.jsxs)(popover_1.PopoverContent, { className: `p-0 ${width} bg-white`, children: [optionTop?.length > 0 &&
+    return ((0, jsx_runtime_1.jsx)("div", { className: width, children: (0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: (e) => setOpen(e), children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { asChild: true, onClick: () => setOpen(true), className: "flex justify-center items-center p-0 m-0", children: (0, jsx_runtime_1.jsx)(__1.Input, { value: value, readOnly: true, className: width, small: true }) }), (0, jsx_runtime_1.jsxs)(popover_1.PopoverContent, { className: `p-0 ${width} bg-white`, children: [optionTop?.length > 0 &&
                             optionTop.map((item) => {
-                                return ((0, jsx_runtime_1.jsxs)("div", { className: "px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50", children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { onCheckedChange: (e) => {
+                                return ((0, jsx_runtime_1.jsxs)("div", { className: "px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50", children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { checked: !!allSelected?.find((select) => select === item), onCheckedChange: (e) => {
                                                 onCheckedChange(e);
                                                 if (e) {
                                                     setAllSelected([...allSelected, item]);
@@ -55,15 +55,15 @@ function MultiplechoiceSelect(props) {
                                                     setAllSelected(allSelected.filter((select) => select !== item));
                                                 }
                                             } })), item] }));
-                            }), data.map((i, index) => ((0, jsx_runtime_1.jsxs)("div", { className: "max-h-96 overflow-y-auto", children: [(0, jsx_runtime_1.jsx)("div", { className: "text-textSM text-gray-400 px-3", children: i.name }, index), i.value.map((i, id) => ((0, jsx_runtime_1.jsxs)("div", { className: "pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50", children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { onCheckedChange: (e) => {
-                                                onCheckedChange(e);
-                                                if (e) {
-                                                    setAllSelected([...allSelected, i]);
-                                                }
-                                                else {
-                                                    setAllSelected(allSelected.filter((select) => select !== i));
-                                                }
-                                            }, checked: !!allSelected?.find((select) => select === i) })), i] })))] }))), (0, jsx_runtime_1.jsx)("div", { className: "w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer ", onClick: () => {
+                            }), (0, jsx_runtime_1.jsx)("div", { className: "max-h-96 overflow-y-auto", children: data.map((i, index) => ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("div", { className: "text-textSM text-gray-400 px-3", children: i.name }, index), i.value.map((i, id) => ((0, jsx_runtime_1.jsxs)("div", { className: "pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50", children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { onCheckedChange: (e) => {
+                                                    onCheckedChange(e);
+                                                    if (e) {
+                                                        setAllSelected([...allSelected, i]);
+                                                    }
+                                                    else {
+                                                        setAllSelected(allSelected.filter((select) => select !== i));
+                                                    }
+                                                }, checked: !!allSelected?.find((select) => select === i) })), i] })))] }))) }), (0, jsx_runtime_1.jsx)("div", { className: "w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer ", onClick: () => {
                                 onClear && onClear();
                                 setAllSelected([]);
                                 setOpen(false);
