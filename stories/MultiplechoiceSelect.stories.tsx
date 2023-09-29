@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SelectGroup } from "../src";
+import { ComboboxSearchMulti } from "../src";
 
 import React from "react";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta = {
-  title: "Example/SelectGroup",
-  component: SelectGroup,
+  title: "Example/MultiplechoiceSelect",
+  component: ComboboxSearchMulti,
   tags: ["autodocs"],
-} satisfies Meta<typeof SelectGroup>;
+} satisfies Meta<typeof ComboboxSearchMulti>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -28,8 +28,8 @@ export const Default: Story = {
         value: ["3", "4"],
       },
     ],
-    width: "w-full",
-    optionTop: ["All product"],
+    width: "w-[200px]",
+    optionTop: ["Combo"],
     onSelected: (e: any) => {
       console.log(e);
     },
