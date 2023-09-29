@@ -100,7 +100,7 @@ export default function MultiplechoiceSelect(props: {
                         checked={!!allSelected?.find((select) => select === i)}
                       />
                     )}
-                    {i}
+                    <div className="text-ellipsis line-clamp-1">{i}</div>
                   </div>
                 ))}
               </>
