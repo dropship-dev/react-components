@@ -26,3 +26,4 @@ export { default as SelectGroup } from "./SelectGroup";
 export { default as Rating } from "./Rating";
 export { default as DatePicker } from "./DatePicker";
 export { default as ComboboxSearch } from "./ComboboxSearch";
+export { default as ComboboxSearchMulti } from "./MultiplechoiceSelect";
