@@ -27,13 +27,13 @@ export default function MultiplechoiceSelect(props: {
     onClear,
     callbackListSelected,
   } = props;
-  const [value, setValue] = React.useState<string>("All variants");
+  const [value, setValue] = React.useState<string>("All value");
   const [open, setOpen] = React.useState<boolean>(false);
   const [allSelected, setAllSelected] = React.useState<string[]>([]);
 
   useEffect(() => {
     if (allSelected.length === 0) {
-      setValue("All variants");
+      setValue("All value");
     } else if (allSelected.length === 1) {
       setValue(allSelected[0]);
     } else {
