@@ -52,7 +52,7 @@ const variantsSecondary = {
     color: {
         blue: "bg-primary-25 hover:bg-primary-50 active:bg-primary-100 focus:shadow-[#DBDDFF] border-primary-500 text-primary-500 border border-solid focus:shadow-[0_0_0_4px]",
         destructive: "bg-inherit hover:bg-destructive-100 active:bg-destructive-200 border-destructive-400 focus:shadow-[#FDE4F2] text-destructive-500 border border-solid focus:shadow-[0_0_0_4px]",
-        gray: "bg-inherit hover:bg-gray-100 active:bg-gray-300 border-gray-400 focus:shadow-[#EAECF0] text-black border border-solid focus:shadow-[0_0_0_4px]",
+        gray: "bg-gray-200 hover:bg-gray-300 active:bg-gray-300 focus:bg-primary-100 text-black border border-solid active:bg-gray-400",
     },
 };
 const variantsTertiary = {
