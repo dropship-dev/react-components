@@ -5,7 +5,7 @@ import { cn } from "../lib/utils";
 
 const variantsPrimary = {
   color: {
-    blue: "bg-primary-500 hover:bg-primary-600 active:bg-primary-700 border-primary-500 focus:shadow-[#DBDDFF] text-white focus:shadow-[0_0_0_4px]",
+    blue: "bg-gradient-to-br from-[#4B56F3] to-[#4C25D3] hover:bg-gradient-to-tl transition duration-200 active:bg-primary-700 border-primary-500 focus:shadow-[#DBDDFF] text-white focus:shadow-[0_0_0_4px]",
     destructive:
       "bg-destructive-500 hover:bg-destructive-600 active:bg-destructive-700 border-destructive-400 focus:shadow-[#FDE4F2] text-white focus:shadow-[0_0_0_4px]",
 
