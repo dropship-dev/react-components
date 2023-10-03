@@ -7,7 +7,7 @@ export default function MultiplechoiceSelect(props: {
     placeholder?: string;
     width?: string;
     icon?: React.ReactNode;
-    label?: string;
+    content?: string;
     onSelected?: (value: any) => void;
     optionTop: string[];
     onCheckedChange?: (value: boolean) => void;
