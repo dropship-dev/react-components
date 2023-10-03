@@ -45,6 +45,8 @@ export default function ComboboxDemo(props: IComboboxProps) {
   const [open, setOpen] = React.useState(false);
   const [idsSelected, setIdsSelected] = React.useState<string>("");
 
+  // console.log(data.find((item) => item.value === value)?.label ?? placeholder);
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
