@@ -90,6 +90,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
     return date[date.length - 1];
   };
 
+  const [valueSelected, setValueSelected] = React.useState<string>("");
+
   React.useEffect(() => {
     const dateRange = generateDateRangeFromDefaultValue(
       timezoneDate,
@@ -133,13 +135,15 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
           <div
             id="date"
             className={cn(
-              "w-full justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11",
+              "w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11",
               !datePicker && "text-muted-foreground",
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
             {datePicker?.from ? (
-              datePicker.to ? (
+              valueSelected !== "" ? (
+                valueSelected
+              ) : datePicker.to ? (
                 <>
                   {datePicker.from.toLocaleDateString().replaceAll("-", "/")} -{" "}
                   {datePicker.to.toLocaleDateString().replaceAll("-", "/")}
@@ -156,7 +160,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
           <div className="flex rounded-[10px]">
             <div className="flex flex-col px-4 py-3 border-r-[1px] border-gray-100">
               <div
-                onClick={() =>
+                onClick={() => {
+                  setValueSelected("Today");
                   setDatePicker({
                     from: new Date(
                       moment()
@@ -168,8 +173,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                         .toDate()
                         .toLocaleString("en-US", { timeZone: timezoneDate }),
                     ),
-                  })
-                }
+                  });
+                }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 Today
@@ -177,7 +182,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               <div
                 onClick={() => {
                   // console.log(moment().endOf("week").toDate());
-
+                  setValueSelected("This week");
                   setDatePicker({
                     from: moment().startOf("week").toDate(),
                     to: moment().endOf("week").toDate(),
@@ -188,31 +193,34 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 This week
               </div>
               <div
-                onClick={() =>
+                onClick={() => {
+                  setValueSelected("This month");
                   setDatePicker({
                     from: moment(new Date()).startOf("month").toDate(),
                     to: moment(new Date()).endOf("month").toDate(),
-                  })
-                }
+                  });
+                }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 This month
               </div>
               <div
-                onClick={() =>
+                onClick={() => {
+                  setValueSelected("This year");
                   setDatePicker({
                     from: moment(new Date()).startOf("year").toDate(),
                     to: moment(new Date()).endOf("year").toDate(),
-                  })
-                }
+                  });
+                }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 This year
               </div>
               <div
-                onClick={() =>
-                  setDatePicker({ from: undefined, to: undefined })
-                }
+                onClick={() => {
+                  setValueSelected("");
+                  setDatePicker({ from: undefined, to: undefined });
+                }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
               >
                 All time
@@ -224,7 +232,10 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 mode="range"
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
-                onSelect={setDatePicker}
+                onSelect={(date) => {
+                  setDatePicker(date);
+                  setValueSelected("");
+                }}
                 numberOfMonths={2}
                 className="border-b-[1px] border-gray-300"
               />

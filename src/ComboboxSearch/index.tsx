@@ -40,6 +40,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
     value,
     setValue,
     width,
+    content,
   } = props;
   const [open, setOpen] = React.useState(false);
   const [idsSelected, setIdsSelected] = React.useState<string>("");
@@ -61,7 +62,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
               : "border-gray-300"
           }`}
         >
-          {value !== "" ? value : placeholder}
+          {value !== "" ? `${content}: ${value}` : placeholder}
           {/* <>{data.find((item) => item.value === value)?.label ?? placeholder}</> */}
           {open ? (
             <svg

@@ -33,5 +33,6 @@ export const Default: Story = {
     onSelected: (e: any) => {
       console.log(e);
     },
+    content: "Search",
   },
 };
