@@ -55,15 +55,15 @@ function MultiplechoiceSelect(props) {
                                                     setAllSelected(allSelected.filter((select) => select !== item));
                                                 }
                                             } })), item] }));
-                            }), (0, jsx_runtime_1.jsx)("div", { className: "max-h-96 overflow-y-auto", children: data.map((i, index) => ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("div", { className: "text-textSM text-gray-400 px-3", children: i.name }, index), i.value.map((i, id) => ((0, jsx_runtime_1.jsxs)("div", { className: "pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50", children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { onCheckedChange: (e) => {
+                            }), (0, jsx_runtime_1.jsx)("div", { className: "max-h-96 overflow-y-auto", children: data.map((item, index) => ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("div", { className: "text-textSM text-gray-400 px-3", children: item.name }, index), item.value.map((i, index) => ((0, jsx_runtime_1.jsxs)("div", { className: "pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50", children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { onCheckedChange: (e) => {
                                                     onCheckedChange(e);
                                                     if (e) {
-                                                        setAllSelected([...allSelected, i]);
+                                                        setAllSelected([...allSelected, i.value]);
                                                     }
                                                     else {
-                                                        setAllSelected(allSelected.filter((select) => select !== i));
+                                                        setAllSelected(allSelected.filter((select) => select !== i.value));
                                                     }
-                                                }, checked: !!allSelected?.find((select) => select === i) })), (0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i })] })))] }))) }), (0, jsx_runtime_1.jsx)("div", { className: "w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer ", onClick: () => {
+                                                }, checked: !!allSelected?.find((select) => select === i.value) })), (0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label })] })))] }))) }), (0, jsx_runtime_1.jsx)("div", { className: "w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer ", onClick: () => {
                                 onClear && onClear();
                                 setAllSelected([]);
                                 setOpen(false);

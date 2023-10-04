@@ -2,7 +2,10 @@ import React from "react";
 export default function MultiplechoiceSelect(props: {
     data: {
         name: string;
-        value: string[];
+        value: {
+            value: string | any;
+            label: React.ReactNode;
+        }[];
     }[];
     placeholder?: string;
     width?: string;
