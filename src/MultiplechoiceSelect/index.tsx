@@ -7,7 +7,13 @@ import {
   PopoverTrigger,
 } from "../ComboBox/components/popover";
 export default function MultiplechoiceSelect(props: {
-  data: { name: string; value: string[] }[];
+  data: {
+    name: string;
+    value: {
+      value: string | any;
+      label: React.ReactNode;
+    }[];
+  }[];
   placeholder?: string;
   width?: string;
   icon?: React.ReactNode;
@@ -119,29 +125,33 @@ export default function MultiplechoiceSelect(props: {
               );
             })}
           <div className="max-h-96 overflow-y-auto">
-            {data.map((i, index) => (
+            {data.map((item, index) => (
               <>
                 <div key={index} className="text-textSM text-gray-400 px-3">
-                  {i.name}
+                  {item.name}
                 </div>
-                {i.value.map((i, id) => (
+                {item.value.map((i, index) => (
                   <div className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50">
                     {onCheckedChange && (
                       <Checkbox
                         onCheckedChange={(e) => {
                           onCheckedChange(e as boolean);
                           if (e) {
-                            setAllSelected([...allSelected, i]);
+                            setAllSelected([...allSelected, i.value]);
                           } else {
                             setAllSelected(
-                              allSelected.filter((select) => select !== i),
+                              allSelected.filter(
+                                (select) => select !== i.value,
+                              ),
                             );
                           }
                         }}
-                        checked={!!allSelected?.find((select) => select === i)}
+                        checked={
+                          !!allSelected?.find((select) => select === i.value)
+                        }
                       />
                     )}
-                    <div className="text-ellipsis line-clamp-1">{i}</div>
+                    <div className="text-ellipsis line-clamp-1">{i.label}</div>
                   </div>
                 ))}
               </>
