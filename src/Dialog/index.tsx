@@ -4,15 +4,18 @@ interface DialogProps {
   open: boolean;
   sizePopup?: boolean;
   onClose: () => void;
+  classNameContent?: string;
+  styleContent?: React.CSSProperties;
 }
 function Dialog(props: DialogProps) {
-  const { content, onClose, open, sizePopup } = props;
+  const { content, onClose, open, sizePopup, classNameContent, styleContent } =
+    props;
   if (!sizePopup) {
     return (
       <dialog id="my_modal_2" className="modal" open={open}>
         <div
-          className="modal-box dark:bg-white bg-white"
-          style={{ zIndex: 1000 }}
+          className={`modal-box dark:bg-white bg-white ${classNameContent}`}
+          style={{ zIndex: 1000, ...styleContent }}
         >
           {content}
         </div>
@@ -29,7 +32,10 @@ function Dialog(props: DialogProps) {
   } else
     return (
       <dialog id="my_modal_2" className="modal" open={open}>
-        <div className="modal-box dark:bg-white bg-white w-11/12 max-w-[765px]">
+        <div
+          className={`modal-box dark:bg-white bg-white w-11/12 max-w-[765px] ${classNameContent}`}
+          style={{ ...styleContent }}
+        >
           {content}
         </div>
         <form
