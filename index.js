@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ComboboxSearchMulti = exports.ComboboxSearch = exports.DatePicker = exports.Rating = exports.SelectGroup = exports.RangeDatePickerDefaultValues = exports.RangeDatePicker = exports.Drawer = exports.Test = exports.DropDownMenu = exports.Alert = exports.Textarea = exports.ComboBox = exports.Slider = exports.TableProduct = exports.Checkbox = exports.ToggleTag = exports.Tag = exports.Switch = exports.Skeleton = exports.Select = exports.Avatar = exports.ProductImage = exports.Input = exports.Label = exports.IconButton = exports.RadioButton = exports.Chip = exports.Dialog = exports.Button = void 0;
+exports.PopoverNoti = exports.ComboboxSearchMulti = exports.ComboboxSearch = exports.DatePicker = exports.Rating = exports.SelectGroup = exports.RangeDatePickerDefaultValues = exports.RangeDatePicker = exports.Drawer = exports.Test = exports.DropDownMenu = exports.Alert = exports.Textarea = exports.ComboBox = exports.Slider = exports.TableProduct = exports.Checkbox = exports.ToggleTag = exports.Tag = exports.Switch = exports.Skeleton = exports.Select = exports.Avatar = exports.ProductImage = exports.Input = exports.Label = exports.IconButton = exports.RadioButton = exports.Chip = exports.Dialog = exports.Button = void 0;
 var Button_1 = require("./Button");
 Object.defineProperty(exports, "Button", { enumerable: true, get: function () { return __importDefault(Button_1).default; } });
 var Dialog_1 = require("./Dialog");
@@ -63,3 +63,5 @@ var ComboboxSearch_1 = require("./ComboboxSearch");
 Object.defineProperty(exports, "ComboboxSearch", { enumerable: true, get: function () { return __importDefault(ComboboxSearch_1).default; } });
 var MultiplechoiceSelect_1 = require("./MultiplechoiceSelect");
 Object.defineProperty(exports, "ComboboxSearchMulti", { enumerable: true, get: function () { return __importDefault(MultiplechoiceSelect_1).default; } });
+var Popover_1 = require("./Popover");
+Object.defineProperty(exports, "PopoverNoti", { enumerable: true, get: function () { return __importDefault(Popover_1).default; } });
