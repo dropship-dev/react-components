@@ -27,3 +27,4 @@ export { default as Rating } from "./Rating";
 export { default as DatePicker } from "./DatePicker";
 export { default as ComboboxSearch } from "./ComboboxSearch";
 export { default as ComboboxSearchMulti } from "./MultiplechoiceSelect";
+export { default as PopoverNoti } from "./Popover";
