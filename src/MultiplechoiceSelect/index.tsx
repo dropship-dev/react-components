@@ -104,7 +104,10 @@ export default function MultiplechoiceSelect(props: {
           {optionTop?.length > 0 &&
             optionTop.map((item) => {
               return (
-                <div className="px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50">
+                <div
+                  className="px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50"
+                  key={item}
+                >
                   {onCheckedChange && (
                     <Checkbox
                       checked={!!allSelected?.find((select) => select === item)}
@@ -131,7 +134,10 @@ export default function MultiplechoiceSelect(props: {
                   {item.name}
                 </div>
                 {item.value.map((i, index) => (
-                  <div className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50">
+                  <div
+                    className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50"
+                    key={i.value}
+                  >
                     {onCheckedChange && (
                       <Checkbox
                         onCheckedChange={(e) => {
