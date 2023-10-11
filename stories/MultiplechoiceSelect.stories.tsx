@@ -21,11 +21,17 @@ export const Default: Story = {
     data: [
       {
         name: "1",
-        value: ["1", "2"],
+        value: [
+          { label: "1", value: "1" },
+          { label: "2", value: "2" },
+        ],
       },
       {
         name: "2",
-        value: ["3", "4"],
+        value: [
+          { label: "3", value: "3" },
+          { label: "4", value: "4" },
+        ],
       },
     ],
     width: "w-[200px]",
