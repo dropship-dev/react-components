@@ -102,11 +102,11 @@ export default function MultiplechoiceSelect(props: {
         </PopoverTrigger>
         <PopoverContent className={`p-0 ${width} bg-white`}>
           {optionTop?.length > 0 &&
-            optionTop.map((item) => {
+            optionTop.map((item, index) => {
               return (
                 <div
                   className="px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50"
-                  key={item}
+                  key={item + index}
                 >
                   {onCheckedChange && (
                     <Checkbox
@@ -129,14 +129,14 @@ export default function MultiplechoiceSelect(props: {
             })}
           <div className="max-h-96 overflow-y-auto">
             {data.map((item, index) => (
-              <>
-                <div key={index} className="text-textSM text-gray-400 px-3">
+              <div key={index + item.name}>
+                <div className="text-textSM text-gray-400 px-3">
                   {item.name}
                 </div>
                 {item.value.map((i, index) => (
                   <div
                     className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50"
-                    key={i.value}
+                    key={i.value + index + item.name}
                   >
                     {onCheckedChange && (
                       <Checkbox
@@ -160,7 +160,7 @@ export default function MultiplechoiceSelect(props: {
                     <div className="text-ellipsis line-clamp-1">{i.label}</div>
                   </div>
                 ))}
-              </>
+              </div>
             ))}
           </div>
           <div
