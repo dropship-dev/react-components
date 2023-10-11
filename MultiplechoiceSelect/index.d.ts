@@ -3,7 +3,7 @@ export default function MultiplechoiceSelect(props: {
     data: {
         name: string;
         value: {
-            value: string | any;
+            value: string;
             label: React.ReactNode;
         }[];
     }[];
