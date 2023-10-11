@@ -10,7 +10,7 @@ export default function MultiplechoiceSelect(props: {
   data: {
     name: string;
     value: {
-      value: string | any;
+      value: string;
       label: React.ReactNode;
     }[];
   }[];
@@ -100,13 +100,22 @@ export default function MultiplechoiceSelect(props: {
             />
           </div>
         </PopoverTrigger>
-        <PopoverContent className={`p-0 ${width} bg-white`}>
+        <PopoverContent className={`px-0 pb-0 pt-1 ${width} bg-white`}>
           {optionTop?.length > 0 &&
             optionTop.map((item, index) => {
               return (
                 <div
-                  className="px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50"
+                  className="px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50 cursor-pointer"
                   key={item + index}
+                  onClick={() => {
+                    if (allSelected.find((select) => select === item)) {
+                      setAllSelected(
+                        allSelected.filter((select) => select !== item),
+                      );
+                    } else {
+                      setAllSelected([...allSelected, item]);
+                    }
+                  }}
                 >
                   {onCheckedChange && (
                     <Checkbox
@@ -135,8 +144,17 @@ export default function MultiplechoiceSelect(props: {
                 </div>
                 {item.value.map((i, index) => (
                   <div
-                    className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50"
+                    className="pl-4 pr-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50 cursor-pointer"
                     key={i.value + index + item.name}
+                    onClick={() => {
+                      if (allSelected.find((select) => select === i.value)) {
+                        setAllSelected(
+                          allSelected.filter((select) => select !== i.value),
+                        );
+                      } else {
+                        setAllSelected([...allSelected, i.value]);
+                      }
+                    }}
                   >
                     {onCheckedChange && (
                       <Checkbox
