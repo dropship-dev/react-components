@@ -35,7 +35,7 @@ export const Default: Story = {
       },
     ],
     width: "w-[200px]",
-    optionTop: ["Combo"],
+    optionTop: [],
     onSelected: (e: any) => {
       console.log(e);
     },
