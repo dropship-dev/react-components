@@ -17,4 +17,5 @@ export default function MultiplechoiceSelect(props: {
     onClear?: () => void;
     listSelected?: string[];
     callbackListSelected?: (value: string[]) => void;
+    defaultValue?: string;
 }): import("react/jsx-runtime").JSX.Element;

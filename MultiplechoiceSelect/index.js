@@ -28,13 +28,13 @@ const react_1 = __importStar(require("react"));
 const __1 = require("../");
 const popover_1 = require("../ComboBox/components/popover");
 function MultiplechoiceSelect(props) {
-    const { data, optionTop, width, onCheckedChange, onClear, callbackListSelected, content, } = props;
-    const [value, setValue] = react_1.default.useState("All value");
+    const { data, optionTop, width, onCheckedChange, onClear, callbackListSelected, content, defaultValue, } = props;
+    const [value, setValue] = react_1.default.useState(defaultValue ?? "All value");
     const [open, setOpen] = react_1.default.useState(false);
     const [allSelected, setAllSelected] = react_1.default.useState([]);
     (0, react_1.useEffect)(() => {
         if (allSelected.length === 0) {
-            setValue("All value");
+            setValue(defaultValue ?? "All value");
         }
         else if (allSelected.length === 1) {
             setValue(`${content}: ${allSelected[0]}`);
