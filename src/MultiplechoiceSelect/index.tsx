@@ -102,7 +102,11 @@ export default function MultiplechoiceSelect(props: {
             />
           </div>
         </PopoverTrigger>
-        <PopoverContent className={`px-0 pb-0 pt-1 ${width} bg-white`}>
+        <PopoverContent
+          className={`px-0 pb-0 ${
+            optionTop.length > 0 ? "pt-0" : "pt-4"
+          } ${width} bg-white w-full min-w-[200px]`}
+        >
           {optionTop?.length > 0 &&
             optionTop.map((item, index) => {
               return (

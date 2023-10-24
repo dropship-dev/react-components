@@ -18,6 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     content: <div>eqewqweqwe</div>,
-    ref: React.createRef<HTMLInputElement>(),
+    disableBackdropClick: true,
+    open: true,
   },
 };
