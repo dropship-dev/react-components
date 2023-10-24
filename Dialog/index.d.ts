@@ -6,6 +6,7 @@ interface DialogProps {
     onClose: () => void;
     classNameContent?: string;
     styleContent?: React.CSSProperties;
+    disableBackdropClick?: boolean;
 }
 declare function Dialog(props: DialogProps): import("react/jsx-runtime").JSX.Element;
 export default Dialog;
