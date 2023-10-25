@@ -39,7 +39,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid ${
-              error ? "border-red-500" : "border-black"
+              error ? "border-red-500" : "border-gray-300"
             } rounded-[8px] `,
           )}
         >
