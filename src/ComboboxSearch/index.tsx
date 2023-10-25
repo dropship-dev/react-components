@@ -45,14 +45,12 @@ export default function ComboboxDemo(props: IComboboxProps) {
   const [open, setOpen] = React.useState(false);
   const [idsSelected, setIdsSelected] = React.useState<string>("");
 
-  // console.log(data.find((item) => item.value === value)?.label ?? placeholder);
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger asChild className="border-gray-500">
         <div
           style={{ borderRadius: "6px" }}
-          className={`text-textMD flex items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${
+          className={`text-textMD flex border-gray-300 items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${
             data.find((item) => item.value === value)?.label
               ? "text-gray-900"
               : "text-gray-500"
@@ -65,7 +63,6 @@ export default function ComboboxDemo(props: IComboboxProps) {
           <div className="mr-2">
             {value !== "" ? `${content}: ${value}` : placeholder}
           </div>
-          {/* <>{data.find((item) => item.value === value)?.label ?? placeholder}</> */}
           {open ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -134,6 +131,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
                   onSelect={() => {
                     setValue("");
                     setOpen(false);
+                    setIdsSelected("");
                     onDelete && onDelete();
                   }}
                 >
