@@ -47,7 +47,7 @@ export default function ComboboxDemo(props: IComboboxProps) {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="border-gray-500">
+      <PopoverTrigger asChild className="border-gray-300">
         <div
           style={{ borderRadius: "6px" }}
           className={`text-textMD flex border-gray-300 items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${
