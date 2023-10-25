@@ -62,7 +62,9 @@ export default function ComboboxDemo(props: IComboboxProps) {
               : "border-gray-300"
           }`}
         >
-          {value !== "" ? `${content}: ${value}` : placeholder}
+          <div className="mr-2">
+            {value !== "" ? `${content}: ${value}` : placeholder}
+          </div>
           {/* <>{data.find((item) => item.value === value)?.label ?? placeholder}</> */}
           {open ? (
             <svg
