@@ -135,7 +135,9 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
           <div
             id="date"
             className={cn(
-              "w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11 text-ellipsis whitespace-nowrap",
+              `w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-11 text-ellipsis whitespace-nowrap ${
+                open ? "shadow-[#DBDDFF] shadow-[0_0_0_4px]" : ""
+              }`,
               !datePicker && "text-muted-foreground",
             )}
           >
