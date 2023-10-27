@@ -34,8 +34,17 @@ export default function Select(props: {
     size,
   } = props;
 
+  const [open, setOpen] = React.useState(false);
+
+  console.log("open", open);
+
   return (
-    <SelectData onValueChange={onSelected} defaultValue={defaultValue}>
+    <SelectData
+      onOpenChange={(e) => setOpen(e)}
+      onValueChange={onSelected}
+      defaultValue={defaultValue}
+      open={open}
+    >
       {label && (
         <div className="mb-[6px]">
           <Label
@@ -49,7 +58,9 @@ export default function Select(props: {
       <SelectTrigger
         className={`${width} ${
           size === "xs" ? "h-10" : size === "md" ? "h-12" : "h-11"
-        } border-gray-300 py-2 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start focus:outline-none`}
+        } border-gray-300 py-2 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start focus:outline-none ${
+          open ? "shadow-[#DBDDFF] shadow-[0_0_0_4px]" : ""
+        }`}
       >
         {icon}
         <div className="w-full flex flex-row justify-between text-[14px]">

@@ -58,7 +58,9 @@ export default function MultiplechoiceSelect(props: {
         <PopoverTrigger
           asChild
           onClick={() => setOpen(true)}
-          className="flex justify-center items-center p-0 m-0"
+          className={`flex justify-center items-center p-0 m-0 rounded-[6px] ${
+            open ? "shadow-[#DBDDFF] shadow-[0_0_0_3px]" : ""
+          }`}
         >
           <div className="w-fit h-fit">
             <Input

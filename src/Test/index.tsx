@@ -34,12 +34,13 @@ export default function Test(props: { sizePopup?: boolean }) {
       >
         Open Dialog
       </button>
-      {/* <button
+      <button
         onClick={() => {
           setOpenDrawer(true);
-        }}>
+        }}
+      >
         Open Drawer
-      </button> */}
+      </button>
       <Dialog
         sizePopup={props.sizePopup}
         disableBackdropClick
@@ -62,7 +63,7 @@ export default function Test(props: { sizePopup?: boolean }) {
         }
         open={open}
       />
-      {/* <ComboBox
+      <ComboBox
         content="tag"
         data={[
           {
@@ -90,15 +91,16 @@ export default function Test(props: { sizePopup?: boolean }) {
         }}
         open={true}
         setOpen={setOpen}
-      /> */}
-      {/* <Drawer
+      />
+      <Drawer
         content={
           <div className="flex flex-col">
             Dialog
             <button
               onClick={() => {
                 setOpenDrawer(false);
-              }}>
+              }}
+            >
               Close
             </button>
           </div>
@@ -135,7 +137,8 @@ export default function Test(props: { sizePopup?: boolean }) {
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
-                  fill="none">
+                  fill="none"
+                >
                   <path
                     fillRule="evenodd"
                     clipRule="evenodd"
@@ -152,7 +155,7 @@ export default function Test(props: { sizePopup?: boolean }) {
         value={value}
         setValue={setValue}
         width={300}
-      /> */}
+      />
     </>
   );
 }
