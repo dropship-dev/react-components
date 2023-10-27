@@ -41,10 +41,10 @@ const variantsPrimary = {
     },
     size: {
         sm: "h-[36px] rounded-[6px] py-[8px] px-[10px] text-[14px] leading-[20px]",
-        md: "h-[42px] rounded-[6px] py-[11px] px-[12px] text-[16px] leading-[24px]",
-        lg: "h-[48px] rounded-[7px] py-[14px] px-[18px] text-[16px] leading-[24px]",
-        xl: "h-[54px] rounded-[8px] py-[17px] px-[20px] text-[18px] leading-[28px]",
-        "2xl": "h-13 rounded-[10px] py-[19px] px-[24px] text-[20px] leading-[30px]",
+        md: "h-[40px] rounded-[6px] py-[11px] px-[12px] text-[16px] leading-[24px]",
+        lg: "h-[44px] rounded-[7px] py-[14px] px-[18px] text-[16px] leading-[24px]",
+        xl: "h-[48px] rounded-[8px] py-[17px] px-[20px] text-[18px] leading-[28px]",
+        "2xl": "h-[56px] rounded-[10px] py-[19px] px-[24px] text-[20px] leading-[30px]",
     },
 };
 const variantsSecondary = {

@@ -42,10 +42,10 @@ const variantsPrimary = {
     size: {
         xs: "h-[24px] w-[24px] rounded-[6px]",
         sm: "h-[36px] w-[36px] rounded-[6px]",
-        md: "h-[42px] w-[42px] rounded-[7px]",
-        lg: "h-[48px] w-[48px] rounded-[8px]",
-        xl: "h-[54px] w-[54px] rounded-[10px]",
-        "2xl": "h-[62px] w-[62px] rounded-[10px]",
+        md: "h-[40px] w-[40px] rounded-[7px]",
+        lg: "h-[44px] w-[44px] rounded-[8px]",
+        xl: "h-[48px] w-[48px] rounded-[10px]",
+        "2xl": "h-[56px] w-[56px] rounded-[10px]",
     },
 };
 const variantsSecondary = {
