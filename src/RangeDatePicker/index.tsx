@@ -6,8 +6,7 @@ import { DateRange } from "react-day-picker";
 
 import { cn } from "../lib/utils";
 
-import moment from "moment";
-import "moment-timezone";
+import moment from "moment-timezone";
 import { Button } from "..";
 import {
   Popover,
@@ -68,7 +67,7 @@ const generateDateRangeFromDefaultValue = (
 
 export default function RangeDatePicker(props: IRangeDatePicker) {
   const { date, setDate, timezone, defaultValues } = props;
-  const [firtLoad, setFirstLoad] = React.useState<boolean>(true);
+  const [firstLoad, setFirstLoad] = React.useState<boolean>(true);
   const timezoneDate = timezone ?? "America/Los_Angeles";
   // var moment = require("moment-timezone");
   // moment.tz.setDefault(timezoneDate);
@@ -101,11 +100,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   }, [defaultValues]);
 
   React.useEffect(() => {
-    if (firtLoad && !!defaultValues && !!datePicker?.from) {
+    if (firstLoad && !!defaultValues && !!datePicker?.from) {
       if (datePicker?.from && !datePicker?.to) {
         setDate({
-          from: new Date(convertDate(datePicker?.from, "start")),
-          to: new Date(convertDate(datePicker?.from, "end")),
+          from: convertDate(datePicker?.from, "start"),
+          to: convertDate(datePicker?.from, "end"),
         });
         setDatePicker({
           ...datePicker,
@@ -113,18 +112,18 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
         });
       } else if (datePicker?.from && datePicker?.to)
         setDate({
-          from: new Date(convertDate(datePicker.from, "start")),
-          to: new Date(convertDate(datePicker?.to, "end")),
+          from: convertDate(datePicker.from, "start"),
+          to: convertDate(datePicker?.to, "end"),
         });
       setFirstLoad(false);
     }
-  }, [datePicker, firtLoad]);
+  }, [datePicker, firstLoad]);
 
   function convertDate(date: Date, type: "start" | "end") {
     return new Date(
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
         type === "start" ? "00:00:00" : "23:59:59"
-      } ${convertTimezone(timezoneDate)}`,
+      }${moment(date).tz(timezoneDate).format("Z")}`,
     );
   }
 

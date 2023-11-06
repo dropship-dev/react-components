@@ -3,7 +3,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import Chip from "../../Chip";
 import { ProductImage } from "../../ProductImage";
-import moment from "moment";
 import { ArrowUpDown } from "lucide-react";
 import { Label } from "../../";
 import { Checkbox } from "../../";
