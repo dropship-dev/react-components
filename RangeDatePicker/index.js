@@ -99,8 +99,8 @@ function RangeDatePicker(props) {
         if (firstLoad && !!defaultValues && !!datePicker?.from) {
             if (datePicker?.from && !datePicker?.to) {
                 setDate({
-                    from: new Date(convertDate(datePicker?.from, "start")),
-                    to: new Date(convertDate(datePicker?.from, "end")),
+                    from: convertDate(datePicker?.from, "start"),
+                    to: convertDate(datePicker?.from, "end"),
                 });
                 setDatePicker({
                     ...datePicker,
@@ -109,13 +109,17 @@ function RangeDatePicker(props) {
             }
             else if (datePicker?.from && datePicker?.to)
                 setDate({
-                    from: new Date(convertDate(datePicker.from, "start")),
-                    to: new Date(convertDate(datePicker?.to, "end")),
+                    from: convertDate(datePicker.from, "start"),
+                    to: convertDate(datePicker?.to, "end"),
                 });
             setFirstLoad(false);
         }
     }, [datePicker, firstLoad]);
     function convertDate(date, type) {
+        console.log("convertDate" + date + " " + type + " " + timezoneDate);
+        console.log(moment_timezone_1.default
+            .tz(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${type === "start" ? "00:00:00" : "23:59:59"}`, timezoneDate)
+            .toISOString());
         return new Date(moment_timezone_1.default
             .tz(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${type === "start" ? "00:00:00" : "23:59:59"}`, timezoneDate)
             .toISOString());
@@ -153,6 +157,7 @@ function RangeDatePicker(props) {
                                             setValueSelected("");
                                             setDatePicker({ from: undefined, to: undefined });
                                         }, className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "All time" })] }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(calendar_1.Calendar, { initialFocus: true, mode: "range", defaultMonth: datePicker?.from, selected: datePicker, onSelect: (date) => {
+                                            console.log("onSelect: " + date);
                                             setDatePicker(date);
                                             setValueSelected("");
                                         }, numberOfMonths: 2, className: "border-b-[1px] border-gray-300" }), (0, jsx_runtime_1.jsxs)("div", { className: "flex justify-end items-center flex-row gap-4 px-4 py-3", children: [(0, jsx_runtime_1.jsx)(__1.Button, { content: "Cancel", color: "gray", hierarchy: "secondary", size: "md", onClick: () => {
