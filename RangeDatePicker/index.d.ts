@@ -1,6 +1,5 @@
 import * as React from "react";
 import { DateRange } from "react-day-picker";
-import "moment-timezone";
 export declare enum RangeDatePickerDefaultValues {
     TODAY = "Today",
     THIS_WEEK = "This week",
