@@ -120,27 +120,10 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   }, [datePicker, firstLoad]);
 
   function convertDate(date: Date, type: "start" | "end") {
-    console.log("convertDate" + date + " " + type + " " + timezoneDate);
-    console.log(
-      moment
-        .tz(
-          `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
-            type === "start" ? "00:00:00" : "23:59:59"
-          }`,
-          timezoneDate,
-        )
-        .toISOString(),
-    );
-
     return new Date(
-      moment
-        .tz(
-          `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
-            type === "start" ? "00:00:00" : "23:59:59"
-          }`,
-          timezoneDate,
-        )
-        .toISOString(),
+      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
+        type === "start" ? "00:00:00" : "23:59:59"
+      }${moment(date).tz(timezoneDate).format("Z")}`,
     );
   }
 
@@ -251,8 +234,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
                 onSelect={(date) => {
-                  console.log("onSelect: " + date);
-
                   setDatePicker(date);
                   setValueSelected("");
                 }}
