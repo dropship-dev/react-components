@@ -6,12 +6,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "../ComboBox/components/popover";
+
+type Option = {
+  value: string;
+  label: string;
+};
+
 export default function MultiplechoiceSelect(props: {
   data: {
     name: string;
     value: {
       value: string;
-      label: React.ReactNode;
+      label: string;
     }[];
   }[];
   placeholder?: string;
@@ -25,6 +31,7 @@ export default function MultiplechoiceSelect(props: {
   listSelected?: string[];
   callbackListSelected?: (value: string[]) => void;
   defaultValue?: string;
+  callbackAllSelected?: (value: Option[]) => void;
 }) {
   const {
     data,
@@ -35,10 +42,14 @@ export default function MultiplechoiceSelect(props: {
     callbackListSelected,
     content,
     defaultValue,
+    callbackAllSelected,
   } = props;
   const [value, setValue] = React.useState<string>(defaultValue ?? "All value");
   const [open, setOpen] = React.useState<boolean>(false);
   const [allSelected, setAllSelected] = React.useState<string[]>([]);
+  const [listSelected, setListSelected] = React.useState<Option[]>([]);
+
+  console.log("listSelected", listSelected);
 
   useEffect(() => {
     if (allSelected.length === 0) {
@@ -52,6 +63,11 @@ export default function MultiplechoiceSelect(props: {
     }
     callbackListSelected && callbackListSelected(allSelected);
   }, [allSelected]);
+
+  useEffect(() => {
+    callbackAllSelected && callbackAllSelected(listSelected);
+  }, [listSelected]);
+
   return (
     <div className={width}>
       <Popover open={open} onOpenChange={(e) => setOpen(e)}>
@@ -159,8 +175,19 @@ export default function MultiplechoiceSelect(props: {
                         setAllSelected(
                           allSelected.filter((select) => select !== i.value),
                         );
+                        setListSelected(
+                          listSelected.filter(
+                            (select) =>
+                              select.value !== i.value &&
+                              select.label !== i.label,
+                          ),
+                        );
                       } else {
                         setAllSelected([...allSelected, i.value]);
+                        setListSelected([
+                          ...listSelected,
+                          { value: i.value, label: i.label },
+                        ]);
                       }
                     }}
                   >
