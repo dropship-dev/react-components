@@ -8,7 +8,8 @@ export default function MultiplechoiceSelect(props: {
         name: string;
         value: {
             value: string;
-            label: string;
+            label: string | React.ReactNode;
+            labelInitial?: string;
         }[];
     }[];
     placeholder?: string;

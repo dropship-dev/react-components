@@ -33,7 +33,6 @@ function MultiplechoiceSelect(props) {
     const [open, setOpen] = react_1.default.useState(false);
     const [allSelected, setAllSelected] = react_1.default.useState([]);
     const [listSelected, setListSelected] = react_1.default.useState([]);
-    console.log("listSelected", listSelected);
     (0, react_1.useEffect)(() => {
         if (allSelected.length === 0) {
             setValue(defaultValue ?? "All value");
@@ -77,7 +76,7 @@ function MultiplechoiceSelect(props) {
                                                 setAllSelected([...allSelected, i.value]);
                                                 setListSelected([
                                                     ...listSelected,
-                                                    { value: i.value, label: i.label },
+                                                    { value: i.value, label: i.labelInitial ?? "" },
                                                 ]);
                                             }
                                         }, children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { onCheckedChange: (e) => {
