@@ -17,7 +17,8 @@ export default function MultiplechoiceSelect(props: {
     name: string;
     value: {
       value: string;
-      label: string;
+      label: string | React.ReactNode;
+      labelInitial?: string;
     }[];
   }[];
   placeholder?: string;
@@ -48,8 +49,6 @@ export default function MultiplechoiceSelect(props: {
   const [open, setOpen] = React.useState<boolean>(false);
   const [allSelected, setAllSelected] = React.useState<string[]>([]);
   const [listSelected, setListSelected] = React.useState<Option[]>([]);
-
-  console.log("listSelected", listSelected);
 
   useEffect(() => {
     if (allSelected.length === 0) {
@@ -186,7 +185,7 @@ export default function MultiplechoiceSelect(props: {
                         setAllSelected([...allSelected, i.value]);
                         setListSelected([
                           ...listSelected,
-                          { value: i.value, label: i.label },
+                          { value: i.value, label: i.labelInitial ?? "" },
                         ]);
                       }
                     }}
