@@ -182,7 +182,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               </div>
               <div
                 onClick={() => {
-                  // console.log(moment().endOf("week").toDate());
                   setValueSelected("This week");
                   setDatePicker({
                     from: moment().startOf("week").toDate(),
