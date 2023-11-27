@@ -129,7 +129,6 @@ function RangeDatePicker(props) {
                                                     .toLocaleString("en-US", { timeZone: timezoneDate })),
                                             });
                                         }, className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "Today" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => {
-                                            // console.log(moment().endOf("week").toDate());
                                             setValueSelected("This week");
                                             setDatePicker({
                                                 from: (0, moment_timezone_1.default)().startOf("week").toDate(),
