@@ -36,8 +36,6 @@ export default function Select(props: {
 
   const [open, setOpen] = React.useState(false);
 
-  console.log("open", open);
-
   return (
     <SelectData
       onOpenChange={(e) => setOpen(e)}

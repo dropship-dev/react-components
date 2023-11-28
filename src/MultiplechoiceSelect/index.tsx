@@ -66,6 +66,7 @@ export default function MultiplechoiceSelect(props: {
   useEffect(() => {
     callbackAllSelected && callbackAllSelected(listSelected);
   }, [listSelected]);
+  console.log(listSelected);
 
   return (
     <div className={width}>
@@ -185,7 +186,7 @@ export default function MultiplechoiceSelect(props: {
                         setAllSelected([...allSelected, i.value]);
                         setListSelected([
                           ...listSelected,
-                          { value: i.value, label: i.labelInitial ?? "" },
+                          { value: i.value, label: item.name ?? "" },
                         ]);
                       }
                     }}
