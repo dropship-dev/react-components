@@ -66,7 +66,6 @@ export default function MultiplechoiceSelect(props: {
   useEffect(() => {
     callbackAllSelected && callbackAllSelected(listSelected);
   }, [listSelected]);
-  console.log(listSelected);
 
   return (
     <div className={width}>

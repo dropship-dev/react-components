@@ -82,7 +82,6 @@ export default function Test(props: { sizePopup?: boolean }) {
         ]}
         onChangeValue={(e: any) => {
           console.log(e.target.value);
-
           if (e.target.value === "") {
             setOpen(false);
           } else setOpen(true);
