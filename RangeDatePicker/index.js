@@ -75,7 +75,7 @@ const generateDateRangeFromDefaultValue = (timezoneDate, defaultValue) => {
 function RangeDatePicker(props) {
     const { date, setDate, timezone, defaultValues } = props;
     const [firstLoad, setFirstLoad] = React.useState(true);
-    const timezoneDate = timezone ?? "America/Los_Angeles";
+    const timezoneDate = timezone ?? "America/Phoenix";
     // var moment = require("moment-timezone");
     // moment.tz.setDefault(timezoneDate);
     const [datePicker, setDatePicker] = React.useState(generateDateRangeFromDefaultValue(timezoneDate, defaultValues));
