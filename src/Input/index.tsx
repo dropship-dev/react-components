@@ -45,7 +45,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={`bg-transparent flex gap-2 justify-between items-center py-2 px-3 rounded-[8px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
             isError &&
-            "focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"
+            "border-red-500 focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"
           } ${inputWrapperClassName}`}
         >
           {iconPre}
