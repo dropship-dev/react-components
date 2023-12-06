@@ -82,7 +82,6 @@ export default function MultiplechoiceSelect(props: {
               value={value}
               readOnly
               className={width}
-              small
               iconAfter={
                 open ? (
                   <svg
