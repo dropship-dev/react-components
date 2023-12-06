@@ -1,40 +1,40 @@
 import * as React from "react";
 
-import { cn } from "../lib/utils";
-
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  small?: boolean;
-  label?: string;
   subLabel?: string;
   iconPre?: React.ReactNode;
   iconAfter?: React.ReactNode;
-  placeholder?: string;
+  label?: string;
+  labelClassName?: string;
   error?: boolean;
   errorMessage?: string;
-  labelClassName?: string;
+  errorMessageClassName?: string;
+  wrapperClassName?: string;
+  inputWrapperClassName?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
-      type,
-      small,
-      label,
       subLabel,
       iconPre,
       iconAfter,
-      placeholder,
+      label,
+      labelClassName,
       error,
       errorMessage,
-      labelClassName,
+      errorMessageClassName,
+      wrapperClassName,
+      inputWrapperClassName,
       ...props
     },
     ref,
   ) => {
+    const isError = error || errorMessage;
     return (
-      <div className="gap-[6px] flex flex-col">
+      <div className={`gap-[6px] flex flex-col ${wrapperClassName}`}>
         {label && (
           <div
             className={`font-medium text-textSM text-gray-500 ${labelClassName}`}
@@ -43,24 +43,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </div>
         )}
         <div
-          className={`bg-transparent flex justify-between items-center py-2 px-3 rounded-[8px] border border-solid focus-within:shadow-[#DBDDFF] focus-within:shadow-[0_0_0_3px]  ${
-            errorMessage || error ? "border-red-500" : "border-gray-300"
-          } `}
+          className={`bg-transparent flex gap-2 justify-between items-center py-2 px-3 rounded-[8px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
+            isError &&
+            "focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"
+          } ${inputWrapperClassName}`}
         >
           {iconPre}
           <input
-            placeholder={placeholder}
-            type={type}
-            className={`flex h-[26px] w-full text-[16px] font-medium text-black leading-[24px] bg-transparent focus:outline-none my-auto ${
-              iconPre ? "pl-2" : ""
-            } pr-3 py-2 ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 `}
+            className={`flex h-[26px] w-full text-[16px] font-medium text-black leading-[24px] bg-transparent focus:outline-none my-auto pr-3 py-2 ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
             ref={ref}
             {...props}
           />
           {iconAfter}
         </div>
         {errorMessage && (
-          <div className="font-normal text-textXS text-destructive-500">
+          <div
+            className={`font-normal text-textXS text-destructive-500 ${errorMessageClassName}`}
+          >
             {errorMessage}
           </div>
         )}
