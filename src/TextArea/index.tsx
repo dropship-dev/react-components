@@ -29,7 +29,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const isError = error || errorMessage;
 
     return (
-      <div className={`w-full gap-[6px] ${wrapperClassName}`}>
+      <div className={`w-full flex flex-col gap-[6px] ${wrapperClassName}`}>
         {label && (
           <div
             className={`font-medium text-textSM text-gray-500 ${labelClassName}`}
