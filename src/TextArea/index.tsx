@@ -3,19 +3,58 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 
 export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  wrapperClassName?: string;
+  label?: string;
+  labelClassName?: string;
+  error?: boolean;
+  errorMessage?: string;
+  errorMessageClassName?: string;
+}
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, ...props }, ref) => {
+  (
+    {
+      wrapperClassName,
+      label,
+      labelClassName,
+      error,
+      errorMessage,
+      errorMessageClassName,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const isError = error || errorMessage;
+
     return (
-      <textarea
-        className={cn(
-          "flex min-h-[80px] w-full rounded-md border border-neutral-200 bg-transparent px-3 py-2 text-sm placeholder:text-neutral-500 focus-visible:outline-none ",
-          className,
+      <div className={`w-full gap-[6px] ${wrapperClassName}`}>
+        {label && (
+          <div
+            className={`font-medium text-textSM text-gray-500 ${labelClassName}`}
+          >
+            {label}
+          </div>
         )}
-        ref={ref}
-        {...props}
-      />
+        <textarea
+          className={cn(
+            "flex w-full rounded-[8px] border border-neutral-300 bg-transparent px-3 py-2 text-textMD text-neutral-900 placeholder:text-neutral-500 focus:outline-none focus:border-primary-500 focus:shadow-[0_0_0_4px_#DBDDFF]",
+            isError &&
+              "border-red-500 focus:border-red-500 focus:shadow-[#FDE4E2]",
+            className,
+          )}
+          ref={ref}
+          {...props}
+        />
+        {errorMessage && (
+          <div
+            className={`font-normal text-textXS text-destructive-500 ${errorMessageClassName}`}
+          >
+            {errorMessage}
+          </div>
+        )}
+      </div>
     );
   },
 );
