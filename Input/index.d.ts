@@ -10,6 +10,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
     errorMessageClassName?: string;
     wrapperClassName?: string;
     inputWrapperClassName?: string;
+    btmSize?: "sm" | "md" | "lg";
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 export default Input;

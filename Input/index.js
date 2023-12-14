@@ -25,10 +25,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const React = __importStar(require("react"));
-const Input = React.forwardRef(({ className, subLabel, iconPre, iconAfter, label, labelClassName, error, errorMessage, errorMessageClassName, wrapperClassName, inputWrapperClassName, ...props }, ref) => {
+const Input = React.forwardRef(({ className, subLabel, iconPre, iconAfter, label, labelClassName, error, errorMessage, errorMessageClassName, wrapperClassName, inputWrapperClassName, btmSize = "sm", ...props }, ref) => {
     const isError = error || errorMessage;
-    return ((0, jsx_runtime_1.jsxs)("div", { className: `gap-[6px] flex flex-col ${wrapperClassName}`, children: [label && ((0, jsx_runtime_1.jsx)("div", { className: `font-medium text-textSM text-gray-500 ${labelClassName}`, children: label })), (0, jsx_runtime_1.jsxs)("div", { className: `bg-transparent flex gap-2 justify-between items-center h-[40px] py-[7px] px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${isError &&
-                    "border-red-500 focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"} ${inputWrapperClassName}`, children: [iconPre, (0, jsx_runtime_1.jsx)("input", { className: `flex h-full w-full text-textMD font-medium text-black bg-transparent focus:outline-none my-auto ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 ${className}`, ref: ref, ...props }), iconAfter] }), errorMessage && ((0, jsx_runtime_1.jsx)("div", { className: `font-normal text-textXS text-destructive-500 ${errorMessageClassName}`, children: errorMessage })), subLabel && ((0, jsx_runtime_1.jsx)("div", { className: "font-normal text-textXS text-gray-700", children: subLabel }))] }));
+    let sizeClass = "py-[7px]";
+    switch (btmSize) {
+        case "sm":
+            sizeClass = "py-[7px]";
+            break;
+        case "md":
+            sizeClass = "py-[9px]";
+            break;
+        case "lg":
+            sizeClass = "py-[11px]";
+            break;
+        default:
+            sizeClass = "py-[7px]";
+            break;
+    }
+    return ((0, jsx_runtime_1.jsxs)("div", { className: `gap-[6px] flex flex-col ${wrapperClassName}`, children: [label && ((0, jsx_runtime_1.jsx)("div", { className: `font-medium text-textSM text-gray-500 ${labelClassName}`, children: label })), (0, jsx_runtime_1.jsxs)("div", { className: `bg-transparent flex gap-2 justify-between items-center h-[40px] px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${isError &&
+                    "border-red-500 focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"} ${sizeClass} ${inputWrapperClassName}`, children: [iconPre, (0, jsx_runtime_1.jsx)("input", { className: `flex h-full w-full text-textMD font-medium text-black bg-transparent focus:outline-none my-auto ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 ${className}`, ref: ref, ...props }), iconAfter] }), errorMessage && ((0, jsx_runtime_1.jsx)("div", { className: `font-normal text-textXS text-destructive-500 ${errorMessageClassName}`, children: errorMessage })), subLabel && ((0, jsx_runtime_1.jsx)("div", { className: "font-normal text-textXS text-gray-700", children: subLabel }))] }));
 });
 Input.displayName = "Input";
 exports.default = Input;
