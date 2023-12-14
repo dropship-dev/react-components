@@ -12,6 +12,7 @@ export interface InputProps
   errorMessageClassName?: string;
   wrapperClassName?: string;
   inputWrapperClassName?: string;
+  btmSize?: "sm" | "md" | "lg";
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -28,11 +29,27 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       errorMessageClassName,
       wrapperClassName,
       inputWrapperClassName,
+      btmSize = "sm",
       ...props
     },
     ref,
   ) => {
     const isError = error || errorMessage;
+    let sizeClass = "py-[7px]";
+    switch (btmSize) {
+      case "sm":
+        sizeClass = "py-[7px]";
+        break;
+      case "md":
+        sizeClass = "py-[9px]";
+        break;
+      case "lg":
+        sizeClass = "py-[11px]";
+        break;
+      default:
+        sizeClass = "py-[7px]";
+        break;
+    }
     return (
       <div className={`gap-[6px] flex flex-col ${wrapperClassName}`}>
         {label && (
@@ -43,10 +60,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </div>
         )}
         <div
-          className={`bg-transparent flex gap-2 justify-between items-center h-[40px] py-[7px] px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
+          className={`bg-transparent flex gap-2 justify-between items-center h-[40px] px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
             isError &&
             "border-red-500 focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"
-          } ${inputWrapperClassName}`}
+          } ${sizeClass} ${inputWrapperClassName}`}
         >
           {iconPre}
           <input
