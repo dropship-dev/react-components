@@ -60,14 +60,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           </div>
         )}
         <div
-          className={`bg-transparent flex gap-2 justify-between items-center h-[40px] px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
+          className={`bg-transparent flex gap-2 justify-between items-center px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
             isError &&
             "border-red-500 focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"
           } ${sizeClass} ${inputWrapperClassName}`}
         >
           {iconPre}
           <input
-            className={`flex h-full w-full text-textMD font-medium text-black bg-transparent focus:outline-none my-auto ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+            className={`flex h-[24px] w-full text-textMD font-medium text-black bg-transparent focus:outline-none my-auto ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
             ref={ref}
             {...props}
           />
