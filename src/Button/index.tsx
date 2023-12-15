@@ -116,7 +116,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || loading}
         onClick={onClick}
         className={cn(
-          `${className} , relative`,
+          `relative ${className}`,
           hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
@@ -143,14 +143,12 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        <>
-          <div className={loading ? "opacity-0" : ""}>{content}</div>
-          <span
-            className={`loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${
-              !loading ? "opacity-0" : ""
-            }`}
-          ></span>
-        </>
+        <div className={loading ? "opacity-0" : ""}>{content}</div>
+        <span
+          className={`loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${
+            !loading ? "opacity-0" : ""
+          }`}
+        ></span>
       </Comp>
     );
   },
