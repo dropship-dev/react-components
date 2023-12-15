@@ -11,6 +11,7 @@ export interface IconButtonProps extends VariantProps<typeof buttonVariantsPrima
     onClick?: any;
     roundedFull?: boolean;
     className?: string;
+    loading?: boolean;
 }
 declare const IconButton: React.ForwardRefExoticComponent<IconButtonProps & React.RefAttributes<HTMLButtonElement>>;
 export default IconButton;

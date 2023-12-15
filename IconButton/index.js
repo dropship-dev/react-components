@@ -84,11 +84,11 @@ const buttonVariantsTetryary = (0, class_variance_authority_1.cva)("flex items-c
 const buttonVariantsLink = (0, class_variance_authority_1.cva)("flex items-center font-semibold justify-center rounded-md text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background", {
     variants: variantsLink,
 });
-const IconButton = React.forwardRef(({ color, size, hierarchy: hierarchy, content, className, disabled, onClick, roundedFull, ...props }, ref) => {
+const IconButton = React.forwardRef(({ color, size, hierarchy: hierarchy, content, className, disabled, onClick, roundedFull, loading, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { style: {
+    return ((0, jsx_runtime_1.jsxs)(Comp, { style: {
             borderRadius: roundedFull ? "50%" : "",
-        }, disabled: disabled, onClick: onClick, className: (0, utils_1.cn)(className, hierarchy === "primary"
+        }, disabled: disabled || loading, onClick: onClick, className: (0, utils_1.cn)(`relative ${className}`, hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
@@ -110,7 +110,7 @@ const IconButton = React.forwardRef(({ color, size, hierarchy: hierarchy, conten
                         color,
                         size,
                         hierarchy: hierarchy,
-                    })), ref: ref, ...props, children: content }));
+                    })), ref: ref, ...props, children: [(0, jsx_runtime_1.jsx)("div", { className: loading ? "opacity-0" : "", children: content }), (0, jsx_runtime_1.jsx)("span", { className: `loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${!loading ? "opacity-0" : ""}` })] }));
 });
 IconButton.displayName = "IconButton";
 exports.default = IconButton;

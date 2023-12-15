@@ -85,7 +85,7 @@ const buttonVariantsLink = (0, class_variance_authority_1.cva)("inline-flex item
 });
 const Button = React.forwardRef(({ color, role, size, hierarchy, content, disabled, onClick, className, loading, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsx)(Comp, { role: role, disabled: disabled || loading, onClick: onClick, className: (0, utils_1.cn)(`${className} , relative`, hierarchy === "primary"
+    return ((0, jsx_runtime_1.jsxs)(Comp, { role: role, disabled: disabled || loading, onClick: onClick, className: (0, utils_1.cn)(`relative ${className}`, hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
@@ -106,7 +106,7 @@ const Button = React.forwardRef(({ color, role, size, hierarchy, content, disabl
                         color,
                         size,
                         hierarchy,
-                    })), ref: ref, ...props, children: (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)("div", { className: loading ? "opacity-0" : "", children: content }), (0, jsx_runtime_1.jsx)("span", { className: `loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${!loading ? "opacity-0" : ""}` })] }) }));
+                    })), ref: ref, ...props, children: [(0, jsx_runtime_1.jsx)("div", { className: loading ? "opacity-0" : "", children: content }), (0, jsx_runtime_1.jsx)("span", { className: `loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${!loading ? "opacity-0" : ""}` })] }));
 });
 Button.displayName = "Button";
 exports.default = Button;
