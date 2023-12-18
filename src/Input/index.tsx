@@ -1,69 +1,89 @@
 import * as React from "react";
 
-import { cn } from "../lib/utils";
-
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
-  small?: boolean;
-  label?: string;
   subLabel?: string;
   iconPre?: React.ReactNode;
   iconAfter?: React.ReactNode;
-  placeholder?: string;
+  label?: string;
+  labelClassName?: string;
   error?: boolean;
+  errorMessage?: string;
+  errorMessageClassName?: string;
+  wrapperClassName?: string;
+  inputWrapperClassName?: string;
+  btmSize?: "sm" | "md" | "lg";
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
-      type,
-      small,
-      label,
       subLabel,
       iconPre,
       iconAfter,
-      placeholder,
+      label,
+      labelClassName,
       error,
+      errorMessage,
+      errorMessageClassName,
+      wrapperClassName,
+      inputWrapperClassName,
+      btmSize = "sm",
       ...props
     },
     ref,
   ) => {
-    const [focus, setFocus] = React.useState(false);
+    const isError = error || errorMessage;
+    let sizeClass = "py-[7px]";
+    switch (btmSize) {
+      case "sm":
+        sizeClass = "py-[7px]";
+        break;
+      case "md":
+        sizeClass = "py-[9px]";
+        break;
+      case "lg":
+        sizeClass = "py-[11px]";
+        break;
+      default:
+        sizeClass = "py-[7px]";
+        break;
+    }
     return (
-      <div className="gap-[6px] flex flex-col">
+      <div className={`gap-[6px] flex flex-col ${wrapperClassName}`}>
         {label && (
-          <p className={`text-[14px] font-medium leading-[20px] text-gray-500`}>
+          <div
+            className={`font-medium text-textSM text-gray-500 ${labelClassName}`}
+          >
             {label}
-          </p>
+          </div>
         )}
         <div
-          className={cn(
-            `bg-transparent flex justify-between items-center py-[9px] px-[12px] border border-solid ${
-              error ? "border-red-500" : "border-gray-300"
-            } rounded-[8px] ${focus && "shadow-[#DBDDFF] shadow-[0_0_0_3px]"}`,
-          )}
+          className={`bg-transparent flex gap-2 justify-between items-center px-[12px] rounded-[6px] border border-gray-300 focus-within:border-primary-500 focus-within:shadow-[0_0_0_4px_#DBDDFF] ${
+            isError &&
+            "border-red-500 focus-within:border-red-500 focus-within:shadow-[#FDE4E2]"
+          } ${sizeClass} ${inputWrapperClassName}`}
         >
           {iconPre}
           <input
-            placeholder={placeholder}
-            type={type}
-            className={cn(
-              `flex h-[26px] w-full text-[16px] font-medium text-black leading-[24px] bg-transparent focus:outline-none my-auto ${
-                iconPre ? "pl-[8px]" : ""
-              } pr-3 py-2 ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 `,
-            )}
+            className={`flex h-[24px] w-full text-textMD font-medium text-black bg-transparent focus:outline-none my-auto ring-offset-background file:bg-transparent file:text-sm file:font-semibold placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
             ref={ref}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
             {...props}
           />
           {iconAfter}
         </div>
+        {errorMessage && (
+          <div
+            className={`font-normal text-textXS text-destructive-500 ${errorMessageClassName}`}
+          >
+            {errorMessage}
+          </div>
+        )}
         {subLabel && (
-          <p className="text-[12px] font-normal leading-[18px] text-gray-700">
+          <div className="font-normal text-textXS text-gray-700">
             {subLabel}
-          </p>
+          </div>
         )}
       </div>
     );

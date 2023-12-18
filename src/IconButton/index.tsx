@@ -89,6 +89,7 @@ export interface IconButtonProps
   onClick?: any;
   roundedFull?: boolean;
   className?: string;
+  loading?: boolean;
 }
 
 const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -102,6 +103,7 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
       disabled,
       onClick,
       roundedFull,
+      loading,
       ...props
     },
     ref,
@@ -112,10 +114,10 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         style={{
           borderRadius: roundedFull ? "50%" : "",
         }}
-        disabled={disabled}
+        disabled={disabled || loading}
         onClick={onClick}
         className={cn(
-          className,
+          `relative ${className}`,
           hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
@@ -143,7 +145,12 @@ const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
         ref={ref}
         {...props}
       >
-        {content}
+        <div className={loading ? "opacity-0" : ""}>{content}</div>
+        <span
+          className={`loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2 ${
+            !loading ? "opacity-0" : ""
+          }`}
+        ></span>
       </Comp>
     );
   },
