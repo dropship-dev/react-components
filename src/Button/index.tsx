@@ -111,7 +111,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = "button";
 
     return (
-      <Comp
+      <button
         role={role}
         disabled={disabled || loading}
         onClick={onClick}
@@ -149,7 +149,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             !loading ? "opacity-0" : ""
           }`}
         ></span>
-      </Comp>
+      </button>
     );
   },
 );
