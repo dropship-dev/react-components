@@ -71,6 +71,7 @@ export interface ILabelProps
   alt: string;
   onCancel?: () => void;
   type?: "scale" | "zoomIn" | "normal";
+  name?: string;
 }
 
 const ProductImage = ({
@@ -134,7 +135,7 @@ const ProductImage = ({
             <div
               className={cn(
                 ProductVariants({ size }),
-                "relative flex justify-center bg-gray-200",
+                `relative flex justify-center bg-gray-200`,
               )}
             >
               <AvatarImage
@@ -178,38 +179,68 @@ const Avatar = ({
   size,
   src,
   alt,
+  name,
   status,
-}: ILabelProps & VariantProps<typeof AvatarVariants>) => (
-  <div className={cn("relative", AvatarVariants({ size }))}>
-    {status && <div className={cn(statusVariant({ size, status }))}></div>}
-    <AvatarUI className={cn(AvatarVariants({ size, className }))}>
-      <>
-        <AvatarImage src={src} alt={`@${alt}`} />
-        <AvatarFallback>
-          <AvatarFallback className={cn(AvatarVariants({ size }))}>
-            <svg
-              width="100%"
-              height="100%"
-              viewBox="0 0 54 54"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+}: ILabelProps & VariantProps<typeof AvatarVariants>) => {
+  const generateBgAvatar = () => {
+    const firtWord = name?.toLowerCase().split("")[0] || "g";
+    const groupColors1 = ["a", "b", "c", "d", "e", "f"];
+    const groupColors2 = ["g", "h", "i", "j", "k", "l"];
+    const groupColors3 = ["m", "n", "o", "p", "q", "r"];
+    const groupColors4 = ["s", "t", "u", "v", "w", "x"];
+    const groupColors5 = ["y", "z"];
+    const groupColors6 = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    if (groupColors1.includes(firtWord)) {
+      return "bg-[#4CB9E7]";
+    } else if (groupColors2.includes(firtWord)) {
+      return "bg-[#FF9800]";
+    } else if (groupColors3.includes(firtWord)) {
+      return "bg-[#B80000]";
+    } else if (groupColors4.includes(firtWord)) {
+      return "bg-[#186F65]";
+    } else if (groupColors5.includes(firtWord)) {
+      return "bg-[#713ABE]";
+    } else if (groupColors6.includes(firtWord)) {
+      return "bg-[#394867]";
+    } else {
+      return "bg-[#4CAF50]";
+    }
+  };
+
+  return (
+    <div className={cn("relative", AvatarVariants({ size }))}>
+      {status && <div className={cn(statusVariant({ size, status }))}></div>}
+      <AvatarUI className={cn(AvatarVariants({ size, className }))}>
+        <>
+          <AvatarImage src={src} alt={`@${alt}`} />
+          <AvatarFallback>
+            <AvatarFallback
+              className={cn(AvatarVariants({ size }), generateBgAvatar())}
             >
-              <rect width="54" height="54" rx="27" />
-              <path
-                d="M27 17C25.6739 17 24.4021 17.5268 23.4645 18.4645C22.5268 19.4021 22 20.6739 22 22C22 23.3261 22.5268 24.5979 23.4645 25.5355C24.4021 26.4732 25.6739 27 27 27C28.3261 27 29.5979 26.4732 30.5355 25.5355C31.4732 24.5979 32 23.3261 32 22C32 20.6739 31.4732 19.4021 30.5355 18.4645C29.5979 17.5268 28.3261 17 27 17Z"
-                fill="white"
-              />
-              <path
-                d="M25 29C23.6739 29 22.4021 29.5268 21.4645 30.4645C20.5268 31.4021 20 32.6739 20 34V36C20 36.5523 20.4477 37 21 37H33C33.5523 37 34 36.5523 34 36V34C34 32.6739 33.4732 31.4021 32.5355 30.4645C31.5979 29.5268 30.3261 29 29 29H25Z"
-                fill="white"
-              />
-            </svg>
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 54 54"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect width="54" height="54" rx="27" />
+                <path
+                  d="M27 17C25.6739 17 24.4021 17.5268 23.4645 18.4645C22.5268 19.4021 22 20.6739 22 22C22 23.3261 22.5268 24.5979 23.4645 25.5355C24.4021 26.4732 25.6739 27 27 27C28.3261 27 29.5979 26.4732 30.5355 25.5355C31.4732 24.5979 32 23.3261 32 22C32 20.6739 31.4732 19.4021 30.5355 18.4645C29.5979 17.5268 28.3261 17 27 17Z"
+                  fill="white"
+                />
+                <path
+                  d="M25 29C23.6739 29 22.4021 29.5268 21.4645 30.4645C20.5268 31.4021 20 32.6739 20 34V36C20 36.5523 20.4477 37 21 37H33C33.5523 37 34 36.5523 34 36V34C34 32.6739 33.4732 31.4021 32.5355 30.4645C31.5979 29.5268 30.3261 29 29 29H25Z"
+                  fill="white"
+                />
+              </svg>
+            </AvatarFallback>
           </AvatarFallback>
-        </AvatarFallback>
-      </>
-    </AvatarUI>
-  </div>
-);
+        </>
+      </AvatarUI>
+    </div>
+  );
+};
 
 ProductImage.displayName = LabelPrimitive.Root.displayName;
 Avatar.displayName = LabelPrimitive.Root.displayName;
