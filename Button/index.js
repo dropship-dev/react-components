@@ -85,7 +85,7 @@ const buttonVariantsLink = (0, class_variance_authority_1.cva)("inline-flex item
 });
 const Button = React.forwardRef(({ color, role, size, hierarchy, content, disabled, onClick, className, loading, ...props }, ref) => {
     const Comp = "button";
-    return ((0, jsx_runtime_1.jsxs)(Comp, { role: role, disabled: disabled || loading, onClick: onClick, className: (0, utils_1.cn)(`relative ${className}`, hierarchy === "primary"
+    return ((0, jsx_runtime_1.jsxs)("button", { role: role, disabled: disabled || loading, onClick: onClick, className: (0, utils_1.cn)(`relative ${className}`, hierarchy === "primary"
             ? buttonVariantsPrimary({
                 color,
                 size,
