@@ -13,7 +13,6 @@ export default function SelectGroup(props: {
 }) {
   const { data, placeholder, optionTop, onSelected, width, size, value } =
     props;
-
   return (
     <select
       className={`${width} ${
