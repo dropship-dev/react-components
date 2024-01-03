@@ -41,7 +41,7 @@ const DatePicker = (props: IDatePicker) => {
       <PopoverTrigger
         asChild
         style={{ borderRadius: "6px" }}
-        className="w-full border-[1px] border-gray-300 rounded-[6px] h-11 flex items-center justify-start px-4 py-2"
+        className="w-full border-[1px] border-gray-300 rounded-[6px] h-10 flex items-center justify-start px-4 py-2"
       >
         <div>
           <Button
