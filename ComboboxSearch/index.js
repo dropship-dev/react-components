@@ -34,7 +34,7 @@ function ComboboxDemo(props) {
     const { data, placeholder, onSelect, DeleteContent, onDelete, value, setValue, width, content, } = props;
     const [open, setOpen] = React.useState(false);
     const [idsSelected, setIdsSelected] = React.useState("");
-    return ((0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: setOpen, children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { asChild: true, className: "border-gray-300", children: (0, jsx_runtime_1.jsxs)("div", { style: { borderRadius: "6px" }, className: `text-textMD flex border-gray-300 items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${data.find((item) => item.value === value)?.label
+    return ((0, jsx_runtime_1.jsxs)(popover_1.Popover, { open: open, onOpenChange: setOpen, children: [(0, jsx_runtime_1.jsx)(popover_1.PopoverTrigger, { asChild: true, className: "border-gray-300", children: (0, jsx_runtime_1.jsxs)("div", { style: { borderRadius: "6px" }, className: `text-textMD h-10 flex border-gray-300 items-center justify-between w-full px-3 py-[10px] border-[1px] rounded-[6px]${data.find((item) => item.value === value)?.label
                         ? "text-gray-900"
                         : "text-gray-500"} ${open
                         ? "border-primary-500 shadow-[0_0_0_4px] shadow-[#DBDDFF]"
