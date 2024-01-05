@@ -22,7 +22,7 @@ const DatePicker = (props: IDatePicker) => {
   const moment = require("moment-timezone");
   const [value, setValue] = React.useState<Date | undefined>(
     moment()
-      .tz(timezone ?? "America/Phoenix")
+      .tz(timezone ?? "America/Los_Angeles")
       .startOf("day")
       .toDate(),
   );
@@ -30,7 +30,7 @@ const DatePicker = (props: IDatePicker) => {
   React.useEffect(() => {
     setDate(
       moment(value)
-        .tz(timezone ?? "America/Phoenix")
+        .tz(timezone ?? "America/Los_Angeles")
         .startOf("day")
         .toDate(),
     );
