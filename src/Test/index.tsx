@@ -9,6 +9,7 @@ import {
   RangeDatePickerDefaultValues,
   Rating,
   Slider,
+  TooltipComponent,
 } from "..";
 import { DateRange } from "react-day-picker";
 
@@ -156,6 +157,7 @@ export default function Test(props: { sizePopup?: boolean }) {
         setValue={setValue}
         width={300}
       />
+      <TooltipComponent content="Tooltip" children={<div>Tooltip</div>} />
     </>
   );
 }
