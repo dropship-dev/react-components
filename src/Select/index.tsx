@@ -14,7 +14,7 @@ import { cn } from "../lib/utils";
 import { Label } from "..";
 
 export default function Select(props: {
-  data: { value: string; label: string }[];
+  data: { value: string; label: string | React.ReactNode }[];
   placeholder?: string;
   width?: string;
   icon?: React.ReactNode;
