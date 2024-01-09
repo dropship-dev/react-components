@@ -2,7 +2,7 @@ import * as React from "react";
 export default function Select(props: {
     data: {
         value: string;
-        label: string;
+        label: string | React.ReactNode;
     }[];
     placeholder?: string;
     width?: string;
