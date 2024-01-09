@@ -66,7 +66,10 @@ export default function Select(props: {
         </div>
       </SelectTrigger>
 
-      <SelectContent className="max-h-96 overflow-y-auto">
+      <SelectContent
+        className="max-h-96 overflow-y-auto"
+        style={{ zIndex: 10000 }}
+      >
         <SelectGroup>
           {data.map((item) => (
             <SelectItem value={item.value} key={item.value}>
