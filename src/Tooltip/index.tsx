@@ -14,7 +14,7 @@ export default function TooltipComponent(props: Props) {
   const { children, content } = props;
   return (
     <TooltipProvider>
-      <Tooltip open>
+      <Tooltip disableHoverableContent>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent>
           <div>{content}</div>
