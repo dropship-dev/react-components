@@ -122,7 +122,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   function convertDate(date: Date, type: "start" | "end") {
     return new Date(
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
-        type === "start" ? "00:00:00" : "23:59:59"
+        type === "start" ? "00:00:00" : "24:00:00"
       }${moment(date).tz(timezoneDate).format("Z")}`,
     );
   }
@@ -261,7 +261,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     if (datePicker?.from && !datePicker?.to) {
                       setDate({
                         from: new Date(convertDate(datePicker?.from, "start")),
-                        to: new Date(convertDate(datePicker?.from, "end")),
+                        to: new Date(
+                          new Date(
+                            convertDate(datePicker?.from, "end"),
+                          ).getTime() + 1,
+                        ),
                       });
                       setDatePicker({
                         ...datePicker,
@@ -270,7 +274,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     } else if (datePicker?.from && datePicker?.to) {
                       setDate({
                         from: new Date(convertDate(datePicker.from, "start")),
-                        to: new Date(convertDate(datePicker?.to, "end")),
+                        to: new Date(
+                          new Date(
+                            convertDate(datePicker?.to, "end"),
+                          ).getTime() + 1,
+                        ),
                       });
                     } else {
                       setDate(undefined);
