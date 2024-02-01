@@ -2,8 +2,8 @@
   "name": "@dropship-dev/react-components",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint:fix": "prettier --write .",
