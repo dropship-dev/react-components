@@ -1,10 +1,15 @@
 import React from "react";
+type Option = {
+    value: string;
+    label: string;
+};
 export default function MultiplechoiceSelect(props: {
     data: {
         name: string;
         value: {
             value: string;
-            label: React.ReactNode;
+            label: string | React.ReactNode;
+            labelInitial?: string;
         }[];
     }[];
     placeholder?: string;
@@ -18,4 +23,6 @@ export default function MultiplechoiceSelect(props: {
     listSelected?: string[];
     callbackListSelected?: (value: string[]) => void;
     defaultValue?: string;
+    callbackAllSelected?: (value: Option[]) => void;
 }): import("react/jsx-runtime").JSX.Element;
+export {};

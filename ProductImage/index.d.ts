@@ -13,13 +13,14 @@ export interface ILabelProps extends React.ComponentPropsWithoutRef<typeof Label
     alt: string;
     onCancel?: () => void;
     type?: "scale" | "zoomIn" | "normal";
+    name?: string;
 }
 declare const ProductImage: {
     ({ className, content, size, src, alt, type, onCancel, ...props }: ILabelProps & VariantProps<typeof ProductVariants>): import("react/jsx-runtime").JSX.Element;
     displayName: string | undefined;
 };
 declare const Avatar: {
-    ({ className, size, src, alt, status, }: ILabelProps & VariantProps<typeof AvatarVariants>): import("react/jsx-runtime").JSX.Element;
+    ({ className, size, src, alt, name, status, }: ILabelProps & VariantProps<typeof AvatarVariants>): import("react/jsx-runtime").JSX.Element;
     displayName: string | undefined;
 };
 export { ProductImage, Avatar };
