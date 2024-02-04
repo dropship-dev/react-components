@@ -14,7 +14,7 @@ import { cn } from "../lib/utils";
 import { Label } from "..";
 
 export default function Select(props: {
-  data: { value: string; label: string }[];
+  data: { value: string; label: string | React.ReactNode }[];
   placeholder?: string;
   width?: string;
   icon?: React.ReactNode;
@@ -36,8 +36,6 @@ export default function Select(props: {
 
   const [open, setOpen] = React.useState(false);
 
-  console.log("open", open);
-
   return (
     <SelectData
       onOpenChange={(e) => setOpen(e)}
@@ -57,7 +55,7 @@ export default function Select(props: {
       )}
       <SelectTrigger
         className={`${width} ${
-          size === "xs" ? "h-10" : size === "md" ? "h-12" : "h-11"
+          size === "xs" ? "h-10" : size === "md" ? "h-12" : "h-10"
         } border-gray-300 py-2 border-[1px] border-solid rounded-[8px] gap-[8px] flex justify-start focus:outline-none ${
           open ? "shadow-[#DBDDFF] shadow-[0_0_0_4px]" : ""
         }`}
@@ -68,7 +66,10 @@ export default function Select(props: {
         </div>
       </SelectTrigger>
 
-      <SelectContent className="max-h-96 overflow-y-auto">
+      <SelectContent
+        className="max-h-96 overflow-y-auto"
+        style={{ zIndex: 10000 }}
+      >
         <SelectGroup>
           {data.map((item) => (
             <SelectItem value={item.value} key={item.value}>

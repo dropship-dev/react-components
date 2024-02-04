@@ -22,21 +22,24 @@ export const Default: Story = {
       {
         name: "1",
         value: [
-          { label: "1", value: "1" },
-          { label: "2", value: "2" },
+          { label: "1", value: "1", labelInitial: "1" },
+          { label: "2", value: "2", labelInitial: "2" },
         ],
       },
       {
         name: "2",
         value: [
-          { label: "3", value: "3" },
-          { label: "4", value: "4" },
+          { label: "3", value: "3", labelInitial: "3" },
+          { label: "4", value: "4", labelInitial: "4" },
         ],
       },
     ],
     width: "w-[200px]",
     optionTop: [],
     onSelected: (e: any) => {
+      console.log(e);
+    },
+    callbackAllSelected: (e) => {
       console.log(e);
     },
     content: "Search",

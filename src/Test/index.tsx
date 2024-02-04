@@ -9,6 +9,7 @@ import {
   RangeDatePickerDefaultValues,
   Rating,
   Slider,
+  TooltipComponent,
 } from "..";
 import { DateRange } from "react-day-picker";
 
@@ -25,6 +26,7 @@ export default function Test(props: { sizePopup?: boolean }) {
     new Date(),
   );
   const [value, setValue] = React.useState<string | number>("");
+
   return (
     <>
       <button
@@ -81,7 +83,6 @@ export default function Test(props: { sizePopup?: boolean }) {
         ]}
         onChangeValue={(e: any) => {
           console.log(e.target.value);
-
           if (e.target.value === "") {
             setOpen(false);
           } else setOpen(true);
@@ -156,6 +157,7 @@ export default function Test(props: { sizePopup?: boolean }) {
         setValue={setValue}
         width={300}
       />
+      <TooltipComponent content="Tooltip" children={<div>Tooltip</div>} />
     </>
   );
 }
