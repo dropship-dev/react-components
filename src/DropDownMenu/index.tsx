@@ -23,3 +23,5 @@ export default function Dropdown(props: IDropDown) {
     </DropdownMenu>
   );
 }
+
+export * from "./components/dropdown-menu";
