@@ -4,3 +4,4 @@ export interface IDropDown {
     content: string | React.ReactNode;
 }
 export default function Dropdown(props: IDropDown): import("react/jsx-runtime").JSX.Element;
+export * from "./components/dropdown-menu";
