@@ -4,4 +4,4 @@ type Props = {
     content: string;
 };
 export default function TooltipComponent(props: Props): import("react/jsx-runtime").JSX.Element;
-export {};
+export * from "./tooltip";
