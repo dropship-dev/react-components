@@ -1,16 +1,14 @@
 import * as React from "react";
 
 import {
-  Select as SelectData,
   SelectContent,
+  Select as SelectData,
   SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
 } from "./components/select";
-import { cva } from "class-variance-authority";
 
-import { cn } from "../lib/utils";
 import { Label } from "..";
 
 export default function Select(props: {
@@ -81,3 +79,5 @@ export default function Select(props: {
     </SelectData>
   );
 }
+
+export * from "./components/select";
