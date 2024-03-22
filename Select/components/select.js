@@ -23,11 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SelectSeparator = exports.SelectItem = exports.SelectLabel = exports.SelectContent = exports.SelectTrigger = exports.SelectValue = exports.SelectGroup = exports.Select = void 0;
+exports.SelectValue = exports.SelectTrigger = exports.SelectSeparator = exports.SelectPrimitive = exports.SelectLabel = exports.SelectItem = exports.SelectGroup = exports.SelectContent = exports.Select = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
-const React = __importStar(require("react"));
 const SelectPrimitive = __importStar(require("@radix-ui/react-select"));
+exports.SelectPrimitive = SelectPrimitive;
 const lucide_react_1 = require("lucide-react");
+const React = __importStar(require("react"));
 const utils_1 = require("../../lib/utils");
 const Select = SelectPrimitive.Root;
 exports.Select = Select;
