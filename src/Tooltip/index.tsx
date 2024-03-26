@@ -23,3 +23,5 @@ export default function TooltipComponent(props: Props) {
     </TooltipProvider>
   );
 }
+
+export * from "./tooltip";
