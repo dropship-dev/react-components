@@ -78,16 +78,16 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
 
   const [open, setOpen] = React.useState<boolean>(false);
 
-  const convertTimezone = (timezone: string) => {
-    const date = new Intl.DateTimeFormat("en-GB", {
-      dateStyle: "full",
-      timeStyle: "long",
-      timeZone: timezone,
-    })
-      .format(new Date(moment().tz(timezone).format()))
-      .split(" ");
-    return date[date.length - 1];
-  };
+  // const convertTimezone = (timezone: string) => {
+  //   const date = new Intl.DateTimeFormat("en-GB", {
+  //     dateStyle: "full",
+  //     timeStyle: "long",
+  //     timeZone: timezone,
+  //   })
+  //     .format(new Date(moment().tz(timezone).format()))
+  //     .split(" ");
+  //   return date[date.length - 1];
+  // };
 
   const [valueSelected, setValueSelected] = React.useState<string>("");
 
@@ -263,7 +263,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                         to: new Date(
                           new Date(
                             convertDate(datePicker?.from, "end"),
-                          ).getTime() + 1,
+                          ).getTime(),
                         ),
                       });
                       setDatePicker({
@@ -276,7 +276,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                         to: new Date(
                           new Date(
                             convertDate(datePicker?.to, "end"),
-                          ).getTime() + 1,
+                          ).getTime(),
                         ),
                       });
                     } else {
