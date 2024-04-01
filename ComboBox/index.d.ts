@@ -14,3 +14,6 @@ export interface ICombobox {
     icon?: React.ReactNode;
 }
 export default function Combobox(props: ICombobox): import("react/jsx-runtime").JSX.Element;
+export * from "./components/command";
+export * from "./components/dialog";
+export * from "./components/popover";
