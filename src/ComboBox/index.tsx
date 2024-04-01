@@ -47,3 +47,7 @@ export default function Combobox(props: ICombobox) {
     </Command>
   );
 }
+
+export * from "./components/command";
+export * from "./components/dialog";
+export * from "./components/popover";
