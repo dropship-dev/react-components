@@ -80,16 +80,16 @@ function RangeDatePicker(props) {
     // moment.tz.setDefault(timezoneDate);
     const [datePicker, setDatePicker] = React.useState(generateDateRangeFromDefaultValue(timezoneDate, defaultValues));
     const [open, setOpen] = React.useState(false);
-    const convertTimezone = (timezone) => {
-        const date = new Intl.DateTimeFormat("en-GB", {
-            dateStyle: "full",
-            timeStyle: "long",
-            timeZone: timezone,
-        })
-            .format(new Date((0, moment_timezone_1.default)().tz(timezone).format()))
-            .split(" ");
-        return date[date.length - 1];
-    };
+    // const convertTimezone = (timezone: string) => {
+    //   const date = new Intl.DateTimeFormat("en-GB", {
+    //     dateStyle: "full",
+    //     timeStyle: "long",
+    //     timeZone: timezone,
+    //   })
+    //     .format(new Date(moment().tz(timezone).format()))
+    //     .split(" ");
+    //   return date[date.length - 1];
+    // };
     const [valueSelected, setValueSelected] = React.useState("");
     React.useEffect(() => {
         const dateRange = generateDateRangeFromDefaultValue(timezoneDate, defaultValues);
@@ -160,7 +160,7 @@ function RangeDatePicker(props) {
                                                     if (datePicker?.from && !datePicker?.to) {
                                                         setDate({
                                                             from: new Date(convertDate(datePicker?.from, "start")),
-                                                            to: new Date(new Date(convertDate(datePicker?.from, "end")).getTime() + 1),
+                                                            to: new Date(new Date(convertDate(datePicker?.from, "end")).getTime()),
                                                         });
                                                         setDatePicker({
                                                             ...datePicker,
@@ -170,7 +170,7 @@ function RangeDatePicker(props) {
                                                     else if (datePicker?.from && datePicker?.to) {
                                                         setDate({
                                                             from: new Date(convertDate(datePicker.from, "start")),
-                                                            to: new Date(new Date(convertDate(datePicker?.to, "end")).getTime() + 1),
+                                                            to: new Date(new Date(convertDate(datePicker?.to, "end")).getTime()),
                                                         });
                                                     }
                                                     else {

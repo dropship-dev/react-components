@@ -12,3 +12,4 @@ export default function Select(props: {
     defaultValue?: string;
     size?: "xs" | "sm" | "md";
 }): import("react/jsx-runtime").JSX.Element;
+export * from "./components/select";

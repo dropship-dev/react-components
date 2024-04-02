@@ -53,8 +53,10 @@ function MultiplechoiceSelect(props) {
                                 return ((0, jsx_runtime_1.jsxs)("div", { className: "px-3 py-[10px] flex flex-row gap-3 text-textSM text-gray-900 items-center hover:bg-gray-50 cursor-pointer", onClick: () => {
                                         if (allSelected.find((select) => select === item)) {
                                             setAllSelected(allSelected.filter((select) => select !== item));
+                                            onCheckedChange && onCheckedChange(false);
                                         }
                                         else {
+                                            onCheckedChange && onCheckedChange(true);
                                             setAllSelected([...allSelected, item]);
                                         }
                                     }, children: [onCheckedChange && ((0, jsx_runtime_1.jsx)(__1.Checkbox, { checked: !!allSelected?.find((select) => select === item), onCheckedChange: (e) => {

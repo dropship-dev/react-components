@@ -10,15 +10,22 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
 }));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsx_runtime_1 = require("react/jsx-runtime");
-const dropdown_menu_1 = require("./components/dropdown-menu");
-function Dropdown(props) {
-    const { listAction, content } = props;
-    return ((0, jsx_runtime_1.jsxs)(dropdown_menu_1.DropdownMenu, { children: [(0, jsx_runtime_1.jsx)(dropdown_menu_1.DropdownMenuTrigger, { children: content }), (0, jsx_runtime_1.jsx)(dropdown_menu_1.DropdownMenuContent, { children: listAction.map((item, index) => ((0, jsx_runtime_1.jsx)(dropdown_menu_1.DropdownMenuItem, { children: item }, index))) })] }));
-}
-exports.default = Dropdown;
-__exportStar(require("./components/dropdown-menu"), exports);
+exports.HoverCardPrimitive = void 0;
+exports.HoverCardPrimitive = __importStar(require("@radix-ui/react-hover-card"));
+__exportStar(require("./hover-card"), exports);

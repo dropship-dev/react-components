@@ -197,7 +197,7 @@ module.exports = {
           900: "hsl(var(--neutral-900))",
           950: "hsl(var(--neutral-900))",
         },
-        grayVarinat: {
+        grayVariant: {
           25: "hsl(var(--neutral-variant-25))",
           50: "hsl(var(--neutral-variant-50))",
           100: "hsl(var(--neutral-variant-100))",
