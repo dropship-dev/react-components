@@ -12,6 +12,7 @@ export interface IDropDown {
 
 export default function Dropdown(props: IDropDown) {
   const { listAction, content } = props;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>{content}</DropdownMenuTrigger>
@@ -23,3 +24,5 @@ export default function Dropdown(props: IDropDown) {
     </DropdownMenu>
   );
 }
+
+export * from "./components/dropdown-menu";

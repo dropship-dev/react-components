@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { Button, Checkbox, Input } from "../";
+import { Checkbox, Input } from "../";
 import {
   Popover,
   PopoverContent,
@@ -134,7 +134,9 @@ export default function MultiplechoiceSelect(props: {
                       setAllSelected(
                         allSelected.filter((select) => select !== item),
                       );
+                      onCheckedChange && onCheckedChange(false);
                     } else {
+                      onCheckedChange && onCheckedChange(true);
                       setAllSelected([...allSelected, item]);
                     }
                   }}
