@@ -90,7 +90,7 @@ function RangeDatePicker(props) {
     //     .split(" ");
     //   return date[date.length - 1];
     // };
-    const [valueSelected, setValueSelected] = React.useState("");
+    const [valueSelected, setValueSelected] = React.useState(defaultValues ?? "");
     React.useEffect(() => {
         const dateRange = generateDateRangeFromDefaultValue(timezoneDate, defaultValues);
         setDatePicker(dateRange);

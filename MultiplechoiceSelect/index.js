@@ -92,6 +92,7 @@ function MultiplechoiceSelect(props) {
                                                 }, checked: !!allSelected?.find((select) => select === i.value) })), (0, jsx_runtime_1.jsx)("div", { className: "text-ellipsis line-clamp-1", children: i.label })] }, i.value + index + item.name)))] }, index + item.name))) }), (0, jsx_runtime_1.jsx)("div", { className: "w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer ", onClick: () => {
                                 onClear && onClear();
                                 setAllSelected([]);
+                                setListSelected([]);
                                 // setOpen(false);
                             }, children: "Clear selection" })] })] }) }));
 }
