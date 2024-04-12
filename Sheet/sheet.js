@@ -28,6 +28,7 @@ exports.SheetTrigger = exports.SheetTitle = exports.SheetPortal = exports.SheetO
 const jsx_runtime_1 = require("react/jsx-runtime");
 const SheetPrimitive = __importStar(require("@radix-ui/react-dialog"));
 const class_variance_authority_1 = require("class-variance-authority");
+const lucide_react_1 = require("lucide-react");
 const React = __importStar(require("react"));
 const utils_1 = require("../lib/utils");
 const Sheet = SheetPrimitive.Root;
@@ -54,7 +55,7 @@ const sheetVariants = (0, class_variance_authority_1.cva)("fixed z-50 gap-4 bg-w
         side: "right",
     },
 });
-const SheetContent = React.forwardRef(({ side = "right", className, children, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(SheetPortal, { children: [(0, jsx_runtime_1.jsx)(SheetOverlay, {}), (0, jsx_runtime_1.jsx)(SheetPrimitive.Content, { ref: ref, className: (0, utils_1.cn)(sheetVariants({ side }), className), ...props, children: children })] })));
+const SheetContent = React.forwardRef(({ side = "right", className, children, ...props }, ref) => ((0, jsx_runtime_1.jsxs)(SheetPortal, { children: [(0, jsx_runtime_1.jsx)(SheetOverlay, {}), (0, jsx_runtime_1.jsxs)(SheetPrimitive.Content, { ref: ref, className: (0, utils_1.cn)(sheetVariants({ side }), className), ...props, children: [children, (0, jsx_runtime_1.jsxs)(SheetPrimitive.Close, { className: "absolute right-4 top-4 rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-neutral-100 dark:ring-offset-neutral-950 dark:focus:ring-neutral-300 dark:data-[state=open]:bg-neutral-800", children: [(0, jsx_runtime_1.jsx)(lucide_react_1.X, { className: "h-4 w-4" }), (0, jsx_runtime_1.jsx)("span", { className: "sr-only", children: "Close" })] })] })] })));
 exports.SheetContent = SheetContent;
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 const SheetHeader = ({ className, ...props }) => ((0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)("flex flex-col space-y-2 text-center sm:text-left", className), ...props }));
