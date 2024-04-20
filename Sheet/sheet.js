@@ -39,7 +39,7 @@ const SheetClose = SheetPrimitive.Close;
 exports.SheetClose = SheetClose;
 const SheetPortal = SheetPrimitive.Portal;
 exports.SheetPortal = SheetPortal;
-const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)(SheetPrimitive.Overlay, { className: (0, utils_1.cn)("fixed inset-0 z-100 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", className), ...props, ref: ref })));
+const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)(SheetPrimitive.Overlay, { className: (0, utils_1.cn)("fixed inset-0 z-[100] bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0", className), ...props, ref: ref })));
 exports.SheetOverlay = SheetOverlay;
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 const sheetVariants = (0, class_variance_authority_1.cva)("fixed z-50 gap-4 bg-white p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-neutral-950", {
