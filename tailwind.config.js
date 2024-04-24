@@ -5,6 +5,13 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
   ],
+  safelist: [
+    "border-solid",
+    "border-dashed",
+    "border-dotted",
+    "border-none",
+    "border-double",
+  ],
   theme: {
     fontFamily: {
       sans: [
