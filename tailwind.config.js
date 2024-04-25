@@ -6,11 +6,10 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
   ],
   safelist: [
-    "border-solid",
-    "border-dashed",
-    "border-dotted",
-    "border-none",
-    "border-double",
+    {
+      pattern: /border-.(solid|dashed|dotted|none|double)/,
+      variants: ["hover"],
+    },
   ],
   theme: {
     fontFamily: {
