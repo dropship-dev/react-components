@@ -7,7 +7,7 @@ module.exports = {
   ],
   safelist: [
     {
-      pattern: /border-.(solid|dashed|dotted|none|double)/,
+      pattern: /(!)border-(solid|dashed|dotted|none|double)/,
       variants: ["hover"],
     },
   ],
