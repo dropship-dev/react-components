@@ -1,5 +1,5 @@
 import { Label } from "..";
-import { RadioGroup, RadioGroupItem } from "./radio-group";
+import { RadioGroup, RadioGroupItem, RadioGroupPrimitive } from "./radio-group";
 
 interface IRadioButton {
   data: { id: string; value: string }[];
@@ -34,3 +34,4 @@ const RadioButton = (props: IRadioButton) => {
 };
 
 export default RadioButton;
+export { RadioGroupPrimitive };
