@@ -28,7 +28,6 @@ exports.AccordionTrigger = exports.AccordionPrimitive = exports.AccordionItem = 
 const jsx_runtime_1 = require("react/jsx-runtime");
 const AccordionPrimitive = __importStar(require("@radix-ui/react-accordion"));
 exports.AccordionPrimitive = AccordionPrimitive;
-const lucide_react_1 = require("lucide-react");
 const React = __importStar(require("react"));
 const utils_1 = require("../lib/utils");
 const Accordion = AccordionPrimitive.Root;
@@ -36,7 +35,8 @@ exports.Accordion = Accordion;
 const AccordionItem = React.forwardRef(({ className, ...props }, ref) => ((0, jsx_runtime_1.jsx)(AccordionPrimitive.Item, { ref: ref, className: (0, utils_1.cn)("border-b", className), ...props })));
 exports.AccordionItem = AccordionItem;
 AccordionItem.displayName = "AccordionItem";
-const AccordionTrigger = React.forwardRef(({ className, children, iconClassName, ...props }, ref) => ((0, jsx_runtime_1.jsx)(AccordionPrimitive.Header, { className: "flex", children: (0, jsx_runtime_1.jsxs)(AccordionPrimitive.Trigger, { ref: ref, className: (0, utils_1.cn)("flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180", className), ...props, children: [children, (0, jsx_runtime_1.jsx)(lucide_react_1.ChevronDown, { className: `h-4 w-4 shrink-0 transition-transform duration-200 ${iconClassName}` })] }) })));
+// [&[data-state=open]>svg]:rotate-180
+const AccordionTrigger = React.forwardRef(({ className, children, ...props }, ref) => ((0, jsx_runtime_1.jsx)(AccordionPrimitive.Header, { className: "flex", children: (0, jsx_runtime_1.jsx)(AccordionPrimitive.Trigger, { ref: ref, className: (0, utils_1.cn)("flex flex-1 items-center justify-between py-4 font-medium transition-all", className), ...props, children: children }) })));
 exports.AccordionTrigger = AccordionTrigger;
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
 const AccordionContent = React.forwardRef(({ className, children, ...props }, ref) => ((0, jsx_runtime_1.jsx)(AccordionPrimitive.Content, { ref: ref, className: "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down", ...props, children: (0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)("pb-4 pt-0", className), children: children }) })));
