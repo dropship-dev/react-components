@@ -1,3 +1,4 @@
+export * from "./Accordion";
 export { default as Alert } from "./Alert";
 export { default as Button } from "./Button";
 export { default as Checkbox } from "./Checkbox";
@@ -21,6 +22,7 @@ export { default as Slider } from "./RangeSlider";
 export { default as Rating } from "./Rating";
 export { default as Select } from "./Select";
 export { default as SelectGroup } from "./SelectGroup";
+export * from "./Sheet";
 export { default as Skeleton } from "./SkeletonLoading";
 export { default as Switch } from "./Switch";
 export { default as TableProduct } from "./Table";

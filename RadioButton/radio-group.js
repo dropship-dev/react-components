@@ -24,10 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RadioGroupItem = exports.RadioGroup = void 0;
+exports.RadioGroupPrimitive = exports.RadioGroupItem = exports.RadioGroup = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
-const React = __importStar(require("react"));
 const RadioGroupPrimitive = __importStar(require("@radix-ui/react-radio-group"));
+exports.RadioGroupPrimitive = RadioGroupPrimitive;
+const React = __importStar(require("react"));
 const utils_1 = require("../lib/utils");
 const RadioGroup = React.forwardRef(({ className, ...props }, ref) => {
     return ((0, jsx_runtime_1.jsx)(RadioGroupPrimitive.Root, { className: (0, utils_1.cn)("grid gap-2", className), ...props, ref: ref }));

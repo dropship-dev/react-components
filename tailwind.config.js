@@ -5,6 +5,12 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
   ],
+  safelist: [
+    {
+      pattern: /border-(solid|dashed|dotted|none|double)/,
+      variants: ["hover"],
+    },
+  ],
   theme: {
     fontFamily: {
       sans: [
