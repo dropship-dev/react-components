@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Switch as SwitchComponent } from "./components/switch";
 
 export default function Switch(props: {
