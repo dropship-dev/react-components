@@ -24,10 +24,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Switch = void 0;
+exports.SwitchPrimitives = exports.Switch = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
-const React = __importStar(require("react"));
 const SwitchPrimitives = __importStar(require("@radix-ui/react-switch"));
+exports.SwitchPrimitives = SwitchPrimitives;
+const React = __importStar(require("react"));
 const utils_1 = require("../../lib/utils");
 const Switch = React.forwardRef(({ className, danger, ...props }, ref) => ((0, jsx_runtime_1.jsx)(SwitchPrimitives.Root, { className: (0, utils_1.cn)(`peer inline-flex h-[20px] w-[32px] shrink-0 cursor-pointer items-center rounded-full border-[3px] border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-success ${danger
         ? " data-[state=unchecked]:bg-red-500"
