@@ -18,10 +18,11 @@ interface IDatePicker {
   timezone?: string;
   showOutsideDays?: boolean;
   disable?: Matcher | Matcher[];
+  isPopup?: boolean;
 }
 
 const DatePicker = (props: IDatePicker) => {
-  const { date, setDate, timezone, showOutsideDays, disable } = props;
+  const { date, setDate, timezone, showOutsideDays, disable, isPopup } = props;
   const moment = require("moment-timezone");
   const [value, setValue] = React.useState<Date | undefined>(
     moment()
@@ -31,6 +32,15 @@ const DatePicker = (props: IDatePicker) => {
   );
 
   React.useEffect(() => {
+    setValue(
+      moment(date)
+        .tz(timezone ?? "America/Los_Angeles")
+        .startOf("day")
+        .toDate(),
+    );
+  }, [date]);
+
+  React.useEffect(() => {
     setDate(
       moment(value)
         .tz(timezone ?? "America/Los_Angeles")
@@ -38,6 +48,19 @@ const DatePicker = (props: IDatePicker) => {
         .toDate(),
     );
   }, [value]);
+
+  if (isPopup)
+    return (
+      <Calendar
+        disabled={disable}
+        mode="single"
+        selected={value}
+        onSelect={setValue}
+        initialFocus
+        className="z-50"
+        showOutsideDays={showOutsideDays}
+      />
+    );
 
   return (
     <Popover>
