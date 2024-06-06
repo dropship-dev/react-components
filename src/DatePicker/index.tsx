@@ -40,22 +40,21 @@ const DatePicker = (props: IDatePicker) => {
     );
   }, [date]);
 
-  React.useEffect(() => {
-    setDate(
-      moment(value)
-        .tz(timezone ?? "America/Los_Angeles")
-        .startOf("day")
-        .toDate(),
-    );
-  }, [value]);
-
   if (isPopup)
     return (
       <Calendar
         disabled={disable}
         mode="single"
         selected={value}
-        onSelect={setValue}
+        onSelect={(d) => {
+          setValue(d);
+          setDate(
+            moment(value)
+              .tz(timezone ?? "America/Los_Angeles")
+              .startOf("day")
+              .toDate(),
+          );
+        }}
         initialFocus
         className="z-50"
         showOutsideDays={showOutsideDays}
@@ -89,7 +88,15 @@ const DatePicker = (props: IDatePicker) => {
           disabled={disable}
           mode="single"
           selected={value}
-          onSelect={setValue}
+          onSelect={(d) => {
+            setValue(d);
+            setDate(
+              moment(value)
+                .tz(timezone ?? "America/Los_Angeles")
+                .startOf("day")
+                .toDate(),
+            );
+          }}
           initialFocus
           className="z-50"
           showOutsideDays={showOutsideDays}
