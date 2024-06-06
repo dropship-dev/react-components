@@ -10,15 +10,18 @@ import {
 import { Calendar } from "../RangeDatePicker/components/calendar";
 import { Button } from "..";
 import "moment-timezone";
+import { Matcher } from "react-day-picker";
 
 interface IDatePicker {
   date: Date | undefined;
   setDate: React.Dispatch<React.SetStateAction<Date | undefined>>;
   timezone?: string;
+  showOutsideDays?: boolean;
+  disable?: Matcher | Matcher[];
 }
 
 const DatePicker = (props: IDatePicker) => {
-  const { date, setDate, timezone } = props;
+  const { date, setDate, timezone, showOutsideDays, disable } = props;
   const moment = require("moment-timezone");
   const [value, setValue] = React.useState<Date | undefined>(
     moment()
@@ -60,11 +63,13 @@ const DatePicker = (props: IDatePicker) => {
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
+          disabled={disable}
           mode="single"
           selected={value}
           onSelect={setValue}
           initialFocus
           className="z-50"
+          showOutsideDays={showOutsideDays}
         />
       </PopoverContent>
     </Popover>
