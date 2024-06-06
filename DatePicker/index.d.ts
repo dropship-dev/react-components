@@ -7,6 +7,7 @@ interface IDatePicker {
     timezone?: string;
     showOutsideDays?: boolean;
     disable?: Matcher | Matcher[];
+    isPopup?: boolean;
 }
 declare const DatePicker: (props: IDatePicker) => import("react/jsx-runtime").JSX.Element;
 export default DatePicker;
