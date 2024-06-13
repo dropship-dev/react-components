@@ -11,5 +11,6 @@ export default function Select(props: {
     onSelected?: (value: string) => void;
     defaultValue?: string;
     size?: "xs" | "sm" | "md";
+    disable?: boolean;
 }): import("react/jsx-runtime").JSX.Element;
 export * from "./components/select";
