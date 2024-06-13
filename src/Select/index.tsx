@@ -20,6 +20,7 @@ export default function Select(props: {
   onSelected?: (value: string) => void;
   defaultValue?: string;
   size?: "xs" | "sm" | "md";
+  disable?: boolean;
 }) {
   const {
     data,
@@ -30,12 +31,14 @@ export default function Select(props: {
     onSelected,
     defaultValue,
     size,
+    disable,
   } = props;
 
   const [open, setOpen] = React.useState(false);
 
   return (
     <SelectData
+      disabled={disable}
       onOpenChange={(e) => setOpen(e)}
       onValueChange={onSelected}
       defaultValue={defaultValue}
