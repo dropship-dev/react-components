@@ -21,6 +21,7 @@ export default function Select(props: {
   defaultValue?: string;
   size?: "xs" | "sm" | "md";
   disable?: boolean;
+  value?: string;
 }) {
   const {
     data,
@@ -32,6 +33,7 @@ export default function Select(props: {
     defaultValue,
     size,
     disable,
+    value,
   } = props;
 
   const [open, setOpen] = React.useState(false);
@@ -43,6 +45,7 @@ export default function Select(props: {
       onValueChange={onSelected}
       defaultValue={defaultValue}
       open={open}
+      value={value}
     >
       {label && (
         <div className="mb-[6px]">
