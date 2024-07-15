@@ -35,7 +35,6 @@ export default function MultiplechoiceSelect(props: {
   callbackAllSelected?: (value: Option[]) => void;
   classMain?: string;
   classInput?: string;
-  classContent?: string;
   showClearSelection?: boolean;
 }) {
   const {
@@ -48,10 +47,6 @@ export default function MultiplechoiceSelect(props: {
     content,
     defaultValue,
     callbackAllSelected,
-    classMain,
-    classInput,
-    classContent,
-    showClearSelection = true,
   } = props;
   const [value, setValue] = React.useState<string>(defaultValue ?? "All value");
   const [open, setOpen] = React.useState<boolean>(false);
@@ -76,20 +71,20 @@ export default function MultiplechoiceSelect(props: {
   }, [listSelected]);
 
   return (
-    <div className={`${width} ${classMain}`}>
+    <div className={width}>
       <Popover open={open} onOpenChange={(e) => setOpen(e)}>
         <PopoverTrigger
           asChild
           onClick={() => setOpen(true)}
           className={`flex justify-center items-center p-0 m-0 rounded-[6px] ${
             open ? "shadow-[#DBDDFF] shadow-[0_0_0_3px]" : ""
-          } ${classContent}`}
+          }`}
         >
-          <div className="w-full h-full">
+          <div className="w-fit h-fit">
             <Input
               value={value}
               readOnly
-              className={`${width} ${classInput}`}
+              className={width}
               iconAfter={
                 open ? (
                   <svg
@@ -224,19 +219,18 @@ export default function MultiplechoiceSelect(props: {
               </div>
             ))}
           </div>
-          {showClearSelection ? (
-            <div
-              className="w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer "
-              onClick={() => {
-                onClear && onClear();
-                setAllSelected([]);
-                setListSelected([]);
-                // setOpen(false);
-              }}
-            >
-              Clear selection
-            </div>
-          ) : null}
+
+          <div
+            className="w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer "
+            onClick={() => {
+              onClear && onClear();
+              setAllSelected([]);
+              setListSelected([]);
+              // setOpen(false);
+            }}
+          >
+            Clear selection
+          </div>
         </PopoverContent>
       </Popover>
     </div>
