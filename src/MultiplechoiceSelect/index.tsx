@@ -35,6 +35,7 @@ export default function MultiplechoiceSelect(props: {
   callbackAllSelected?: (value: Option[]) => void;
   classMain?: string;
   classInput?: string;
+  classContent?: string;
   showClearSelection?: boolean;
 }) {
   const {
@@ -49,6 +50,7 @@ export default function MultiplechoiceSelect(props: {
     callbackAllSelected,
     classMain,
     classInput,
+    classContent,
     showClearSelection = true,
   } = props;
   const [value, setValue] = React.useState<string>(defaultValue ?? "All value");
@@ -81,9 +83,9 @@ export default function MultiplechoiceSelect(props: {
           onClick={() => setOpen(true)}
           className={`flex justify-center items-center p-0 m-0 rounded-[6px] ${
             open ? "shadow-[#DBDDFF] shadow-[0_0_0_3px]" : ""
-          }`}
+          } ${classContent}`}
         >
-          <div className="w-fit h-fit">
+          <div className="w-full h-full">
             <Input
               value={value}
               readOnly
