@@ -33,6 +33,9 @@ export default function MultiplechoiceSelect(props: {
   callbackListSelected?: (value: string[]) => void;
   defaultValue?: string;
   callbackAllSelected?: (value: Option[]) => void;
+  classMain?: string;
+  classInput?: string;
+  showClearSelection?: boolean;
 }) {
   const {
     data,
@@ -57,7 +60,7 @@ export default function MultiplechoiceSelect(props: {
       setValue(`${content}: ${allSelected[0]}`);
     } else {
       setValue(
-        `${content}: ${allSelected[0] + " (" + (allSelected.length - 1)}+)`
+        `${content}: ${allSelected[0] + " (" + (allSelected.length - 1)}+)`,
       );
     }
     callbackListSelected && callbackListSelected(allSelected);
@@ -132,7 +135,7 @@ export default function MultiplechoiceSelect(props: {
                   onClick={() => {
                     if (allSelected.find((select) => select === item)) {
                       setAllSelected(
-                        allSelected.filter((select) => select !== item)
+                        allSelected.filter((select) => select !== item),
                       );
                       onCheckedChange && onCheckedChange(false);
                     } else {
@@ -150,7 +153,7 @@ export default function MultiplechoiceSelect(props: {
                           setAllSelected([...allSelected, item]);
                         } else {
                           setAllSelected(
-                            allSelected.filter((select) => select !== item)
+                            allSelected.filter((select) => select !== item),
                           );
                         }
                       }}
@@ -173,14 +176,14 @@ export default function MultiplechoiceSelect(props: {
                     onClick={() => {
                       if (allSelected.find((select) => select === i.value)) {
                         setAllSelected(
-                          allSelected.filter((select) => select !== i.value)
+                          allSelected.filter((select) => select !== i.value),
                         );
                         setListSelected(
                           listSelected.filter(
                             (select) =>
                               select.value !== i.value &&
-                              select.label !== i.label
-                          )
+                              select.label !== i.label,
+                          ),
                         );
                       } else {
                         setAllSelected([...allSelected, i.value]);
@@ -199,7 +202,9 @@ export default function MultiplechoiceSelect(props: {
                             setAllSelected([...allSelected, i.value]);
                           } else {
                             setAllSelected(
-                              allSelected.filter((select) => select !== i.value)
+                              allSelected.filter(
+                                (select) => select !== i.value,
+                              ),
                             );
                           }
                         }}
@@ -214,6 +219,7 @@ export default function MultiplechoiceSelect(props: {
               </div>
             ))}
           </div>
+
           <div
             className="w-full h-full p-3 text-textSM text-gray-900 hover:bg-gray-50 border-t-[1px] border-t-gray-400 cursor-pointer "
             onClick={() => {
