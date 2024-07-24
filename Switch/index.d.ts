@@ -4,4 +4,5 @@ export default function Switch(props: {
     danger?: boolean;
     checked?: boolean;
     disabled?: boolean;
+    primary?: boolean;
 }): import("react/jsx-runtime").JSX.Element;
