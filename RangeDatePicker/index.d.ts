@@ -4,7 +4,8 @@ export declare enum RangeDatePickerDefaultValues {
     TODAY = "Today",
     THIS_WEEK = "This week",
     THIS_MONTH = "This month",
-    THIS_YEAR = "This year"
+    THIS_YEAR = "This year",
+    ALL_TIME = "All time"
 }
 interface IRangeDatePicker {
     date: DateRange | undefined;

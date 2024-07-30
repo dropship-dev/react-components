@@ -42,6 +42,7 @@ var RangeDatePickerDefaultValues;
     RangeDatePickerDefaultValues["THIS_WEEK"] = "This week";
     RangeDatePickerDefaultValues["THIS_MONTH"] = "This month";
     RangeDatePickerDefaultValues["THIS_YEAR"] = "This year";
+    RangeDatePickerDefaultValues["ALL_TIME"] = "All time";
 })(RangeDatePickerDefaultValues || (exports.RangeDatePickerDefaultValues = RangeDatePickerDefaultValues = {}));
 const generateDateRangeFromDefaultValue = (timezoneDate, defaultValue) => {
     switch (defaultValue) {
