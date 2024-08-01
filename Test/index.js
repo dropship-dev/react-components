@@ -48,7 +48,7 @@ function Test(props) {
                                 setOpenDrawer(false);
                             }, children: "Close" })] }), open: openDrawer, onClose: () => {
                     setOpenDrawer(false);
-                } }), (0, jsx_runtime_1.jsx)(__1.DatePicker, { date: datePicker, setDate: setDatePicker }), (0, jsx_runtime_1.jsx)(__1.RangeDatePicker, { date: date, setDate: setDate, defaultValues: __1.RangeDatePickerDefaultValues.TODAY }), (0, jsx_runtime_1.jsx)(__1.Slider, { min: 0, max: 100, defaultValue: [0, 100] }), (0, jsx_runtime_1.jsx)(__1.Rating, { rating: valueRating, setRating: setValueRating }), (0, jsx_runtime_1.jsx)(__1.ComboboxSearch, { data: [
+                } }), (0, jsx_runtime_1.jsx)(__1.DatePicker, { date: datePicker, setDate: setDatePicker }), (0, jsx_runtime_1.jsx)(__1.RangeDatePickerMarketing, { date: date, setDate: setDate, defaultValues: __1.RangeDatePickerDefaultValuesMarketing.TODAY }), (0, jsx_runtime_1.jsx)(__1.Slider, { min: 0, max: 100, defaultValue: [0, 100] }), (0, jsx_runtime_1.jsx)(__1.Rating, { rating: valueRating, setRating: setValueRating }), (0, jsx_runtime_1.jsx)(__1.ComboboxSearch, { data: [
                     {
                         value: "next.js",
                         label: "Next.js",

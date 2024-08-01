@@ -1,6 +1,6 @@
 import * as React from "react";
 import { DateRange } from "react-day-picker";
-export declare enum RangeDatePickerDefaultValues {
+export declare enum RangeDatePickerDefaultValuesMarketing {
     TODAY = "Today",
     THIS_WEEK = "This week",
     THIS_MONTH = "This month",
@@ -10,7 +10,7 @@ interface IRangeDatePicker {
     date: DateRange | undefined;
     setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
     timezone?: string;
-    defaultValues?: RangeDatePickerDefaultValues;
+    defaultValues?: RangeDatePickerDefaultValuesMarketing;
 }
 export default function RangeDatePickerMarketing(props: IRangeDatePicker): import("react/jsx-runtime").JSX.Element;
 export {};
