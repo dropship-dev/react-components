@@ -15,7 +15,7 @@ import {
 } from "../ComboBox/components/popover";
 import { Calendar } from "./components/calendar";
 
-export enum RangeDatePickerDefaultValues {
+export enum RangeDatePickerDefaultValuesMarketing {
   TODAY = "Today",
   THIS_WEEK = "This week",
   THIS_MONTH = "This month",
@@ -25,15 +25,15 @@ interface IRangeDatePicker {
   date: DateRange | undefined;
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
   timezone?: string;
-  defaultValues?: RangeDatePickerDefaultValues;
+  defaultValues?: RangeDatePickerDefaultValuesMarketing;
 }
 
 const generateDateRangeFromDefaultValue = (
   timezoneDate: string,
-  defaultValue?: RangeDatePickerDefaultValues
+  defaultValue?: RangeDatePickerDefaultValuesMarketing
 ): DateRange => {
   switch (defaultValue) {
-    case RangeDatePickerDefaultValues.TODAY:
+    case RangeDatePickerDefaultValuesMarketing.TODAY:
       return {
         from: new Date(
           moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate })
@@ -42,17 +42,17 @@ const generateDateRangeFromDefaultValue = (
           moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate })
         ),
       };
-    case RangeDatePickerDefaultValues.THIS_WEEK:
+    case RangeDatePickerDefaultValuesMarketing.THIS_WEEK:
       return {
         from: moment().startOf("week").add("days", 1).toDate(),
         to: moment().endOf("week").add("days", 1).toDate(),
       };
-    case RangeDatePickerDefaultValues.THIS_MONTH:
+    case RangeDatePickerDefaultValuesMarketing.THIS_MONTH:
       return {
         from: moment(new Date()).startOf("month").toDate(),
         to: moment(new Date()).endOf("month").toDate(),
       };
-    case RangeDatePickerDefaultValues.THIS_YEAR:
+    case RangeDatePickerDefaultValuesMarketing.THIS_YEAR:
       return {
         from: moment(new Date()).startOf("year").toDate(),
         to: moment(new Date()).endOf("year").toDate(),
@@ -70,13 +70,14 @@ export default function RangeDatePickerMarketing(props: IRangeDatePicker) {
   const [firstLoad, setFirstLoad] = React.useState<boolean>(true);
   const timezoneDate = timezone ?? "America/Los_Angeles";
 
+  var moment = require("moment-timezone");
+  moment.tz.setDefault(timezoneDate);
+
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>(
     generateDateRangeFromDefaultValue(timezoneDate, defaultValues)
   );
 
   const [open, setOpen] = React.useState<boolean>(false);
-
-  console.log("moment", moment().startOf("week").add("days", 1).toDate());
 
   const [valueSelected, setValueSelected] = React.useState<string>(
     defaultValues ?? ""
@@ -117,8 +118,6 @@ export default function RangeDatePickerMarketing(props: IRangeDatePicker) {
       }`
     );
   }
-
-  // console.log("check111", convertDate(new Date(), "start"));
 
   return (
     <div className={cn("grid gap-2")}>
