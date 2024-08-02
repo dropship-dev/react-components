@@ -13,7 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "../ComboBox/components/popover";
-import { Calendar } from "~/RangeDatePicker/components/calendar";
+import { Calendar } from "../RangeDatePicker/components/calendar";
 
 interface IRangeDatePicker {
   date: DateRange | undefined;
