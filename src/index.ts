@@ -24,7 +24,6 @@ export {
 
 export {
   default as RangeDatePickerMarketing,
-  RangeDatePickerDefaultValuesMarketing
 } from "./RangeDatePickerMarketing";
 
 export { default as Slider } from "./RangeSlider";

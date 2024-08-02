@@ -7,33 +7,27 @@ import { DateRange } from "react-day-picker";
 import { cn } from "../lib/utils";
 
 import moment from "moment-timezone";
-import { Button } from "..";
+import { Button, RangeDatePickerDefaultValues } from "..";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "../ComboBox/components/popover";
-import { Calendar } from "./components/calendar";
+import { Calendar } from "~/RangeDatePicker/components/calendar";
 
-export enum RangeDatePickerDefaultValuesMarketing {
-  TODAY = "Today",
-  THIS_WEEK = "This week",
-  THIS_MONTH = "This month",
-  THIS_YEAR = "This year",
-}
 interface IRangeDatePicker {
   date: DateRange | undefined;
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
   timezone?: string;
-  defaultValues?: RangeDatePickerDefaultValuesMarketing;
+  defaultValues?: RangeDatePickerDefaultValues;
 }
 
 const generateDateRangeFromDefaultValue = (
   timezoneDate: string,
-  defaultValue?: RangeDatePickerDefaultValuesMarketing
+  defaultValue?: RangeDatePickerDefaultValues
 ): DateRange => {
   switch (defaultValue) {
-    case RangeDatePickerDefaultValuesMarketing.TODAY:
+    case RangeDatePickerDefaultValues.TODAY:
       return {
         from: new Date(
           moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate })
@@ -42,17 +36,17 @@ const generateDateRangeFromDefaultValue = (
           moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate })
         ),
       };
-    case RangeDatePickerDefaultValuesMarketing.THIS_WEEK:
+    case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
         from: moment().startOf("week").add("days", 1).toDate(),
         to: moment().endOf("week").add("days", 1).toDate(),
       };
-    case RangeDatePickerDefaultValuesMarketing.THIS_MONTH:
+    case RangeDatePickerDefaultValues.THIS_MONTH:
       return {
         from: moment(new Date()).startOf("month").toDate(),
         to: moment(new Date()).endOf("month").toDate(),
       };
-    case RangeDatePickerDefaultValuesMarketing.THIS_YEAR:
+    case RangeDatePickerDefaultValues.THIS_YEAR:
       return {
         from: moment(new Date()).startOf("year").toDate(),
         to: moment(new Date()).endOf("year").toDate(),
