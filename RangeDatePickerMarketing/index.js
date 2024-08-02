@@ -27,7 +27,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RangeDatePickerDefaultValuesMarketing = void 0;
 const jsx_runtime_1 = require("react/jsx-runtime");
 const lucide_react_1 = require("lucide-react");
 const React = __importStar(require("react"));
@@ -35,32 +34,25 @@ const utils_1 = require("../lib/utils");
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
 const __1 = require("..");
 const popover_1 = require("../ComboBox/components/popover");
-const calendar_1 = require("./components/calendar");
-var RangeDatePickerDefaultValuesMarketing;
-(function (RangeDatePickerDefaultValuesMarketing) {
-    RangeDatePickerDefaultValuesMarketing["TODAY"] = "Today";
-    RangeDatePickerDefaultValuesMarketing["THIS_WEEK"] = "This week";
-    RangeDatePickerDefaultValuesMarketing["THIS_MONTH"] = "This month";
-    RangeDatePickerDefaultValuesMarketing["THIS_YEAR"] = "This year";
-})(RangeDatePickerDefaultValuesMarketing || (exports.RangeDatePickerDefaultValuesMarketing = RangeDatePickerDefaultValuesMarketing = {}));
+const calendar_1 = require("~/RangeDatePicker/components/calendar");
 const generateDateRangeFromDefaultValue = (timezoneDate, defaultValue) => {
     switch (defaultValue) {
-        case RangeDatePickerDefaultValuesMarketing.TODAY:
+        case __1.RangeDatePickerDefaultValues.TODAY:
             return {
                 from: new Date((0, moment_timezone_1.default)().toDate().toLocaleString("en-US", { timeZone: timezoneDate })),
                 to: new Date((0, moment_timezone_1.default)().toDate().toLocaleString("en-US", { timeZone: timezoneDate })),
             };
-        case RangeDatePickerDefaultValuesMarketing.THIS_WEEK:
+        case __1.RangeDatePickerDefaultValues.THIS_WEEK:
             return {
                 from: (0, moment_timezone_1.default)().startOf("week").add("days", 1).toDate(),
                 to: (0, moment_timezone_1.default)().endOf("week").add("days", 1).toDate(),
             };
-        case RangeDatePickerDefaultValuesMarketing.THIS_MONTH:
+        case __1.RangeDatePickerDefaultValues.THIS_MONTH:
             return {
                 from: (0, moment_timezone_1.default)(new Date()).startOf("month").toDate(),
                 to: (0, moment_timezone_1.default)(new Date()).endOf("month").toDate(),
             };
-        case RangeDatePickerDefaultValuesMarketing.THIS_YEAR:
+        case __1.RangeDatePickerDefaultValues.THIS_YEAR:
             return {
                 from: (0, moment_timezone_1.default)(new Date()).startOf("year").toDate(),
                 to: (0, moment_timezone_1.default)(new Date()).endOf("year").toDate(),
