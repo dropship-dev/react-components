@@ -7,8 +7,6 @@ import {
   Drawer,
   RangeDatePicker,
   RangeDatePickerDefaultValues,
-  RangeDatePickerDefaultValuesMarketing,
-  RangeDatePickerMarketing,
   Rating,
   Slider,
   TooltipComponent,
@@ -114,10 +112,10 @@ export default function Test(props: { sizePopup?: boolean }) {
         }}
       />
       <DatePicker date={datePicker} setDate={setDatePicker} />
-      <RangeDatePickerMarketing
+      <RangeDatePicker
         date={date}
         setDate={setDate}
-        defaultValues={RangeDatePickerDefaultValuesMarketing.TODAY}
+        defaultValues={RangeDatePickerDefaultValues.TODAY}
       />
       <Slider min={0} max={100} defaultValue={[0, 100]} />
       <Rating rating={valueRating} setRating={setValueRating} />
