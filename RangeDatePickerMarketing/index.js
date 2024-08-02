@@ -34,7 +34,7 @@ const utils_1 = require("../lib/utils");
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
 const __1 = require("..");
 const popover_1 = require("../ComboBox/components/popover");
-const calendar_1 = require("~/RangeDatePicker/components/calendar");
+const calendar_1 = require("../RangeDatePicker/components/calendar");
 const generateDateRangeFromDefaultValue = (timezoneDate, defaultValue) => {
     switch (defaultValue) {
         case __1.RangeDatePickerDefaultValues.TODAY:
