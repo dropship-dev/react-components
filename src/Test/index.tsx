@@ -20,10 +20,10 @@ export default function Test(props: { sizePopup?: boolean }) {
   const [date, setDate] = React.useState<DateRange | undefined>();
   const [valueRating, setValueRating] = React.useState<number>(3);
   const [datePicker, setDatePicker] = React.useState<Date | undefined>(
-    new Date(),
+    new Date()
   );
   const [datesinger, setDatesinger] = React.useState<Date | undefined>(
-    new Date(),
+    new Date()
   );
   const [value, setValue] = React.useState<string | number>("");
 

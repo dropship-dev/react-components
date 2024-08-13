@@ -7,21 +7,14 @@ import { DateRange } from "react-day-picker";
 import { cn } from "../lib/utils";
 
 import moment from "moment-timezone";
-import { Button } from "..";
+import { Button, RangeDatePickerDefaultValues } from "..";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "../ComboBox/components/popover";
-import { Calendar } from "./components/calendar";
+import { Calendar } from "../RangeDatePicker/components/calendar";
 
-export enum RangeDatePickerDefaultValues {
-  TODAY = "Today",
-  THIS_WEEK = "This week",
-  THIS_MONTH = "This month",
-  THIS_YEAR = "This year",
-  ALL_TIME = "All time",
-}
 interface IRangeDatePicker {
   date: DateRange | undefined;
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
@@ -31,22 +24,22 @@ interface IRangeDatePicker {
 
 const generateDateRangeFromDefaultValue = (
   timezoneDate: string,
-  defaultValue?: RangeDatePickerDefaultValues,
+  defaultValue?: RangeDatePickerDefaultValues
 ): DateRange => {
   switch (defaultValue) {
     case RangeDatePickerDefaultValues.TODAY:
       return {
         from: new Date(
-          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
+          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate })
         ),
         to: new Date(
-          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
+          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate })
         ),
       };
     case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
-        from: moment().startOf("week").toDate(),
-        to: moment().endOf("week").toDate(),
+        from: moment().startOf("week").add("days", 1).toDate(),
+        to: moment().endOf("week").add("days", 1).toDate(),
       };
     case RangeDatePickerDefaultValues.THIS_MONTH:
       return {
@@ -66,38 +59,28 @@ const generateDateRangeFromDefaultValue = (
   }
 };
 
-export default function RangeDatePicker(props: IRangeDatePicker) {
+export default function RangeDatePickerMarketing(props: IRangeDatePicker) {
   const { date, setDate, timezone, defaultValues } = props;
   const [firstLoad, setFirstLoad] = React.useState<boolean>(true);
   const timezoneDate = timezone ?? "America/Los_Angeles";
-  // var moment = require("moment-timezone");
-  // moment.tz.setDefault(timezoneDate);
+
+  var moment = require("moment-timezone");
+  moment.tz.setDefault(timezoneDate);
 
   const [datePicker, setDatePicker] = React.useState<DateRange | undefined>(
-    generateDateRangeFromDefaultValue(timezoneDate, defaultValues),
+    generateDateRangeFromDefaultValue(timezoneDate, defaultValues)
   );
 
   const [open, setOpen] = React.useState<boolean>(false);
 
-  // const convertTimezone = (timezone: string) => {
-  //   const date = new Intl.DateTimeFormat("en-GB", {
-  //     dateStyle: "full",
-  //     timeStyle: "long",
-  //     timeZone: timezone,
-  //   })
-  //     .format(new Date(moment().tz(timezone).format()))
-  //     .split(" ");
-  //   return date[date.length - 1];
-  // };
-
   const [valueSelected, setValueSelected] = React.useState<string>(
-    defaultValues ?? "",
+    defaultValues ?? ""
   );
 
   React.useEffect(() => {
     const dateRange = generateDateRangeFromDefaultValue(
       timezoneDate,
-      defaultValues,
+      defaultValues
     );
     setDatePicker(dateRange);
   }, [defaultValues]);
@@ -125,8 +108,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   function convertDate(date: Date, type: "start" | "end") {
     return new Date(
       `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
-        type === "start" ? "00:00:00" : "24:00:00"
-      }${moment(date).tz(timezoneDate).format("Z")}`,
+        type === "start" ? "00:00:00" : "23:59:59"
+      }`
     );
   }
 
@@ -140,7 +123,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
               `w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-10 text-ellipsis whitespace-nowrap ${
                 open ? "shadow-[#DBDDFF] shadow-[0_0_0_4px]" : ""
               }`,
-              !datePicker && "text-muted-foreground",
+              !datePicker && "text-muted-foreground"
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
@@ -170,12 +153,12 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     from: new Date(
                       moment()
                         .toDate()
-                        .toLocaleString("en-US", { timeZone: timezoneDate }),
+                        .toLocaleString("en-US", { timeZone: timezoneDate })
                     ),
                     to: new Date(
                       moment()
                         .toDate()
-                        .toLocaleString("en-US", { timeZone: timezoneDate }),
+                        .toLocaleString("en-US", { timeZone: timezoneDate })
                     ),
                   });
                 }}
@@ -187,8 +170,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 onClick={() => {
                   setValueSelected("This week");
                   setDatePicker({
-                    from: moment().startOf("week").toDate(),
-                    to: moment().endOf("week").toDate(),
+                    from: moment().startOf("week").add("days", 1).toDate(),
+                    to: moment().endOf("week").add("days", 1).toDate(),
                   });
                 }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -265,8 +248,8 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                         from: new Date(convertDate(datePicker?.from, "start")),
                         to: new Date(
                           new Date(
-                            convertDate(datePicker?.from, "end"),
-                          ).getTime(),
+                            convertDate(datePicker?.from, "end")
+                          ).getTime()
                         ),
                       });
                       setDatePicker({
@@ -277,9 +260,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                       setDate({
                         from: new Date(convertDate(datePicker.from, "start")),
                         to: new Date(
-                          new Date(
-                            convertDate(datePicker?.to, "end"),
-                          ).getTime(),
+                          new Date(convertDate(datePicker?.to, "end")).getTime()
                         ),
                       });
                     } else {
