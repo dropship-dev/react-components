@@ -8,7 +8,7 @@ import {
 export interface IDropDown {
   listAction: React.ReactNode[];
   content: string | React.ReactNode;
-  className: string;
+  className?: string;
 }
 
 export default function Dropdown(props: IDropDown) {
