@@ -8,15 +8,16 @@ import {
 export interface IDropDown {
   listAction: React.ReactNode[];
   content: string | React.ReactNode;
+  className?: string;
 }
 
 export default function Dropdown(props: IDropDown) {
-  const { listAction, content } = props;
+  const { listAction, content, className } = props;
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>{content}</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className={className}>
         {listAction.map((item, index) => (
           <DropdownMenuItem key={index}>{item}</DropdownMenuItem>
         ))}
