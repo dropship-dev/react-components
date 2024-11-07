@@ -123,10 +123,11 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
   }, [datePicker, firstLoad]);
 
   function convertDate(date: Date, type: "start" | "end") {
+    const newDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()} ${type === "start" ? "00:00:00" : "24:00:00"}`;
     return new Date(
-      `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${
-        type === "start" ? "00:00:00" : "24:00:00"
-      }${moment(date).tz(timezoneDate).format("Z")}`,
+      `${newDate}${moment(newDate).tz(timezoneDate).format("Z")}`,
     );
   }
 
