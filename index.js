@@ -17,7 +17,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TooltipComponent = exports.ToggleTag = exports.Textarea = exports.Test = exports.Tag = exports.TableProduct = exports.Switch = exports.Skeleton = exports.SelectGroup = exports.Select = exports.Rating = exports.Slider = exports.RangeDatePickerMarketing = exports.RangeDatePickerDefaultValues = exports.RangeDatePicker = exports.RadioButton = exports.ProductImage = exports.Avatar = exports.PopoverNoti = exports.ComboboxSearchMulti = exports.Label = exports.Input = exports.IconButton = exports.DropDownMenu = exports.Drawer = exports.Dialog = exports.DatePicker = exports.ComboboxSearch = exports.ComboBox = exports.Chip = exports.Checkbox = exports.Button = exports.Alert = void 0;
+exports.MultipleSelect = exports.TooltipComponent = exports.ToggleTag = exports.Textarea = exports.Test = exports.Tag = exports.TableProduct = exports.Switch = exports.Skeleton = exports.SelectGroup = exports.Select = exports.Rating = exports.Slider = exports.RangeDatePickerMarketing = exports.RangeDatePickerDefaultValues = exports.RangeDatePicker = exports.RadioButton = exports.ProductImage = exports.Avatar = exports.PopoverNoti = exports.ComboboxSearchMulti = exports.Label = exports.Input = exports.IconButton = exports.DropDownMenu = exports.Drawer = exports.Dialog = exports.DatePicker = exports.ComboboxSearch = exports.ComboBox = exports.Chip = exports.Checkbox = exports.Button = exports.Alert = void 0;
 __exportStar(require("./Accordion"), exports);
 var Alert_1 = require("./Alert");
 Object.defineProperty(exports, "Alert", { enumerable: true, get: function () { return __importDefault(Alert_1).default; } });
@@ -85,3 +85,5 @@ var ToggleTag_1 = require("./ToggleTag");
 Object.defineProperty(exports, "ToggleTag", { enumerable: true, get: function () { return __importDefault(ToggleTag_1).default; } });
 var Tooltip_1 = require("./Tooltip");
 Object.defineProperty(exports, "TooltipComponent", { enumerable: true, get: function () { return __importDefault(Tooltip_1).default; } });
+var MultipleSelect_1 = require("./MultipleSelect");
+Object.defineProperty(exports, "MultipleSelect", { enumerable: true, get: function () { return __importDefault(MultipleSelect_1).default; } });

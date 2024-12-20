@@ -32,3 +32,4 @@ export { default as Test } from "./Test";
 export { default as Textarea } from "./TextArea";
 export { default as ToggleTag } from "./ToggleTag";
 export { default as TooltipComponent } from "./Tooltip";
+export { default as MultipleSelect } from "./MultipleSelect";
