@@ -1,6 +1,7 @@
 export * from "./Accordion";
 export { default as Alert } from "./Alert";
 export { default as Button } from "./Button";
+export { default as RadixButton } from "./RadixButton";
 export { default as Checkbox } from "./Checkbox";
 export { default as Chip } from "./Chip";
 export { default as ComboBox } from "./ComboBox";
