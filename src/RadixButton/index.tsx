@@ -94,7 +94,7 @@ const RadixButton = React.forwardRef<HTMLButtonElement, RadixButtonProps>(
       asChild,
       ...props
     },
-    ref,
+    ref
   ) => {
     const Comp = asChild ? Slot : "button";
 
@@ -141,17 +141,19 @@ const RadixButton = React.forwardRef<HTMLButtonElement, RadixButtonProps>(
         ref={ref}
         {...props}
       >
-        <div className={cn({ "opacity-0": isLoading })}>{children}</div>
-        {isLoading && (
-          <span
-            className={cn(
-              "loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2",
-            )}
-          />
-        )}
+        <div>
+          <div className={cn({ "opacity-0": isLoading })}>{children}</div>
+          {isLoading && (
+            <span
+              className={cn(
+                "loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2"
+              )}
+            />
+          )}
+        </div>
       </Comp>
     );
-  },
+  }
 );
 
 RadixButton.displayName = "RadixButton";
