@@ -17,12 +17,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MultipleSelect = exports.TooltipComponent = exports.ToggleTag = exports.Textarea = exports.Test = exports.Tag = exports.TableProduct = exports.Switch = exports.Skeleton = exports.SelectGroup = exports.Select = exports.Rating = exports.Slider = exports.RangeDatePickerMarketing = exports.RangeDatePickerDefaultValues = exports.RangeDatePicker = exports.RadioButton = exports.ProductImage = exports.Avatar = exports.PopoverNoti = exports.ComboboxSearchMulti = exports.Label = exports.Input = exports.IconButton = exports.DropDownMenu = exports.Drawer = exports.Dialog = exports.DatePicker = exports.ComboboxSearch = exports.ComboBox = exports.Chip = exports.Checkbox = exports.Button = exports.Alert = void 0;
+exports.MultipleSelect = exports.TooltipComponent = exports.ToggleTag = exports.Textarea = exports.Test = exports.Tag = exports.TableProduct = exports.Switch = exports.Skeleton = exports.SelectGroup = exports.Select = exports.Rating = exports.Slider = exports.RangeDatePickerMarketing = exports.RangeDatePickerDefaultValues = exports.RangeDatePicker = exports.RadioButton = exports.ProductImage = exports.Avatar = exports.PopoverNoti = exports.ComboboxSearchMulti = exports.Label = exports.Input = exports.IconButton = exports.DropDownMenu = exports.Drawer = exports.Dialog = exports.DatePicker = exports.ComboboxSearch = exports.ComboBox = exports.Chip = exports.Checkbox = exports.RadixButton = exports.Button = exports.Alert = void 0;
 __exportStar(require("./Accordion"), exports);
 var Alert_1 = require("./Alert");
 Object.defineProperty(exports, "Alert", { enumerable: true, get: function () { return __importDefault(Alert_1).default; } });
 var Button_1 = require("./Button");
 Object.defineProperty(exports, "Button", { enumerable: true, get: function () { return __importDefault(Button_1).default; } });
+var RadixButton_1 = require("./RadixButton");
+Object.defineProperty(exports, "RadixButton", { enumerable: true, get: function () { return __importDefault(RadixButton_1).default; } });
 var Checkbox_1 = require("./Checkbox");
 Object.defineProperty(exports, "Checkbox", { enumerable: true, get: function () { return __importDefault(Checkbox_1).default; } });
 var Chip_1 = require("./Chip");
