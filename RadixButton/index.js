@@ -116,7 +116,7 @@ const RadixButton = React.forwardRef(({ color = "blue", size = "md", hierarchy =
                 });
         }
     };
-    return ((0, jsx_runtime_1.jsxs)(Comp, { disabled: disabled || isLoading, className: (0, utils_1.cn)(buttonVariant()), type: type, ref: ref, ...props, children: [(0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)({ "opacity-0": isLoading }), children: children }), isLoading && ((0, jsx_runtime_1.jsx)("span", { className: (0, utils_1.cn)("loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2") }))] }));
+    return ((0, jsx_runtime_1.jsx)(Comp, { disabled: disabled || isLoading, className: (0, utils_1.cn)(buttonVariant()), type: type, ref: ref, ...props, children: (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)("div", { className: (0, utils_1.cn)({ "opacity-0": isLoading }), children: children }), isLoading && ((0, jsx_runtime_1.jsx)("span", { className: (0, utils_1.cn)("loading loading-spinner text-neutral absolute bottom-1/2 translate-x-1/2 translate-y-1/2 right-1/2") }))] }) }));
 });
 RadixButton.displayName = "RadixButton";
 exports.default = RadixButton;
