@@ -83,24 +83,25 @@ function RangeDatePicker(props) {
         setDatePicker(dateRange);
     }, [defaultValues, timezoneDate]);
     React.useEffect(() => {
-        if (!firstLoad)
-            return;
-        if (!defaultValues) {
+        if (firstLoad && !!defaultValues && !!datePicker?.from) {
+            if (datePicker?.from && !datePicker?.to) {
+                setDate({
+                    from: convertDate(datePicker?.from, "start"),
+                    to: convertDate(datePicker?.from, "end"),
+                });
+                setDatePicker({
+                    ...datePicker,
+                    to: datePicker?.from,
+                });
+            }
+            else if (datePicker?.from && datePicker?.to)
+                setDate({
+                    from: convertDate(datePicker.from, "start"),
+                    to: convertDate(datePicker?.to, "end"),
+                });
             setFirstLoad(false);
-            return;
         }
-        if (!datePicker?.from) {
-            setFirstLoad(false);
-            return;
-        }
-        const from = convertDate(datePicker.from, "start");
-        const to = convertDate(datePicker.to ?? datePicker.from, "end");
-        setDate((prev) => ({ from, to }));
-        if (!datePicker.to) {
-            setDatePicker((prev) => prev && !prev.to ? { ...prev, to: prev.from } : prev);
-        }
-        setFirstLoad(false);
-    }, [firstLoad, defaultValues, datePicker?.from, datePicker?.to]);
+    }, [datePicker, firstLoad]);
     function convertDate(date, type) {
         const m = moment_timezone_1.default.tz(date, timezoneDate);
         if (type === "start") {
