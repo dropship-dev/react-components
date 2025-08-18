@@ -3,10 +3,9 @@
 import { Calendar as CalendarIcon } from "lucide-react";
 import * as React from "react";
 import { DateRange } from "react-day-picker";
+import moment from "moment-timezone";
 
 import { cn } from "../lib/utils";
-
-import moment from "moment-timezone";
 import { Button } from "..";
 import {
   Popover,
@@ -22,228 +21,216 @@ export enum RangeDatePickerDefaultValues {
   THIS_YEAR = "This year",
   ALL_TIME = "All time",
 }
+
 interface IRangeDatePicker {
   date: DateRange | undefined;
   setDate: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
-  timezone?: string;
+  timezone?: string; // IANA TZ, vd: "America/Los_Angeles"
   defaultValues?: RangeDatePickerDefaultValues;
 }
 
-const generateDateRangeFromDefaultValue = (
-  timezoneDate: string,
-  defaultValue?: RangeDatePickerDefaultValues,
+/* ---------- Helpers TZ-safe ---------- */
+const nowTz = (tz: string) => moment.tz(tz);
+const startOfDayTz = (d: Date, tz: string) =>
+  moment.tz(d, tz).startOf("day").toDate();
+const endOfDayTz = (d: Date, tz: string) =>
+  moment.tz(d, tz).endOf("day").milliseconds(0).toDate();
+
+const rangeFromPreset = (
+  tz: string,
+  preset?: RangeDatePickerDefaultValues,
 ): DateRange => {
-  switch (defaultValue) {
+  const m = nowTz(tz);
+  switch (preset) {
     case RangeDatePickerDefaultValues.TODAY:
       return {
-        from: new Date(
-          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
-        ),
-        to: new Date(
-          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
-        ),
+        from: m.clone().startOf("day").toDate(),
+        to: m.clone().endOf("day").milliseconds(0).toDate(),
       };
     case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
-        from: moment().startOf("week").toDate(),
-        to: moment().endOf("week").toDate(),
+        from: m.clone().startOf("isoWeek").toDate(),
+        to: m.clone().endOf("isoWeek").milliseconds(0).toDate(),
       };
     case RangeDatePickerDefaultValues.THIS_MONTH:
       return {
-        from: moment(new Date()).startOf("month").toDate(),
-        to: moment(new Date()).endOf("month").toDate(),
+        from: m.clone().startOf("month").toDate(),
+        to: m.clone().endOf("month").milliseconds(0).toDate(),
       };
     case RangeDatePickerDefaultValues.THIS_YEAR:
       return {
-        from: moment(new Date()).startOf("year").toDate(),
-        to: moment(new Date()).endOf("year").toDate(),
+        from: m.clone().startOf("year").toDate(),
+        to: m.clone().endOf("year").milliseconds(0).toDate(),
       };
     default:
-      return {
-        from: undefined,
-        to: undefined,
-      };
+      return { from: undefined, to: undefined };
   }
 };
 
 export default function RangeDatePicker(props: IRangeDatePicker) {
-  const { date, setDate, timezone, defaultValues } = props;
-  const [firstLoad, setFirstLoad] = React.useState<boolean>(true);
-  const timezoneDate = timezone ?? "America/Los_Angeles";
-  // var moment = require("moment-timezone");
-  // moment.tz.setDefault(timezoneDate);
+  const {
+    date,
+    setDate,
+    timezone = "America/Los_Angeles",
+    defaultValues,
+  } = props;
 
-  const [datePicker, setDatePicker] = React.useState<DateRange | undefined>(
-    generateDateRangeFromDefaultValue(timezoneDate, defaultValues),
-  );
-
-  const [open, setOpen] = React.useState<boolean>(false);
-
-  // const convertTimezone = (timezone: string) => {
-  //   const date = new Intl.DateTimeFormat("en-GB", {
-  //     dateStyle: "full",
-  //     timeStyle: "long",
-  //     timeZone: timezone,
-  //   })
-  //     .format(new Date(moment().tz(timezone).format()))
-  //     .split(" ");
-  //   return date[date.length - 1];
-  // };
-
-  const [valueSelected, setValueSelected] = React.useState<string>(
+  const [presetLabel, setPresetLabel] = React.useState<string>(
     defaultValues ?? "",
   );
 
+  const [open, setOpen] = React.useState(false);
+  const [datePicker, setDatePicker] = React.useState<DateRange | undefined>(
+    () => rangeFromPreset(timezone, defaultValues),
+  );
+
   React.useEffect(() => {
-    const dateRange = generateDateRangeFromDefaultValue(
-      timezoneDate,
-      defaultValues,
-    );
-    setDatePicker(dateRange);
+    if (!defaultValues) return;
+    const r = rangeFromPreset(timezone, defaultValues);
+    setDatePicker(r);
+    if (r.from && r.to) {
+      setDate({
+        from: startOfDayTz(r.from, timezone),
+        to: endOfDayTz(r.to, timezone),
+      });
+    } else {
+      setDate(undefined);
+    }
+  }, [defaultValues, timezone, setDate]);
+
+  React.useEffect(() => {
+    setPresetLabel(defaultValues ?? "");
   }, [defaultValues]);
 
-  React.useEffect(() => {
-    if (firstLoad && !!defaultValues && !!datePicker?.from) {
-      if (datePicker?.from && !datePicker?.to) {
-        setDate({
-          from: convertDate(datePicker?.from, "start"),
-          to: convertDate(datePicker?.from, "end"),
-        });
-        setDatePicker({
-          ...datePicker,
-          to: datePicker?.from,
-        });
-      } else if (datePicker?.from && datePicker?.to)
-        setDate({
-          from: convertDate(datePicker.from, "start"),
-          to: convertDate(datePicker?.to, "end"),
-        });
-      setFirstLoad(false);
-    }
-  }, [datePicker, firstLoad]);
+  const convertRangeToTzDayBounds = React.useCallback(
+    (r?: DateRange): DateRange | undefined => {
+      if (!r?.from && !r?.to) return undefined;
+      if (r?.from && !r?.to) {
+        return {
+          from: startOfDayTz(r.from, timezone),
+          to: endOfDayTz(r.from, timezone),
+        };
+      }
+      if (r?.from && r?.to) {
+        return {
+          from: startOfDayTz(r.from, timezone),
+          to: endOfDayTz(r.to, timezone),
+        };
+      }
+      return undefined;
+    },
+    [timezone],
+  );
 
-  function convertDate(date: Date, type: "start" | "end") {
-    const newDate = `${date.getFullYear()}-${
-      date.getMonth() + 1
-    }-${date.getDate()} ${type === "start" ? "00:00:00" : "24:00:00"}`;
-    return new Date(
-      `${newDate}${moment(newDate).tz(timezoneDate).format("Z")}`,
-    );
-  }
+  const triggerLabel = React.useMemo(() => {
+    if (presetLabel) return presetLabel;
+    const fmt = (d?: Date) =>
+      d
+        ? d
+            .toLocaleDateString("en-GB", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            })
+            .replaceAll("-", "/")
+        : "";
+    if (datePicker?.from && datePicker?.to)
+      return `${fmt(datePicker.from)} - ${fmt(datePicker.to)}`;
+    if (datePicker?.from) return fmt(datePicker.from);
+    return "All time";
+  }, [presetLabel, datePicker]);
 
   return (
     <div className={cn("grid gap-2")}>
-      <Popover open={open} onOpenChange={(open) => setOpen(open)}>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger>
           <div
             id="date"
             className={cn(
-              `w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-10 text-ellipsis whitespace-nowrap ${
-                open ? "shadow-[#DBDDFF] shadow-[0_0_0_4px]" : ""
-              }`,
-              !datePicker && "text-muted-foreground",
+              "w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border border-gray-300 flex items-center h-10 whitespace-nowrap",
+              open && "shadow-[#DBDDFF] shadow-[0_0_0_4px]",
             )}
           >
             <CalendarIcon className="mr-2 h-4 w-4" />
-            {datePicker?.from ? (
-              valueSelected !== "" ? (
-                valueSelected
-              ) : datePicker.to ? (
-                <>
-                  {datePicker.from.toLocaleDateString().replaceAll("-", "/")} -{" "}
-                  {datePicker.to.toLocaleDateString().replaceAll("-", "/")}
-                </>
-              ) : (
-                <>{datePicker.from.toLocaleDateString()}</>
-              )
-            ) : (
-              <span>All time</span>
-            )}
+            {triggerLabel}
           </div>
         </PopoverTrigger>
+
         <PopoverContent className="w-auto p-0" align="start">
           <div className="flex rounded-[10px]">
-            <div className="flex flex-col px-4 py-3 border-r-[1px] border-gray-100">
-              <div
+            {/* Presets */}
+            <div className="flex flex-col px-4 py-3 border-r border-gray-100 min-w-[160px]">
+              <PresetItem
+                label="Today"
                 onClick={() => {
-                  setValueSelected("Today");
-                  setDatePicker({
-                    from: new Date(
-                      moment()
-                        .toDate()
-                        .toLocaleString("en-US", { timeZone: timezoneDate }),
+                  setPresetLabel("Today");
+                  setDatePicker(
+                    rangeFromPreset(
+                      timezone,
+                      RangeDatePickerDefaultValues.TODAY,
                     ),
-                    to: new Date(
-                      moment()
-                        .toDate()
-                        .toLocaleString("en-US", { timeZone: timezoneDate }),
+                  );
+                }}
+              />
+              <PresetItem
+                label="This week"
+                onClick={() => {
+                  setPresetLabel("This week");
+                  setDatePicker(
+                    rangeFromPreset(
+                      timezone,
+                      RangeDatePickerDefaultValues.THIS_WEEK,
                     ),
-                  });
+                  );
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
-              >
-                Today
-              </div>
-              <div
+              />
+              <PresetItem
+                label="This month"
                 onClick={() => {
-                  setValueSelected("This week");
-                  setDatePicker({
-                    from: moment().startOf("week").toDate(),
-                    to: moment().endOf("week").toDate(),
-                  });
+                  setPresetLabel("This month");
+                  setDatePicker(
+                    rangeFromPreset(
+                      timezone,
+                      RangeDatePickerDefaultValues.THIS_MONTH,
+                    ),
+                  );
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
-              >
-                This week
-              </div>
-              <div
+              />
+              <PresetItem
+                label="This year"
                 onClick={() => {
-                  setValueSelected("This month");
-                  setDatePicker({
-                    from: moment(new Date()).startOf("month").toDate(),
-                    to: moment(new Date()).endOf("month").toDate(),
-                  });
+                  setPresetLabel("This year");
+                  setDatePicker(
+                    rangeFromPreset(
+                      timezone,
+                      RangeDatePickerDefaultValues.THIS_YEAR,
+                    ),
+                  );
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
-              >
-                This month
-              </div>
-              <div
+              />
+              <PresetItem
+                label="All time"
                 onClick={() => {
-                  setValueSelected("This year");
-                  setDatePicker({
-                    from: moment(new Date()).startOf("year").toDate(),
-                    to: moment(new Date()).endOf("year").toDate(),
-                  });
-                }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
-              >
-                This year
-              </div>
-              <div
-                onClick={() => {
-                  setValueSelected("");
+                  setPresetLabel("All time");
                   setDatePicker({ from: undefined, to: undefined });
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
-              >
-                All time
-              </div>
+              />
             </div>
+
             <div>
               <Calendar
                 initialFocus
                 mode="range"
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
-                onSelect={(date) => {
-                  setDatePicker(date);
-                  setValueSelected("");
+                onSelect={(r) => {
+                  setPresetLabel("");
+                  setDatePicker(r);
                 }}
                 numberOfMonths={2}
-                className="border-b-[1px] border-gray-300"
+                className="border-b border-gray-300"
               />
-              <div className="flex justify-end items-center flex-row gap-4 px-4 py-3">
+              <div className="flex justify-end items-center gap-4 px-4 py-3">
                 <Button
                   content="Cancel"
                   color="gray"
@@ -252,6 +239,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   onClick={() => {
                     setOpen(false);
                     setDatePicker(date);
+                    setPresetLabel(defaultValues ?? presetLabel);
                   }}
                 />
                 <Button
@@ -261,30 +249,13 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   size="md"
                   onClick={() => {
                     setOpen(false);
+                    const normalized = convertRangeToTzDayBounds(datePicker);
+                    setDate(normalized);
                     if (datePicker?.from && !datePicker?.to) {
-                      setDate({
-                        from: new Date(convertDate(datePicker?.from, "start")),
-                        to: new Date(
-                          new Date(
-                            convertDate(datePicker?.from, "end"),
-                          ).getTime(),
-                        ),
-                      });
                       setDatePicker({
-                        ...datePicker,
-                        to: datePicker?.from,
+                        from: datePicker.from,
+                        to: datePicker.from,
                       });
-                    } else if (datePicker?.from && datePicker?.to) {
-                      setDate({
-                        from: new Date(convertDate(datePicker.from, "start")),
-                        to: new Date(
-                          new Date(
-                            convertDate(datePicker?.to, "end"),
-                          ).getTime(),
-                        ),
-                      });
-                    } else {
-                      setDate(undefined);
                     }
                   }}
                 />
@@ -293,6 +264,23 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
           </div>
         </PopoverContent>
       </Popover>
+    </div>
+  );
+}
+
+function PresetItem({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <div
+      onClick={onClick}
+      className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
+    >
+      {label}
     </div>
   );
 }
