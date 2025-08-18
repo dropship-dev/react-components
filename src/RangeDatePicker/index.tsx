@@ -39,22 +39,22 @@ const generateDateRangeFromDefaultValue = (
     case RangeDatePickerDefaultValues.TODAY:
       return {
         from: now.clone().startOf("day").toDate(),
-        to: now.clone().endOf("day").milliseconds(0).toDate(),
+        to: now.clone().endOf("day").toDate(),
       };
     case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
         from: now.clone().startOf("isoWeek").toDate(), // Mon 00:00
-        to: now.clone().endOf("isoWeek").milliseconds(0).toDate(), // Sun 23:59:59.000
+        to: now.clone().endOf("isoWeek").toDate(), // Sun 23:59:59.000
       };
     case RangeDatePickerDefaultValues.THIS_MONTH:
       return {
         from: now.clone().startOf("month").toDate(),
-        to: now.clone().endOf("month").milliseconds(0).toDate(),
+        to: now.clone().endOf("month").toDate(),
       };
     case RangeDatePickerDefaultValues.THIS_YEAR:
       return {
         from: now.clone().startOf("year").toDate(),
-        to: now.clone().endOf("year").milliseconds(0).toDate(),
+        to: now.clone().endOf("year").toDate(),
       };
     default:
       return { from: undefined, to: undefined };
@@ -114,7 +114,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
     if (type === "start") {
       return m.startOf("day").toDate();
     }
-    return m.endOf("day").milliseconds(0).toDate();
+    return m.endOf("day").toDate();
   }
 
   return (
@@ -156,7 +156,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   const now = moment.tz(timezoneDate);
                   setDatePicker({
                     from: now.clone().startOf("day").toDate(),
-                    to: now.clone().endOf("day").milliseconds(0).toDate(),
+                    to: now.clone().endOf("day").toDate(),
                   });
                 }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -169,7 +169,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   const now = moment.tz(timezoneDate);
                   setDatePicker({
                     from: now.clone().startOf("isoWeek").toDate(),
-                    to: now.clone().endOf("isoWeek").milliseconds(0).toDate(),
+                    to: now.clone().endOf("isoWeek").toDate(),
                   });
                 }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -182,7 +182,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   const now = moment.tz(timezoneDate);
                   setDatePicker({
                     from: now.clone().startOf("month").toDate(),
-                    to: now.clone().endOf("month").milliseconds(0).toDate(),
+                    to: now.clone().endOf("month").toDate(),
                   });
                 }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
@@ -195,7 +195,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   const now = moment.tz(timezoneDate);
                   setDatePicker({
                     from: now.clone().startOf("year").toDate(),
-                    to: now.clone().endOf("year").milliseconds(0).toDate(),
+                    to: now.clone().endOf("year").toDate(),
                   });
                 }}
                 className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
