@@ -213,9 +213,27 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 mode="range"
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
-                onSelect={(date) => {
-                  setDatePicker(date);
+                onSelect={(range) => {
                   setValueSelected("");
+
+                  if (!range) {
+                    setDatePicker({ from: undefined, to: undefined });
+                    return;
+                  }
+
+                  let from = range.from ?? undefined;
+                  let to = range.to ?? undefined;
+                  if (from && to && from > to) [from, to] = [to, from];
+
+                  const normFrom = from
+                    ? moment.tz(from, timezoneDate).startOf("day").toDate()
+                    : undefined;
+
+                  const normTo = to
+                    ? moment.tz(to, timezoneDate).endOf("day").toDate()
+                    : undefined;
+
+                  setDatePicker({ from: normFrom, to: normTo });
                 }}
                 numberOfMonths={2}
                 className="border-b-[1px] border-gray-300"
