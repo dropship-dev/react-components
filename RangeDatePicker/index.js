@@ -140,9 +140,23 @@ function RangeDatePicker(props) {
                                         }, className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "This year" }), (0, jsx_runtime_1.jsx)("div", { onClick: () => {
                                             setValueSelected("");
                                             setDatePicker({ from: undefined, to: undefined });
-                                        }, className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "All time" })] }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(calendar_1.Calendar, { initialFocus: true, mode: "range", defaultMonth: datePicker?.from, selected: datePicker, onSelect: (date) => {
-                                            setDatePicker(date);
+                                        }, className: "w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer", children: "All time" })] }), (0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(calendar_1.Calendar, { initialFocus: true, mode: "range", defaultMonth: datePicker?.from, selected: datePicker, onSelect: (range) => {
                                             setValueSelected("");
+                                            if (!range) {
+                                                setDatePicker({ from: undefined, to: undefined });
+                                                return;
+                                            }
+                                            let from = range.from ?? undefined;
+                                            let to = range.to ?? undefined;
+                                            if (from && to && from > to)
+                                                [from, to] = [to, from];
+                                            const normFrom = from
+                                                ? moment_timezone_1.default.tz(from, timezoneDate).startOf("day").toDate()
+                                                : undefined;
+                                            const normTo = to
+                                                ? moment_timezone_1.default.tz(to, timezoneDate).endOf("day").toDate()
+                                                : undefined;
+                                            setDatePicker({ from: normFrom, to: normTo });
                                         }, numberOfMonths: 2, className: "border-b-[1px] border-gray-300" }), (0, jsx_runtime_1.jsxs)("div", { className: "flex justify-end items-center flex-row gap-4 px-4 py-3", children: [(0, jsx_runtime_1.jsx)(__1.Button, { content: "Cancel", color: "gray", hierarchy: "secondary", size: "md", onClick: () => {
                                                     setOpen(false);
                                                     setDatePicker(date);
