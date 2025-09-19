@@ -1,15 +1,14 @@
 import React from "react";
 
+import upperFirst from "lodash/upperFirst";
+import { ChevronDownIcon } from "lucide-react";
 import Checkbox from "../Checkbox";
-import Input from "../Input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "../ComboBox/components/popover";
-import upperFirst from "lodash/upperFirst";
 import { cn } from "../lib/utils";
-import { ChevronDownIcon } from "lucide-react";
 
 export type SelectOption = {
   value: string;
@@ -27,6 +26,7 @@ type MultipleSelectProps = {
   onClear?: () => void;
   onChange?: (value: SelectOption[]) => void;
   defaultValue?: string;
+  className?: string;
 };
 
 const MultipleSelect: React.FC<MultipleSelectProps> = ({
@@ -36,6 +36,7 @@ const MultipleSelect: React.FC<MultipleSelectProps> = ({
   selectedPrefix = "",
   defaultValue,
   placeholder,
+  className,
 }) => {
   const [open, setOpen] = React.useState(false);
   const [listSelected, setListSelected] = React.useState<SelectOption[]>([]);
@@ -85,6 +86,7 @@ const MultipleSelect: React.FC<MultipleSelectProps> = ({
         asChild
         className={cn(
           "flex w-fit items-center justify-center rounded-[6px] cursor-pointer border border-gray-300 p-0",
+          className,
           open && "border border-primary shadow-[0_0_0_3px] shadow-[#DBDDFF]",
         )}
       >
