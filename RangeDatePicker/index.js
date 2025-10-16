@@ -49,8 +49,8 @@ const generateDateRangeFromDefaultValue = (timezoneDate, defaultValue) => {
     switch (defaultValue) {
         case RangeDatePickerDefaultValues.TODAY:
             return {
-                from: now.clone().startOf("day").toDate(),
-                to: now.clone().endOf("day").toDate(),
+                from: new Date((0, moment_timezone_1.default)().toDate().toLocaleString("en-US", { timeZone: timezoneDate })),
+                to: new Date((0, moment_timezone_1.default)().toDate().toLocaleString("en-US", { timeZone: timezoneDate })),
             };
         case RangeDatePickerDefaultValues.THIS_WEEK:
             return {
@@ -159,7 +159,9 @@ function RangeDatePicker(props) {
                                             setDatePicker({ from: normFrom, to: normTo });
                                         }, numberOfMonths: 2, className: "border-b-[1px] border-gray-300" }), (0, jsx_runtime_1.jsxs)("div", { className: "flex justify-end items-center flex-row gap-4 px-4 py-3", children: [(0, jsx_runtime_1.jsx)(__1.Button, { content: "Cancel", color: "gray", hierarchy: "secondary", size: "md", onClick: () => {
                                                     setOpen(false);
-                                                    setDatePicker(date);
+                                                    // setDatePicker(date);
+                                                    const dateRange = generateDateRangeFromDefaultValue(timezoneDate, defaultValues);
+                                                    setDatePicker(dateRange);
                                                 } }), (0, jsx_runtime_1.jsx)(__1.Button, { content: "Apply", color: "blue", hierarchy: "primary", size: "md", onClick: () => {
                                                     setOpen(false);
                                                     if (datePicker?.from && !datePicker?.to) {

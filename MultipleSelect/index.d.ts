@@ -14,7 +14,6 @@ type MultipleSelectProps = {
     onClear?: () => void;
     onChange?: (value: SelectOption[]) => void;
     defaultValue?: string;
-    className?: string;
 };
 declare const MultipleSelect: React.FC<MultipleSelectProps>;
 export default MultipleSelect;
