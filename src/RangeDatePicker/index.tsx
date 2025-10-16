@@ -38,8 +38,12 @@ const generateDateRangeFromDefaultValue = (
   switch (defaultValue) {
     case RangeDatePickerDefaultValues.TODAY:
       return {
-        from: now.clone().startOf("day").toDate(),
-        to: now.clone().endOf("day").toDate(),
+        from: new Date(
+          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
+        ),
+        to: new Date(
+          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
+        ),
       };
     case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
@@ -246,7 +250,12 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   size="md"
                   onClick={() => {
                     setOpen(false);
-                    setDatePicker(date);
+                    // setDatePicker(date);
+                    const dateRange = generateDateRangeFromDefaultValue(
+                      timezoneDate,
+                      defaultValues,
+                    );
+                    setDatePicker(dateRange);
                   }}
                 />
                 <Button
