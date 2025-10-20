@@ -110,12 +110,7 @@ function RangeDatePicker(props) {
         const month = String(date.getMonth() + 1).padStart(2, "0");
         const day = String(date.getDate()).padStart(2, "0");
         const dateStr = `${year}-${month}-${day}`;
-        const storeToday = (0, moment_timezone_1.default)().tz(timezone).format("YYYY-MM-DD");
-        let finalDateStr = dateStr;
-        if (type === "end" && dateStr > storeToday) {
-            finalDateStr = storeToday;
-        }
-        const m = moment_timezone_1.default.tz(finalDateStr, timezone);
+        const m = moment_timezone_1.default.tz(dateStr, timezone);
         if (type === "start") {
             return m.startOf("day").toDate();
         }
