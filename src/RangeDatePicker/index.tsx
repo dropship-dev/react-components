@@ -123,14 +123,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
 
     const dateStr = `${year}-${month}-${day}`;
 
-    const storeToday = moment().tz(timezone).format("YYYY-MM-DD");
-
-    let finalDateStr = dateStr;
-    if (type === "end" && dateStr > storeToday) {
-      finalDateStr = storeToday;
-    }
-
-    const m = moment.tz(finalDateStr, timezone);
+    const m = moment.tz(dateStr, timezone);
 
     if (type === "start") {
       return m.startOf("day").toDate();
