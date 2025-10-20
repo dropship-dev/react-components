@@ -29,37 +29,40 @@ interface IRangeDatePicker {
   defaultValues?: RangeDatePickerDefaultValues;
 }
 
+const toLocalDate = (momentObj: moment.Moment): Date => {
+  const dateStr = momentObj.format("YYYY-MM-DD");
+  return new Date(dateStr + "T00:00:00");
+};
+
 const generateDateRangeFromDefaultValue = (
   timezoneDate: string,
   defaultValue?: RangeDatePickerDefaultValues,
 ): DateRange => {
-  const now = moment.tz(timezoneDate);
+  const now = moment().tz(timezoneDate);
 
   switch (defaultValue) {
     case RangeDatePickerDefaultValues.TODAY:
-      return {
-        from: new Date(
-          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
-        ),
-        to: new Date(
-          moment().toDate().toLocaleString("en-US", { timeZone: timezoneDate }),
-        ),
-      };
+      const today = toLocalDate(now);
+      return { from: today, to: today };
+
     case RangeDatePickerDefaultValues.THIS_WEEK:
       return {
-        from: now.clone().startOf("isoWeek").toDate(), // Mon 00:00
-        to: now.clone().endOf("isoWeek").toDate(), // Sun 23:59:59.000
+        from: toLocalDate(now.clone().startOf("isoWeek")),
+        to: toLocalDate(now.clone().endOf("isoWeek")),
       };
+
     case RangeDatePickerDefaultValues.THIS_MONTH:
       return {
-        from: now.clone().startOf("month").toDate(),
-        to: now.clone().endOf("month").toDate(),
+        from: toLocalDate(now.clone().startOf("month")),
+        to: toLocalDate(now.clone().endOf("month")),
       };
+
     case RangeDatePickerDefaultValues.THIS_YEAR:
       return {
-        from: now.clone().startOf("year").toDate(),
-        to: now.clone().endOf("year").toDate(),
+        from: toLocalDate(now.clone().startOf("year")),
+        to: toLocalDate(now.clone().endOf("year")),
       };
+
     default:
       return { from: undefined, to: undefined };
   }
@@ -92,24 +95,43 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
     if (firstLoad && !!defaultValues && !!datePicker?.from) {
       if (datePicker?.from && !datePicker?.to) {
         setDate({
-          from: convertDate(datePicker?.from, "start"),
-          to: convertDate(datePicker?.from, "end"),
+          from: convertDate(datePicker?.from, "start", timezoneDate),
+          to: convertDate(datePicker?.from, "end", timezoneDate),
         });
         setDatePicker({
           ...datePicker,
           to: datePicker?.from,
         });
-      } else if (datePicker?.from && datePicker?.to)
+      } else if (datePicker?.from && datePicker?.to) {
         setDate({
-          from: convertDate(datePicker.from, "start"),
-          to: convertDate(datePicker?.to, "end"),
+          from: convertDate(datePicker?.from, "start", timezoneDate),
+          to: convertDate(datePicker?.to, "end", timezoneDate),
         });
+      }
       setFirstLoad(false);
     }
-  }, [datePicker, firstLoad]);
+  }, [datePicker, firstLoad, timezoneDate]);
 
-  function convertDate(date: Date, type: "start" | "end") {
-    const m = moment.tz(date, timezoneDate);
+  function convertDate(
+    date: Date,
+    type: "start" | "end",
+    timezone: string,
+  ): Date {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    const dateStr = `${year}-${month}-${day}`;
+
+    const storeToday = moment().tz(timezone).format("YYYY-MM-DD");
+
+    let finalDateStr = dateStr;
+    if (type === "end" && dateStr > storeToday) {
+      finalDateStr = storeToday;
+    }
+
+    const m = moment.tz(finalDateStr, timezone);
+
     if (type === "start") {
       return m.startOf("day").toDate();
     }
@@ -118,13 +140,13 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
 
   return (
     <div className={cn("grid gap-2")}>
-      <Popover open={open} onOpenChange={(open) => setOpen(open)}>
+      <Popover open={open} onOpenChange={(open: boolean) => setOpen(open)}>
         <PopoverTrigger>
           <div
             id="date"
             className={cn(
-              `w-fit justify-start text-left font-normal px-4 py-2 rounded-[6px] border-[1px] border-gray-300 flex items-center h-10 text-ellipsis whitespace-nowrap ${
-                open ? "shadow-[#DBDDFF] shadow-[0_0_0_4px]" : ""
+              `flex h-10 w-fit items-center justify-start text-ellipsis whitespace-nowrap rounded-[6px] border-[1px] border-gray-300 px-4 py-2 text-left font-normal ${
+                open ? "shadow-[0_0_0_4px] shadow-[#DBDDFF]" : ""
               }`,
               !datePicker && "text-muted-foreground",
             )}
@@ -148,56 +170,54 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
           <div className="flex rounded-[10px]">
-            <div className="flex flex-col px-4 py-3 border-r-[1px] border-gray-100">
+            <div className="flex flex-col border-r-[1px] border-gray-100 px-4 py-3">
               <div
                 onClick={() => {
                   setValueSelected("Today");
-                  const now = moment.tz(timezoneDate);
-                  setDatePicker({
-                    from: now.clone().startOf("day").toDate(),
-                    to: now.clone().endOf("day").toDate(),
-                  });
+                  const now = moment().tz(timezoneDate);
+                  const today = toLocalDate(now);
+                  setDatePicker({ from: today, to: today });
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
+                className="w-full cursor-pointer rounded-[6px] px-4 py-[10px] text-textSM text-gray-900 hover:bg-primary-25 hover:text-primary-500"
               >
                 Today
               </div>
               <div
                 onClick={() => {
                   setValueSelected("This week");
-                  const now = moment.tz(timezoneDate);
+                  const now = moment().tz(timezoneDate);
                   setDatePicker({
-                    from: now.clone().startOf("isoWeek").toDate(),
-                    to: now.clone().endOf("isoWeek").toDate(),
+                    from: toLocalDate(now.clone().startOf("isoWeek")),
+                    to: toLocalDate(now.clone().endOf("isoWeek")),
                   });
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
+                className="w-full cursor-pointer rounded-[6px] px-4 py-[10px] text-textSM text-gray-900 hover:bg-primary-25 hover:text-primary-500"
               >
                 This week
               </div>
               <div
                 onClick={() => {
                   setValueSelected("This month");
-                  const now = moment.tz(timezoneDate);
+                  const now = moment().tz(timezoneDate);
                   setDatePicker({
-                    from: now.clone().startOf("month").toDate(),
-                    to: now.clone().endOf("month").toDate(),
+                    from: toLocalDate(now.clone().startOf("month")),
+                    to: toLocalDate(now.clone().endOf("month")),
                   });
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
+                className="w-full cursor-pointer rounded-[6px] px-4 py-[10px] text-textSM text-gray-900 hover:bg-primary-25 hover:text-primary-500"
               >
                 This month
               </div>
               <div
                 onClick={() => {
                   setValueSelected("This year");
-                  const now = moment.tz(timezoneDate);
+                  const now = moment().tz(timezoneDate);
                   setDatePicker({
-                    from: now.clone().startOf("year").toDate(),
-                    to: now.clone().endOf("year").toDate(),
+                    from: toLocalDate(now.clone().startOf("year")),
+                    to: toLocalDate(now.clone().endOf("year")),
                   });
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
+                className="w-full cursor-pointer rounded-[6px] px-4 py-[10px] text-textSM text-gray-900 hover:bg-primary-25 hover:text-primary-500"
               >
                 This year
               </div>
@@ -206,7 +226,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   setValueSelected("");
                   setDatePicker({ from: undefined, to: undefined });
                 }}
-                className="w-full text-gray-900 hover:bg-primary-25 hover:text-primary-500 px-4 py-[10px] rounded-[6px] text-textSM cursor-pointer"
+                className="w-full cursor-pointer rounded-[6px] px-4 py-[10px] text-textSM text-gray-900 hover:bg-primary-25 hover:text-primary-500"
               >
                 All time
               </div>
@@ -217,7 +237,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                 mode="range"
                 defaultMonth={datePicker?.from}
                 selected={datePicker}
-                onSelect={(range) => {
+                onSelect={(range: any) => {
                   setValueSelected("");
 
                   if (!range) {
@@ -229,20 +249,12 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   let to = range.to ?? undefined;
                   if (from && to && from > to) [from, to] = [to, from];
 
-                  const normFrom = from
-                    ? moment.tz(from, timezoneDate).startOf("day").toDate()
-                    : undefined;
-
-                  const normTo = to
-                    ? moment.tz(to, timezoneDate).endOf("day").toDate()
-                    : undefined;
-
-                  setDatePicker({ from: normFrom, to: normTo });
+                  setDatePicker({ from, to });
                 }}
                 numberOfMonths={2}
                 className="border-b-[1px] border-gray-300"
               />
-              <div className="flex justify-end items-center flex-row gap-4 px-4 py-3">
+              <div className="flex flex-row items-center justify-end gap-4 px-4 py-3">
                 <Button
                   content="Cancel"
                   color="gray"
@@ -250,12 +262,7 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                   size="md"
                   onClick={() => {
                     setOpen(false);
-                    // setDatePicker(date);
-                    const dateRange = generateDateRangeFromDefaultValue(
-                      timezoneDate,
-                      defaultValues,
-                    );
-                    setDatePicker(dateRange);
+                    setDatePicker(date);
                   }}
                 />
                 <Button
@@ -267,8 +274,16 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     setOpen(false);
 
                     if (datePicker?.from && !datePicker?.to) {
-                      const from = convertDate(datePicker.from, "start");
-                      const to = convertDate(datePicker.from, "end");
+                      const from = convertDate(
+                        datePicker.from,
+                        "start",
+                        timezoneDate,
+                      );
+                      const to = convertDate(
+                        datePicker.from,
+                        "end",
+                        timezoneDate,
+                      );
 
                       setDate({ from, to });
                       setDatePicker((r) => (r ? { ...r, to: r.from } : r));
@@ -276,8 +291,16 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
                     }
 
                     if (datePicker?.from && datePicker?.to) {
-                      const from = convertDate(datePicker.from, "start");
-                      const to = convertDate(datePicker.to, "end");
+                      const from = convertDate(
+                        datePicker.from,
+                        "start",
+                        timezoneDate,
+                      );
+                      const to = convertDate(
+                        datePicker.to,
+                        "end",
+                        timezoneDate,
+                      );
                       setDate({ from, to });
                       return;
                     }
