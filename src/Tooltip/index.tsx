@@ -11,7 +11,7 @@ type Props = {
   side?: "top" | "bottom" | "right" | "left";
 };
 
-export default function TooltipComponentCustom(props: Props) {
+export default function TooltipComponent(props: Props) {
   const { children, content, side } = props;
   return (
     <TooltipProvider>
