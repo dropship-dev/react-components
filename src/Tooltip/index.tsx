@@ -8,15 +8,16 @@ import {
 type Props = {
   children: React.ReactNode;
   content: string;
+  side?: "top" | "bottom" | "right" | "left";
 };
 
 export default function TooltipComponent(props: Props) {
-  const { children, content } = props;
+  const { children, content, side } = props;
   return (
     <TooltipProvider>
       <Tooltip disableHoverableContent>
         <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent side={side || "top"}>
           <div>{content}</div>
         </TooltipContent>
       </Tooltip>
