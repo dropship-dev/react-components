@@ -29,6 +29,16 @@ interface IRangeDatePicker {
   defaultValues?: RangeDatePickerDefaultValues;
 }
 
+export interface RangeDatePickerHandle {
+  /**
+   * Imperatively apply a preset: updates the trigger label and the internal
+   * range, then emits `setDate` — the same result as clicking that preset in
+   * the sidebar and pressing Apply. Opt-in; consumers that don't attach a ref
+   * are unaffected.
+   */
+  applyDefaultValue: (preset: RangeDatePickerDefaultValues) => void;
+}
+
 const toLocalDate = (momentObj: moment.Moment): Date => {
   const dateStr = momentObj.format("YYYY-MM-DD");
   return new Date(dateStr + "T00:00:00");
@@ -68,7 +78,10 @@ const generateDateRangeFromDefaultValue = (
   }
 };
 
-export default function RangeDatePicker(props: IRangeDatePicker) {
+const RangeDatePicker = React.forwardRef<
+  RangeDatePickerHandle,
+  IRangeDatePicker
+>(function RangeDatePicker(props, ref) {
   const { date, setDate, timezone, defaultValues } = props;
   const [firstLoad, setFirstLoad] = React.useState<boolean>(true);
   const timezoneDate = timezone ?? "America/Los_Angeles";
@@ -111,6 +124,32 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
       setFirstLoad(false);
     }
   }, [datePicker, firstLoad, timezoneDate]);
+
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      applyDefaultValue: (preset: RangeDatePickerDefaultValues) => {
+        const range = generateDateRangeFromDefaultValue(timezoneDate, preset);
+        setValueSelected(
+          preset === RangeDatePickerDefaultValues.ALL_TIME ? "" : preset,
+        );
+        setDatePicker(range);
+        // The parent is driving the value now; stop the mount-time auto-emit
+        // (firstLoad) from re-firing off this state change.
+        setFirstLoad(false);
+
+        if (range.from && range.to) {
+          setDate({
+            from: convertDate(range.from, "start", timezoneDate),
+            to: convertDate(range.to, "end", timezoneDate),
+          });
+        } else {
+          setDate(undefined);
+        }
+      },
+    }),
+    [timezoneDate, setDate],
+  );
 
   function convertDate(
     date: Date,
@@ -308,4 +347,6 @@ export default function RangeDatePicker(props: IRangeDatePicker) {
       </Popover>
     </div>
   );
-}
+});
+
+export default RangeDatePicker;

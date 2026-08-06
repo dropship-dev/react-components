@@ -22,6 +22,7 @@ export {
   default as RangeDatePicker,
   RangeDatePickerDefaultValues,
 } from "./RangeDatePicker";
+export type { RangeDatePickerHandle } from "./RangeDatePicker";
 
 export { default as RangeDatePickerMarketing } from "./RangeDatePickerMarketing";
 
