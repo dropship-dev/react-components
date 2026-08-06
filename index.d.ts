@@ -19,6 +19,7 @@ export { default as PopoverNoti } from "./Popover";
 export { Avatar, ProductImage } from "./ProductImage";
 export { default as RadioButton } from "./RadioButton";
 export { default as RangeDatePicker, RangeDatePickerDefaultValues, } from "./RangeDatePicker";
+export type { RangeDatePickerHandle } from "./RangeDatePicker";
 export { default as RangeDatePickerMarketing } from "./RangeDatePickerMarketing";
 export { default as Slider } from "./RangeSlider";
 export { default as Rating } from "./Rating";

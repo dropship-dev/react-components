@@ -73,7 +73,7 @@ const generateDateRangeFromDefaultValue = (timezoneDate, defaultValue) => {
             return { from: undefined, to: undefined };
     }
 };
-function RangeDatePicker(props) {
+const RangeDatePicker = React.forwardRef(function RangeDatePicker(props, ref) {
     const { date, setDate, timezone, defaultValues } = props;
     const [firstLoad, setFirstLoad] = React.useState(true);
     const timezoneDate = timezone ?? "America/Los_Angeles";
@@ -105,6 +105,25 @@ function RangeDatePicker(props) {
             setFirstLoad(false);
         }
     }, [datePicker, firstLoad, timezoneDate]);
+    React.useImperativeHandle(ref, () => ({
+        applyDefaultValue: (preset) => {
+            const range = generateDateRangeFromDefaultValue(timezoneDate, preset);
+            setValueSelected(preset === RangeDatePickerDefaultValues.ALL_TIME ? "" : preset);
+            setDatePicker(range);
+            // The parent is driving the value now; stop the mount-time auto-emit
+            // (firstLoad) from re-firing off this state change.
+            setFirstLoad(false);
+            if (range.from && range.to) {
+                setDate({
+                    from: convertDate(range.from, "start", timezoneDate),
+                    to: convertDate(range.to, "end", timezoneDate),
+                });
+            }
+            else {
+                setDate(undefined);
+            }
+        },
+    }), [timezoneDate, setDate]);
     function convertDate(date, type, timezone) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -176,5 +195,5 @@ function RangeDatePicker(props) {
                                                     }
                                                     setDate(undefined);
                                                 } })] })] })] }) })] }) }));
-}
+});
 exports.default = RangeDatePicker;

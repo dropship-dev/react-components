@@ -13,5 +13,14 @@ interface IRangeDatePicker {
     timezone?: string;
     defaultValues?: RangeDatePickerDefaultValues;
 }
-export default function RangeDatePicker(props: IRangeDatePicker): import("react/jsx-runtime").JSX.Element;
-export {};
+export interface RangeDatePickerHandle {
+    /**
+     * Imperatively apply a preset: updates the trigger label and the internal
+     * range, then emits `setDate` — the same result as clicking that preset in
+     * the sidebar and pressing Apply. Opt-in; consumers that don't attach a ref
+     * are unaffected.
+     */
+    applyDefaultValue: (preset: RangeDatePickerDefaultValues) => void;
+}
+declare const RangeDatePicker: React.ForwardRefExoticComponent<IRangeDatePicker & React.RefAttributes<RangeDatePickerHandle>>;
+export default RangeDatePicker;
